@@ -5,82 +5,135 @@
   "language": "en",
   "theme": "default",
   "color": "#00889a",
-  "dark_mode": "auto",
+  "dark_mode": "light",
   "width": "centered",
   "size": "md",
   "border_radius": "small",
   "uppercase_labels": false,
   "no_branding": true,
-  "transparent_background": true,
+  "transparent_background": false,
   "presentation_style": "classic",
   "submit_button_text": "Send enquiry",
   "properties": [
     {
+      "type": "nf-text",
+      "name": "Intro",
+      "id": "b0000001-0001-4000-8000-000000000001",
+      "hidden": false,
+      "help_position": "below_input",
+      "width": "full",
+      "align": "left",
+      "content": "<h2 style=\"font-family:Poppins,sans-serif;font-weight:600;color:#1a1f23;margin:0 0 8px\">Test enquiry</h2><p style=\"font-family:Work Sans,sans-serif;color:#4a544f;margin:0\">Tell us which test you are interested in and how we can reach you.</p>"
+    },
+    {
       "id": "a1000001-0001-4000-8000-000000000001",
-      "type": "short_text",
+      "type": "text",
       "name": "test_name",
       "hidden": true,
-      "width": "full"
+      "help_position": "below_input",
+      "multi_lines": false,
+      "width": "full",
+      "align": "left",
+      "required": false,
+      "hide_field_name": true
     },
     {
       "id": "a1000001-0001-4000-8000-000000000002",
-      "type": "short_text",
+      "type": "text",
       "name": "test_code",
       "hidden": true,
-      "width": "full"
+      "help_position": "below_input",
+      "multi_lines": false,
+      "width": "full",
+      "align": "left",
+      "required": false,
+      "hide_field_name": true
     },
     {
       "id": "a1000001-0001-4000-8000-000000000003",
-      "type": "short_text",
+      "type": "text",
       "name": "test_id",
       "hidden": true,
-      "width": "full"
+      "help_position": "below_input",
+      "multi_lines": false,
+      "width": "full",
+      "align": "left",
+      "required": false,
+      "hide_field_name": true
     },
     {
       "id": "a1000001-0001-4000-8000-000000000004",
-      "type": "short_text",
+      "type": "text",
       "name": "source_page",
       "hidden": true,
-      "width": "full"
+      "help_position": "below_input",
+      "multi_lines": false,
+      "width": "full",
+      "align": "left",
+      "required": false,
+      "hide_field_name": true
     },
     {
       "id": "a1000001-0001-4000-8000-000000000005",
-      "type": "short_text",
+      "type": "text",
       "name": "category",
       "hidden": true,
-      "width": "full"
+      "help_position": "below_input",
+      "multi_lines": false,
+      "width": "full",
+      "align": "left",
+      "required": false,
+      "hide_field_name": true
     },
     {
       "id": "a1000001-0001-4000-8000-000000000010",
-      "type": "short_text",
+      "type": "text",
       "name": "Your name",
-      "required": true,
+      "hidden": false,
+      "help_position": "below_input",
+      "multi_lines": false,
+      "max_char_limit": 2000,
       "placeholder": "Full name",
-      "width": "full"
+      "width": "full",
+      "align": "left",
+      "required": true,
+      "hide_field_name": false
     },
     {
       "id": "a1000001-0001-4000-8000-000000000011",
       "type": "email",
       "name": "Email",
-      "required": true,
+      "hidden": false,
+      "help_position": "below_input",
       "placeholder": "you@example.com",
-      "width": "full"
+      "width": "full",
+      "align": "left",
+      "required": true
     },
     {
       "id": "a1000001-0001-4000-8000-000000000012",
       "type": "phone_number",
       "name": "Phone",
-      "required": false,
+      "hidden": false,
+      "help_position": "below_input",
       "placeholder": "Optional",
-      "width": "full"
+      "width": "full",
+      "align": "left",
+      "required": false
     },
     {
       "id": "a1000001-0001-4000-8000-000000000013",
-      "type": "long_text",
+      "type": "text",
       "name": "Message",
-      "required": false,
+      "hidden": false,
+      "help_position": "below_input",
+      "multi_lines": true,
+      "max_char_limit": 2000,
       "placeholder": "Anything else we should know?",
-      "width": "full"
+      "width": "full",
+      "align": "left",
+      "required": false,
+      "hide_field_name": false
     }
   ]
 }

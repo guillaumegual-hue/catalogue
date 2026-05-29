@@ -148,6 +148,19 @@ export function findFormByTitle(forms, title) {
   return forms.filter((f) => String(f.title || '').trim().toLowerCase() === t);
 }
 
+/** Latest "Test enquiry — Coleebri Health" form in the workspace, if any. */
+export function findEnquiryForm(forms) {
+  const matches = forms.filter(
+    (f) =>
+      /test enquiry/i.test(f.title || '') ||
+      /coleebri health/i.test(f.title || '') ||
+      String(f.slug || '').includes('test-enquiry')
+  );
+  if (!matches.length) return null;
+  matches.sort((a, b) => (b.id || 0) - (a.id || 0));
+  return matches[0];
+}
+
 export async function resolveFormAfterCreate(cfg, { title, createResponse }) {
   let form = extractForm(createResponse);
   if (form?.slug) return form;

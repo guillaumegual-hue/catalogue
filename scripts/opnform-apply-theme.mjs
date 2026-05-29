@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 /**
  * Apply Coleebri theme CSS to an OpnForm enquiry form (form-level Custom Code).
- * Usage: COLEEBRI_OPNFORM_TOKEN='…' node scripts/opnform-apply-theme.mjs [slug-or-id]
+ *
+ * Usage:
+ *   node scripts/opnform-apply-theme.mjs          # auto-picks latest test enquiry form
+ *   node scripts/opnform-apply-theme.mjs 8      # numeric id from opnform-list-forms.mjs
+ *   node scripts/opnform-apply-theme.mjs my-slug
  */
 import { readFileSync } from 'fs';
 import { dirname, join } from 'path';
@@ -9,6 +13,7 @@ import { fileURLToPath } from 'url';
 import {
   apiFetch,
   extractForm,
+  findEnquiryForm,
   formUpdatePath,
   getConfig,
   getForm,
@@ -21,18 +26,44 @@ const root = join(__dirname, '..');
 const cfg = getConfig();
 requireToken(cfg.token);
 
-const ref =
-  process.argv[2] ||
-  process.env.COLEEBRI_OPNFORM_ENQUIRY_SLUG ||
-  process.env.COLEEBRI_OPNFORM_ENQUIRY_ID ||
-  'test-enquiry-coleebri-health-nlsubd';
+let ref = process.argv[2] || process.env.COLEEBRI_OPNFORM_ENQUIRY_ID || process.env.COLEEBRI_OPNFORM_ENQUIRY_SLUG;
 
 const themeCss = readFileSync(join(root, 'assets/opnform-coleebri-theme.css'), 'utf8');
 
+async function loadForm() {
+  if (!ref) {
+    const forms = await listWorkspaceForms(cfg);
+    const pick = findEnquiryForm(forms);
+    if (!pick?.id) {
+      console.error('No test enquiry form found. Create one first:\n');
+      console.error('  node scripts/opnform-create-enquiry-form.mjs');
+      console.error('  node scripts/opnform-list-forms.mjs');
+      console.error('  node scripts/opnform-apply-theme.mjs 8   # use real id, not <NEW_ID>');
+      process.exit(1);
+    }
+    console.log('Using form id=%s slug=%s (%s)', pick.id, pick.slug, pick.title);
+    ref = String(pick.id);
+  }
+
+  const idArg = /^\d+$/.test(ref) ? ref : undefined;
+  try {
+    return await getForm(cfg, { slug: idArg ? undefined : ref, id: idArg });
+  } catch (e) {
+    if (!idArg && /test-enquiry/i.test(ref)) {
+      const forms = e.forms || (await listWorkspaceForms(cfg));
+      const pick = findEnquiryForm(forms);
+      if (pick?.id) {
+        console.log('Slug stale; using id=%s (%s)', pick.id, pick.title);
+        return getForm(cfg, { id: String(pick.id) });
+      }
+    }
+    throw e;
+  }
+}
+
 let form;
 try {
-  const idArg = /^\d+$/.test(ref) ? ref : undefined;
-  form = await getForm(cfg, { slug: idArg ? undefined : ref, id: idArg });
+  form = await loadForm();
 } catch (e) {
   console.error(e.message || e);
   if (e.forms?.length) {
@@ -41,7 +72,6 @@ try {
       console.error(`  id=${f.id}\tslug=${f.slug}\t${f.title}`);
     }
   }
-  console.error('\nTry: node scripts/opnform-list-forms.mjs');
   process.exit(1);
 }
 
@@ -66,21 +96,11 @@ const body = {
   transparent_background: form.transparent_background ?? true,
   submit_button_text: form.submit_button_text || 'Send enquiry',
   properties: form.properties,
-  custom_code: {
-    css: themeCss,
-    javascript: form.custom_code?.javascript || '',
-  },
+  custom_css: themeCss,
 };
 
-let path = formUpdatePath(form);
+const path = formUpdatePath(form);
 let { res, data } = await apiFetch(path, { ...cfg, method: 'PUT', body });
-
-if (!res.ok && body.custom_code) {
-  const fallback = { ...body };
-  delete fallback.custom_code;
-  fallback.custom_css = themeCss;
-  ({ res, data } = await apiFetch(path, { ...cfg, method: 'PUT', body: fallback }));
-}
 
 if (!res.ok) {
   console.error('PUT form failed', res.status, data);

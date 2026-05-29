@@ -24,19 +24,13 @@ requireToken(cfg.token);
 
 const verbose = process.argv.includes('--verbose');
 
-const TYPE_MAP = {
-  text: 'short_text',
-  textarea: 'long_text',
-  phone: 'phone_number',
-};
-
 function normalizeProperty(block) {
-  const type = TYPE_MAP[block.type] || block.type;
   return {
+    help_position: 'below_input',
     width: 'full',
+    align: 'left',
     ...block,
     id: block.id || randomUUID(),
-    type,
   };
 }
 

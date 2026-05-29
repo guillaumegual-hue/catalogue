@@ -7,8 +7,27 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap");
 
-/* Page shell */
+/* Page shell — override OpnForm form-color tint */
 #app,
+#public-form,
+.open-complete-form,
+.min-h-screen.flex.flex-col {
+  background-color: #fafafa !important;
+  min-height: auto !important;
+}
+
+.open-complete-form {
+  --color-form-50: #fafafa !important;
+  --color-form-100: #e6f3f5 !important;
+}
+
+form.flex.flex-col.grow,
+.open-complete-form form.grow {
+  flex-grow: 0 !important;
+  min-height: 0 !important;
+  padding-bottom: 2rem !important;
+}
+
 nav.bg-white {
   background-color: #fafafa !important;
 }
