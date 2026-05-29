@@ -4,6 +4,14 @@ Host the catalogue on **GitHub Pages** for testing, then copy the same files to 
 
 ## 1. GitHub (staging)
 
+**Public repository required** on a free GitHub plan (private repos need GitHub Pro for Pages). Enable **Settings → Pages → Build and deployment → Source: GitHub Actions** before the first workflow run.
+
+Live staging URL for this repo:
+
+```text
+https://guillaumegual-hue.github.io/catalogue/
+```
+
 ```bash
 cd "/path/to/Catalogue 2"
 git init
