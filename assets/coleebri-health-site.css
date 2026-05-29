@@ -2964,6 +2964,8 @@ main#top > section#collection-info {
   :root {
     --topbar-h: 124px;
     --tabnav-h: 92px;
+    --content-gutter: 10px;
+    --r-lg: 20px;
   }
 
   .topbar-inner {
@@ -2995,9 +2997,33 @@ main#top > section#collection-info {
     display: block;
   }
 
+  .tabnav-select {
+    border-width: 1px;
+    padding: 12px 38px 12px 14px;
+  }
+
   .tabnav-pills-label,
   .tabnav-pills {
     display: none !important;
+  }
+
+  .test-card {
+    padding: 18px 16px 16px;
+    border-width: 1px;
+    border-color: rgba(0, 136, 154, 0.11);
+  }
+
+  .test-card.is-compared {
+    box-shadow: 0 0 0 2px var(--forest-100);
+  }
+
+  .test-card.in-cart {
+    box-shadow: 0 0 0 1px var(--forest-100);
+  }
+
+  .shell {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   .hero-panels {
@@ -3016,7 +3042,29 @@ main#top > section#collection-info {
 
   .card-grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 14px;
+  }
+
+  .test-card {
+    padding: 16px 14px 14px;
+    gap: 12px;
+  }
+
+  .category-page-hero {
+    padding: 16px 0 20px;
+  }
+
+  .category-hero__visual {
+    min-height: 168px;
+    max-height: 220px;
+    margin-bottom: 16px;
+    border-radius: 16px;
+  }
+
+  .category-hero__img {
+    min-height: 168px;
+    max-height: 220px;
+    border-radius: 16px;
   }
 
   .tc-foot {
