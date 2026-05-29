@@ -1,0 +1,2442 @@
+/* Coleebri Health - patient catalogue data (merged Excel 2026, catalogue-priced items only). */
+
+window.SAMPLE_TYPES = {
+  venous: { label: 'Venous blood draw', short: 'Venous', tone: 'teal' },
+  fingerprick: { label: 'Finger-prick (home kit where available)', short: 'Finger-prick', tone: 'lime' },
+  urine: { label: 'Urine sample', short: 'Urine', tone: 'hope' },
+  dna: { label: 'DNA cheek swab', short: 'DNA swab', tone: 'clarity' },
+};
+
+window.SECTIONS = [
+  { id: 'paternity', label: 'Paternity & DNA',
+    blurb: 'Legal (court-admissible) and peace-of-mind DNA tests. Legal tests must be collected by a healthcare professional with chain-of-custody.' },
+  { id: 'routine', label: 'Routine tests',
+    blurb: 'Single-purpose blood and urine tests for everyday monitoring.' },
+  { id: 'profiles', label: 'Health profiles & screens',
+    blurb: 'Multi-marker panels for check-ups, hormones, fatigue, and general wellbeing interest.' },
+  { id: 'autoimmune', label: 'Autoimmune profiles',
+    blurb: 'Specialist antibody panels — your doctor or specialist should explain the results.' },
+  { id: 'vitamins', label: 'Vitamins & minerals',
+    blurb: 'Nutritional and trace-element testing.' },
+  { id: 'fitness', label: 'Fitness & wellbeing',
+    blurb: 'Sports performance and wellbeing panels.' },
+  { id: 'allergies', label: 'Allergies & sensitivities',
+    blurb: 'IgE allergy and intolerance testing - clinical guidance recommended before diet changes.' },
+  { id: 'sexual', label: 'Sexual health',
+    blurb: 'Confidential STI screening. If you have symptoms or need treatment, contact your GP or a sexual-health clinic.' },
+  { id: 'specific', label: 'Specific requests',
+    blurb: 'Targeted and bespoke tests - contact health@coleebri.com.' },
+];
+
+window.TESTS = [
+  {
+    "id": "PAT001",
+    "section": "paternity",
+    "name": "Legal Paternity Test - Standard Trio (Mother, Child & Father)",
+    "code": "-",
+    "samples": [
+      "dna"
+    ],
+    "blurb": "Court-admissible paternity test following strict chain-of-custody. DNA collected by a qualified healthcare professional, sealed in tamper-proof packaging and sent to a Ministry of Justice accredited laboratory. Results are PhD-reviewed and legally valid for family court in England and Wales.",
+    "components": [
+      "Mother",
+      "Child and Alleged Father",
+      "Chain-of-custody",
+      "MOJ-accredited lab (ISO/IEC 17025 / ANAB)",
+      "Professional collection required",
+      "PhD-reviewed"
+    ],
+    "turnaround": "Varies",
+    "price": 197,
+    "legal": true,
+    "tracks": [
+      "dna"
+    ]
+  },
+  {
+    "id": "PAT002",
+    "section": "paternity",
+    "name": "Legal Paternity Test - Motherless (Child & Father only)",
+    "code": "-",
+    "samples": [
+      "dna"
+    ],
+    "blurb": "Court-admissible paternity test using the child and father only. Extra DNA markers compensate for the missing mother's sample, maintaining the same high accuracy and legal validity.",
+    "components": [
+      "Child and Alleged Father only. Chain-of-custody. professional collection required. PhD-reviewed."
+    ],
+    "turnaround": "Varies",
+    "price": 167,
+    "legal": true,
+    "tracks": [
+      "dna"
+    ]
+  },
+  {
+    "id": "PAT003",
+    "section": "paternity",
+    "name": "Peace-of-Mind Paternity Test - Standard (Mother, Child & Father)",
+    "code": "-",
+    "samples": [
+      "dna"
+    ],
+    "blurb": "At-home paternity test for personal reassurance. Not court-admissible. Kit posted to you; return swabs by post. Results reviewed by a PhD scientist. 99.99%+ probability if paternity confirmed.",
+    "components": [
+      "Mother",
+      "Child and Father",
+      "Self-test kit",
+      "PhD-reviewed",
+      "Not for legal use"
+    ],
+    "turnaround": "Varies",
+    "price": 109,
+    "homeKit": true,
+    "tracks": [
+      "dna"
+    ]
+  },
+  {
+    "id": "PAT004",
+    "section": "paternity",
+    "name": "Peace-of-Mind Paternity Test - Motherless (Child & Father only)",
+    "code": "-",
+    "samples": [
+      "dna"
+    ],
+    "blurb": "Private home paternity test without the mother. Extra markers tested to maintain accuracy. Not admissible in court.",
+    "components": [
+      "Child and Father only",
+      "Self-test kit",
+      "PhD-reviewed"
+    ],
+    "turnaround": "Varies",
+    "price": 99,
+    "homeKit": true,
+    "tracks": [
+      "dna"
+    ]
+  },
+  {
+    "id": "PAT005",
+    "section": "paternity",
+    "name": "DNA Identity Profile - Personal Record (Non-Legal)",
+    "code": "-",
+    "samples": [
+      "dna"
+    ],
+    "blurb": "Creates a permanent genetic identity record - a unique DNA fingerprint. Useful for genealogy, reconnecting with biological relatives, or personal identification records.",
+    "components": [
+      "DNA Profiling YSTR or STR. No chain of custody. Self-test kit."
+    ],
+    "turnaround": "Varies",
+    "price": 250,
+    "homeKit": true,
+    "tracks": [
+      "dna"
+    ]
+  },
+  {
+    "id": "PAT006",
+    "section": "paternity",
+    "name": "DNA Identity Profile - Legal Record (With Chain of Custody)",
+    "code": "-",
+    "samples": [
+      "dna"
+    ],
+    "blurb": "Legal DNA identity profiling with full chain-of-custody. Can be used for immigration applications, inheritance disputes, or official identity verification.",
+    "components": [
+      "DNA Profiling YSTR or STR. Chain-of-custody collection. professional collection required."
+    ],
+    "turnaround": "Varies",
+    "price": 327,
+    "tracks": [
+      "dna"
+    ]
+  },
+  {
+    "id": "PAT007",
+    "section": "paternity",
+    "name": "Baby Gender Reveal (Non-Invasive, from 8 weeks)",
+    "code": "-",
+    "samples": [
+      "dna"
+    ],
+    "blurb": "Analyses fetal DNA in your blood to determine fetal sex, from around 8 weeks of pregnancy. At 8 weeks, a small number of tests cannot be completed because there is insufficient fetal DNA in the sample — in these cases a repeat sample is needed, which adds time. Accuracy improves from 10 weeks onwards. This test cannot detect chromosomal conditions and is not a substitute for NHS prenatal screening. If the result raises any concerns, discuss them with your midwife or GP.",
+    "components": [
+      "Non-invasive gender reveal from maternal blood. Self-test kit. Collection booked separately."
+    ],
+    "turnaround": "Varies",
+    "price": 68,
+    "homeKit": true,
+    "tracks": [
+      "dna"
+    ]
+  },
+  {
+    "id": "GH001",
+    "section": "profiles",
+    "name": "Heart Health Screen",
+    "code": "CLBR-IN01",
+    "samples": [
+      "fingerprick",
+      "venous"
+    ],
+    "blurb": "Checks cholesterol levels (LDL, HDL, triglycerides), long-term blood sugar (HbA1c), and high-sensitivity CRP, an inflammation marker. These markers are often reviewed by clinicians when discussing cardiovascular health and lifestyle risk factors.",
+    "components": [
+      "Lipid Profile",
+      "HbA1c",
+      "C-reactive Protein (High Sensitivity)"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 48,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH002",
+    "section": "profiles",
+    "name": "Kidney Health Check",
+    "code": "CLBR-IN02",
+    "samples": [
+      "fingerprick",
+      "venous"
+    ],
+    "blurb": "Measures creatinine and urea — waste products your kidneys filter from your blood — and calculates eGFR, an estimate of how well your kidneys are working. You might order this if you have been asked to monitor kidney function, have a condition that can affect the kidneys (such as diabetes or high blood pressure), or take medicines that require regular kidney checks.",
+    "components": [
+      "Creatinine",
+      "Estimated GFR (eGFR)",
+      "Urea"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 35,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH003",
+    "section": "profiles",
+    "name": "Diabetes Risk Screen",
+    "code": "CLBR-IN03",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Measures HbA1c, which reflects average blood sugar over about 2-3 months, plus a random glucose level. Your clinician will interpret these results in context if blood sugar control or diabetes risk is being reviewed.",
+    "components": [
+      "HbA1c",
+      "Random Glucose"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 45,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH004",
+    "section": "routine",
+    "name": "Full Blood Count (Complete Blood Picture)",
+    "code": "CLBR-INNP04",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "One of the most common blood tests. It measures red cells, white cells, and platelets, which can give clinicians useful information about oxygen-carrying capacity, immune response, and clotting. Often requested alongside symptoms such as tiredness, breathlessness, or recurrent infections.",
+    "components": [
+      "Haemoglobin",
+      "Red Blood Count (RBC)",
+      "HCT",
+      "MCV",
+      "MCH",
+      "MCHC",
+      "RDW",
+      "Platelets",
+      "MPV",
+      "White Cell Count",
+      "Neutrophils",
+      "Lymphocytes",
+      "Monocytes",
+      "Eosinophils",
+      "Basophils"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 34,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH005",
+    "section": "routine",
+    "name": "Cholesterol & Lipids Screen",
+    "code": "CLBR-INNP05",
+    "samples": [
+      "fingerprick",
+      "venous"
+    ],
+    "blurb": "Measures blood fats including total cholesterol, LDL, HDL, non-HDL cholesterol, and triglycerides. Often requested when a clinician is reviewing cardiovascular risk factors or family history.",
+    "components": [
+      "Total Cholesterol",
+      "HDL Cholesterol",
+      "HDL % of total",
+      "LDL Cholesterol",
+      "Non-HDL Cholesterol",
+      "Triglycerides"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 39,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH006",
+    "section": "routine",
+    "name": "Salt & Kidney Balance (Urea & Electrolytes)",
+    "code": "CLBR-INNP06",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Checks sodium, potassium, urea, and creatinine — the key electrolytes and kidney markers. These results are commonly reviewed alongside hydration, kidney function, medicines, and overall health.",
+    "components": [
+      "Sodium",
+      "Potassium",
+      "Urea",
+      "Creatinine"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 37,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH007",
+    "section": "profiles",
+    "name": "Detailed Urine Analysis (Microscopy)",
+    "code": "CLBR-IN07",
+    "samples": [
+      "urine"
+    ],
+    "blurb": "Urine microscopy and culture (UMIC) — a detailed urine examination beyond a dipstick. It looks for blood cells, white cells, casts, bacteria, glucose, and protein. You might order this if you have urinary symptoms, recurrent infections, or your GP has asked for urine microscopy.",
+    "components": [
+      "Ketones",
+      "Organisms",
+      "Urine Bilirubin",
+      "Urine Blood",
+      "Urine Casts",
+      "Urine Crystals",
+      "Urine Epithelial Cells",
+      "Urine Glucose",
+      "Urine pH",
+      "Urine Protein",
+      "Urine RBCs",
+      "Urine Urobilinogen",
+      "Urine WBC"
+    ],
+    "turnaround": "2 business days - 9 business days",
+    "price": 51,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH008",
+    "section": "routine",
+    "name": "Liver Function Test (LFT)",
+    "code": "CLBR-INNP08",
+    "samples": [
+      "fingerprick",
+      "venous"
+    ],
+    "blurb": "Measures liver enzymes, bilirubin, and proteins made or processed by the liver. Clinicians review the pattern of results alongside symptoms, alcohol intake, medicines, and other health factors.",
+    "components": [
+      "Alanine Transferase (ALT)",
+      "Albumin",
+      "Alkaline Phosphatase (ALP)",
+      "Aspartate Transferase (AST)",
+      "Bilirubin",
+      "Gamma GT",
+      "Globulin",
+      "Total Protein"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 39,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH009",
+    "section": "routine",
+    "name": "Thyroid Function Test (TFT)",
+    "code": "CLBR-NP09",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Measures TSH (brain's signal to thyroid) and FT4 (main thyroid hormone). Patterns on a report may be discussed with your clinician alongside symptoms such as tiredness, weight change, or mood changes.",
+    "components": [
+      "Free Thyroxine (FT4)",
+      "Thyroid Stimulating Hormone (TSH)"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 54,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH010",
+    "section": "routine",
+    "name": "Core Health Profile 1 (Vitamins, Blood, Liver, Kidneys)",
+    "code": "CLBR-IN010",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Broad health panel covering blood count, liver markers, kidney and electrolyte balance, vitamin B12, folate, and vitamin D. May suit a general check-up or a clinician-led review of symptoms such as tiredness or low energy.",
+    "components": [
+      "Folate",
+      "Full Blood Count",
+      "Liver Function Test",
+      "Total Vitamin B12",
+      "Urea & Electrolytes (Chloride, Creatinine, eGFR, Sodium, Urea)",
+      "Vitamin D"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 103,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH011",
+    "section": "routine",
+    "name": "Core Health Profile 2 (Blood, Sugar, Kidneys, Cholesterol, Liver)",
+    "code": "CLBR-IN011",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Five-system panel covering blood count, HbA1c, kidney markers, cholesterol, and liver enzymes. Useful as a broad baseline when these areas are being reviewed.",
+    "components": [
+      "Full Blood Count",
+      "HbA1c",
+      "Kidney Function Profile",
+      "Lipid Profile",
+      "Liver Function Test"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 61,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH012",
+    "section": "profiles",
+    "name": "Core Health Profile 3 (Kidneys, Cholesterol, Liver)",
+    "code": "CLBR-IN6012",
+    "samples": [
+      "fingerprick",
+      "venous"
+    ],
+    "blurb": "Focused three-system panel covering kidney markers, cholesterol, and liver enzymes. Often used as a simple health baseline or when these markers need periodic review.",
+    "components": [
+      "Kidney Function Profile",
+      "Lipid Profile",
+      "Liver Function Test"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 40,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH013",
+    "section": "routine",
+    "name": "Well Man Check (Men's Comprehensive Health Screen)",
+    "code": "CLBR-IN013",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Comprehensive men's health panel covering cholesterol, HbA1c, liver and kidney markers, thyroid, testosterone, iron, key vitamins, uric acid, magnesium, and muscle enzyme CK. Designed to give a broad set of results for clinician review.",
+    "components": [
+      "Active Vitamin B12",
+      "Basic Thyroid Profile",
+      "C-reactive Protein (High Sensitivity)",
+      "Folate",
+      "Full Blood Count",
+      "HbA1c",
+      "Iron Profile",
+      "Kidney Function Profile",
+      "Lipid Profile",
+      "Liver Function Test",
+      "Magnesium",
+      "Testosterone",
+      "Uric Acid",
+      "Vitamin D",
+      "Creatine Kinase (CK)"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 140,
+    "popular": true,
+    "tracks": [
+      "men"
+    ]
+  },
+  {
+    "id": "GH014",
+    "section": "routine",
+    "name": "Well Woman Check (Women's Comprehensive Health Screen)",
+    "code": "CLBR-IN014",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Women's health panel covering general health markers plus FSH, LH, oestradiol, and iron status. These results may be reviewed alongside cycle pattern, symptoms, and health history.",
+    "components": [
+      "Active Vitamin B12",
+      "Basic Thyroid Function Profile",
+      "C-reactive Protein (High Sensitivity)",
+      "Folate",
+      "Follicle Stimulating Hormone (FSH)",
+      "Full Blood Count",
+      "HbA1c",
+      "Iron Profile",
+      "Kidney Function Profile",
+      "Lipid Profile",
+      "Liver Function Test",
+      "Luteinising Hormone (LH)",
+      "Magnesium",
+      "Oestradiol",
+      "Uric Acid",
+      "Vitamin D"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 140,
+    "popular": true,
+    "mostOrdered": true,
+    "tracks": [
+      "women"
+    ]
+  },
+  {
+    "id": "GH015",
+    "section": "profiles",
+    "name": "Fertility Hormone Profile (Women)",
+    "code": "CLBR-3IN015",
+    "samples": [
+      "fingerprick",
+      "venous"
+    ],
+    "blurb": "Measures AMH, thyroid markers, prolactin, and vitamin D. These markers are often discussed in fertility or cycle-related reviews, but results need clinical interpretation alongside symptoms and history.",
+    "components": [
+      "Anti-Mullerian Hormone (AMH)",
+      "Free Thyroxine (FT4)",
+      "Prolactin",
+      "Thyroid Stimulating Hormone (TSH)",
+      "Vitamin D"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 142,
+    "tracks": [
+      "women"
+    ]
+  },
+  {
+    "id": "GH016",
+    "section": "profiles",
+    "name": "Comprehensive Health Panel",
+    "code": "CLBR-NP016",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Wide-ranging panel covering blood count, liver markers, cholesterol, HbA1c, kidney and electrolyte balance, and bone minerals. A good choice when you want a broad baseline across multiple systems in one test — often ordered before or after a GP appointment when a range of markers has been requested.",
+    "components": [
+      "Full Blood Count + differential",
+      "Liver Function Test",
+      "Lipid Profile",
+      "HbA1c",
+      "Urea & Electrolytes",
+      "Calcium",
+      "Corrected Calcium",
+      "Phosphate",
+      "Chloride",
+      "Albumin",
+      "Alkaline Phosphatase"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 115,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH017",
+    "section": "profiles",
+    "name": "Extended Health Panel",
+    "code": "CLBR-NP017",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Extends the Comprehensive Health Panel with iron stores, uric acid, CRP, muscle enzyme CK, and urinalysis. Choose this if you want a broader picture — particularly useful if fatigue, joint symptoms, or urinary concerns are part of what you are looking into.",
+    "components": [
+      "Full Blood Count",
+      "Lipid Profile",
+      "Liver Function Test",
+      "Urea & Electrolytes",
+      "Calcium",
+      "Total Protein",
+      "Globulin",
+      "Uric Acid",
+      "HbA1c",
+      "hs-CRP",
+      "Iron Profile",
+      "Creatine Kinase",
+      "Urinalysis (pH, Protein, Glucose, Ketones, WBCs, RBCs, Casts, Culture & Sensitivities)"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 215,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH018",
+    "section": "profiles",
+    "name": "Lifestyle Health Screen",
+    "code": "CLBR-INNP18",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Lifestyle-focused panel combining organ-function markers, cholesterol, blood sugar, CRP, and nutritional markers such as vitamin D, B12, folate, and iron. Useful as a broad wellbeing baseline.",
+    "components": [
+      "Full Blood Count",
+      "Urea & Electrolytes",
+      "Calcium",
+      "Corrected Calcium",
+      "Albumin",
+      "Liver Function Test",
+      "Lipid Profile",
+      "HbA1c",
+      "Phosphate",
+      "Chloride",
+      "hs-CRP",
+      "Iron Profile",
+      "Serum Folate (B9)",
+      "Vitamin B12",
+      "Vitamin D 25(OH)",
+      "Uric Acid"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 132,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH019",
+    "section": "profiles",
+    "name": "Basic Health Screen",
+    "code": "CLBR-NP019",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "A general health baseline covering blood count, kidney function, liver enzymes, protein levels, cholesterol, and hs-CRP. A practical first panel if you want a broad picture without the cost of a full screen.",
+    "components": [
+      "Full Blood Count",
+      "Urea & Electrolytes",
+      "Total Protein",
+      "Albumin",
+      "Globulin",
+      "Alkaline Phosphatase",
+      "Liver Function Test",
+      "Lipid Profile",
+      "hs-CRP"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 83,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH020",
+    "section": "profiles",
+    "name": "Standard Health Screen",
+    "code": "CLBR-NP020",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Comprehensive panel combining blood and urine markers, including blood count, kidney and liver markers, cholesterol, HbA1c, CRP, ferritin, vitamin D, and urinalysis. May suit a broad annual check-up to discuss with a clinician.",
+    "components": [
+      "Full Blood Count",
+      "Urea & Electrolytes",
+      "Calcium",
+      "Chloride",
+      "Alkaline Phosphatase",
+      "Liver Function Test",
+      "Lipid Profile",
+      "Phosphate",
+      "hs-CRP",
+      "HbA1c",
+      "Ferritin",
+      "Vitamin D 25(OH)",
+      "Urinalysis (pH, Protein, Glucose, Ketones, WBCs, RBCs, Casts, Culture & Sensitivities)"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 131,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH021",
+    "section": "profiles",
+    "name": "Standard Screen Plus - Women",
+    "code": "CLBR-NP021",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Women's extended panel with a full thyroid profile, thyroid antibodies, CA125, and core health markers. CA125 is not a reliable cancer screening test on its own and should only be interpreted by a clinician who knows your history. Thyroid antibody results also need careful clinical interpretation.",
+    "components": [
+      "Full Blood Count",
+      "Urea & Electrolytes",
+      "Calcium",
+      "Liver Function Test",
+      "Lipid Profile",
+      "hs-CRP",
+      "HbA1c",
+      "Ferritin",
+      "Free Thyroxine",
+      "TSH",
+      "Free T3",
+      "Thyroglobulin Antibody",
+      "Thyroid Peroxidase Antibodies",
+      "CA125",
+      "Vitamin D 25(OH)",
+      "Urinalysis"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 205,
+    "popular": true,
+    "tracks": [
+      "women"
+    ]
+  },
+  {
+    "id": "GH022",
+    "section": "profiles",
+    "name": "Standard Screen Plus - Men",
+    "code": "CLBR-NP022",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "A comprehensive men's screen that adds PSA and a full thyroid antibody panel to standard health markers. Covers full blood count, kidney and liver function, lipids, HbA1c, ferritin, vitamin D, and urinalysis. Choose this over the standard Well Man Check if you want thyroid antibodies checked or have decided to include PSA after discussing the limitations with your GP.",
+    "components": [
+      "Full Blood Count",
+      "Urea & Electrolytes",
+      "Calcium",
+      "Liver Function Test",
+      "Lipid Profile",
+      "hs-CRP",
+      "HbA1c",
+      "Ferritin",
+      "Free Thyroxine",
+      "TSH",
+      "Free T3",
+      "Thyroglobulin Antibody",
+      "Thyroid Peroxidase Antibodies",
+      "PSA Test",
+      "Vitamin D 25(OH)",
+      "Urinalysis"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 223,
+    "popular": true,
+    "tracks": [
+      "men"
+    ],
+    "notice": "psa"
+  },
+  {
+    "id": "GH023",
+    "section": "profiles",
+    "name": "Fatigue & Tiredness Investigation",
+    "code": "CLBR-NP023",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Includes markers often reviewed when persistent tiredness is being investigated, such as blood count, thyroid markers, HbA1c, insulin markers, kidney function, iron profile, vitamin D, B12, folate, and magnesium.",
+    "components": [
+      "Full Blood Count",
+      "Urea & Electrolytes",
+      "Calcium",
+      "Liver Function Test",
+      "HbA1c",
+      "hs-CRP",
+      "TSH",
+      "Free T3",
+      "Free Thyroxine",
+      "Thyroid Peroxidase Antibodies",
+      "Thyroglobulin Antibody",
+      "Iron Profile",
+      "Vitamin D 25(OH)",
+      "Serum Folate (B9)",
+      "Vitamin B12",
+      "Insulin Levels",
+      "C Peptide",
+      "Cystatin-C",
+      "Magnesium"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 215,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH024",
+    "section": "profiles",
+    "name": "Post-Viral Recovery Panel",
+    "code": "CLBR-NP024",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Checks a broad set of markers commonly reviewed after viral illness: cardiac markers (including troponin and D-dimers), CRP, liver and kidney function, thyroid, iron, vitamin D, and muscle enzymes. This panel does not diagnose Long Covid or any post-viral condition — it gives you and your GP a detailed baseline to work from.",
+    "components": [
+      "Full Blood Count",
+      "Urea & Electrolytes",
+      "Calcium",
+      "Total Protein",
+      "Albumin",
+      "Globulin",
+      "Liver Function Test",
+      "Lipid Profile",
+      "Uric Acid",
+      "Phosphate",
+      "hs-CRP",
+      "Iron Profile",
+      "TSH",
+      "Lipase",
+      "Vitamin D 25(OH)",
+      "Creatine Kinase",
+      "CKMB",
+      "Troponin I (High Sensitivity)",
+      "D-dimers",
+      "Myoglobin"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 175,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH025",
+    "section": "profiles",
+    "name": "Muscle & Joint Disease Screen (Rheumatology)",
+    "code": "CLBR-NP025",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Focused rheumatology and muscle panel including rheumatoid factor, uric acid, immunoglobulins, CRP, vitamin D, magnesium, CK, and iron markers. Results should be reviewed with symptoms and clinical history.",
+    "components": [
+      "Albumin",
+      "Liver Function Test",
+      "Urea & Electrolytes",
+      "Calcium",
+      "Corrected Calcium",
+      "Vitamin D",
+      "hs-CRP",
+      "Ferritin",
+      "Chloride",
+      "Magnesium",
+      "Phosphate",
+      "Uric Acid",
+      "Creatine Kinase",
+      "Rheumatoid Factor",
+      "Iron Profile",
+      "IgG",
+      "IgM",
+      "IgA"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 165,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH026",
+    "section": "profiles",
+    "name": "Gut & Nutritional Health Screen",
+    "code": "CLBR-NP026",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Gut and nutritional panel covering blood count, metabolic markers, iron, vitamins, magnesium, tTG-IgA, total IgA, and H. pylori IgG. These results can support clinician discussions about gut symptoms or nutritional status.",
+    "components": [
+      "Full Blood Count",
+      "HbA1c",
+      "Calcium",
+      "Corrected Calcium",
+      "Albumin",
+      "Lipid Profile",
+      "Iron Profile",
+      "Serum Folate (B9)",
+      "Insulin Levels",
+      "Vitamin B12",
+      "Vitamin D 25(OH)",
+      "Total Antioxidant Activity",
+      "Magnesium",
+      "Tissue Transglutaminase IgA",
+      "IgA",
+      "Helicobacter pylori IgG"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 190,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH027",
+    "section": "profiles",
+    "name": "Advanced Thyroid Panel (with Antibodies)",
+    "code": "CLBR-INNP27",
+    "samples": [
+      "fingerprick",
+      "venous"
+    ],
+    "blurb": "More detailed than a standard thyroid test. Adds free T3 and thyroid antibody tests (TPO and thyroglobulin antibodies). Antibody results can be reviewed by a clinician when autoimmune thyroid disease is being considered.",
+    "components": [
+      "TSH",
+      "Free T3",
+      "Thyroglobulin Antibody",
+      "Free Thyroxine (FT4)",
+      "Thyroid Peroxidase Antibodies (TPO)"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 76,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH028",
+    "section": "routine",
+    "name": "Urine Culture & Sensitivity (Infection Test)",
+    "code": "CLBR-NP028",
+    "samples": [
+      "urine"
+    ],
+    "blurb": "Urine analysis with culture and sensitivity. The laboratory checks for bacterial growth and reports antibiotic sensitivity where relevant. If you have urinary symptoms, results should be discussed with a GP or prescribing clinician.",
+    "components": [
+      "pH",
+      "Urine Protein",
+      "Urine Glucose",
+      "Ketones",
+      "WBCs",
+      "RBCs",
+      "Casts",
+      "Bacterial Count",
+      "Culture & Sensitivities"
+    ],
+    "turnaround": "3 business days - 4 business days",
+    "price": 42,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH029",
+    "section": "routine",
+    "name": "Bone Health Assessment",
+    "code": "CLBR-INNP029",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Measures markers related to bone and mineral balance. Option A covers calcium and vitamin D; Option B adds PTH, phosphate, and alkaline phosphatase. Results need clinical interpretation alongside symptoms, medicines, and risk factors.",
+    "components": [
+      "Option A: Calcium, Corrected Calcium, hs-CRP, Vitamin D",
+      "Option B: Calcium, Alkaline Phosphatase, PTH, Phosphate, Vitamin D 25(OH)"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 65,
+    "priceUpper": 103,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH030",
+    "section": "profiles",
+    "name": "Anaemia Investigation Panel",
+    "code": "CLBR-NP030",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Targeted panel covering full blood count, iron profile, B12, folate, and CRP. These markers are commonly reviewed together when anaemia or low iron is being considered.",
+    "components": [
+      "Full Blood Count",
+      "Iron Profile",
+      "Serum Folate (B9)",
+      "hs-CRP",
+      "Vitamin B12"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 37,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH031",
+    "section": "profiles",
+    "name": "Diabetes Status & Insulin Resistance Check",
+    "code": "CLBR-NP031",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Measures glucose, HbA1c, insulin, C-peptide, and HOMA-IR, a calculated estimate of insulin resistance. Clinicians may review these markers when assessing blood sugar control, insulin response, and metabolic health.",
+    "components": [
+      "Insulin Levels",
+      "C Peptide",
+      "HbA1c",
+      "Glucose",
+      "Insulin Resistance (HOMA-IR)"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 63,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH032",
+    "section": "profiles",
+    "name": "Coeliac Disease & Gut Screen",
+    "code": "CLBR-NP032",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Measures tTG-IgA and total IgA, which are commonly used when coeliac disease is being considered. Speak to a clinician before changing to a gluten-free diet, as diet changes can affect interpretation.",
+    "components": [
+      "Tissue Transglutaminase IgA (tTG-IgA)",
+      "Total IgA"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 43,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH033",
+    "section": "routine",
+    "name": "Iron Level & Storage Test",
+    "code": "CLBR-INNP033",
+    "samples": [
+      "fingerprick",
+      "venous"
+    ],
+    "blurb": "Detailed iron panel measuring ferritin, serum iron, transferrin, TIBC, and transferrin saturation. Clinicians review these markers together when assessing iron stores or considering supplements.",
+    "components": [
+      "Ferritin",
+      "Serum Iron",
+      "Transferrin",
+      "Iron Binding Capacity (TIBC)",
+      "Transferrin Saturation"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 42,
+    "priceUpper": 68,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH034",
+    "section": "profiles",
+    "name": "Full Hormone & Endocrine Profile",
+    "code": "CLBR-NP034",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Comprehensive endocrine panel covering thyroid, pituitary, and reproductive hormones. May be useful to discuss with a clinician if hormone-related symptoms or cycle concerns are being reviewed.",
+    "components": [
+      "TSH",
+      "Free T3",
+      "Thyroid Peroxidase Antibodies",
+      "Free Thyroxine (FT4)",
+      "Thyroglobulin Antibody",
+      "Oestradiol",
+      "Luteinising Hormone (LH)",
+      "Follicle Stimulating Hormone (FSH)",
+      "Prolactin",
+      "Progesterone",
+      "Testosterone",
+      "Sex Hormone Binding Globulin (SHBG)",
+      "Free Androgen Index (FAI)"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 123,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH035",
+    "section": "routine",
+    "name": "Hormonal Health Panel (Female Hormones)",
+    "code": "CLBR-INNP035",
+    "samples": [
+      "fingerprick",
+      "venous"
+    ],
+    "blurb": "Measures key female reproductive hormones. Option A gives a concise view for cycle tracking; Option B adds further hormones often reviewed for cycle, fertility, or libido concerns.",
+    "components": [
+      "Option A: FSH, Oestradiol, Progesterone",
+      "Option B: Oestradiol, FSH, Progesterone, LH, Testosterone, Prolactin, Free Androgen Index, SHBG"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 45,
+    "priceUpper": 115,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH036",
+    "section": "profiles",
+    "name": "Cortisol & DHEA (Adrenal Hormones)",
+    "code": "CLBR-NP36",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Measures cortisol and DHEA sulphate, two hormones produced by the adrenal glands. Cortisol shifts significantly with time of day, recent illness, and medication, so the time you take your sample matters — note it on the form. These results are not a standalone measure of stress or adrenal health; a clinician needs to interpret them alongside your symptoms and history.",
+    "components": [
+      "DHEA Sulphate",
+      "Cortisol"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 65,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH037",
+    "section": "profiles",
+    "name": "Complete Fertility Panel",
+    "code": "CLBR-NP037",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Comprehensive fertility-focused panel covering reproductive hormones, thyroid markers, insulin markers, cortisol, DHEA, vitamin D, B12, folate, iron, and general health markers. Designed to support clinician-led fertility discussions.",
+    "components": [
+      "Full Blood Count",
+      "Urea & Electrolytes",
+      "Calcium",
+      "Liver Function Test",
+      "Lipid Profile",
+      "Iron Profile",
+      "hs-CRP",
+      "Full Thyroid (incl. antibodies)",
+      "Oestradiol",
+      "Progesterone",
+      "LH",
+      "FSH",
+      "Testosterone",
+      "Free Androgen Index",
+      "SHBG",
+      "Prolactin",
+      "Insulin",
+      "Cortisol",
+      "DHEA Sulphate",
+      "Vitamin D 25(OH)",
+      "Serum Folate (B9)",
+      "Vitamin B12"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 223,
+    "tracks": [
+      "women"
+    ]
+  },
+  {
+    "id": "GH038",
+    "section": "profiles",
+    "name": "Testosterone Level Check",
+    "code": "CLBR-NP038",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Measures testosterone plus SHBG and albumin, allowing calculated free testosterone. Often reviewed by clinicians alongside symptoms such as low libido, erectile problems, tiredness, or changes in muscle mass.",
+    "components": [
+      "Testosterone",
+      "Sex Hormone Binding Globulin (SHBG)",
+      "Free Androgen Index (FAI)",
+      "Albumin",
+      "Free Testosterone (Calculated)"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 58,
+    "tracks": [
+      "men"
+    ]
+  },
+  {
+    "id": "GH039",
+    "section": "profiles",
+    "name": "Pancreas Health Check",
+    "code": "CLBR-NP039",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Measures amylase and lipase, the two main pancreatic enzymes. You might order this if you have had upper abdominal pain, nausea, or a history of gallstones, or if your GP has asked for pancreatic markers. Results should be discussed with a clinician alongside your symptoms.",
+    "components": [
+      "Lipase",
+      "Amylase"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 59,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH040",
+    "section": "profiles",
+    "name": "Muscle, Joint & Gout Screen",
+    "code": "CLBR-NP040",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Focused panel for joint and muscle symptoms, measuring uric acid, rheumatoid factor, and CK. Results should be interpreted alongside symptoms, examination findings, and clinical history.",
+    "components": [
+      "Uric Acid",
+      "Creatine Kinase (CK)",
+      "Rheumatoid Factor"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 58,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "GH041",
+    "section": "routine",
+    "name": "Erectile Dysfunction Blood Profile",
+    "code": "CLBR-IN041",
+    "samples": [
+      "fingerprick",
+      "venous"
+    ],
+    "blurb": "Checks the hormonal and metabolic markers most commonly investigated when erectile dysfunction has no obvious cause. Covers testosterone (total and free), SHBG, prolactin, thyroid function (TSH and FT4), HbA1c, lipids, and PSA. These address the main physiological contributors: hormone levels, thyroid, blood sugar, and cardiovascular markers.",
+    "components": [
+      "Free Androgen Index",
+      "Free Testosterone Calculation",
+      "Free Thyroxine (FT4)",
+      "HbA1c",
+      "Lipid Profile",
+      "Prolactin",
+      "PSA",
+      "Sex Hormone Binding Globulin (SHBG)",
+      "Total Testosterone",
+      "Thyroid Stimulating Hormone (TSH)"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 120,
+    "tracks": [
+      "men"
+    ],
+    "notice": "psa"
+  },
+  {
+    "id": "GH042",
+    "section": "routine",
+    "name": "Well Man Check 40+ (with PSA)",
+    "code": "CLBR-IN042",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "The Well Man Check with PSA added. Covers full blood count, kidney and liver profiles, lipids, HbA1c, iron profile, testosterone, thyroid, hs-CRP, folate, magnesium, uric acid, creatine kinase, and vitamin profile. Designed for men over 40 who want a broad annual health baseline and have decided to include a PSA test. If you want the same panel without PSA, see the {{GH013:Well Man Check}}.",
+    "components": [
+      "Basic Thyroid Function Profile",
+      "C-reactive Protein (High Sensitivity)",
+      "Creatine",
+      "Creatine Kinase (CK)",
+      "Folate",
+      "Full Blood Count",
+      "HbA1c",
+      "Iron Profile",
+      "Kidney Function Profile",
+      "Lipid Profile",
+      "Liver Function Test",
+      "Magnesium",
+      "Testosterone",
+      "Uric Acid",
+      "Vitamin Profile",
+      "PSA Test"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 197,
+    "popular": true,
+    "mostOrdered": true,
+    "tracks": [
+      "men"
+    ],
+    "notice": "psa"
+  },
+  {
+    "id": "GH043",
+    "section": "routine",
+    "name": "Menopause Blood Test",
+    "code": "CLBR-IN043",
+    "samples": [
+      "fingerprick",
+      "venous"
+    ],
+    "blurb": "Measures FSH, LH, oestradiol, TSH, and FT4. These markers may be discussed with a clinician when menopause, cycle changes, or thyroid-related symptoms are being reviewed.",
+    "components": [
+      "Follicle Stimulating Hormone (FSH)",
+      "Free Thyroxine (FT4)",
+      "Luteinising Hormone (LH)",
+      "Oestradiol",
+      "Thyroid Stimulating Hormone (TSH)"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 53,
+    "tracks": [
+      "women"
+    ]
+  },
+  {
+    "id": "GH044",
+    "section": "routine",
+    "name": "Ovarian Reserve Test (Egg Count Indicator)",
+    "code": "CLBR-IN044",
+    "samples": [
+      "fingerprick",
+      "venous"
+    ],
+    "blurb": "Measures AMH alongside FSH, LH, and oestradiol. AMH is commonly discussed as an ovarian reserve marker, but it does not predict natural conception and should be interpreted by a fertility clinician.",
+    "components": [
+      "Anti-Mullerian Hormone (AMH)",
+      "Follicle Stimulating Hormone (FSH)",
+      "Luteinising Hormone (LH)",
+      "Oestradiol"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 91,
+    "tracks": [
+      "women"
+    ]
+  },
+  {
+    "id": "GH045",
+    "section": "profiles",
+    "name": "MMR Immunity Check (Measles, Mumps, Rubella)",
+    "code": "CLBR-INNP45",
+    "samples": [
+      "fingerprick",
+      "venous"
+    ],
+    "blurb": "Checks antibodies to measles, mumps, and rubella. Often requested where vaccination history is uncertain, for occupational requirements, or before pregnancy planning discussions.",
+    "components": [
+      "Measles Antibodies",
+      "Mumps Antibodies",
+      "Rubella Antibodies"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 71,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "AI001",
+    "section": "autoimmune",
+    "name": "Connective Tissue Disease Screen",
+    "code": "CLBR-NP046",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Includes antibodies often reviewed by specialists when connective tissue disease is being considered, such as ANA, dsDNA, and ENA antibodies. These tests cannot be used on their own.",
+    "components": [
+      "Double Stranded DNA Ab (dsDNA)",
+      "Anti-Nuclear Antibody (ANA)",
+      "Anti-RO/SSA",
+      "Anti-LA/SSB",
+      "Anti-JO1",
+      "Anti-Sc170",
+      "Anti-CENP",
+      "Anti-Sm",
+      "Anti-U1RNP"
+    ],
+    "turnaround": "6 business days - 7 business days",
+    "price": 198,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "AI002",
+    "section": "autoimmune",
+    "name": "ENA Antibody Screen (Connective Tissue Antibodies)",
+    "code": "CLBR-NP047",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Measures extractable nuclear antigen (ENA) antibodies. These results are usually reviewed with ANA results, symptoms, and specialist assessment.",
+    "components": [
+      "Anti-RO/SSA",
+      "Anti-LA/SSB",
+      "Anti-JO1",
+      "Anti-Sc170",
+      "Anti-CENP",
+      "Anti-Sm",
+      "Anti-U1RNP"
+    ],
+    "turnaround": "4 business days - 5 business days",
+    "price": 132,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "AI003",
+    "section": "autoimmune",
+    "name": "Auto-Antibody Screen (Organ-Specific Autoimmune)",
+    "code": "CLBR-NP048",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Measures organ-specific auto-antibodies including AMA, smooth muscle, LKM, gastric parietal cell, and TPO antibodies. Results should be interpreted by a clinician in the context of symptoms and other tests.",
+    "components": [
+      "Anti-Nuclear Antibody (ANA)",
+      "Anti-Mitochondrial Antibodies (AMA)",
+      "Smooth Muscle Antibodies",
+      "Gastric Parietal Cell Antibodies",
+      "LKM Antibodies",
+      "Thyroid Peroxidase Antibodies"
+    ],
+    "turnaround": "4 business days - 5 business days",
+    "price": 182,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "AI004",
+    "section": "autoimmune",
+    "name": "Auto-Antibody Panel 2 (Endocrine & Organ Autoimmunity)",
+    "code": "CLBR-NP049",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Specialist autoimmune panel covering islet cell, adrenal, ovarian/testicular, gastric parietal cell, and thyroid antibodies. Intended for clinician-led review where endocrine or organ-specific autoimmunity is being considered.",
+    "components": [
+      "Gastric Parietal Cell Antibodies",
+      "Islet Cell Antibodies",
+      "Adrenal Antibodies",
+      "Anti-Testicular Antibodies",
+      "Ovarian Antibodies",
+      "Thyroid Peroxidase Antibodies"
+    ],
+    "turnaround": "4 business days - 5 business days",
+    "price": 397,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "VM001",
+    "section": "vitamins",
+    "name": "Basic Vitamins & Minerals Panel",
+    "code": "CLBR-NP050",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Practical nutritional baseline covering iron markers, vitamin D, vitamin B12, folate, magnesium, zinc, and calcium. Useful for a broad review of nutritional markers.",
+    "components": [
+      "Ferritin",
+      "Serum Iron",
+      "Transferrin",
+      "Iron Binding Capacity",
+      "Albumin",
+      "Magnesium",
+      "Calcium",
+      "Corrected Calcium",
+      "Serum Folate (B9)",
+      "Vitamin B12",
+      "Zinc",
+      "Vitamin D 25(OH)"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 83,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "VM002",
+    "section": "vitamins",
+    "name": "Full Vitamin B Complex Panel",
+    "code": "CLBR-NP051",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Comprehensive B vitamin panel measuring vitamins B1, B2, B3, B6, active B12, and red cell folate. May be useful where diet, absorption, alcohol intake, or medicines affecting B vitamins are being reviewed.",
+    "components": [
+      "Vitamin B1 (Thiamine)",
+      "Vitamin B2 (Riboflavin)",
+      "Vitamin B3 (Niacin)",
+      "Vitamin B6 (Pyridoxine)",
+      "Active Vitamin B12",
+      "Red Cell Folate"
+    ],
+    "turnaround": "9 business days - 10 business days",
+    "price": 535,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "VM003",
+    "section": "vitamins",
+    "name": "Detailed Vitamin D Status (D2 & D3 Breakdown)",
+    "code": "CLBR-NP052",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Measures total vitamin D and separately reports D2 and D3. Useful when a clinician wants more detail about vitamin D status or supplement response.",
+    "components": [
+      "Vitamin D 25(OH) Total",
+      "Vitamin D3 (Cholecalciferol)",
+      "Vitamin D2 (Ergocalciferol)"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 110,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "VM004",
+    "section": "vitamins",
+    "name": "Fat-Soluble & Key Vitamin Profile (A, B, C, E)",
+    "code": "CLBR-NP053",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Extensive micronutrient panel covering vitamins A, B1, B2, B6, C, and E. Often reviewed when diet, absorption, or restrictive eating patterns are being discussed with a clinician.",
+    "components": [
+      "Vitamin A (Retinol)",
+      "Beta-Carotene",
+      "Vitamin B1 (Thiamine)",
+      "Vitamin B2 (Riboflavin)",
+      "Vitamin B6 (Pyridoxine)",
+      "Vitamin C",
+      "Vitamin E (Alpha Tocopherol)"
+    ],
+    "turnaround": "3 business days - 4 business days",
+    "price": 380,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "VM005",
+    "section": "vitamins",
+    "name": "Heavy Metal Toxicity Screen",
+    "code": "CLBR-NP054",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Measures selected heavy metals and trace elements in blood or red blood cells. May be relevant for clinician-led review of occupational, environmental, or dietary exposure concerns.",
+    "components": [
+      "Blood Manganese",
+      "Mercury (Blood)",
+      "Lead Level (Blood)",
+      "Chromium (Blood)",
+      "Aluminium (Blood)",
+      "Red Cell Magnesium",
+      "Red Cell Calcium",
+      "Red Cell Zinc",
+      "Red Cell Copper",
+      "Red Cell Selenium"
+    ],
+    "turnaround": "2 business days - 13 business days",
+    "price": 392,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "VM006",
+    "section": "vitamins",
+    "name": "Core Vitamins Check (B12, Folate, Vitamin D)",
+    "code": "CLBR-NP055",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Checks vitamin D, folate, and active vitamin B12. These are common nutritional markers reviewed when diet, tiredness, supplementation, or absorption is being discussed.",
+    "components": [
+      "Active Vitamin B12",
+      "Folate",
+      "Vitamin D"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 80,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "VM007",
+    "section": "vitamins",
+    "name": "Vitamins & Iron Check (B12, Folate, Iron, Vitamin D)",
+    "code": "CLBR-NP056",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Combines vitamin D, folate, active B12, and a full iron profile. Useful as a broad nutritional review, especially where diet, fatigue, or supplementation is being discussed with a clinician.",
+    "components": [
+      "Active Vitamin B12",
+      "Folate",
+      "Iron Profile",
+      "Vitamin D"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 95,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "VM008",
+    "section": "vitamins",
+    "name": "Vitamins, Inflammation & Heart Risk Screen",
+    "code": "CLBR-NP057",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Combines nutritional markers with cholesterol and high-sensitivity CRP. May suit people who want to discuss heart-health markers and nutritional status with a clinician.",
+    "components": [
+      "Active Vitamin B12",
+      "C-reactive Protein (High Sensitivity)",
+      "Ferritin",
+      "Folate",
+      "Lipid Profile",
+      "Magnesium",
+      "Vitamin D"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 96,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "FL001",
+    "section": "fitness",
+    "name": "Elite Sports Performance Panel",
+    "code": "CLBR-NP059",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Comprehensive performance and wellbeing panel for athletes, covering blood count, muscle enzymes, hormones, cholesterol, inflammation, antioxidant activity, and nutritional markers. Results can be discussed with a sports medicine clinician or performance nutritionist.",
+    "components": [
+      "Full Blood Count",
+      "Urea & Electrolytes",
+      "Calcium",
+      "Total Protein",
+      "Liver Function Test",
+      "Lipid Profile",
+      "Phosphate",
+      "Uric Acid",
+      "HbA1c",
+      "Full Thyroid",
+      "hs-CRP",
+      "Iron Profile",
+      "Testosterone",
+      "Free Androgen Index",
+      "SHBG",
+      "LH",
+      "Apolipoprotein A1/B & Ratio",
+      "Serum Folate (B9)",
+      "Cortisol",
+      "DHEA Sulphate",
+      "Vitamin D 25(OH)",
+      "Active B12",
+      "Total Antioxidant Activity",
+      "Creatine Kinase",
+      "CKMB",
+      "Myoglobin",
+      "Magnesium",
+      "Urinalysis"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 313,
+    "mostOrdered": true,
+    "tracks": [
+      "fitness"
+    ]
+  },
+  {
+    "id": "FL002",
+    "section": "fitness",
+    "name": "Food & Pet Sensitivity Genetic Test",
+    "code": "CLBR-DD058",
+    "samples": [
+      "dna"
+    ],
+    "blurb": "Analyses selected DNA markers associated with food and pet sensitivities. A genetic predisposition does not mean you have symptoms or need to avoid foods; diet changes should be discussed with a qualified professional.",
+    "components": [
+      "Genetic predisposition for: Gluten sensitivity",
+      "Lactose intolerance",
+      "Cow Milk Protein sensitivity",
+      "Egg sensitivity",
+      "Peanut sensitivity",
+      "Other food sensitivities",
+      "Pet Dander sensitivity",
+      "Histamine intolerance"
+    ],
+    "turnaround": "46 days - 47 days",
+    "price": 118,
+    "tracks": [
+      "fitness"
+    ]
+  },
+  {
+    "id": "FL003",
+    "section": "fitness",
+    "name": "Omega Fatty Acid Profile (Cell Health & Inflammation)",
+    "code": "CLBR-IN060",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Measures omega-3 and omega-6 fatty acids within red blood cells. Results can be reviewed as part of a wider discussion about diet, supplements, and cardiovascular wellbeing.",
+    "components": [
+      "Omega-3 Red Cell Fatty Acids",
+      "Omega-6 Red Cell Fatty Acids"
+    ],
+    "turnaround": "Varies",
+    "price": 99,
+    "tracks": [
+      "fitness"
+    ]
+  },
+  {
+    "id": "FL004",
+    "section": "fitness",
+    "name": "Wellbeing Profile 1 (Energy, Heart & Hormones)",
+    "code": "CLBR-1IN061",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Wellbeing panel combining cholesterol, HbA1c, CRP, cortisol, DHEA, kidney and liver markers, iron, vitamin D, B12, and folate. Useful for a broad lifestyle and energy-level review.",
+    "components": [
+      "Active Vitamin B12",
+      "Cortisol",
+      "C-reactive Protein (High Sensitivity)",
+      "DHEA Sulphate",
+      "Folate",
+      "HbA1c",
+      "Iron Profile",
+      "Kidney Function Profile",
+      "Lipid Profile",
+      "Liver Function Test",
+      "Vitamin D"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 115,
+    "tracks": [
+      "fitness"
+    ]
+  },
+  {
+    "id": "FL005",
+    "section": "fitness",
+    "name": "Wellbeing Profile 2 (Core Health Markers)",
+    "code": "CLBR-3IN062",
+    "samples": [
+      "fingerprick",
+      "venous"
+    ],
+    "blurb": "Streamlined wellbeing panel covering CRP, iron, kidney and liver markers, cholesterol, vitamin B12, and vitamin D. Useful as a general wellbeing baseline.",
+    "components": [
+      "C-reactive Protein (High Sensitivity)",
+      "Iron Profile",
+      "Kidney Function Profile",
+      "Lipid Profile",
+      "Liver Function Test",
+      "Total Vitamin B12",
+      "Vitamin D"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 92,
+    "tracks": [
+      "fitness"
+    ]
+  },
+  {
+    "id": "FL006",
+    "section": "fitness",
+    "name": "Wellbeing Profile 3 (Comprehensive with Hormones)",
+    "code": "CLBR-4IN063",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Comprehensive health and hormone panel covering thyroid markers (including antibodies), reproductive hormones, HbA1c, cholesterol, iron, vitamin D, kidney and liver markers, and lipoprotein(a). A good choice if you want a detailed overview of hormones and metabolic health in one test.",
+    "components": [
+      "Active Vitamin B12",
+      "Advanced Thyroid Function Profile",
+      "Apolipoprotein A/B Plus Ratio",
+      "C-reactive Protein (High Sensitivity)",
+      "Follicle Stimulating Hormone",
+      "Free Androgen Index",
+      "Folate",
+      "Free Testosterone Calculation",
+      "Full Blood Count",
+      "HbA1c",
+      "Iron Profile",
+      "Kidney Function Profile",
+      "Lipid Profile",
+      "Lipoprotein A",
+      "Liver Function Test",
+      "Luteinising Hormone",
+      "Oestradiol",
+      "Testosterone",
+      "Uric Acid",
+      "Vitamin D"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 258,
+    "tracks": [
+      "fitness"
+    ]
+  },
+  {
+    "id": "FL008",
+    "section": "fitness",
+    "name": "Wellbeing Profile 5 (Women's Advanced Hormone & Health)",
+    "code": "CLBR-10IN065",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Women-oriented wellbeing panel adding cortisol, DHEA, prolactin, magnesium, reproductive hormones, thyroid markers, cholesterol, HbA1c, iron, vitamin D, and organ-function markers.",
+    "components": [
+      "Active Vitamin B12",
+      "Advanced Thyroid Function Profile",
+      "Cortisol",
+      "C-reactive Protein (High Sensitivity)",
+      "DHEA Sulphate",
+      "Folate",
+      "Follicle Stimulating Hormone",
+      "Full Blood Count",
+      "HbA1c",
+      "Iron Profile",
+      "Kidney Function Profile",
+      "Lipid Profile",
+      "Liver Function Test",
+      "Luteinising Hormone",
+      "Magnesium",
+      "Oestradiol",
+      "Prolactin",
+      "Testosterone",
+      "Uric Acid",
+      "Vitamin D"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 243,
+    "tracks": [
+      "fitness"
+    ]
+  },
+  {
+    "id": "AS001",
+    "section": "allergies",
+    "name": "Food & Inhalant Allergy Panel - 60+ Allergens (IgE)",
+    "code": "CLBR-NP066",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "IgE allergy panel covering 59+ food and environmental allergens, including the 14 major EU food allergens and common inhalant allergens. Results must be interpreted alongside clinical history; do not change diet or treatment based on this test alone.",
+    "components": [
+      "59+ allergens: Moulds",
+      "Pet danders",
+      "Tree/Grass/Weed pollens",
+      "HDM",
+      "Foods (30+ including all 14 EU major allergens)"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 698,
+    "tracks": [
+      "fitness"
+    ]
+  },
+  {
+    "id": "AS002",
+    "section": "allergies",
+    "name": "Extended Allergy Panel - 80+ Allergens (IgE + Total IgE)",
+    "code": "CLBR-NP067",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Extended IgE allergy panel covering 80+ individual allergens plus total IgE. May be useful to discuss with a clinician where allergic symptoms are multiple, unclear, or complex.",
+    "components": [
+      "80+ allergens including additional tree pollens",
+      "moulds (Candida albicans)",
+      "grasses",
+      "and foods plus Total IgE"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 699,
+    "mostOrdered": true,
+    "tracks": [
+      "fitness"
+    ]
+  },
+  {
+    "id": "AS003",
+    "section": "allergies",
+    "name": "IgG Food Antibody Panel - 90+ Foods",
+    "code": "CLBR-NP068",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Measures IgG antibody responses to 90+ foods. IgG antibodies indicate prior exposure to a food — they are not a validated marker of intolerance or allergy. This test should not be used on its own to remove foods from your diet; results need reviewing with a clinician or registered dietitian. If you are concerned about a genuine food allergy, an IgE panel is the appropriate test.",
+    "notice": "iggFood",
+    "components": [
+      "90+ food items: meats",
+      "fish",
+      "shellfish",
+      "dairy",
+      "grains",
+      "eggs",
+      "nuts",
+      "Candida albicans",
+      "pulses",
+      "vegetables",
+      "fruits",
+      "yeast",
+      "chocolate",
+      "coffee",
+      "honey",
+      "pistachio"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 699,
+    "tracks": [
+      "fitness"
+    ]
+  },
+  {
+    "id": "AS004",
+    "section": "allergies",
+    "name": "Food Allergy Panel 34 - IgE (34 Foods)",
+    "code": "CLBR-NP069",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "IgE allergy blood test measuring responses to 34 foods, including the 14 major EU food allergens. A positive result can indicate sensitisation, but symptoms and clinical history are needed to understand what it means.",
+    "components": [
+      "Almond",
+      "Apple",
+      "Banana",
+      "Buckwheat",
+      "Cabbage",
+      "Carrot",
+      "Casein",
+      "Celery",
+      "Cheese (Cheddar)",
+      "Cod",
+      "Chicken",
+      "Corn",
+      "Crab",
+      "Egg White",
+      "Egg Yolk",
+      "Hazelnut",
+      "Garlic",
+      "Milk",
+      "Oat",
+      "Onion",
+      "Orange",
+      "Peach",
+      "Peanut",
+      "Potato",
+      "Rice",
+      "Rye flour",
+      "Salmon",
+      "Sesame",
+      "Shrimp",
+      "Strawberry",
+      "Tomato",
+      "Tuna",
+      "Walnut",
+      "Wheat flour"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 391,
+    "tracks": [
+      "fitness"
+    ]
+  },
+  {
+    "id": "AS005",
+    "section": "allergies",
+    "name": "Food Allergy Panel 20 - IgE (20 Common Foods)",
+    "code": "CLBR-NP070",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "IgE allergy blood test covering 20 commonly tested foods, including major EU-regulated allergens. Results must be interpreted alongside clinical history.",
+    "components": [
+      "Almond",
+      "Apple",
+      "Carrot",
+      "Casein",
+      "Celery",
+      "Cod",
+      "Egg White",
+      "Egg Yolk",
+      "Hazelnut",
+      "Milk",
+      "Peach",
+      "Peanut",
+      "Potato",
+      "Rye flour",
+      "Sesame",
+      "Shrimp",
+      "Soya",
+      "Tomato",
+      "Walnut",
+      "Wheat flour"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 231,
+    "tracks": [
+      "fitness"
+    ]
+  },
+  {
+    "id": "AS006",
+    "section": "allergies",
+    "name": "Dairy & Milk Allergy Panel (IgE)",
+    "code": "CLBR-NP071",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "IgE panel for cow's milk and dairy-related allergens, including proteins such as casein and whey. Results should be interpreted with symptoms and clinical history, especially in children.",
+    "components": [
+      "Boiled milk",
+      "Cheddar cheese",
+      "Cheese mould",
+      "Goat's milk",
+      "Casein",
+      "Cow's milk",
+      "Parmesan cheese",
+      "Sheep's milk",
+      "Swiss cheese"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 270,
+    "tracks": [
+      "fitness"
+    ]
+  },
+  {
+    "id": "AS007",
+    "section": "allergies",
+    "name": "Inhalant Allergy Panel - Environmental Allergens (IgE)",
+    "code": "CLBR-NP072",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "IgE panel for common environmental allergens such as tree pollens, moulds, house dust mites, and pet danders. Results can support a clinician-led discussion about possible allergic triggers.",
+    "components": [
+      "Grey alder",
+      "Alternaria tenius",
+      "Aspergillus fumigatus",
+      "Silver birch",
+      "Cat epithelium",
+      "Cat dander",
+      "Cow dander",
+      "Dog epithelium",
+      "Dog dander",
+      "Guinea pig dander",
+      "HDM: D.farinae"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 199,
+    "tracks": [
+      "fitness"
+    ]
+  },
+  {
+    "id": "AS008",
+    "section": "allergies",
+    "name": "Nut Allergy Profile - 13 Nuts (IgE)",
+    "code": "CLBR-NP073",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "IgE panel for 13 nuts and seeds. Results may indicate sensitisation and must be interpreted with clinical history. If severe nut allergy is suspected, seek specialist allergy advice.",
+    "components": [
+      "Almond",
+      "Brazil nut",
+      "Cashew nut",
+      "Chestnut",
+      "Coconut",
+      "Hazelnut",
+      "Macadamia nut",
+      "Peanut",
+      "Pecan nut",
+      "Pine nut",
+      "Pistachio",
+      "Sesame seed",
+      "Walnut"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 199,
+    "tracks": [
+      "fitness"
+    ]
+  },
+  {
+    "id": "AS009",
+    "section": "allergies",
+    "name": "Shellfish Allergy Panel - 8 Shellfish (IgE)",
+    "code": "CLBR-NP074",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "IgE panel for 8 shellfish, including crustaceans and molluscs. Results can indicate sensitisation and should be interpreted alongside symptoms and clinical history.",
+    "components": [
+      "Blue mussel",
+      "Clam",
+      "Crab",
+      "Crayfish",
+      "Lobster",
+      "Oyster",
+      "Scallop",
+      "Shrimp"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 270,
+    "tracks": [
+      "fitness"
+    ]
+  },
+  {
+    "id": "SH001",
+    "section": "sexual",
+    "name": "Complete STI Screen (14 pathogens)",
+    "code": "CLBR-NP075",
+    "samples": [
+      "urine",
+      "venous"
+    ],
+    "blurb": "Comprehensive STI panel covering 14 pathogens by PCR and blood tests, including HIV, hepatitis B and C, syphilis, herpes, gonorrhoea, chlamydia, and other infections. If you have symptoms or a recent exposure, contact a sexual-health clinic or GP.",
+    "components": [
+      "HIV I & II Ab/p24 Ag screen",
+      "Hepatitis C Antibody",
+      "Hepatitis B sAg",
+      "Syphilis Antibodies (IgG/IgM)",
+      "Herpes simplex II PCR",
+      "Herpes simplex I PCR",
+      "N.gonorrhoea PCR",
+      "Chlamydia trachomatis PCR",
+      "Mycoplasma genitalium PCR",
+      "Mycoplasma hominis PCR",
+      "Ureaplasma urealyticum PCR",
+      "Trichomonas vaginalis PCR",
+      "Treponema pallidum PCR",
+      "Haemophilus ducreyi PCR"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 193,
+    "tracks": [
+      "sexual"
+    ]
+  },
+  {
+    "id": "SH002",
+    "section": "sexual",
+    "name": "STI Profile 1 - Blood-Borne Viruses (HIV & Hepatitis)",
+    "code": "CLBR-IN076",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Blood tests for HIV, hepatitis B, and hepatitis C markers, including hepatitis B surface antibodies. If you have symptoms, recent exposure, or are worried about infection risk, seek sexual-health or GP advice.",
+    "components": [
+      "Hepatitis B Core Antibodies",
+      "Hepatitis B Surface Antibodies",
+      "Hepatitis B Surface Antigen",
+      "Hepatitis C",
+      "HIV"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 98,
+    "tracks": [
+      "sexual"
+    ]
+  },
+  {
+    "id": "SH003",
+    "section": "sexual",
+    "name": "Gonorrhoea & Chlamydia Test (PCR)",
+    "code": "CLBR-NP077",
+    "samples": [
+      "urine"
+    ],
+    "blurb": "PCR urine test for gonorrhoea and chlamydia. These infections can have no symptoms, so testing may be relevant after a new partner, multiple partners, or possible exposure. Treatment advice must come from a sexual-health clinic or clinician.",
+    "components": [
+      "N.gonorrhoea PCR",
+      "Chlamydia trachomatis PCR"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 82,
+    "tracks": [
+      "sexual"
+    ]
+  },
+  {
+    "id": "SH004",
+    "section": "sexual",
+    "name": "STI Profile 2 - Core Blood Screen (HIV, Syphilis, Hepatitis)",
+    "code": "CLBR-NP078",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Blood-based STI panel covering HIV, syphilis, hepatitis B, and hepatitis C markers. If you have symptoms, recent exposure, or a positive result, contact a sexual-health clinic or GP.",
+    "components": [
+      "HIV I & II Ab/p24 Ag screen",
+      "Hepatitis B Surface Antigen",
+      "Syphilis Antibodies (IgG/IgM)",
+      "Hepatitis C Antibody"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 115,
+    "tracks": [
+      "sexual"
+    ]
+  },
+  {
+    "id": "SH005",
+    "section": "sexual",
+    "name": "STI Comprehensive Screen (6 pathogens)",
+    "code": "CLBR-NP079",
+    "samples": [
+      "urine",
+      "venous"
+    ],
+    "blurb": "Practical all-in-one STI screen combining PCR for gonorrhoea and chlamydia with blood tests for HIV, syphilis, hepatitis B, and C. Covers six of the most clinically important STIs.",
+    "components": [
+      "N.gonorrhoea PCR",
+      "Chlamydia trachomatis PCR",
+      "HIV I & II Ab/p24 Ag screen",
+      "Syphilis Antibodies (IgG/IgM)",
+      "Hepatitis C Antibody",
+      "Hepatitis B sAg"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 149,
+    "tracks": [
+      "sexual"
+    ]
+  },
+  {
+    "id": "SH006",
+    "section": "sexual",
+    "name": "STI Routine Screen with Hepatitis B",
+    "code": "CLBR-NP080",
+    "samples": [
+      "urine",
+      "venous"
+    ],
+    "blurb": "Routine STI screen covering gonorrhoea, chlamydia, HIV, and hepatitis B. Suitable for regular sexual health monitoring in sexually active adults.",
+    "components": [
+      "N.gonorrhoea PCR",
+      "Chlamydia trachomatis PCR",
+      "HIV I & II Ab/p24 Ag screen",
+      "Hepatitis B Surface Antigen"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 90,
+    "tracks": [
+      "sexual"
+    ]
+  },
+  {
+    "id": "SH007",
+    "section": "sexual",
+    "name": "STI Routine Screen with Syphilis",
+    "code": "CLBR-NP081",
+    "samples": [
+      "urine",
+      "venous"
+    ],
+    "blurb": "Covers gonorrhoea, chlamydia, syphilis, and HIV markers. If you are unsure which STI tests are appropriate, speak to a sexual-health clinic or GP.",
+    "components": [
+      "N.gonorrhoea PCR",
+      "Chlamydia trachomatis PCR",
+      "Syphilis Antibodies (IgG/IgM)",
+      "HIV I & II Ab/p24 Ag screen"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 89,
+    "tracks": [
+      "sexual"
+    ]
+  },
+  {
+    "id": "SH008",
+    "section": "sexual",
+    "name": "Early Viral Detection (PCR - HIV & Hepatitis Viral Load)",
+    "code": "CLBR-NP082",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "PCR blood tests for HIV, hepatitis B, and hepatitis C viral genetic material. These tests may be considered after a recent higher-risk exposure, but timing matters; seek urgent sexual-health or GP advice if exposure was recent.",
+    "components": [
+      "HIV I RNA Viral Load (PCR)",
+      "HBV-DNA Viral Load (PCR)",
+      "Hepatitis C RNA (PCR)"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 215,
+    "tracks": [
+      "sexual"
+    ]
+  },
+  {
+    "id": "SH009",
+    "section": "sexual",
+    "name": "Needle Stick Injury Screen",
+    "code": "CLBR-NP083",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "For possible exposure to blood-borne viruses through needlestick, splash, or similar incident. Tests for HIV, hepatitis B, and hepatitis C markers. Seek urgent occupational-health, sexual-health, or GP advice as soon as possible after exposure.",
+    "components": [
+      "HIV I & II Ab/p24 Ag screen",
+      "Hepatitis B Surface Antigen",
+      "Hepatitis C Antibody"
+    ],
+    "turnaround": "1 business day - 3 business days",
+    "price": 96,
+    "tracks": [
+      "sexual"
+    ]
+  },
+  {
+    "id": "SR001",
+    "section": "specific",
+    "notice": "specialist",
+    "name": "Lyme Disease Antibody Test",
+    "code": "CLBR-IN084",
+    "samples": [
+      "venous"
+    ],
+    "blurb": "Tests for antibodies to Borrelia bacteria, which are associated with Lyme disease. Laboratory results should be interpreted by a clinician alongside symptoms, tick exposure, and timing.",
+    "components": [
+      "Borrelia Antibodies IgG and IgM (Lyme Disease)"
+    ],
+    "turnaround": "Varies",
+    "price": 98,
+    "tracks": [
+      "general"
+    ]
+  },
+  {
+    "id": "SR002",
+    "section": "specific",
+    "name": "Hepatitis B Immunity Check (Vaccination Status)",
+    "code": "CLBR-NP085",
+    "samples": [
+      "fingerprick",
+      "venous"
+    ],
+    "blurb": "Measures hepatitis B surface antibodies, often used to review response to vaccination. A clinician or occupational-health service should interpret the level in relation to your risk and vaccination history.",
+    "components": [
+      "Hepatitis B Surface Antibodies (Anti-HBs)"
+    ],
+    "turnaround": "2 business days - 3 business days",
+    "price": 47,
+    "tracks": [
+      "general"
+    ]
+  }
+];
+
+window.TEST_COUNT = window.TESTS.length;
+
+/** Featured extensive panels — shown in “Our most ordered tests”. */
+window.MOST_ORDERED = [
+  {
+    id: 'women',
+    label: "Women's health",
+    blurb: 'Full annual panel with female hormones, iron, thyroid and metabolic markers.',
+    testId: 'GH014',
+    tabId: 'women',
+  },
+  {
+    id: 'men',
+    label: "Men's health",
+    blurb: 'Well Man Check 40+ with PSA — see the test card Includes list for every marker tested.',
+    testId: 'GH042',
+    tabId: 'men',
+  },
+  {
+    id: 'allergies',
+    label: 'Allergies',
+    blurb: 'IgE food allergy panel — 34 foods including all 14 major EU allergens.',
+    testId: 'AS004',
+    tabId: 'fitness',
+  },
+  {
+    id: 'sport',
+    label: 'Sport & performance',
+    blurb: 'Elite athlete panel — hormones, recovery, inflammation and nutrition.',
+    testId: 'FL001',
+    tabId: 'fitness',
+  },
+];
+
+window.resolveMostOrdered = function resolveMostOrdered() {
+  return window.MOST_ORDERED.map((slot) => ({
+    ...slot,
+    test: window.TESTS.find((t) => t.id === slot.testId),
+  })).filter((s) => s.test);
+};
+
+/** Predefined test lists for catalogue embeds (iframe ?group=…). */
+window.ColeebriTestGroups = [
+  {
+    id: 'most-ordered',
+    label: 'Most ordered panels',
+    blurb: 'Featured panels shown on the catalogue home page.',
+    testIds: ['GH014', 'GH042', 'AS004', 'FL001'],
+  },
+];
+
+window.TRACKS = [
+  { id: 'general', label: 'General Health', blurb: 'Routine blood work, profiles and screening for everyday health.' },
+  { id: 'women', label: "Women's Health", blurb: 'Cycle, fertility, menopause and women-focused wellness panels.' },
+  { id: 'men', label: "Men's Health", blurb: 'Testosterone, prostate, performance and men-focused panels.' },
+  { id: 'sexual', label: 'Sexual Health', blurb: 'Confidential STI screening.' },
+  { id: 'fitness', label: 'Fitness & Allergies', blurb: 'Sports, wellbeing, allergy and intolerance testing.' },
+  { id: 'dna', label: 'DNA Tests', blurb: 'Paternity, profiling, and gender reveal.' },
+];
+
+/** Browse tabs — shared by main catalogue and embed navigation widget. */
+window.CATALOGUE_TABS = [
+  { id: 'all', label: 'All tests' },
+  ...window.TRACKS.map((t) => ({ id: t.id, label: t.label })),
+  { id: 'collection', label: 'Phlebotomy & Collection' },
+];

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:wp="http://wordpress.org/export/1.2/">
+<channel>
+  <title>Coleebri Catalogue Pages</title>
+  <link>https://health.coleebri.com</link>
+  <description>Catalogue embed pages for Elementor</description>
+  <wp:wxr_version>1.2</wp:wxr_version>
+  <item>
+    <title>Catalogue — Home widgets</title>
+    <link>https://health.coleebri.com/coleebri-catalogue-home/</link>
+    <content:encoded><![CDATA[<p>Featured tests and category links. Requires the Coleebri Catalogue Embed plugin and hosted catalogue at <code>/catalogue/</code>.</p>
+[coleebri_catalogue widget="most-ordered" branding="none" height="880"]
+
+[coleebri_catalogue widget="categories" branding="none" height="520"]
+
+[coleebri_catalogue widget="quiz" branding="none" height="640"]]]></content:encoded>
+    <wp:post_name>coleebri-catalogue-home</wp:post_name>
+    <wp:status>draft</wp:status>
+    <wp:post_type>page</wp:post_type>
+  </item>
+  <item>
+    <title>Patient catalogue (full)</title>
+    <link>https://health.coleebri.com/coleebri-full-catalogue/</link>
+    <content:encoded><![CDATA[<p>Full catalogue with search and tabs — use only if you need everything on one page.</p>
+[coleebri_catalogue widget="catalogue" branding="none" height="920"]]]></content:encoded>
+    <wp:post_name>coleebri-full-catalogue</wp:post_name>
+    <wp:status>draft</wp:status>
+    <wp:post_type>page</wp:post_type>
+  </item>
+  <item>
+    <title>Men's health tests</title>
+    <link>https://health.coleebri.com/coleebri-service-men/</link>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" service="men" height="900"]]]></content:encoded>
+    <wp:post_name>coleebri-service-men</wp:post_name>
+    <wp:status>draft</wp:status>
+    <wp:post_type>page</wp:post_type>
+  </item>
+  <item>
+    <title>Women's health tests</title>
+    <link>https://health.coleebri.com/coleebri-service-women/</link>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" service="women" height="900"]]]></content:encoded>
+    <wp:post_name>coleebri-service-women</wp:post_name>
+    <wp:status>draft</wp:status>
+    <wp:post_type>page</wp:post_type>
+  </item>
+  <item>
+    <title>General health tests</title>
+    <link>https://health.coleebri.com/coleebri-service-general/</link>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" service="general" height="900"]]]></content:encoded>
+    <wp:post_name>coleebri-service-general</wp:post_name>
+    <wp:status>draft</wp:status>
+    <wp:post_type>page</wp:post_type>
+  </item>
+  <item>
+    <title>Sexual health tests</title>
+    <link>https://health.coleebri.com/coleebri-service-sexual/</link>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" service="sexual" height="880"]]]></content:encoded>
+    <wp:post_name>coleebri-service-sexual</wp:post_name>
+    <wp:status>draft</wp:status>
+    <wp:post_type>page</wp:post_type>
+  </item>
+  <item>
+    <title>Fitness &amp; allergies tests</title>
+    <link>https://health.coleebri.com/coleebri-service-fitness/</link>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" service="fitness" height="900"]]]></content:encoded>
+    <wp:post_name>coleebri-service-fitness</wp:post_name>
+    <wp:status>draft</wp:status>
+    <wp:post_type>page</wp:post_type>
+  </item>
+  <item>
+    <title>DNA tests</title>
+    <link>https://health.coleebri.com/coleebri-service-dna/</link>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" service="dna" height="900"]]]></content:encoded>
+    <wp:post_name>coleebri-service-dna</wp:post_name>
+    <wp:status>draft</wp:status>
+    <wp:post_type>page</wp:post_type>
+  </item>
+  <item>
+    <title>Paternity &amp; DNA (section)</title>
+    <link>https://health.coleebri.com/coleebri-section-paternity/</link>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" category="paternity" height="880"]]]></content:encoded>
+    <wp:post_name>coleebri-section-paternity</wp:post_name>
+    <wp:status>draft</wp:status>
+    <wp:post_type>page</wp:post_type>
+  </item>
+  <item>
+    <title>Health profiles (section)</title>
+    <link>https://health.coleebri.com/coleebri-section-profiles/</link>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" category="profiles" height="880"]]]></content:encoded>
+    <wp:post_name>coleebri-section-profiles</wp:post_name>
+    <wp:status>draft</wp:status>
+    <wp:post_type>page</wp:post_type>
+  </item>
+  <item>
+    <title>Allergies (section)</title>
+    <link>https://health.coleebri.com/coleebri-section-allergies/</link>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" category="allergies" height="880"]]]></content:encoded>
+    <wp:post_name>coleebri-section-allergies</wp:post_name>
+    <wp:status>draft</wp:status>
+    <wp:post_type>page</wp:post_type>
+  </item>
+  <item>
+    <title>Phlebotomy &amp; collection</title>
+    <link>https://health.coleebri.com/coleebri-collection/</link>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="collection" branding="none" height="720"]]]></content:encoded>
+    <wp:post_name>coleebri-collection</wp:post_name>
+    <wp:status>draft</wp:status>
+    <wp:post_type>page</wp:post_type>
+  </item>
+  <item>
+    <title>Patient information</title>
+    <link>https://health.coleebri.com/coleebri-patient-info/</link>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="patient-info" branding="none" height="920"]]]></content:encoded>
+    <wp:post_name>coleebri-patient-info</wp:post_name>
+    <wp:status>draft</wp:status>
+    <wp:post_type>page</wp:post_type>
+  </item>
+  <item>
+    <title>Our laboratories</title>
+    <link>https://health.coleebri.com/coleebri-laboratories/</link>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="compliance" branding="none" height="520"]]]></content:encoded>
+    <wp:post_name>coleebri-laboratories</wp:post_name>
+    <wp:status>draft</wp:status>
+    <wp:post_type>page</wp:post_type>
+  </item>
+  <item>
+    <title>Biomarker glossary</title>
+    <link>https://health.coleebri.com/coleebri-glossary/</link>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="glossary" branding="none" height="560"]]]></content:encoded>
+    <wp:post_name>coleebri-glossary</wp:post_name>
+    <wp:status>draft</wp:status>
+    <wp:post_type>page</wp:post_type>
+  </item>
+  <item>
+    <title>Check a marker</title>
+    <link>https://health.coleebri.com/coleebri-marker-check/</link>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="marker-check" branding="none" height="520"]]]></content:encoded>
+    <wp:post_name>coleebri-marker-check</wp:post_name>
+    <wp:status>draft</wp:status>
+    <wp:post_type>page</wp:post_type>
+  </item>
+  <item>
+    <title>Catalogue category navigation</title>
+    <link>https://health.coleebri.com/coleebri-catalogue-nav/</link>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tabs" branding="none" height="140"]]]></content:encoded>
+    <wp:post_name>coleebri-catalogue-nav</wp:post_name>
+    <wp:status>draft</wp:status>
+    <wp:post_type>page</wp:post_type>
+  </item>
+</channel>
+</rss>

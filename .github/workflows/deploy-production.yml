@@ -1,0 +1,33 @@
+# Optional: deploy catalogue files to your server via SFTP.
+# Add repository secrets: SFTP_HOST, SFTP_USER, SFTP_PASSWORD, SFTP_PATH (e.g. /public_html/catalogue)
+# Enable only after configuring secrets. Trigger manually from Actions tab.
+
+name: Deploy catalogue to production
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sftp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: SFTP upload
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          server: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USER }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          port: ${{ secrets.SFTP_PORT || 22 }}
+          localDir: .
+          remoteDir: ${{ secrets.SFTP_PATH }}
+          exclude: |
+            **/.git*
+            **/.github/**
+            **/wordpress-plugin/**
+            **/export/**
+            **/uploads/**
+            **/scripts/**
+            **/.gitignore
+            **/excel-items.json

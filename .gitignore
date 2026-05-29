@@ -1,0 +1,22 @@
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+.idea/
+.vscode/
+*.swp
+
+# Large / optional bundles (not needed for Pages or WP embed)
+export/
+uploads/
+
+# WordPress fat plugin — do not deploy to production
+wordpress-plugin/coleebri-health-catalogue/
+
+# Build artifacts
+wordpress-plugin/*.zip
+node_modules/
+
+# OS / editor
+.cursor/

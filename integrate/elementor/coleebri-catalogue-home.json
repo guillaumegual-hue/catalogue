@@ -1,0 +1,190 @@
+{
+  "content": [
+    {
+      "id": "a22a9a4",
+      "elType": "container",
+      "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+          "unit": "px",
+          "size": 16,
+          "column": "16",
+          "row": "16",
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "40",
+          "right": "20",
+          "bottom": "8",
+          "left": "20",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "fe41af1",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Catalogue — Home widgets",
+            "header_size": "h1",
+            "align": "left"
+          },
+          "elements": []
+        },
+        {
+          "id": "7e679a8",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p>Featured tests and category links. Requires the Coleebri Catalogue Embed plugin and hosted catalogue at <code>/catalogue/</code>.</p>"
+          },
+          "elements": []
+        }
+      ]
+    },
+    {
+      "id": "ee6895a",
+      "elType": "container",
+      "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+          "unit": "px",
+          "size": 16,
+          "column": "16",
+          "row": "16",
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "24",
+          "right": "20",
+          "bottom": "24",
+          "left": "20",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "d2e8b81",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Most ordered tests",
+            "header_size": "h2",
+            "align": "left"
+          },
+          "elements": []
+        },
+        {
+          "id": "ef90b73",
+          "elType": "widget",
+          "widgetType": "shortcode",
+          "settings": {
+            "shortcode": "[coleebri_catalogue widget=\"most-ordered\" branding=\"none\" height=\"880\"]"
+          },
+          "elements": []
+        }
+      ]
+    },
+    {
+      "id": "d594d12",
+      "elType": "container",
+      "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+          "unit": "px",
+          "size": 16,
+          "column": "16",
+          "row": "16",
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "24",
+          "right": "20",
+          "bottom": "24",
+          "left": "20",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "0dc70e1",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Browse by category",
+            "header_size": "h2",
+            "align": "left"
+          },
+          "elements": []
+        },
+        {
+          "id": "4e98395",
+          "elType": "widget",
+          "widgetType": "shortcode",
+          "settings": {
+            "shortcode": "[coleebri_catalogue widget=\"categories\" branding=\"none\" height=\"520\"]"
+          },
+          "elements": []
+        }
+      ]
+    },
+    {
+      "id": "1b5aaf0",
+      "elType": "container",
+      "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+          "unit": "px",
+          "size": 16,
+          "column": "16",
+          "row": "16",
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "24",
+          "right": "20",
+          "bottom": "24",
+          "left": "20",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "83c25a3",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Help me choose",
+            "header_size": "h2",
+            "align": "left"
+          },
+          "elements": []
+        },
+        {
+          "id": "18bb169",
+          "elType": "widget",
+          "widgetType": "shortcode",
+          "settings": {
+            "shortcode": "[coleebri_catalogue widget=\"quiz\" branding=\"none\" height=\"640\"]"
+          },
+          "elements": []
+        }
+      ]
+    }
+  ],
+  "page_settings": {
+    "hide_title": "yes"
+  },
+  "version": "0.4",
+  "title": "Catalogue — Home widgets",
+  "type": "page"
+}

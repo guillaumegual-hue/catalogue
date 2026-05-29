@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Coleebri Health - Patient Catalogue 2026 (print)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+<div class="toolbar no-print">
+  <p><strong>Save as PDF:</strong> Print → <strong>Save as PDF</strong>. Margins <strong>None</strong>, scale <strong>100%</strong>, <strong>Background graphics</strong> on.</p>
+  <button type="button" onclick="window.print()">Print / Save as PDF</button>
+  <button type="button" class="secondary" onclick="window.close()">Close</button>
+</div>
+<div id="catalogue-root"></div>
+<script src="data.js?v=20260530f"></script>
+<script src="pricing.js"></script>
+<script src="compliance-copy.js?v=20260604d"></script>
+<script src="glossary-guidance.js?v=20260528v"></script>
+<script src="glossary.js?v=20260530f"></script>
+<script src="print-catalogue.js?v=20260528v"></script>
+<script>
+(function () {
+  const style = document.createElement('style');
+  style.textContent = window.cataloguePrintStyles();
+  document.head.appendChild(style);
+  const root = document.getElementById('catalogue-root');
+  if (window.renderPrintCatalogue && window.TESTS) {
+    root.innerHTML = window.renderPrintCatalogue();
+  } else {
+    root.innerHTML = '<p style="padding:2rem;font-family:sans-serif">Could not load catalogue data. Open from the same folder as data.js.</p>';
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coleebri Health catalogue embed</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/coleebri-health-site.css?v=20260604b" />
+  <link rel="stylesheet" href="../assets/embed-shell.css?v=20260602a" />
+</head>
+<body>
+  <div class="coleebri-embed" id="embed-root">
+    <header class="coleebri-embed__brand" id="embed-brand">
+      <div class="coleebri-embed__brand-start">
+        <a id="embed-brand-logo-link" class="coleebri-embed__brand-logo-link" href="../Coleebri%20Patient%20Catalogue.html" target="_top" rel="noopener">
+          <img id="embed-brand-logo" src="../assets/coleebri-health-logo.svg" alt="Coleebri Health" width="132" height="26" />
+        </a>
+        <a id="embed-brand-name" class="coleebri-embed__brand-name" href="../Coleebri%20Patient%20Catalogue.html" target="_top" rel="noopener">Coleebri Health</a>
+      </div>
+      <a id="embed-catalogue-link" class="coleebri-embed__brand-link" href="../Coleebri%20Patient%20Catalogue.html" target="_top" rel="noopener">
+        Open full catalogue
+      </a>
+    </header>
+    <div id="embed-widget"></div>
+  </div>
+
+  <script>
+    window.TWEAK_DEFAULTS = {
+      showAnalytesByDefault: false,
+      denseCards: false,
+      showPriceTier: true,
+      showBadges: true,
+      primaryAccent: 'teal',
+    };
+  </script>
+
+  <script src="../assets/coleebri-embed-params.js?v=20260601d"></script>
+  <script>
+    (function () {
+      var params = window.ColeebriEmbedParams.parseEmbedParams(location.search);
+      var root = document.getElementById('embed-root');
+      window.ColeebriEmbedParams.applyHeaderChrome(root, params.header);
+      var catalogueHref = '../Coleebri%20Patient%20Catalogue.html' +
+        window.ColeebriEmbedParams.buildCatalogueHash({
+          service: params.service,
+          category: params.category,
+          marker: params.marker,
+          group: params.group,
+          test: params.test,
+          tests: params.tests,
+        });
+      ['embed-catalogue-link', 'embed-brand-logo-link', 'embed-brand-name'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.href = catalogueHref;
+      });
+      if (!params.catalogueBase) {
+        params.catalogueBase = '../Coleebri%20Patient%20Catalogue.html';
+      }
+      window.__COLEEBRI_EMBED__ = params;
+    })();
+  </script>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin></script>
+
+  <script src="../compliance-copy.js?v=20260605a"></script>
+  <script src="../glossary-guidance.js?v=20260530b"></script>
+  <script src="../glossary-api.js?v=20260530b"></script>
+  <script src="../glossary.js?v=20260530f"></script>
+  <script src="../data.js?v=20260602a"></script>
+  <script src="../pricing.js"></script>
+  <script src="../phlebotomy-enquiry.js?v=20260602a"></script>
+
+  <script type="text/babel" src="../components.jsx?v=20260605a"></script>
+  <script type="text/babel" src="../catalogue-blocks.jsx?v=20260605a"></script>
+  <script type="text/babel" src="../cart.jsx?v=20260602a"></script>
+  <script type="text/babel" src="../phlebotomy-enquiry.jsx?v=20260602a"></script>
+  <script type="text/babel" src="../quiz.jsx?v=20260602a"></script>
+  <script type="text/babel" src="../embed-widgets.jsx?v=20260602a"></script>
+  <script type="text/babel" src="../api-guidance-ui.jsx?v=20260530b"></script>
+  <script type="text/babel" src="../glossary-ui.jsx?v=20260530e"></script>
+  <script type="text/babel" src="../marker-check.jsx?v=20260530e"></script>
+  <script type="text/babel">
+    function postEmbedHeight() {
+      if (!window.parent || window.parent === window) return;
+      var h = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight
+      );
+      window.parent.postMessage({ type: 'coleebri-embed-resize', height: h }, '*');
+    }
+
+    function EmbedCatalogueFrame() {
+      const embed = window.__COLEEBRI_EMBED__ || {};
+      const hash = window.ColeebriEmbedParams
+        ? window.ColeebriEmbedParams.buildCatalogueHash({
+            service: embed.service,
+            category: embed.category,
+            marker: embed.marker,
+            group: embed.group,
+            test: embed.test,
+            tests: embed.tests,
+          })
+        : '#top';
+      const src = '../Coleebri%20Patient%20Catalogue.html' + hash;
+      React.useEffect(postEmbedHeight, []);
+      return (
+        <iframe
+          title="Coleebri Health patient catalogue"
+          src={src}
+          style={{ width: '100%', border: 0, minHeight: '70vh', borderRadius: '12px' }}
+        />
+      );
+    }
+
+    function EmbedApp() {
+      const embed = window.__COLEEBRI_EMBED__ || {};
+      const widget =
+        window.ColeebriEmbedParams && window.ColeebriEmbedParams.normalizeWidget
+          ? window.ColeebriEmbedParams.normalizeWidget(embed.widget || 'glossary')
+          : embed.widget || 'glossary';
+
+      React.useEffect(function () {
+        postEmbedHeight();
+        var t = window.setInterval(postEmbedHeight, 400);
+        var obs = typeof ResizeObserver !== 'undefined'
+          ? new ResizeObserver(postEmbedHeight)
+          : null;
+        if (obs) obs.observe(document.body);
+        return function () {
+          window.clearInterval(t);
+          if (obs) obs.disconnect();
+        };
+      }, []);
+
+      let content = null;
+      if (widget === 'glossary') {
+        content = <BiomarkerGlossary markerSlug={embed.marker || ''} />;
+      } else if (widget === 'marker') {
+        content = embed.marker ? (
+          <BiomarkerGlossarySingle slug={embed.marker} />
+        ) : (
+          <p className="glossary-plain shell">Add <code>?marker=slug</code> to the embed URL (for example <code>hba1c</code>).</p>
+        );
+      } else if (widget === 'marker-check') {
+        content = <MarkerCheckPanel embedded initialQuery={embed.marker || ''} />;
+      } else if (widget === 'disclaimer') content = <EmbedDisclaimer />;
+      else if (widget === 'cta') content = <EmbedCta />;
+      else if (widget === 'catalogue') content = <EmbedCatalogueFrame />;
+      else if (widget === 'tests' || widget === 'section') content = <EmbedTestGrid />;
+      else if (widget === 'tabs' || widget === 'nav') content = <EmbedTabNav />;
+      else if (widget === 'most-ordered') content = <EmbedMostOrdered />;
+      else if (widget === 'categories' || widget === 'category-list') content = <EmbedCategoryList />;
+      else if (widget === 'collection') content = <EmbedCollection />;
+      else if (widget === 'compliance') content = <EmbedCompliance />;
+      else if (widget === 'patient-info' || widget === 'patient-information') content = <EmbedPatientInfo />;
+      else if (widget === 'quiz') content = <EmbedQuiz />;
+      else {
+        content = (
+          <p className="glossary-plain shell">
+            Unknown widget. See integrate.html for the full list (tests, glossary, quiz, collection, compliance,
+            patient-info, tabs, most-ordered, categories, catalogue, etc.).
+          </p>
+        );
+      }
+
+      return <div id="embed-widget-inner">{content}</div>;
+    }
+
+    ReactDOM.createRoot(document.getElementById('embed-widget')).render(<EmbedApp />);
+  </script>
+</body>
+</html>
