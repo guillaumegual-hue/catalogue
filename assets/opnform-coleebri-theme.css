@@ -1,187 +1,197 @@
 /**
- * Coleebri Health — OpnForm workspace theme
- * Paste into OpnForm: Workspace Settings → Custom Code → Custom CSS
- * Source of truth: assets/coleebri-health-site.css (catalogue tokens)
- * Public form URL only — not visible in the form editor preview.
+ * Coleebri Health — OpnForm theme (public form page)
+ * Paste in Workspace → Custom Code, or apply via scripts/opnform-apply-theme.mjs
  */
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap");
 
-/* Page shell — override OpnForm form-color tint */
+/* ─── Page: catalogue paper, not OpnForm blue tint ─── */
+html,
+body,
 #app,
+#app.bg-white,
 #public-form,
-.open-complete-form,
-.min-h-screen.flex.flex-col {
-  background-color: #fafafa !important;
+.min-h-screen.flex.flex-col,
+.open-complete-form {
+  background: #fafafa !important;
   min-height: auto !important;
 }
 
 .open-complete-form {
+  --form-color: #00889a !important;
+  --color-form: #00889a !important;
   --color-form-50: #fafafa !important;
   --color-form-100: #e6f3f5 !important;
+  --color-form-600: #00889a !important;
 }
 
-form.flex.flex-col.grow,
-.open-complete-form form.grow {
+/* Drop empty vertical stretch */
+.open-complete-form form.flex.flex-col.grow,
+.open-complete-form form[class*='container'] {
   flex-grow: 0 !important;
   min-height: 0 !important;
-  padding-bottom: 2rem !important;
+  padding-bottom: 0 !important;
+  background: transparent !important;
+}
+
+#public-form > div.w-full.mx-auto {
+  height: auto !important;
+  min-height: 0 !important;
 }
 
 nav.bg-white {
-  background-color: #fafafa !important;
+  display: none !important;
 }
 
-body {
-  font-family: "Work Sans", system-ui, sans-serif !important;
-  color: #1a1f23 !important;
-  background-color: #fafafa !important;
+/* ─── Card panel (matches .request-modal / .test-card) ─── */
+.open-complete-form form > div.mt-6,
+.open-complete-form form .mx-auto.px-4 {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 136, 154, 0.14) !important;
+  border-radius: 24px !important;
+  padding: 32px 28px 24px !important;
+  margin: 28px auto 40px !important;
+  max-width: 560px !important;
+  width: calc(100% - 32px) !important;
+  box-shadow:
+    0 1px 0 rgba(0, 136, 154, 0.04),
+    0 8px 22px -16px rgba(0, 82, 92, 0.12) !important;
 }
 
-/* Headings */
-body h1,
-body h2,
-body h3,
-body .text-2xl,
-body .text-3xl,
-body .text-4xl {
+/* Logo above form (when set in Design) */
+.open-complete-form img[alt*="logo"],
+.open-complete-form .form-logo img {
+  max-height: 48px !important;
+  width: auto !important;
+  margin: 0 auto 16px !important;
+  display: block !important;
+}
+
+/* ─── Intro block (nf-text) — eyebrow + title like catalogue ─── */
+.open-complete-form .form-group .col-span-full:first-of-type .prose,
+.open-complete-form .form-group .col-span-full:first-of-type div[class*="text-"] {
+  margin-bottom: 20px !important;
+}
+
+.open-complete-form h2 {
   font-family: "Poppins", system-ui, sans-serif !important;
+  font-size: 1.4rem !important;
   font-weight: 600 !important;
   color: #1a1f23 !important;
-  letter-spacing: -0.02em;
+  margin: 0 0 6px !important;
+  letter-spacing: -0.01em !important;
 }
 
-body p,
-body .text-sm,
-body .text-gray-500,
-body .text-gray-600 {
+.open-complete-form .coleebri-eyebrow,
+.open-complete-form p {
   font-family: "Work Sans", system-ui, sans-serif !important;
   color: #4a544f !important;
+  font-size: 0.95rem !important;
+  line-height: 1.55 !important;
+  margin: 0 0 8px !important;
 }
 
-/* Labels */
+.open-complete-form .coleebri-eyebrow {
+  display: block !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: #8a8f8c !important;
+  margin-bottom: 8px !important;
+}
+
+/* ─── Fields ─── */
+body,
 label,
-label.font-bold,
-label.font-semibold {
+label.font-semibold,
+.input-label {
   font-family: "Work Sans", system-ui, sans-serif !important;
-  font-weight: 500 !important;
   color: #1a1f23 !important;
 }
 
-/* Text inputs */
+label,
+.input-label {
+  font-weight: 500 !important;
+  font-size: 0.88rem !important;
+  margin-bottom: 6px !important;
+}
+
 input[type="text"],
 input[type="email"],
 input[type="tel"],
-input[type="number"],
-input[type="url"],
-input[type="date"],
 textarea,
-select,
-.rounded-lg.border {
+.open-complete-form .rounded-lg {
   font-family: "Work Sans", system-ui, sans-serif !important;
   font-size: 16px !important;
   color: #1a1f23 !important;
-  background-color: #ffffff !important;
-  border-color: rgba(0, 136, 154, 0.14) !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 136, 154, 0.14) !important;
   border-radius: 12px !important;
   box-shadow: none !important;
 }
 
 textarea {
-  min-height: 120px;
+  min-height: 120px !important;
+  resize: vertical !important;
 }
 
 input:focus,
-textarea:focus,
-select:focus {
+textarea:focus {
   outline: none !important;
   border-color: #00889a !important;
   box-shadow: 0 0 0 3px rgba(0, 136, 154, 0.12) !important;
 }
 
-/* Primary submit / next buttons */
-button[type="submit"],
-button.bg-custom-500,
-button.bg-custom-600,
-a.bg-custom-500,
-.bg-custom-500,
-.bg-custom-600 {
-  background-color: #00889a !important;
-  border-color: #00889a !important;
-  color: #ffffff !important;
-  font-family: "Work Sans", system-ui, sans-serif !important;
-  font-weight: 600 !important;
-  border-radius: 12px !important;
-  box-shadow: none !important;
+.relative.flex.flex-col.gap-1 {
+  margin-bottom: 14px !important;
 }
 
-button[type="submit"]:hover,
-button.bg-custom-500:hover,
-button.bg-custom-600:hover,
-.bg-custom-500:hover,
-.bg-custom-600:hover {
-  background-color: #006d7b !important;
-  border-color: #006d7b !important;
-}
-
-/* Secondary / outline buttons */
-button.border,
-button.bg-white {
+/* Phone country picker */
+.open-complete-form .v-select button {
+  border-radius: 12px 0 0 12px !important;
   border-color: rgba(0, 136, 154, 0.14) !important;
-  color: #1a1f23 !important;
+}
+
+/* ─── Submit — full width .btn-solid ─── */
+.open-complete-form .flex.flex-wrap.justify-center {
+  width: 100% !important;
+  margin-top: 8px !important;
+  padding: 0 !important;
+}
+
+.open-complete-form button[type="submit"],
+button.bg-form {
+  width: 100% !important;
+  max-width: 100% !important;
+  justify-content: center !important;
+  padding: 14px 20px !important;
+  font-family: "Work Sans", system-ui, sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  background: #00889a !important;
+  border: none !important;
   border-radius: 12px !important;
+  color: #ffffff !important;
   box-shadow: none !important;
 }
 
-button.border:hover,
-button.bg-white:hover {
-  background-color: #e6f3f5 !important;
-  border-color: #00889a !important;
+.open-complete-form button[type="submit"]:hover,
+button.bg-form:hover {
+  background: #006d7b !important;
 }
 
-/* Links */
+.required-dot,
+.text-red-500 {
+  color: #f28d85 !important;
+}
+
 a {
   color: #00889a !important;
 }
 
-a:hover {
-  color: #006d7b !important;
-}
-
-/* Cards / blocks */
-.rounded-lg.shadow-sm,
-.shadow-sm {
-  box-shadow: 0 1px 0 rgba(0, 136, 154, 0.04), 0 8px 22px -16px rgba(0, 82, 92, 0.12) !important;
-  border-radius: 12px !important;
-}
-
-.relative.mb-3 {
-  margin-bottom: 1rem;
-}
-
-/* Checkboxes / radios */
-input[type="checkbox"],
-input[type="radio"] {
-  accent-color: #00889a;
-}
-
-/* Progress bar (multi-page) */
-.bg-custom-500.h-1,
-.bg-custom-500.h-2 {
-  background-color: #00889a !important;
-}
-
-/* Top nav on public form */
-nav.bg-white {
-  border-bottom: 1px solid rgba(0, 136, 154, 0.14) !important;
-}
-
-/* Hide residual branding if toggle missed a spot */
 a[href*="opnform.com"]:not([href*="coleebri"]),
 .powered-by,
 [class*="powered"] {
-  opacity: 0;
-  height: 0;
-  overflow: hidden;
-  pointer-events: none;
+  display: none !important;
 }

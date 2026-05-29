@@ -23,7 +23,7 @@
       "help_position": "below_input",
       "width": "full",
       "align": "left",
-      "content": "<h2 style=\"font-family:Poppins,sans-serif;font-weight:600;color:#1a1f23;margin:0 0 8px\">Test enquiry</h2><p style=\"font-family:Work Sans,sans-serif;color:#4a544f;margin:0\">Tell us which test you are interested in and how we can reach you.</p>"
+      "content": "<span class=\"coleebri-eyebrow\">Request a test</span><h2>Test enquiry</h2><p>Tell us which test you are interested in and how we can reach you. We will respond from health@coleebri.com.</p>"
     },
     {
       "id": "a1000001-0001-4000-8000-000000000001",

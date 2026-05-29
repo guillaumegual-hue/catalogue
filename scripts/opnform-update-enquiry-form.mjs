@@ -37,11 +37,13 @@ const body = {
   color: patch.color,
   width: patch.width,
   size: patch.size,
-  border_radius: patch.border_radius,
+  border_radius: 'full',
   uppercase_labels: patch.uppercase_labels,
   no_branding: patch.no_branding,
-  transparent_background: patch.transparent_background,
+  transparent_background: false,
   submit_button_text: patch.submit_button_text,
+  logo_picture:
+    'https://health.coleebri.com/wp-content/uploads/sites/12/2025/02/Fichier-7@2x.png',
   properties: patch.properties,
   custom_css: themeCss,
 };
