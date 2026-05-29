@@ -131,12 +131,14 @@ function CategoryPageHeader({ boot }) {
         </ol>
       </nav>
       <div className="category-hero__card">
-        <p className="category-hero__eyebrow">{hero.eyebrow}</p>
+        <div className="category-hero__content">
+          <p className="category-hero__eyebrow">{hero.eyebrow}</p>
+          <h1 id="category-hero-heading" className="category-hero__heading">
+            {hero.heading}
+          </h1>
+          {hero.intro ? <p className="category-hero__intro">{formatHeroIntro(hero.intro)}</p> : null}
+        </div>
         <CategoryHeroVisual hero={hero} />
-        <h1 id="category-hero-heading" className="category-hero__heading">
-          {hero.heading}
-        </h1>
-        {hero.intro ? <p className="category-hero__intro">{formatHeroIntro(hero.intro)}</p> : null}
       </div>
       {Footnote ? <Footnote /> : null}
       <p className="category-page-header__tools">

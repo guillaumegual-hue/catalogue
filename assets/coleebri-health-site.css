@@ -1307,13 +1307,21 @@ main {
 
 /* Standalone category pages (/tests/{slug}/) */
 .category-page-hero {
-  padding: 20px 0 24px;
+  padding: 24px 0 28px;
   margin-bottom: 8px;
   border-bottom: 1px solid var(--border);
 }
 
 .category-hero__card {
-  margin-top: 8px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 40%);
+  gap: 24px 40px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.category-hero__content {
+  min-width: 0;
 }
 
 .category-hero__eyebrow {
@@ -1333,11 +1341,11 @@ main {
 .category-hero__visual {
   position: relative;
   width: 100%;
-  min-height: 200px;
-  max-height: 320px;
+  min-height: 220px;
+  max-height: 360px;
   border-radius: var(--r-lg);
   overflow: hidden;
-  margin: 0 0 20px;
+  margin: 0;
   background: var(--deep-cove);
 }
 
@@ -1408,7 +1416,7 @@ main {
 
 .category-hero__intro {
   margin: 0;
-  max-width: 62ch;
+  max-width: none;
   font-size: 1.05rem;
   line-height: 1.65;
   color: var(--ink-2);
