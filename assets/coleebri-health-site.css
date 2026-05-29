@@ -333,25 +333,70 @@ main {
   display: none !important;
 }
 
+.btn {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.88rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 9px 16px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, box-shadow 0.15s, transform 0.1s;
+  white-space: nowrap;
+  line-height: 1.2;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  color: inherit;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
 .btn-solid {
   background: var(--forest);
   color: #fff;
-}
-.btn-solid:hover {
-  background: var(--forest-mid);
-}
-.btn-outline {
-  background: var(--paper-2);
-  color: var(--forest);
   border-color: var(--forest);
 }
+
+.btn-solid:hover {
+  background: var(--forest-mid);
+  border-color: var(--forest-mid);
+}
+
+.btn-outline {
+  background: var(--paper-2);
+  color: var(--forest-deep);
+  border: 1px solid var(--forest);
+}
+
 .btn-outline:hover {
   background: var(--forest-100);
+  border-color: var(--harbour);
 }
+
 .btn-ghost {
   background: var(--paper-2);
-  border-color: var(--border);
+  border: 1px solid var(--border);
   color: var(--forest);
+}
+
+.btn-ghost:hover {
+  background: var(--calm);
+  border-color: var(--trustline);
+}
+
+.btn-icon-only {
+  padding: 9px;
+  aspect-ratio: 1;
+  justify-content: center;
 }
 
 .cart-badge {
