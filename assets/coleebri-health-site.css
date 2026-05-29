@@ -122,16 +122,21 @@ main {
   overflow: visible;
 }
 
-.topbar-start {
-  display: flex;
-  align-items: center;
-  gap: 10px 12px;
+.topbar-exit-bar {
+  display: none;
+}
+
+.topbar .brand {
   flex-shrink: 0;
-  min-width: 0;
+  line-height: 0;
+  text-decoration: none;
 }
 
 .topbar .brand img {
+  display: block;
   height: 36px;
+  width: auto;
+  max-width: min(168px, 46vw);
 }
 
 .catalogue-exit-link {
@@ -158,6 +163,24 @@ main {
 
 .catalogue-exit-link--topbar {
   flex-shrink: 0;
+}
+
+.catalogue-exit-link--bar {
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--harbour);
+  text-decoration: none;
+}
+
+.catalogue-exit-link--bar:hover {
+  background: transparent;
+  color: var(--deep-cove);
+  text-decoration: underline;
 }
 
 .foot-exit {
@@ -323,6 +346,7 @@ main {
   }
 
   .topbar-inner {
+    display: flex;
     flex-wrap: nowrap;
     padding: 14px 0;
     align-items: center;
@@ -330,10 +354,28 @@ main {
 
   .topbar .brand {
     flex-shrink: 0;
+    order: 0;
+  }
+
+  .catalogue-exit-link--topbar {
+    display: inline-flex;
+    order: 1;
+    margin-left: 12px;
+    margin-right: 0;
+  }
+
+  .topbar .search {
+    order: 2;
+  }
+
+  .topbar-actions {
+    order: 3;
+    margin-left: auto;
   }
 
   .topbar .brand img {
     height: 40px;
+    max-width: none;
   }
 
   .topbar .search {
@@ -3027,47 +3069,67 @@ main#top > section#collection-info {
 /* ─── Responsive ─── */
 @media (max-width: 899px) {
   :root {
-    --topbar-h: 124px;
+    --topbar-h: 148px;
     --tabnav-h: 92px;
     --content-gutter: 10px;
     --r-lg: 20px;
   }
 
-  .topbar-inner {
-    flex-wrap: wrap;
-    row-gap: 10px;
-    align-items: center;
+  .topbar-exit-bar {
+    display: block;
+    padding: 8px 0;
+    background: var(--calm);
+    border-bottom: 1px solid var(--border);
   }
 
-  .topbar-start {
-    flex: 1 1 auto;
-    min-width: 0;
-    flex-wrap: wrap;
-    row-gap: 6px;
-  }
-
-  .topbar .brand {
-    flex: 0 1 auto;
-    min-width: 0;
+  .topbar-exit-bar .shell {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   .catalogue-exit-link--topbar {
-    font-size: 0.76rem;
-    padding: 6px 10px;
+    display: none;
   }
 
-  .topbar .search {
-    order: 3;
-    flex: 1 1 calc(100% - 24px);
-    width: auto;
-    max-width: calc(100% - 24px);
-    margin-inline: 12px;
+  .topbar-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    column-gap: 8px;
+    row-gap: 10px;
+    padding-top: 10px;
+  }
+
+  .topbar .brand {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    min-width: 0;
+  }
+
+  .topbar .brand img {
+    height: 32px;
+    max-width: min(150px, 42vw);
   }
 
   .topbar-actions {
-    order: 2;
-    margin-left: auto;
-    padding-right: 4px;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    margin-left: 0;
+    padding-right: 0;
+    gap: 8px;
+  }
+
+  .topbar .search {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    flex: none;
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    min-width: 0;
   }
 
   .tabnav-select-field {

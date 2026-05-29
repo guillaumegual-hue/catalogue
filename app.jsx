@@ -28,10 +28,10 @@ function catalogueMainSiteUrl() {
   return (window.ColeebriCatalogueSite && window.ColeebriCatalogueSite.home) || 'https://health.coleebri.com/en/';
 }
 
-function CatalogueExitLink({ className }) {
+function CatalogueExitLink({ className, label }) {
   return (
     <a className={'catalogue-exit-link' + (className ? ' ' + className : '')} href={catalogueMainSiteUrl()}>
-      Exit catalogue
+      {label || 'Exit catalogue'}
     </a>
   );
 }
@@ -187,13 +187,19 @@ function Hero() {
 function Topbar({ query, setQuery, onQuiz, onCheckMarker, onScrollTop, cartCount, onOpenCart, onExportPdf }) {
   return (
     <header className="topbar no-print">
-      <div className="topbar-inner shell">
-        <div className="topbar-start">
-          <a className="brand" href="#top" onClick={(e) => { e.preventDefault(); onScrollTop(); }}>
-            <img src="https://health.coleebri.com/wp-content/uploads/sites/12/2025/02/Fichier-7@2x.png" alt="Coleebri Health" />
-          </a>
-          <CatalogueExitLink className="catalogue-exit-link--topbar" />
+      <div className="topbar-exit-bar">
+        <div className="shell">
+          <CatalogueExitLink
+            className="catalogue-exit-link--bar"
+            label="← Back to health.coleebri.com"
+          />
         </div>
+      </div>
+      <div className="topbar-inner shell">
+        <a className="brand" href="#top" onClick={(e) => { e.preventDefault(); onScrollTop(); }}>
+          <img src="https://health.coleebri.com/wp-content/uploads/sites/12/2025/02/Fichier-7@2x.png" alt="Coleebri Health" />
+        </a>
+        <CatalogueExitLink className="catalogue-exit-link--topbar" />
         <div className="search">
           <Icon.search />
           <input
