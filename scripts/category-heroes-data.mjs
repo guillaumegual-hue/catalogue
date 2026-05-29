@@ -1,6 +1,7 @@
 /**
  * Per-category hero copy for /tests/{slug}/ pages.
- * Images: place WebP/JPG at assets/category-heroes/{slug}.webp (optional).
+ * Images: from WordPress media — run `node scripts/fetch-category-hero-images.mjs`
+ * Manual overrides: edit scripts/category-hero-media-map.mjs then re-fetch.
  * Regenerate JS: node scripts/generate-category-heroes.mjs
  */
 
@@ -13,6 +14,7 @@ export const CATEGORY_HEROES = {
     heading: 'Browse all patient tests',
     intro:
       'Search, compare and enquire across every test we collect — blood, urine and DNA — from one place.',
+    image: 'all-tests.jpg',
     theme: 'all',
   },
   'general-health': {
@@ -20,6 +22,7 @@ export const CATEGORY_HEROES = {
     heading: 'Our general health testing',
     intro:
       'Routine blood work, health profiles and screening panels for everyday monitoring and peace of mind.',
+    image: 'general-health.jpg',
     theme: 'general',
   },
   'womens-health': {
@@ -27,6 +30,7 @@ export const CATEGORY_HEROES = {
     heading: "Our women's health testing",
     intro:
       'Cycle, fertility, menopause and women-focused wellness panels — collected professionally and reported by accredited laboratories.',
+    image: 'womens-health.jpg',
     theme: 'women',
   },
   'mens-health': {
@@ -34,6 +38,7 @@ export const CATEGORY_HEROES = {
     heading: "Our men's health testing",
     intro:
       'Testosterone, prostate, performance and men-focused panels — with clear pricing and turnaround on every test card.',
+    image: 'mens-health.jpg',
     theme: 'men',
   },
   'sexual-health': {
@@ -41,6 +46,7 @@ export const CATEGORY_HEROES = {
     heading: 'Our sexual health testing',
     intro:
       'Confidential STI screening. If you have symptoms or need treatment, contact your GP or a sexual-health clinic.',
+    image: 'sexual-health.png',
     theme: 'sexual',
   },
   'fitness-wellbeing': {
@@ -48,6 +54,7 @@ export const CATEGORY_HEROES = {
     heading: 'Our fitness & wellbeing testing',
     intro:
       'Sports performance, recovery and nutrition panels for athletes and active lifestyles.',
+    image: 'fitness-wellbeing.jpg',
     theme: 'fitness',
   },
   allergies: {
@@ -55,6 +62,7 @@ export const CATEGORY_HEROES = {
     heading: 'Our allergy & sensitivity testing',
     intro:
       'IgE allergy and intolerance testing — speak to a healthcare professional before making major diet changes based on results.',
+    image: 'allergies.jpg',
     theme: 'allergies',
   },
   dna: {
@@ -62,7 +70,7 @@ export const CATEGORY_HEROES = {
     heading: 'Our DNA testing services',
     intro:
       'We recognise that each testing journey is deeply personal and treat it with the attention and importance it deserves. We only work with partners **Ministry of Justice-approved** for our legal DNA testing services.',
-    image: 'dna.webp',
+    image: 'dna.jpg',
     imageAlt: 'DNA double helix illustration',
     theme: 'dna',
   },
@@ -71,6 +79,7 @@ export const CATEGORY_HEROES = {
     heading: 'How we collect your sample',
     intro:
       'Home visits, clinic days and postal kits — pricing for collection and add-ons, with qualified clinicians and accredited laboratory partners.',
+    image: 'phlebotomy-collection.jpg',
     theme: 'collection',
   },
   'paternity-dna': {
@@ -78,6 +87,7 @@ export const CATEGORY_HEROES = {
     heading: 'Our paternity & DNA testing',
     intro:
       'Legal (court-admissible) and peace-of-mind DNA tests. Legal tests require professional collection with **chain-of-custody**.',
+    image: 'paternity-dna.png',
     theme: 'paternity',
   },
   'health-profiles': {
@@ -85,12 +95,14 @@ export const CATEGORY_HEROES = {
     heading: 'Our health profiles & screens',
     intro:
       'Multi-marker panels for check-ups, hormones, fatigue and general wellbeing — see every marker on each test card.',
+    image: 'health-profiles.jpg',
     theme: 'profiles',
   },
   'routine-tests': {
     eyebrow: 'Routine tests',
     heading: 'Our routine tests',
     intro: 'Single-purpose blood and urine tests for targeted monitoring and follow-up.',
+    image: 'routine-tests.jpg',
     theme: 'routine',
   },
   autoimmune: {
@@ -98,12 +110,14 @@ export const CATEGORY_HEROES = {
     heading: 'Our autoimmune profiles',
     intro:
       'Specialist antibody panels — your doctor or specialist should explain results in the context of your symptoms.',
+    image: 'autoimmune.jpg',
     theme: 'autoimmune',
   },
   'vitamins-minerals': {
     eyebrow: 'Vitamins & minerals',
     heading: 'Our vitamins & minerals testing',
     intro: 'Nutritional and trace-element testing to support discussions with your GP or dietitian.',
+    image: 'vitamins-minerals.jpg',
     theme: 'vitamins',
   },
   'specific-requests': {
@@ -111,6 +125,7 @@ export const CATEGORY_HEROES = {
     heading: 'Bespoke & targeted tests',
     intro:
       'Cannot find what you need? Contact **health@coleebri.com** — we can often arrange additional markers through partner laboratories.',
+    image: 'specific-requests.jpg',
     theme: 'specific',
   },
 };

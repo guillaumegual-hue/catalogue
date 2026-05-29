@@ -1,19 +1,27 @@
 # Category hero images
 
-Optional banner images for `/tests/{slug}/` pages.
+Banner images for `/tests/{slug}/` pages, synced from the **WordPress media library** on health.coleebri.com.
 
-| File | Page |
-|------|------|
-| `dna.webp` | `/tests/dna/` |
-| `{slug}.webp` | `/tests/{slug}/` |
-
-**Specs:** ~1200×480px (or 2:1), WebP or JPG, &lt; 200 KB if possible.
-
-If a file is missing, a themed gradient placeholder is shown instead.
-
-**Copy** is edited in `scripts/category-heroes-data.mjs`, then run:
+## Refresh from media gallery
 
 ```bash
+node scripts/fetch-category-hero-images.mjs
 node scripts/generate-category-heroes.mjs
 node scripts/generate-category-pages.mjs
 ```
+
+Optional: try to read hero images from live Elementor pages (when the site is up):
+
+```bash
+node scripts/fetch-category-hero-images.mjs --scrape-pages
+```
+
+## Override a mapping
+
+Edit `scripts/category-hero-media-map.mjs` (`wpMediaUrl` per slug), then re-run the fetch script.
+
+Source URLs are recorded in `manifest.json` after each fetch.
+
+## Specs
+
+~1200×480px (2:1) recommended. JPG/PNG/WebP. Large files (&gt;500 KB) can be compressed before commit.

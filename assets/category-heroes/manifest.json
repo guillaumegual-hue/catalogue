@@ -1,0 +1,77 @@
+{
+  "all-tests": {
+    "file": "all-tests.jpg",
+    "bytes": 368606,
+    "sourceUrl": "https://health.coleebri.com/wp-content/uploads/sites/12/2025/10/lab-313864_1920.jpg"
+  },
+  "general-health": {
+    "file": "general-health.jpg",
+    "bytes": 176789,
+    "sourceUrl": "https://health.coleebri.com/wp-content/uploads/sites/12/2025/10/blood-sample-6200013_1280.jpg"
+  },
+  "womens-health": {
+    "file": "womens-health.jpg",
+    "bytes": 206047,
+    "sourceUrl": "https://health.coleebri.com/wp-content/uploads/sites/12/2025/10/pexels-karolina-grabowska-7195310-scaled.jpg"
+  },
+  "mens-health": {
+    "file": "mens-health.jpg",
+    "bytes": 83582,
+    "sourceUrl": "https://health.coleebri.com/wp-content/uploads/sites/12/2025/02/doctor-9615943_1280.jpg"
+  },
+  "sexual-health": {
+    "file": "sexual-health.png",
+    "bytes": 388942,
+    "sourceUrl": "https://health.coleebri.com/wp-content/uploads/sites/12/2025/12/Sexual-Health-Test.-1.png"
+  },
+  "fitness-wellbeing": {
+    "file": "fitness-wellbeing.jpg",
+    "bytes": 1034504,
+    "sourceUrl": "https://health.coleebri.com/wp-content/uploads/sites/12/2026/03/group-of-people-exercising-together-in-park-2026-01-11-10-30-55-utc-2-2-2-2.jpg"
+  },
+  "allergies": {
+    "file": "allergies.jpg",
+    "bytes": 347709,
+    "sourceUrl": "https://health.coleebri.com/wp-content/uploads/sites/12/2025/10/pexels-pixabay-356040-scaled.jpg"
+  },
+  "dna": {
+    "file": "dna.jpg",
+    "bytes": 200746,
+    "sourceUrl": "https://health.coleebri.com/wp-content/uploads/sites/12/2025/10/dna-7476704_1280.jpg"
+  },
+  "phlebotomy-collection": {
+    "file": "phlebotomy-collection.jpg",
+    "bytes": 319386,
+    "sourceUrl": "https://health.coleebri.com/wp-content/uploads/sites/12/2025/06/hand-in-medical-glove-holding-a-test-tube-2025-01-15-12-32-40-utc-1.jpg"
+  },
+  "paternity-dna": {
+    "file": "paternity-dna.png",
+    "bytes": 790717,
+    "sourceUrl": "https://health.coleebri.com/wp-content/uploads/sites/12/2025/12/nonlegaldnatrio.png"
+  },
+  "health-profiles": {
+    "file": "health-profiles.jpg",
+    "bytes": 401721,
+    "sourceUrl": "https://health.coleebri.com/wp-content/uploads/sites/12/2025/10/laboratory-3827743_1920.jpg"
+  },
+  "routine-tests": {
+    "file": "routine-tests.jpg",
+    "bytes": 347587,
+    "sourceUrl": "https://health.coleebri.com/wp-content/uploads/sites/12/2025/10/test-tubes-7582098_1920.jpg"
+  },
+  "autoimmune": {
+    "file": "autoimmune.jpg",
+    "bytes": 131552,
+    "sourceUrl": "https://health.coleebri.com/wp-content/uploads/sites/12/2025/10/sample-5053739_1280.jpg"
+  },
+  "vitamins-minerals": {
+    "file": "vitamins-minerals.jpg",
+    "bytes": 225822,
+    "sourceUrl": "https://health.coleebri.com/wp-content/uploads/sites/12/2025/10/donation-732298_1280.jpg"
+  },
+  "specific-requests": {
+    "file": "specific-requests.jpg",
+    "bytes": 630254,
+    "sourceUrl": "https://health.coleebri.com/wp-content/uploads/sites/12/2025/10/pexels-anntarazevich-5895884-scaled.jpg"
+  }
+}
