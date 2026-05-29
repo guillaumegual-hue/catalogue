@@ -118,7 +118,6 @@ function CategoryHeroVisual({ hero }) {
 
 function CategoryPageHeader({ boot }) {
   const hero = resolveCategoryHero(boot);
-  const hubHref = '../';
   const catalogueHref = '../../Coleebri%20Patient%20Catalogue.html';
   const Footnote = window.CatalogueFootnote;
   return (
@@ -126,7 +125,7 @@ function CategoryPageHeader({ boot }) {
       <nav className="category-page-header__crumb" aria-label="Breadcrumb">
         <ol>
           <li>
-            <a href={hubHref}>Browse all categories</a>
+            <a href={catalogueHref}>Full catalogue</a>
           </li>
           <li aria-current="page">{hero.breadcrumb}</li>
         </ol>
@@ -142,12 +141,7 @@ function CategoryPageHeader({ boot }) {
       {Footnote ? <Footnote /> : null}
       <p className="category-page-header__tools">
         <CatalogueExitLink />
-        <span className="category-page-header__tools-sep" aria-hidden="true">
-          {' '}
-          ·{' '}
-        </span>
-        <a href={catalogueHref}>Full catalogue</a>
-        <span className="category-page-header__tools-note"> — search, compare, quiz</span>
+        <span className="category-page-header__tools-note"> — search, compare, quiz in full catalogue</span>
       </p>
     </section>
   );
