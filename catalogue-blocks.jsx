@@ -107,6 +107,17 @@ function CatalogueCtaPanel({ catalogueHref }) {
   );
 }
 
+/** Compact title + blurb for WordPress test-list embeds (no logo / footnote). */
+function EmbedTrackIntro({ label, blurb }) {
+  if (!label) return null;
+  return (
+    <header className="embed-track-intro">
+      <h2 className="embed-track-intro__title">{label}</h2>
+      {blurb ? <p className="embed-track-intro__lead">{blurb}</p> : null}
+    </header>
+  );
+}
+
 function CatalogueTestGrid({
   trackId,
   tests,
@@ -128,7 +139,8 @@ function CatalogueTestGrid({
     return [...map.entries()];
   }, [tests]);
 
-  const hideIntro = !!tweaks?.embedIntegrated;
+  const showEmbedIntro = !!tweaks?.embedShowIntro;
+  const hideIntro = !!tweaks?.embedIntegrated && !showEmbedIntro;
   const trackMeta = window.TRACKS.find((t) => t.id === trackId);
   const categoryMeta = categoryFilter ? window.SECTIONS.find((s) => s.id === categoryFilter) : null;
   const groupMeta =
@@ -154,10 +166,22 @@ function CatalogueTestGrid({
         ? testIdsFilter.length + ' selected tests'
         : null;
 
+  const embedIntroLabel =
+    testFilterLabel || (categoryMeta ? categoryMeta.label : trackMeta?.label);
+  const embedIntroBlurb =
+    testFilterLabel && groupMeta
+      ? groupMeta.blurb
+      : categoryMeta
+        ? categoryMeta.blurb
+        : trackMeta?.blurb;
+
   if (trackId === 'all') {
     return (
       <section className="shell catalogue-test-grid" id="catalogue">
-        {!hideIntro && (
+        {showEmbedIntro && (
+          <EmbedTrackIntro label={embedIntroLabel} blurb={embedIntroBlurb} />
+        )}
+        {!hideIntro && !showEmbedIntro && (
         <div className="track-intro">
           <span className="eyebrow">
             {testFilterLabel ? 'Selected tests' : categoryMeta ? 'Catalogue category' : 'Full catalogue'}
@@ -221,7 +245,10 @@ function CatalogueTestGrid({
 
   return (
     <section className="shell catalogue-test-grid" id="catalogue">
-      {!hideIntro && (
+      {showEmbedIntro && (
+        <EmbedTrackIntro label={embedIntroLabel} blurb={embedIntroBlurb} />
+      )}
+      {!hideIntro && !showEmbedIntro && (
       <div className="track-intro">
         <span className="eyebrow">{categoryMeta ? categoryMeta.label : trackMeta?.label}</span>
         <h2>{categoryMeta ? categoryMeta.label : trackMeta?.label}</h2>

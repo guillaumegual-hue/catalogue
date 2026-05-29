@@ -16,7 +16,7 @@ One static catalogue (this repo), hosted on GitHub Pages today and on the same s
 | Header / footer | Theme | — |
 | H1, intro, compliance copy | Text widgets | — |
 | Browse by category | Nav Menu → `/en/tests/…` pages | `widget=tabs` (no logo / catalogue link) |
-| Test list | HTML widget + script below | `widget=tests` iframe (cards only — no embed header or track title) |
+| Test list | HTML widget + script below | `widget=tests` iframe (compact title + blurb, responsive cards; no logo / “Open full catalogue”) |
 | Enquire | Elementor form, styled OpnForm (phase 2), or mailto | Pre-filled mailto when integrated (default) |
 
 ## Embed snippet (category page)

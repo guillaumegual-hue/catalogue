@@ -74,7 +74,13 @@ function embedTweaks() {
   };
   const embed = embedConfig();
   if (embedIsIntegrated() || embed.cardsOnly) {
-    return { ...base, embedIntegrated: true };
+    const service = embed.service || embed.category || '';
+    const showIntro =
+      !!embed.cardsOnly &&
+      !!service &&
+      service !== 'all' &&
+      service !== 'top';
+    return { ...base, embedIntegrated: true, embedShowIntro: showIntro };
   }
   return base;
 }

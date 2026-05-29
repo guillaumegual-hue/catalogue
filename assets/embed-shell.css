@@ -152,3 +152,112 @@ html.coleebri-embed-transparent #embed-widget-inner .subsec,
 html.coleebri-embed-transparent #embed-widget-inner .card-grid {
   background: transparent !important;
 }
+
+/* Compact section copy for site embeds (title + blurb, no duplicate chrome) */
+.embed-track-intro {
+  margin: 0 0 20px;
+  padding: 0 0 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.embed-track-intro__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 4.5vw, 1.85rem);
+  font-weight: 600;
+  color: var(--forest-deep);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.embed-track-intro__lead {
+  font-size: clamp(0.92rem, 2.8vw, 1.02rem);
+  color: var(--ink-2);
+  margin: 10px 0 0;
+  max-width: 52ch;
+  line-height: 1.5;
+}
+
+/* Site embed: fit narrow iframe viewports (WordPress content column) */
+html.coleebri-embed-site #embed-widget-inner {
+  padding-left: clamp(8px, 2.5vw, 16px);
+  padding-right: clamp(8px, 2.5vw, 16px);
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+html.coleebri-embed-site .catalogue-test-grid.shell {
+  padding-left: 0;
+  padding-right: 0;
+  max-width: 100%;
+}
+
+html.coleebri-embed-site .card-grid {
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 900px) {
+  html.coleebri-embed-site .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+html.coleebri-embed-site .test-card {
+  min-width: 0;
+  padding: 18px 16px 16px;
+}
+
+html.coleebri-embed-site .tc-name {
+  font-size: clamp(1.05rem, 4vw, 1.28rem);
+}
+
+html.coleebri-embed-site .tc-foot-row {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+}
+
+html.coleebri-embed-site .tc-meta {
+  width: 100%;
+}
+
+html.coleebri-embed-site .tc-actions {
+  width: 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  justify-content: stretch;
+}
+
+html.coleebri-embed-site .tc-cta {
+  grid-column: 1 / -1;
+  width: 100%;
+  justify-content: center;
+}
+
+html.coleebri-embed-site .tc-pin .lbl,
+html.coleebri-embed-site .tc-cart .lbl {
+  display: inline;
+}
+
+@media (max-width: 380px) {
+  html.coleebri-embed-site .tc-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 640px) {
+  html.coleebri-embed-site .tc-foot-row {
+    flex-direction: row;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+
+  html.coleebri-embed-site .tc-actions {
+    flex: 1 1 240px;
+    width: auto;
+    max-width: 100%;
+  }
+}

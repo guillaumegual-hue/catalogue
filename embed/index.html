@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/coleebri-health-site.css?v=20260531a" />
-  <link rel="stylesheet" href="../assets/embed-shell.css?v=20260606c" />
+  <link rel="stylesheet" href="../assets/embed-shell.css?v=20260606d" />
   <script>
     (function () {
       var p = new URLSearchParams(location.search);
@@ -30,6 +30,9 @@
         (siteWidgets[w] && p.get('branding') === null && p.get('header') === null && p.get('logo') === null)
       ) {
         document.documentElement.classList.add('coleebri-embed-no-brand');
+      }
+      if (siteWidgets[w]) {
+        document.documentElement.classList.add('coleebri-embed-site');
       }
       if (
         p.get('transparent') === '1' ||
@@ -108,11 +111,11 @@
   <script src="../phlebotomy-enquiry.js?v=20260602a"></script>
 
   <script type="text/babel" src="../components.jsx?v=20260605a"></script>
-  <script type="text/babel" src="../catalogue-blocks.jsx?v=20260605a"></script>
+  <script type="text/babel" src="../catalogue-blocks.jsx?v=20260606d"></script>
   <script type="text/babel" src="../cart.jsx?v=20260602a"></script>
   <script type="text/babel" src="../phlebotomy-enquiry.jsx?v=20260602a"></script>
   <script type="text/babel" src="../quiz.jsx?v=20260602a"></script>
-  <script type="text/babel" src="../embed-widgets.jsx?v=20260606b"></script>
+  <script type="text/babel" src="../embed-widgets.jsx?v=20260606d"></script>
   <script type="text/babel" src="../api-guidance-ui.jsx?v=20260531a"></script>
   <script type="text/babel" src="../glossary-ui.jsx?v=20260530e"></script>
   <script type="text/babel" src="../marker-check.jsx?v=20260530e"></script>
