@@ -1,0 +1,72 @@
+{
+  "workspace_id": 1,
+  "title": "Test enquiry — Coleebri Health",
+  "visibility": "public",
+  "language": "en",
+  "theme": "default",
+  "color": "#0d6e7a",
+  "dark_mode": "auto",
+  "width": "centered",
+  "size": "md",
+  "border_radius": "small",
+  "uppercase_labels": false,
+  "no_branding": false,
+  "transparent_background": true,
+  "presentation_style": "classic",
+  "properties": [
+    {
+      "name": "test_name",
+      "type": "text",
+      "hidden": true,
+      "prefill": null
+    },
+    {
+      "name": "test_code",
+      "type": "text",
+      "hidden": true,
+      "prefill": null
+    },
+    {
+      "name": "test_id",
+      "type": "text",
+      "hidden": true,
+      "prefill": null
+    },
+    {
+      "name": "source_page",
+      "type": "text",
+      "hidden": true,
+      "prefill": null
+    },
+    {
+      "name": "category",
+      "type": "text",
+      "hidden": true,
+      "prefill": null
+    },
+    {
+      "name": "name",
+      "type": "text",
+      "required": true,
+      "placeholder": "Your name"
+    },
+    {
+      "name": "email",
+      "type": "email",
+      "required": true,
+      "placeholder": "Email address"
+    },
+    {
+      "name": "phone",
+      "type": "phone_number",
+      "required": false,
+      "placeholder": "Phone (optional)"
+    },
+    {
+      "name": "message",
+      "type": "textarea",
+      "required": false,
+      "placeholder": "Anything else we should know?"
+    }
+  ]
+}

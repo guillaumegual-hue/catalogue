@@ -1,7 +1,7 @@
 {
   "content": [
     {
-      "id": "24d736c",
+      "id": "ec345b8",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -24,7 +24,7 @@
       },
       "elements": [
         {
-          "id": "228f281",
+          "id": "710c71a",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -35,11 +35,65 @@
           "elements": []
         },
         {
-          "id": "64ad9c5",
+          "id": "5cc4e6b",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
-            "editor": "<p>Add your hero copy here, then an Elementor <strong>Nav Menu</strong> widget linking to each category page (see integrate/elementor/category-nav-snippet.html). Do not embed the catalogue tab strip on this page.</p>"
+            "editor": "<p>Add your hero copy, then an Elementor <strong>Nav Menu</strong> (see integrate/elementor/category-nav-snippet.html). Compare and enquiry run on this site via the Coleebri bridge; OpnForm opens in a modal from test cards.</p>"
+          },
+          "elements": []
+        }
+      ]
+    },
+    {
+      "id": "be88977",
+      "elType": "container",
+      "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+          "unit": "px",
+          "size": 16,
+          "column": "16",
+          "row": "16",
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "24",
+          "right": "20",
+          "bottom": "24",
+          "left": "20",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "3dcdb31",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Help me choose",
+            "header_size": "h2",
+            "align": "left"
+          },
+          "elements": []
+        },
+        {
+          "id": "9658208",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p>Anchor id coleebri-hub-quiz for bridge scroll.</p>"
+          },
+          "elements": []
+        },
+        {
+          "id": "90d9aa7",
+          "elType": "widget",
+          "widgetType": "html",
+          "settings": {
+            "html": "<div data-coleebri-embed=\"quiz\" data-coleebri-base=\"https://guillaumegual-hue.github.io/catalogue/\" data-branding=\"none\" data-site=\"https://health.coleebri.com/en\" data-integrated=\"1\" data-transparent=\"1\" id=\"coleebri-hub-quiz\" class=\"coleebri-wp-hub-quiz-anchor\" data-height=\"640\"></div><script src=\"https://guillaumegual-hue.github.io/catalogue/assets/coleebri-embed.js?v=20260531a\" data-base=\"https://guillaumegual-hue.github.io/catalogue/\"><\\/script>"
           },
           "elements": []
         }

@@ -277,6 +277,10 @@
     var catalogueBase = p.get('catalogue') || '';
     var siteBase = normalizeSiteBase(p.get('site') || '');
     var integrated = p.get('integrated') === '1' || p.get('integrated') === 'true' || !!siteBase;
+    var displayOnly =
+      p.get('displayOnly') === '1' ||
+      p.get('display_only') === '1' ||
+      p.get('interactions') === 'parent';
     var transparent =
       p.get('transparent') === '1' ||
       p.get('transparent') === 'true' ||
@@ -306,9 +310,59 @@
       catalogueBase: catalogueBase,
       siteBase: siteBase,
       integrated: integrated,
+      displayOnly: displayOnly,
       transparent: transparent,
       wpServicePages: WP_SERVICE_PAGES,
     };
+  }
+
+  function isDisplayOnlyEmbed(opts) {
+    opts = opts || {};
+    return !!opts.displayOnly || opts.interactions === 'parent';
+  }
+
+  function serializeTestForParent(test) {
+    if (!test) return null;
+    return {
+      id: test.id,
+      code: test.code,
+      name: test.name,
+      section: test.section,
+      tracks: test.tracks ? test.tracks.slice() : [],
+      turnaround: test.turnaround,
+      price: test.price,
+      priceUpper: !!test.priceUpper,
+    };
+  }
+
+  function getEmbedParentOrigins() {
+    return [
+      'https://health.coleebri.com',
+      'https://www.health.coleebri.com',
+      'https://guillaumegual-hue.github.io',
+    ];
+  }
+
+  function postToEmbedParent(message) {
+    if (!window.parent || window.parent === window) return false;
+    var origins = getEmbedParentOrigins();
+    var sent = false;
+    for (var i = 0; i < origins.length; i++) {
+      try {
+        window.parent.postMessage(message, origins[i]);
+        sent = true;
+      } catch (e) {
+        /* ignore */
+      }
+    }
+    if (!sent) {
+      try {
+        window.parent.postMessage(message, '*');
+      } catch (e2) {
+        return false;
+      }
+    }
+    return true;
   }
 
   function parseCatalogueHash(hash) {
@@ -434,6 +488,7 @@
     else if (opts.test) url += '&test=' + encodeURIComponent(opts.test);
     if (opts.siteBase) url += '&site=' + encodeURIComponent(opts.siteBase);
     if (opts.integrated) url += '&integrated=1';
+    if (opts.displayOnly) url += '&displayOnly=1';
     if (opts.transparent) url += '&transparent=1';
     return appendHeaderQuery(url, opts);
   }
@@ -456,6 +511,10 @@
     buildEmbedUrl: buildEmbedUrl,
     normalizeSiteBase: normalizeSiteBase,
     isIntegratedEmbed: isIntegratedEmbed,
+    isDisplayOnlyEmbed: isDisplayOnlyEmbed,
+    serializeTestForParent: serializeTestForParent,
+    postToEmbedParent: postToEmbedParent,
+    getEmbedParentOrigins: getEmbedParentOrigins,
     resolveWpPageUrl: resolveWpPageUrl,
     resolveParentNavigateUrl: resolveParentNavigateUrl,
     WP_SERVICE_PAGES: WP_SERVICE_PAGES,

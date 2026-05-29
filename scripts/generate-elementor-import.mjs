@@ -92,8 +92,17 @@ function buildPage({ title, intro, blocks, embedOnly = false }) {
     const kids = [];
     if (block.heading) kids.push(headingWidget(block.heading, 'h2'));
     if (block.note) kids.push(textWidget(`<p>${block.note}</p>`));
-    if (block.htmlWidget) kids.push(htmlWidget(block.htmlWidget.widget, block.htmlWidget.attrs));
-    else if (block.htmlAttrs) {
+    if (block.htmlWidget) {
+      kids.push({
+        id: eid(),
+        elType: 'widget',
+        widgetType: 'html',
+        settings: {
+          html: htmlEmbed(block.htmlWidget.widget, block.htmlWidget.attrs || '', block.htmlWidget.mode || 'hub'),
+        },
+        elements: [],
+      });
+    } else if (block.htmlAttrs) {
       const m = block.shortcode.match(/widget="([^"]+)"/);
       const widget = m ? m[1] : 'tests';
       kids.push(htmlWidget(widget, block.htmlAttrs));
@@ -111,27 +120,28 @@ function buildPage({ title, intro, blocks, embedOnly = false }) {
 
 const CATALOGUE_BASE = 'https://guillaumegual-hue.github.io/catalogue/';
 const WP_SITE_BASE = 'https://health.coleebri.com/en';
-const ASSET_VER = '20260530b';
+const ASSET_VER = '20260531a';
 
-const EMBED_ATTRS =
-  ' data-branding="none" data-site="' +
-  WP_SITE_BASE +
-  '" data-integrated="1" data-transparent="1"';
+const EMBED_INTEGRATED =
+  ' data-branding="none" data-site="' + WP_SITE_BASE + '" data-integrated="1"';
+const EMBED_CATEGORY =
+  EMBED_INTEGRATED + ' data-transparent="1" data-display-only="1"';
 
 const sc = (widget, extra = '') =>
   `[coleebri_catalogue widget="${widget}" branding="none"${extra ? ' ' + extra : ''}]`;
 
-function htmlEmbed(widget, attrs = '') {
+function htmlEmbed(widget, attrs = '', mode = 'category') {
   const base = CATALOGUE_BASE;
-  return `<div data-coleebri-embed="${widget}" data-coleebri-base="${base}"${EMBED_ATTRS}${attrs}></div><script src="${base}assets/coleebri-embed.js?v=${ASSET_VER}" data-base="${base}"><\\/script>`;
+  const chrome = mode === 'category' ? EMBED_CATEGORY : EMBED_INTEGRATED + (mode === 'transparent' ? ' data-transparent="1"' : '');
+  return `<div data-coleebri-embed="${widget}" data-coleebri-base="${base}"${chrome}${attrs}></div><script src="${base}assets/coleebri-embed.js?v=${ASSET_VER}" data-base="${base}"><\\/script>`;
 }
 
-function htmlWidget(widget, attrs = '') {
+function htmlWidget(widget, attrs = '', mode = 'category') {
   return {
     id: eid(),
     elType: 'widget',
     widgetType: 'html',
-    settings: { html: htmlEmbed(widget, attrs) },
+    settings: { html: htmlEmbed(widget, attrs, mode) },
     elements: [],
   };
 }
@@ -158,8 +168,18 @@ const PAGES = [
     slug: 'coleebri-tests-hub',
     title: 'Health tests hub',
     intro:
-      'Add your hero copy here, then an Elementor <strong>Nav Menu</strong> widget linking to each category page (see integrate/elementor/category-nav-snippet.html). Do not embed the catalogue tab strip on this page.',
-    blocks: [],
+      'Add your hero copy, then an Elementor <strong>Nav Menu</strong> (see integrate/elementor/category-nav-snippet.html). Compare and enquiry run on this site via the Coleebri bridge; OpnForm opens in a modal from test cards.',
+    blocks: [
+      {
+        heading: 'Help me choose',
+        note: 'Anchor id coleebri-hub-quiz for bridge scroll.',
+        htmlWidget: {
+          widget: 'quiz',
+          mode: 'transparent',
+          attrs: ' id="coleebri-hub-quiz" class="coleebri-wp-hub-quiz-anchor" data-height="640"',
+        },
+      },
+    ],
   },
   {
     slug: 'coleebri-service-men',

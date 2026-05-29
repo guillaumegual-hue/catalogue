@@ -12,6 +12,43 @@ function embedIsIntegrated() {
   );
 }
 
+function embedIsDisplayOnly() {
+  const embed = embedConfig();
+  return (
+    !!embed.displayOnly ||
+    !!(window.ColeebriEmbedParams && window.ColeebriEmbedParams.isDisplayOnlyEmbed(embed))
+  );
+}
+
+function embedSerializeTest(test) {
+  if (window.ColeebriEmbedParams && window.ColeebriEmbedParams.serializeTestForParent) {
+    return window.ColeebriEmbedParams.serializeTestForParent(test);
+  }
+  return test
+    ? {
+        id: test.id,
+        code: test.code,
+        name: test.name,
+        section: test.section,
+        tracks: test.tracks || [],
+        turnaround: test.turnaround,
+        price: test.price,
+      }
+    : null;
+}
+
+function embedPostToParent(type, payload) {
+  const msg = { type: type, ...payload };
+  if (window.ColeebriEmbedParams && window.ColeebriEmbedParams.postToEmbedParent) {
+    return window.ColeebriEmbedParams.postToEmbedParent(msg);
+  }
+  if (window.parent && window.parent !== window) {
+    window.parent.postMessage(msg, '*');
+    return true;
+  }
+  return false;
+}
+
 function embedCatalogueHref(opts) {
   const embed = embedConfig();
   if (embedIsIntegrated() && window.ColeebriEmbedParams?.resolveParentNavigateUrl) {
@@ -47,6 +84,10 @@ function embedNavigate(href) {
 }
 
 function embedOpenEnquiry(test) {
+  if (embedIsDisplayOnly()) {
+    embedPostToParent('coleebri-enquire', { test: embedSerializeTest(test) });
+    return;
+  }
   const subject = encodeURIComponent('Test request: ' + test.name);
   const lines = [
     'Hello Coleebri Health,',
@@ -73,9 +114,21 @@ function embedTweaks() {
     primaryAccent: 'teal',
   };
   if (embedIsIntegrated()) {
-    return { ...base, embedIntegrated: true };
+    return {
+      ...base,
+      embedIntegrated: true,
+      embedDisplayOnly: embedIsDisplayOnly(),
+    };
   }
   return base;
+}
+
+function embedParentCompareToggle(test) {
+  embedPostToParent('coleebri-compare', { action: 'toggle', test: embedSerializeTest(test) });
+}
+
+function embedParentListToggle(test) {
+  embedPostToParent('coleebri-list', { action: 'toggle', test: embedSerializeTest(test) });
 }
 
 function EmbedMostOrdered() {
@@ -156,8 +209,11 @@ function embedTrackId(service) {
 
 function EmbedTestGrid() {
   const embed = window.__COLEEBRI_EMBED__ || {};
+  const displayOnly = embedIsDisplayOnly();
   const cart = useCart();
   const [pinned, setPinned] = React.useState([]);
+  const [comparedKeys, setComparedKeys] = React.useState([]);
+  const [listKeys, setListKeys] = React.useState([]);
   const CatalogueTestGrid = window.CatalogueBlocks?.CatalogueTestGrid;
   const filter = window.ColeebriEmbedParams?.filterCatalogueTests;
   const tests = filter
@@ -171,7 +227,24 @@ function EmbedTestGrid() {
     : [];
   const trackId = embedTrackId(embed.service);
   const compareKey = (t) => t.code + t.name;
+
+  React.useEffect(() => {
+    if (!displayOnly) return;
+    const onMessage = (ev) => {
+      if (!ev.data || ev.data.type !== 'coleebri-state') return;
+      if (Array.isArray(ev.data.comparedKeys)) setComparedKeys(ev.data.comparedKeys);
+      if (Array.isArray(ev.data.listKeys)) setListKeys(ev.data.listKeys);
+    };
+    window.addEventListener('message', onMessage);
+    embedPostToParent('coleebri-embed-ready', {});
+    return () => window.removeEventListener('message', onMessage);
+  }, [displayOnly]);
+
   const handleCompare = (test) => {
+    if (displayOnly) {
+      embedParentCompareToggle(test);
+      return;
+    }
     setPinned((prev) => {
       const k = compareKey(test);
       if (prev.find((p) => compareKey(p) === k)) return prev.filter((p) => compareKey(p) !== k);
@@ -180,20 +253,39 @@ function EmbedTestGrid() {
     });
   };
 
+  const handleCart = (test) => {
+    if (displayOnly) {
+      embedParentListToggle(test);
+      return;
+    }
+    cart.toggle(test);
+  };
+
+  const inCartFn = (test) => {
+    if (displayOnly) return listKeys.indexOf(compareKey(test)) !== -1;
+    return cart.has(test);
+  };
+
   if (!CatalogueTestGrid) {
     return <p className="glossary-plain shell">Test catalogue grid is not available.</p>;
   }
+
+  const compared = displayOnly ? comparedKeys : pinned.map(compareKey);
 
   return (
     <CatalogueTestGrid
       trackId={trackId}
       tests={tests}
       tweaks={embedTweaks()}
-      compared={pinned.map(compareKey)}
+      compared={compared}
       onCompare={handleCompare}
-      onOpen={(t) => (embedIsIntegrated() ? embedOpenEnquiry(t) : embedNavigate(embedCatalogueHref({ test: t.id })))}
-      onCart={cart.toggle}
-      inCart={cart.has}
+      onOpen={(t) =>
+        embedIsIntegrated() || displayOnly
+          ? embedOpenEnquiry(t)
+          : embedNavigate(embedCatalogueHref({ test: t.id }))
+      }
+      onCart={handleCart}
+      inCart={inCartFn}
       categoryFilter={embed.category || ''}
       testIdsFilter={embed.testIds && embed.testIds.length ? embed.testIds : null}
     />
