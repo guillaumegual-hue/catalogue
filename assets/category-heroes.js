@@ -98,23 +98,5 @@ window.CATEGORY_HEROES = {
     "intro": "Cannot find what you need? Contact **health@coleebri.com** — we can often arrange additional markers through partner laboratories.",
     "image": "specific-requests.jpg",
     "theme": "specific"
-  },
-  "glossary": {
-    "eyebrow": "Glossary",
-    "heading": "Biomarker glossary",
-    "intro": "Plain-language explanations of what laboratories may measure, with links to trusted UK sources. General information only — not personal medical advice.",
-    "theme": "general"
-  },
-  "glossaire": {
-    "eyebrow": "Glossaire",
-    "heading": "Glossaire des biomarqueurs",
-    "intro": "Explications en langage clair sur ce que les laboratoires peuvent mesurer, avec des liens vers des sources fiables au Royaume-Uni. Informations générales uniquement.",
-    "theme": "general"
-  },
-  "marker-check": {
-    "eyebrow": "Biomarkers",
-    "heading": "Check a marker",
-    "intro": "Look up a biomarker against UK reference guidance — plain-language summary and links for further reading.",
-    "theme": "general"
   }
 };

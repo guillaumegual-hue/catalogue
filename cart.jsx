@@ -247,9 +247,6 @@ function CartDrawer({ cart, open, onClose, onOpenTest }) {
                   Answer the questions above to email
                 </button>
               )}
-              <button type="button" className="btn btn-outline" onClick={() => window.ColeebriPdf.exportCart(cart.items)}>
-                Export list as PDF
-              </button>
               <button type="button" className="btn btn-ghost" onClick={handleClearList}>
                 Clear list
               </button>

@@ -178,7 +178,7 @@ function Hero() {
 }
 
 /* ─── TOPBAR ─────────────────────────────────────────────── */
-function Topbar({ query, setQuery, onQuiz, onCheckMarker, onScrollTop, cartCount, onOpenCart, onExportPdf }) {
+function Topbar({ query, setQuery, onQuiz, onCheckMarker, onScrollTop, cartCount, onOpenCart }) {
   return (
     <header className="topbar no-print">
       <div className="topbar-exit-bar">
@@ -217,10 +217,6 @@ function Topbar({ query, setQuery, onQuiz, onCheckMarker, onScrollTop, cartCount
           <button type="button" className="topbar-action-btn" onClick={onCheckMarker} title="Check a biomarker against UK guidance">
             <Icon.info size={20} />
             <span className="topbar-action-label">Check marker</span>
-          </button>
-          <button type="button" className="topbar-action-btn" onClick={onExportPdf} title="Export full catalogue PDF">
-            <Icon.pdf size={20} />
-            <span className="topbar-action-label">Export PDF</span>
           </button>
           <button type="button" className="topbar-action-btn topbar-action-btn--solid" onClick={onOpenCart} title="View your test list">
             <Icon.cart size={20} />
@@ -346,14 +342,13 @@ function Foot() {
               <a href="#about-our-service">About our service</a> ·{' '}
               <a href="#terms-cancellation">Cancellation</a> ·{' '}
               <a href="#legal-information">Legal</a> ·{' '}
-              <a href="#patient-information">Patient information</a> ·{' '}
-              <a href="integrate.html">Embed catalogue</a>. Need urgent help? Call NHS 111; emergencies 999.
+              <a href="#patient-information">Patient information</a>. Need urgent help? Call NHS 111; emergencies 999.
             </p>
           </div>
         </div>
         <div className="copyright">
           <span>© 2026 Coleebri Groupe. All rights reserved.</span>
-          <span>Catalogue v2026 · Patient edition</span>
+          <span>Catalogue v2026</span>
         </div>
       </div>
     </footer>
@@ -381,9 +376,6 @@ function CompareTable({ tests, onClose, onUnpin }) {
           {window.ColeebriCompliance.SHORT_SERVICE_NOTE}{' '}
           <a href="#about-our-service">About our service</a>.
         </p>
-        <button type="button" className="btn btn-outline" style={{marginBottom: 16}} onClick={() => window.ColeebriPdf.exportCompare(tests)}>
-          <Icon.pdf /> Export comparison PDF
-        </button>
         <div style={{overflowX: 'auto'}}>
           <table className="compare-table">
             <thead>
@@ -578,9 +570,8 @@ function App() {
   const cart = useCart();
   const [query, setQuery] = useState('');
   const pageBoot = readPageBoot();
-  const toolPage = pageBoot && pageBoot.page;
-  const standalonePage = !!(pageBoot && (pageBoot.service || pageBoot.category) && !pageBoot.scroll && !toolPage);
-  const showPageHeader = !!(pageBoot && (standalonePage || toolPage));
+  const standalonePage = !!(pageBoot && (pageBoot.service || pageBoot.category));
+  const showPageHeader = !!standalonePage;
   const [active, setActive] = useState(() => bootInitialActive(pageBoot));
   const [pinned, setPinned] = useState([]);
   const [showCompare, setShowCompare] = useState(false);
@@ -606,26 +597,6 @@ function App() {
   const [categoryFilter, setCategoryFilter] = useState(() => (pageBoot?.category ? pageBoot.category : ''));
   const [testIdsFilter, setTestIdsFilter] = useState(null);
   const [markerCheckQuery, setMarkerCheckQuery] = useState('');
-
-  useEffect(function () {
-    if (pageBoot?.scroll) {
-      const scrollIds = {
-        'patient-information': 'patient-information',
-        'about-our-service': 'about-our-service',
-        'how-results-work': 'how-results-work',
-        'our-laboratories': 'our-laboratories',
-        'cost-transparency': 'cost-transparency',
-        'terms-cancellation': 'terms-cancellation',
-        'legal-information': 'legal-information',
-      };
-      const id = scrollIds[pageBoot.scroll];
-      if (id) {
-        window.setTimeout(function () {
-          document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-        }, 300);
-      }
-    }
-  }, [pageBoot]);
 
   useEffect(function () {
     if (standalonePage) return undefined;
@@ -740,17 +711,16 @@ function App() {
         onScrollTop={scrollTop}
         cartCount={cart.count}
         onOpenCart={() => setShowCart(true)}
-        onExportPdf={() => window.ColeebriPdf.exportFull()}
       />
 
       <main id="top">
-        {!standalonePage && !toolPage && <Hero />}
+        {!standalonePage && <Hero />}
 
         {showPageHeader && pageBoot ? <CategoryPageHeader boot={pageBoot} /> : null}
 
-        {!standalonePage && !toolPage && <TabNav active={active} setActive={setActive} />}
+        {!standalonePage && <TabNav active={active} setActive={setActive} />}
 
-        {MostOrderedSection && !standalonePage && !toolPage && active === 'all' && !query.trim() && !testIdsFilter && (
+        {MostOrderedSection && !standalonePage && active === 'all' && !query.trim() && !testIdsFilter && (
           <MostOrderedSection
             tweaks={tweaks}
             compared={compareKeys}
@@ -762,15 +732,7 @@ function App() {
           />
         )}
 
-        {toolPage === 'glossary' ? (
-          <section className="shell section biomarker-glossary-page" id="biomarker-glossary">
-            {typeof BiomarkerGlossary !== 'undefined' ? <BiomarkerGlossary /> : null}
-          </section>
-        ) : toolPage === 'marker-check' ? (
-          <section className="shell section marker-check-page">
-            {typeof MarkerCheckPanel !== 'undefined' ? <MarkerCheckPanel embedded /> : null}
-          </section>
-        ) : active === 'collection' ? (
+        {active === 'collection' ? (
           <CollectionView />
         ) : (
           <TrackSection
@@ -788,7 +750,7 @@ function App() {
           />
         )}
 
-        {!toolPage ? (
+        {!standalonePage ? (
           <>
             <Compliance />
             <HowResultsWork />

@@ -1,48 +1,27 @@
 # Coleebri Health test catalogue
 
-Single static patient test catalogue: React app for browse/compare/enquire, plus WordPress integration for search and SEO.
+Static catalogue: **full browse** at [`index.html`](index.html) and **one page per category** under [`tests/`](tests/).
 
-## Architecture (hybrid)
+## Production URLs
 
-| Layer | Role |
-|-------|------|
-| **This repo** (`data.js`) | Source of truth; full patient UX |
-| **`/catalogue/` on site** | Hosted copy of this repo (primary browse) |
-| **WordPress plugin** | `coleebri_test` posts for search + landing pages |
-| **Elementor** | Marketing pages + CTAs into catalogue |
+- Full catalogue: `https://health.coleebri.com/catalogue/`
+- Example category: `https://health.coleebri.com/catalogue/tests/mens-health/`
 
-See **[docs/PATIENT-JOURNEY.md](docs/PATIENT-JOURNEY.md)**.
+## Deploy
 
-## What this repo contains
+```bash
+node scripts/build-deploy-zip.mjs
+```
 
-- **Full catalogue** — `index.html` (legacy `Coleebri Patient Catalogue.html` redirects here)
-- **Embeds** — `embed/` + `assets/coleebri-embed.js` (hub/quiz/glossary; not primary for service pages)
-- **WordPress plugin** — `wordpress-plugin/coleebri-health-catalogue/`
-- **Sync** — `scripts/sync-wp-tests.mjs`
+Upload `coleebri-catalogue-deploy.zip` to `public_html/catalogue/`. See [DEPLOY.md](DEPLOY.md).
 
-## Docs
+## WordPress menus
 
-| Doc | Purpose |
-|-----|---------|
-| [docs/PATIENT-JOURNEY.md](docs/PATIENT-JOURNEY.md) | Approved browse/search/enquire flows |
-| [docs/INFOMANIAK-OPS-CHECKLIST.md](docs/INFOMANIAK-OPS-CHECKLIST.md) | Deploy `/catalogue/`, homepage embeds, WC exit |
-| [docs/WOOCOMMERCE-SUNSET.md](docs/WOOCOMMERCE-SUNSET.md) | Replace WC product grids for patient tests |
-| [docs/WP-PLUGIN.md](docs/WP-PLUGIN.md) | Install plugin + sync tests |
-| [docs/WP-SEARCH-POPUP.md](docs/WP-SEARCH-POPUP.md) | Header search popup #2949 |
-| [DEPLOY.md](DEPLOY.md) | GitHub Pages + production `/catalogue/` |
-| [docs/WEBSITE-EMBED.md](docs/WEBSITE-EMBED.md) | Legacy iframe widgets |
-| [docs/PHASE0-ELEMENTOR.md](docs/PHASE0-ELEMENTOR.md) | Category page import |
-| [integrate/elementor/](integrate/elementor/) | Elementor template JSON |
+Copy links from [`tests/urls.json`](tests/urls.json) or [docs/WP-MENUS.md](docs/WP-MENUS.md).
 
-## Local run
+## Local dev
 
 ```bash
 python3 -m http.server 9876
-open http://localhost:9876/
+open "http://localhost:9876/"
 ```
-
-## GitHub Pages (staging)
-
-Push `main` → `https://guillaumegual-hue.github.io/catalogue/`
-
-Production: copy to `https://health.coleebri.com/catalogue/` and set `COLEEBRI_CATALOGUE_BASE` in `wp-config.php`.

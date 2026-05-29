@@ -2,9 +2,9 @@
  * One static HTML page per category — unique URLs for WordPress menus.
  * Regenerate: node scripts/generate-category-pages.mjs
  */
-export const ASSET_VER = '20260607r';
+export const ASSET_VER = '20260608a';
 
-/** @type {Array<{ slug: string, title: string, service?: string, category?: string, scroll?: string }>} */
+/** @type {Array<{ slug: string, title: string, service?: string, category?: string }>} */
 export const CATEGORY_PAGES = [
   { slug: 'all-tests', title: 'All tests', service: 'all' },
   { slug: 'general-health', title: 'General health tests', service: 'general' },
@@ -20,11 +20,15 @@ export const CATEGORY_PAGES = [
   { slug: 'autoimmune', title: 'Autoimmune profiles', category: 'autoimmune' },
   { slug: 'vitamins-minerals', title: 'Vitamins & minerals', category: 'vitamins' },
   { slug: 'specific-requests', title: 'Specific requests', category: 'specific' },
-  { slug: 'patient-information', title: 'Patient information', scroll: 'patient-information' },
-  { slug: 'glossary', title: 'Biomarker glossary', page: 'glossary' },
-  { slug: 'glossaire', title: 'Glossaire des biomarqueurs', page: 'glossary' },
-  { slug: 'marker-check', title: 'Check a marker', page: 'marker-check' },
 ];
 
-/** Old slugs → canonical slug (301-style HTML redirect pages). */
+/** Slug redirects under /tests/{from}/ → /tests/{to}/ */
 export const CATEGORY_REDIRECTS = [{ from: 'paternity-dna', to: 'dna' }];
+
+/** Retired URLs → full catalogue with hash */
+export const CATALOGUE_ROOT_REDIRECTS = [
+  { from: 'glossary', hash: '#biomarker-glossary' },
+  { from: 'glossaire', hash: '#biomarker-glossary' },
+  { from: 'marker-check', hash: '' },
+  { from: 'patient-information', hash: '#patient-information' },
+];
