@@ -1,40 +1,47 @@
-# WordPress audit — 2026-05-29
+# WordPress audit — 2026-05-29 (updated)
 
 Site: **Coleebri Health** — https://health.coleebri.com/en/
+
+## Target architecture
+
+See [PATIENT-JOURNEY.md](PATIENT-JOURNEY.md). Summary:
+
+- Catalogue static files at `/catalogue/`
+- Plugin **Coleebri Health Catalogue** (`coleebri_test` CPT + search)
+- Service pages: Elementor CTAs, not test iframes
 
 ## Plugins (relevant)
 
 | Plugin | Status | Notes |
 |--------|--------|--------|
-| **Coleebri Health Catalogue Embed** | **Not installed** | Required for `[coleebri_catalogue]` shortcodes |
-| coleebri-health-catalogue (fat) | Not present | Good — avoid re-activating |
-| **Elementor** (free) | **Inactive** | Activate for shortcode widget + imports |
-| **Elementor Pro** | Active | Theme builder / Pro widgets |
-| WooCommerce | Active | Legacy product grids on some pages |
-| WordPress MCP | Inactive in UI | API still reachable for agents |
-
-## Pages
-
-- No published pages found with `coleebri_catalogue` shortcode yet.
-- **blood-tests** (ID 990926) — WooCommerce product grid, not patient catalogue embed.
-- Category pilot pages created via API — see slugs under `tests/` (mens-health, etc.).
+| **Coleebri Health Catalogue** | **Install from repo zip** | [`wordpress-plugin/coleebri-health-catalogue.zip`](../wordpress-plugin/coleebri-health-catalogue.zip) |
+| Elementor (free) | Activate | Templates + popups |
+| Elementor Pro | Active | Theme builder |
+| WooCommerce | Active | Legacy product grids — not patient catalogue |
+| WordPress MCP | Optional | REST sync via `scripts/sync-wp-tests.mjs` |
 
 ## Configuration
 
-- **`COLEEBRI_CATALOGUE_BASE`** — not readable via REST; set in `wp-config.php` to staging:
-  ```php
-  define( 'COLEEBRI_CATALOGUE_BASE', 'https://guillaumegual-hue.github.io/catalogue/' );
-  ```
-- Until the embed plugin is installed, Elementor **HTML** widgets can load the catalogue via `data-coleebri-embed` + script (see `integrate.html`).
+```php
+define( 'COLEEBRI_CATALOGUE_BASE', 'https://health.coleebri.com/catalogue/' );
+```
 
-## Actions required (human)
+Staging until cutover:
 
-1. **Plugins → Add New → Upload** [`wordpress-plugin/coleebri-catalogue.zip`](../wordpress-plugin/coleebri-catalogue.zip) → Activate.
-2. **Activate Elementor** (free) alongside Elementor Pro.
-3. Add `COLEEBRI_CATALOGUE_BASE` in `wp-config.php` (above).
-4. Open each new page in Elementor → **Regenerate CSS** if layout looks unstyled.
+```php
+define( 'COLEEBRI_CATALOGUE_BASE', 'https://guillaumegual-hue.github.io/catalogue/' );
+```
+
+## Actions required
+
+1. Build/upload plugin: `node scripts/build-wp-plugin-zip.mjs` → activate.
+2. Set `COLEEBRI_CATALOGUE_BASE` in `wp-config.php`.
+3. `node scripts/sync-wp-tests.mjs` (see `.env` in [WP-PLUGIN.md](WP-PLUGIN.md)).
+4. Re-import `coleebri-service-*.json` Elementor templates (CTA layout).
+5. Update search popup #2949 — [WP-SEARCH-POPUP.md](WP-SEARCH-POPUP.md).
+6. Deploy static catalogue to `/catalogue/` — [DEPLOY.md](../DEPLOY.md).
 
 ## Hosted catalogue
 
 - Staging: https://guillaumegual-hue.github.io/catalogue/
-- Production (later): https://health.coleebri.com/catalogue/
+- Production: https://health.coleebri.com/catalogue/

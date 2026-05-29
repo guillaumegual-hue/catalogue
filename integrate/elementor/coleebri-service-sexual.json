@@ -1,7 +1,52 @@
 {
   "content": [
     {
-      "id": "6df76fb",
+      "id": "43b6e73",
+      "elType": "container",
+      "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+          "unit": "px",
+          "size": 16,
+          "column": "16",
+          "row": "16",
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "40",
+          "right": "20",
+          "bottom": "8",
+          "left": "20",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "3fddf2b",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Sexual health tests",
+            "header_size": "h1",
+            "align": "left"
+          },
+          "elements": []
+        },
+        {
+          "id": "e7df41c",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p>Confidential STI screening.</p>"
+          },
+          "elements": []
+        }
+      ]
+    },
+    {
+      "id": "4dfc4f2",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -24,11 +69,85 @@
       },
       "elements": [
         {
-          "id": "f28e91f",
+          "id": "ce41aed",
           "elType": "widget",
-          "widgetType": "html",
+          "widgetType": "heading",
           "settings": {
-            "html": "<div data-coleebri-embed=\"tests\" data-coleebri-base=\"https://guillaumegual-hue.github.io/catalogue/\" data-branding=\"none\" data-site=\"https://health.coleebri.com/en\" data-integrated=\"1\" data-transparent=\"1\" data-service=\"sexual\" data-height=\"880\"></div><script src=\"https://guillaumegual-hue.github.io/catalogue/assets/coleebri-embed.js?v=20260531a\" data-base=\"https://guillaumegual-hue.github.io/catalogue/\"><\\/script>"
+            "title": "Browse tests",
+            "header_size": "h2",
+            "align": "left"
+          },
+          "elements": []
+        },
+        {
+          "id": "af7dd24",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p>Open the patient catalogue to search, compare markers, add tests to your list, and send an enquiry.</p>"
+          },
+          "elements": []
+        },
+        {
+          "id": "76ac382",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html#service=sexual\">View all tests in the catalogue</a></p>"
+          },
+          "elements": []
+        }
+      ]
+    },
+    {
+      "id": "e0eed48",
+      "elType": "container",
+      "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+          "unit": "px",
+          "size": 16,
+          "column": "16",
+          "row": "16",
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "24",
+          "right": "20",
+          "bottom": "24",
+          "left": "20",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "25bf647",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Need help choosing?",
+            "header_size": "h2",
+            "align": "left"
+          },
+          "elements": []
+        },
+        {
+          "id": "cff0622",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p>Use the quiz and biomarker tools in the full catalogue.</p>"
+          },
+          "elements": []
+        },
+        {
+          "id": "6888ef0",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html#top\">Open full catalogue</a></p>"
           },
           "elements": []
         }

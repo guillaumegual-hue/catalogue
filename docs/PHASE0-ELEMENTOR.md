@@ -1,14 +1,14 @@
 # Phase 0 — one WordPress page per service category
 
-Adds **General Health**, **Women's**, **Men's**, **Sexual**, **Fitness & Allergies**, and **DNA** browse pages on top of your existing site. Uses your catalogue **test card UI** (not WooCommerce shop grids yet).
+Adds **General Health**, **Women's**, **Men's**, **Sexual**, **Fitness & Allergies**, and **DNA** pages with **CTAs into the full catalogue** (hybrid model — see [PATIENT-JOURNEY.md](PATIENT-JOURNEY.md)).
 
 ## Prerequisites
 
 - [ ] Catalogue hosted (GitHub Pages or `/catalogue/` on server) — see [DEPLOY.md](../DEPLOY.md)
 - [ ] **Elementor** (free) + **Elementor Pro** active
-- [ ] Plugin **Coleebri Health Catalogue Embed** (`coleebri-catalogue.zip`) active — **not** `coleebri-health-catalogue`
-- [ ] `COLEEBRI_CATALOGUE_BASE` in `wp-config.php` points at catalogue URL (trailing slash)
-- [ ] Activate **Elementor** free if it is still inactive
+- [ ] Plugin **Coleebri Health Catalogue** — [WP-PLUGIN.md](WP-PLUGIN.md)
+- [ ] `COLEEBRI_CATALOGUE_BASE` in `wp-config.php` (trailing slash)
+- [ ] Run `node scripts/generate-elementor-import.mjs` before importing templates
 
 ## Pages to create
 

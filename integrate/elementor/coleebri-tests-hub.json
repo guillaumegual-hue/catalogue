@@ -1,7 +1,7 @@
 {
   "content": [
     {
-      "id": "09acf1d",
+      "id": "06726f8",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -24,7 +24,7 @@
       },
       "elements": [
         {
-          "id": "cb47794",
+          "id": "399ee5d",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -35,7 +35,7 @@
           "elements": []
         },
         {
-          "id": "2fcb4b7",
+          "id": "fd5c1f0",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "6667585",
+      "id": "5b4e037",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -69,7 +69,7 @@
       },
       "elements": [
         {
-          "id": "71a7f6a",
+          "id": "a9c6e2a",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -80,7 +80,7 @@
           "elements": []
         },
         {
-          "id": "6b7f302",
+          "id": "a4676a1",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
@@ -89,11 +89,11 @@
           "elements": []
         },
         {
-          "id": "2566c67",
+          "id": "43dfae9",
           "elType": "widget",
           "widgetType": "html",
           "settings": {
-            "html": "<div data-coleebri-embed=\"quiz\" data-coleebri-base=\"https://guillaumegual-hue.github.io/catalogue/\" data-branding=\"none\" data-site=\"https://health.coleebri.com/en\" data-integrated=\"1\" data-transparent=\"1\" id=\"coleebri-hub-quiz\" class=\"coleebri-wp-hub-quiz-anchor\" data-height=\"640\"></div><script src=\"https://guillaumegual-hue.github.io/catalogue/assets/coleebri-embed.js?v=20260531a\" data-base=\"https://guillaumegual-hue.github.io/catalogue/\"><\\/script>"
+            "html": "<div data-coleebri-embed=\"quiz\" data-coleebri-base=\"https://health.coleebri.com/catalogue/\" data-branding=\"none\" data-site=\"https://health.coleebri.com/en\" data-integrated=\"1\" data-transparent=\"1\" id=\"coleebri-hub-quiz\" class=\"coleebri-wp-hub-quiz-anchor\" data-height=\"640\"></div><script src=\"https://health.coleebri.com/catalogue/assets/coleebri-embed.js?v=20260606d\" data-base=\"https://health.coleebri.com/catalogue/\"><\\/script>"
           },
           "elements": []
         }

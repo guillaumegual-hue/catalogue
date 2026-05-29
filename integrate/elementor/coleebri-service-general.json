@@ -1,7 +1,52 @@
 {
   "content": [
     {
-      "id": "43096a5",
+      "id": "4440b33",
+      "elType": "container",
+      "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+          "unit": "px",
+          "size": 16,
+          "column": "16",
+          "row": "16",
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "40",
+          "right": "20",
+          "bottom": "8",
+          "left": "20",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "fbe2cae",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "General health tests",
+            "header_size": "h1",
+            "align": "left"
+          },
+          "elements": []
+        },
+        {
+          "id": "250cc0d",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p>Routine blood work, profiles and screening for everyday health.</p>"
+          },
+          "elements": []
+        }
+      ]
+    },
+    {
+      "id": "a3632fa",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -24,11 +69,85 @@
       },
       "elements": [
         {
-          "id": "4f32d88",
+          "id": "782c4a3",
           "elType": "widget",
-          "widgetType": "html",
+          "widgetType": "heading",
           "settings": {
-            "html": "<div data-coleebri-embed=\"tests\" data-coleebri-base=\"https://guillaumegual-hue.github.io/catalogue/\" data-branding=\"none\" data-site=\"https://health.coleebri.com/en\" data-integrated=\"1\" data-transparent=\"1\" data-service=\"general\" data-height=\"900\"></div><script src=\"https://guillaumegual-hue.github.io/catalogue/assets/coleebri-embed.js?v=20260531a\" data-base=\"https://guillaumegual-hue.github.io/catalogue/\"><\\/script>"
+            "title": "Browse tests",
+            "header_size": "h2",
+            "align": "left"
+          },
+          "elements": []
+        },
+        {
+          "id": "7b4c3a8",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p>Open the patient catalogue to search, compare markers, add tests to your list, and send an enquiry.</p>"
+          },
+          "elements": []
+        },
+        {
+          "id": "0b1f661",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html#service=general\">View all tests in the catalogue</a></p>"
+          },
+          "elements": []
+        }
+      ]
+    },
+    {
+      "id": "3a9a7ad",
+      "elType": "container",
+      "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+          "unit": "px",
+          "size": 16,
+          "column": "16",
+          "row": "16",
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "24",
+          "right": "20",
+          "bottom": "24",
+          "left": "20",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "83b54c5",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Need help choosing?",
+            "header_size": "h2",
+            "align": "left"
+          },
+          "elements": []
+        },
+        {
+          "id": "0e532e5",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p>Use the quiz and biomarker tools in the full catalogue.</p>"
+          },
+          "elements": []
+        },
+        {
+          "id": "5e9733a",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html#top\">Open full catalogue</a></p>"
           },
           "elements": []
         }

@@ -7,6 +7,8 @@
 import { writeFileSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { loadCatalogueData } from './load-catalogue-data.mjs';
+import { catalogueDeepLink, catalogueBase, WP_SITE_BASE } from './catalogue-config.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const outDir = join(root, 'integrate', 'elementor');
@@ -92,6 +94,13 @@ function buildPage({ title, intro, blocks, embedOnly = false }) {
     const kids = [];
     if (block.heading) kids.push(headingWidget(block.heading, 'h2'));
     if (block.note) kids.push(textWidget(`<p>${block.note}</p>`));
+    if (block.cta) {
+      kids.push(
+        textWidget(
+          `<p class="coleebri-wp-cta"><a class="coleebri-catalogue-cta" href="${block.cta.href}">${block.cta.label}</a></p>`
+        )
+      );
+    }
     if (block.htmlWidget) {
       kids.push({
         id: eid(),
@@ -106,8 +115,8 @@ function buildPage({ title, intro, blocks, embedOnly = false }) {
       const m = block.shortcode.match(/widget="([^"]+)"/);
       const widget = m ? m[1] : 'tests';
       kids.push(htmlWidget(widget, block.htmlAttrs));
-    } else kids.push(shortcodeWidget(block.shortcode));
-    elements.push(sectionContainer(kids, { padding: block.padding }));
+    } else if (block.shortcode) kids.push(shortcodeWidget(block.shortcode));
+    if (kids.length) elements.push(sectionContainer(kids, { padding: block.padding }));
   }
   return {
     content: elements,
@@ -118,9 +127,41 @@ function buildPage({ title, intro, blocks, embedOnly = false }) {
   };
 }
 
-const CATALOGUE_BASE = 'https://guillaumegual-hue.github.io/catalogue/';
-const WP_SITE_BASE = 'https://health.coleebri.com/en';
-const ASSET_VER = '20260531a';
+const CATALOGUE_BASE = catalogueBase();
+const ASSET_VER = '20260606d';
+const { tracks } = loadCatalogueData();
+const trackById = Object.fromEntries(tracks.map((t) => [t.id, t]));
+
+function servicePage(title, trackId, slug, opts = {}) {
+  const t = trackById[trackId] || {};
+  const filter = opts.category
+    ? { category: opts.category }
+    : { service: trackId };
+  return {
+    slug,
+    title,
+    intro: t.blurb || opts.intro || '',
+    blocks: [
+      {
+        heading: 'Browse tests',
+        note:
+          'Open the patient catalogue to search, compare markers, add tests to your list, and send an enquiry.',
+        cta: {
+          label: 'View all tests in the catalogue',
+          href: catalogueDeepLink(filter, CATALOGUE_BASE),
+        },
+      },
+      {
+        heading: 'Need help choosing?',
+        note: 'Use the quiz and biomarker tools in the full catalogue.',
+        cta: {
+          label: 'Open full catalogue',
+          href: catalogueDeepLink({}, CATALOGUE_BASE),
+        },
+      },
+    ],
+  };
+}
 
 const EMBED_INTEGRATED =
   ' data-branding="none" data-site="' + WP_SITE_BASE + '" data-integrated="1"';
@@ -180,58 +221,17 @@ const PAGES = [
       },
     ],
   },
-  {
-    slug: 'coleebri-service-men',
-    title: "Men's health tests",
-    embedOnly: true,
-    blocks: [{ shortcode: sc('tests', 'service="men" height="900"'), htmlAttrs: ' data-service="men" data-height="900"' }],
-  },
-  {
-    slug: 'coleebri-service-women',
-    title: "Women's health tests",
-    embedOnly: true,
-    blocks: [{ shortcode: sc('tests', 'service="women" height="900"'), htmlAttrs: ' data-service="women" data-height="900"' }],
-  },
-  {
-    slug: 'coleebri-service-general',
-    title: 'General health tests',
-    embedOnly: true,
-    blocks: [{ shortcode: sc('tests', 'service="general" height="900"'), htmlAttrs: ' data-service="general" data-height="900"' }],
-  },
-  {
-    slug: 'coleebri-service-sexual',
-    title: 'Sexual health tests',
-    embedOnly: true,
-    blocks: [{ shortcode: sc('tests', 'service="sexual" height="880"'), htmlAttrs: ' data-service="sexual" data-height="880"' }],
-  },
-  {
-    slug: 'coleebri-service-fitness',
-    title: 'Fitness & wellbeing tests',
-    embedOnly: true,
-    blocks: [
-      {
-        shortcode: sc('tests', 'category="fitness" height="900"'),
-        htmlAttrs: ' data-category="fitness" data-height="900"',
-      },
-    ],
-  },
-  {
-    slug: 'coleebri-service-allergies',
-    title: 'Allergies & sensitivities tests',
-    embedOnly: true,
-    blocks: [
-      {
-        shortcode: sc('tests', 'category="allergies" height="880"'),
-        htmlAttrs: ' data-category="allergies" data-height="880"',
-      },
-    ],
-  },
-  {
-    slug: 'coleebri-service-dna',
-    title: 'DNA tests',
-    embedOnly: true,
-    blocks: [{ shortcode: sc('tests', 'service="dna" height="900"'), htmlAttrs: ' data-service="dna" data-height="900"' }],
-  },
+  servicePage("Men's health tests", 'men', 'coleebri-service-men'),
+  servicePage("Women's health tests", 'women', 'coleebri-service-women'),
+  servicePage('General health tests', 'general', 'coleebri-service-general'),
+  servicePage('Sexual health tests', 'sexual', 'coleebri-service-sexual'),
+  servicePage('Fitness & wellbeing tests', 'fitness', 'coleebri-service-fitness', {
+    category: 'fitness',
+  }),
+  servicePage('Allergies & sensitivities tests', 'allergies', 'coleebri-service-allergies', {
+    category: 'allergies',
+  }),
+  servicePage('DNA tests', 'dna', 'coleebri-service-dna'),
   {
     slug: 'coleebri-section-paternity',
     title: 'Paternity & DNA (section)',

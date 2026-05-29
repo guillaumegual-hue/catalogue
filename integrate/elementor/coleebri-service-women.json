@@ -1,7 +1,52 @@
 {
   "content": [
     {
-      "id": "2331283",
+      "id": "f0ce88b",
+      "elType": "container",
+      "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+          "unit": "px",
+          "size": 16,
+          "column": "16",
+          "row": "16",
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "40",
+          "right": "20",
+          "bottom": "8",
+          "left": "20",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "9130243",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Women's health tests",
+            "header_size": "h1",
+            "align": "left"
+          },
+          "elements": []
+        },
+        {
+          "id": "3c32853",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p>Cycle, fertility, menopause and women-focused wellness panels.</p>"
+          },
+          "elements": []
+        }
+      ]
+    },
+    {
+      "id": "8857c87",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -24,11 +69,85 @@
       },
       "elements": [
         {
-          "id": "2c1b677",
+          "id": "d812002",
           "elType": "widget",
-          "widgetType": "html",
+          "widgetType": "heading",
           "settings": {
-            "html": "<div data-coleebri-embed=\"tests\" data-coleebri-base=\"https://guillaumegual-hue.github.io/catalogue/\" data-branding=\"none\" data-site=\"https://health.coleebri.com/en\" data-integrated=\"1\" data-transparent=\"1\" data-service=\"women\" data-height=\"900\"></div><script src=\"https://guillaumegual-hue.github.io/catalogue/assets/coleebri-embed.js?v=20260531a\" data-base=\"https://guillaumegual-hue.github.io/catalogue/\"><\\/script>"
+            "title": "Browse tests",
+            "header_size": "h2",
+            "align": "left"
+          },
+          "elements": []
+        },
+        {
+          "id": "6186ba9",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p>Open the patient catalogue to search, compare markers, add tests to your list, and send an enquiry.</p>"
+          },
+          "elements": []
+        },
+        {
+          "id": "d3dbe6d",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html#service=women\">View all tests in the catalogue</a></p>"
+          },
+          "elements": []
+        }
+      ]
+    },
+    {
+      "id": "b281b16",
+      "elType": "container",
+      "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+          "unit": "px",
+          "size": 16,
+          "column": "16",
+          "row": "16",
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "24",
+          "right": "20",
+          "bottom": "24",
+          "left": "20",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "27ac26f",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Need help choosing?",
+            "header_size": "h2",
+            "align": "left"
+          },
+          "elements": []
+        },
+        {
+          "id": "3a480b2",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p>Use the quiz and biomarker tools in the full catalogue.</p>"
+          },
+          "elements": []
+        },
+        {
+          "id": "3bfa3e4",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html#top\">Open full catalogue</a></p>"
           },
           "elements": []
         }

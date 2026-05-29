@@ -1069,6 +1069,26 @@ main {
   box-sizing: border-box;
 }
 
+/* WordPress Elementor CTAs → full catalogue */
+.coleebri-catalogue-cta,
+.coleebri-wp-cta a {
+  display: inline-block;
+  padding: 14px 28px;
+  background: var(--forest);
+  color: #fff !important;
+  border-radius: 999px;
+  text-decoration: none !important;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.15s;
+}
+
+.coleebri-catalogue-cta:hover,
+.coleebri-wp-cta a:hover {
+  background: var(--forest-deep);
+}
+
 /* ─── Modals & drawers ─── */
 .overlay {
   padding: var(--content-gutter);

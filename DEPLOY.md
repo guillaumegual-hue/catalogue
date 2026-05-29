@@ -35,9 +35,16 @@ Test:
 - `.../embed/?widget=tests&service=men&branding=none`
 - `.../Coleebri%20Patient%20Catalogue.html`
 
-## 2. WordPress embed (Elementor HTML widget)
+## 2. WordPress plugin + sync
 
-No plugin. Paste the snippet from [docs/WEBSITE-EMBED.md](docs/WEBSITE-EMBED.md) or `integrate/elementor/coleebri-service-general.json`, with `data-coleebri-base` set to your GitHub Pages or production catalogue URL.
+Install [`wordpress-plugin/coleebri-health-catalogue.zip`](wordpress-plugin/coleebri-health-catalogue.zip) (build with `node scripts/build-wp-plugin-zip.mjs`).
+
+See **[docs/WP-PLUGIN.md](docs/WP-PLUGIN.md)** and **[docs/PATIENT-JOURNEY.md](docs/PATIENT-JOURNEY.md)**.
+
+```bash
+node scripts/export-catalogue-json.mjs
+node scripts/sync-wp-tests.mjs
+```
 
 ## 3. Phase 0 — category pages (Elementor)
 
@@ -47,28 +54,38 @@ Import each `integrate/elementor/coleebri-service-*.json` template, publish unde
 
 ## 4. Production cutover (same server as WordPress)
 
-1. Upload this repo root (excluding `export/`, `.git`) to:
+Checklist:
 
-```text
-public_html/catalogue/
-```
+1. Upload this repo root (excluding `export/`, `.git`, `wordpress-plugin/`) to:
 
-2. Update `wp-config.php`:
+   ```text
+   public_html/catalogue/
+   ```
 
-```php
-define( 'COLEEBRI_CATALOGUE_BASE', 'https://health.coleebri.com/catalogue/' );
-```
+2. Verify:
 
-3. Settings → Permalinks → Save.
+   - `https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html`
+   - `https://health.coleebri.com/catalogue/embed/?widget=quiz&branding=none`
 
-Optional: use `.github/workflows/deploy-production.yml` with SFTP secrets (configure host/path first).
+3. `wp-config.php`:
 
-## 5. Site recovery (if old full plugin broke the site)
+   ```php
+   define( 'COLEEBRI_CATALOGUE_BASE', 'https://health.coleebri.com/catalogue/' );
+   ```
 
-1. Deactivate or remove `coleebri-health-catalogue` via FTP.
-2. Trash bad import products (SKU `-`).
-3. WooCommerce → Status → Tools → regenerate tables.
-4. Use **coleebri-catalogue** embed plugin only.
+4. WordPress → **Settings → Permalinks → Save**.
+
+5. Re-import Elementor service templates (`node scripts/generate-elementor-import.mjs`) — CTAs point at production catalogue, no test iframes.
+
+6. Update header search popup — [docs/WP-SEARCH-POPUP.md](docs/WP-SEARCH-POPUP.md).
+
+7. Run `node scripts/sync-wp-tests.mjs` after each `data.js` update.
+
+Optional: `.github/workflows/deploy-production.yml` with SFTP secrets.
+
+## 5. Legacy iframe embeds
+
+Service pages should use **catalogue CTAs**, not `widget=tests` iframes. Hub widgets (quiz, glossary) may still use [docs/WEBSITE-EMBED.md](docs/WEBSITE-EMBED.md).
 
 ## Local dev
 

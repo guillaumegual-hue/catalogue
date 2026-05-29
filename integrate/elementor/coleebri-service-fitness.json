@@ -1,7 +1,52 @@
 {
   "content": [
     {
-      "id": "9c1a458",
+      "id": "523db77",
+      "elType": "container",
+      "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+          "unit": "px",
+          "size": 16,
+          "column": "16",
+          "row": "16",
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "40",
+          "right": "20",
+          "bottom": "8",
+          "left": "20",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "13b0d33",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Fitness & wellbeing tests",
+            "header_size": "h1",
+            "align": "left"
+          },
+          "elements": []
+        },
+        {
+          "id": "fa11861",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p>Sports performance and wellbeing panels.</p>"
+          },
+          "elements": []
+        }
+      ]
+    },
+    {
+      "id": "08beafc",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -24,11 +69,85 @@
       },
       "elements": [
         {
-          "id": "35628d5",
+          "id": "d15b64f",
           "elType": "widget",
-          "widgetType": "html",
+          "widgetType": "heading",
           "settings": {
-            "html": "<div data-coleebri-embed=\"tests\" data-coleebri-base=\"https://guillaumegual-hue.github.io/catalogue/\" data-branding=\"none\" data-site=\"https://health.coleebri.com/en\" data-integrated=\"1\" data-transparent=\"1\" data-category=\"fitness\" data-height=\"900\"></div><script src=\"https://guillaumegual-hue.github.io/catalogue/assets/coleebri-embed.js?v=20260531a\" data-base=\"https://guillaumegual-hue.github.io/catalogue/\"><\\/script>"
+            "title": "Browse tests",
+            "header_size": "h2",
+            "align": "left"
+          },
+          "elements": []
+        },
+        {
+          "id": "00c7e90",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p>Open the patient catalogue to search, compare markers, add tests to your list, and send an enquiry.</p>"
+          },
+          "elements": []
+        },
+        {
+          "id": "e9d2ec7",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html#category=fitness\">View all tests in the catalogue</a></p>"
+          },
+          "elements": []
+        }
+      ]
+    },
+    {
+      "id": "2d7aa91",
+      "elType": "container",
+      "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+          "unit": "px",
+          "size": 16,
+          "column": "16",
+          "row": "16",
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "24",
+          "right": "20",
+          "bottom": "24",
+          "left": "20",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "c68c304",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Need help choosing?",
+            "header_size": "h2",
+            "align": "left"
+          },
+          "elements": []
+        },
+        {
+          "id": "b7ca4af",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p>Use the quiz and biomarker tools in the full catalogue.</p>"
+          },
+          "elements": []
+        },
+        {
+          "id": "149736c",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html#top\">Open full catalogue</a></p>"
           },
           "elements": []
         }
