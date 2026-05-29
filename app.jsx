@@ -24,6 +24,18 @@ function readPageBoot() {
   return window.COLEEBRI_CATALOGUE_PAGE || null;
 }
 
+function catalogueMainSiteUrl() {
+  return (window.ColeebriCatalogueSite && window.ColeebriCatalogueSite.home) || 'https://health.coleebri.com/en/';
+}
+
+function CatalogueExitLink({ className }) {
+  return (
+    <a className={'catalogue-exit-link' + (className ? ' ' + className : '')} href={catalogueMainSiteUrl()}>
+      Exit catalogue
+    </a>
+  );
+}
+
 function bootInitialActive(boot) {
   if (!boot) return 'all';
   if (boot.scroll) return 'all';
@@ -129,6 +141,11 @@ function CategoryPageHeader({ boot }) {
       </div>
       {Footnote ? <Footnote /> : null}
       <p className="category-page-header__tools">
+        <CatalogueExitLink />
+        <span className="category-page-header__tools-sep" aria-hidden="true">
+          {' '}
+          ·{' '}
+        </span>
         <a href={catalogueHref}>Full catalogue</a>
         <span className="category-page-header__tools-note"> — search, compare, quiz</span>
       </p>
@@ -171,9 +188,12 @@ function Topbar({ query, setQuery, onQuiz, onCheckMarker, onScrollTop, cartCount
   return (
     <header className="topbar no-print">
       <div className="topbar-inner shell">
-        <a className="brand" href="#top" onClick={(e) => { e.preventDefault(); onScrollTop(); }}>
-          <img src="https://health.coleebri.com/wp-content/uploads/sites/12/2025/02/Fichier-7@2x.png" alt="Coleebri Health" />
-        </a>
+        <div className="topbar-start">
+          <a className="brand" href="#top" onClick={(e) => { e.preventDefault(); onScrollTop(); }}>
+            <img src="https://health.coleebri.com/wp-content/uploads/sites/12/2025/02/Fichier-7@2x.png" alt="Coleebri Health" />
+          </a>
+          <CatalogueExitLink className="catalogue-exit-link--topbar" />
+        </div>
         <div className="search">
           <Icon.search />
           <input
@@ -298,6 +318,9 @@ function Foot() {
   return (
     <footer className="foot">
       <div className="shell">
+        <p className="foot-exit no-print">
+          <CatalogueExitLink className="catalogue-exit-link--foot" />
+        </p>
         <div className="foot-grid">
           <div>
             <img src="https://health.coleebri.com/wp-content/uploads/sites/12/2025/02/Fichier-7@2x.png" alt="Coleebri Health" style={{height: 40, marginBottom: 14, filter: 'brightness(0) invert(1)'}} />

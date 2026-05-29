@@ -48,6 +48,7 @@ window.COLEEBRI_CATALOGUE_PAGE = ${escapeJson(boot)};
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin></script>
+<script src="${assetRoot}assets/catalogue-site.js?v=${ASSET_VER}"></script>
 <script src="${assetRoot}assets/coleebri-embed-params.js?v=${ASSET_VER}"></script>
 <script src="${assetRoot}data.js?v=${ASSET_VER}"></script>
 <script src="${assetRoot}pricing.js"></script>

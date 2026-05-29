@@ -60,6 +60,15 @@ a.coleebri-embed__brand-name:hover {
   color: var(--vital);
 }
 
+.coleebri-embed__brand-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
 .coleebri-embed__brand-link {
   display: inline-flex;
   align-items: center;
@@ -74,6 +83,12 @@ a.coleebri-embed__brand-name:hover {
   background: var(--calm);
   border: 1px solid var(--trustline);
   flex-shrink: 0;
+}
+
+.coleebri-embed__exit-link {
+  background: var(--paper-2);
+  border-color: var(--border);
+  color: var(--deep-cove);
 }
 
 .coleebri-embed__brand-link:hover {
@@ -94,7 +109,8 @@ html.coleebri-embed-no-brand .coleebri-embed__brand {
   display: none !important;
 }
 
-.coleebri-embed--no-link .coleebri-embed__brand-link {
+.coleebri-embed--no-link .coleebri-embed__brand-link,
+.coleebri-embed--no-link .coleebri-embed__exit-link {
   display: none !important;
 }
 

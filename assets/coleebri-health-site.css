@@ -122,8 +122,63 @@ main {
   overflow: visible;
 }
 
+.topbar-start {
+  display: flex;
+  align-items: center;
+  gap: 10px 12px;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
 .topbar .brand img {
   height: 36px;
+}
+
+.catalogue-exit-link {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--forest-deep);
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--paper-2);
+  line-height: 1.2;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.catalogue-exit-link:hover {
+  background: var(--calm);
+  border-color: var(--trustline);
+  color: var(--harbour);
+  text-decoration: underline;
+}
+
+.catalogue-exit-link--topbar {
+  flex-shrink: 0;
+}
+
+.foot-exit {
+  margin: 0 0 20px;
+}
+
+.catalogue-exit-link--foot {
+  display: inline-flex;
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.catalogue-exit-link--foot:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.55);
+  color: #fff;
+}
+
+.category-page-header__tools-sep {
+  color: var(--ink-3);
 }
 
 .topbar .search {
@@ -2974,9 +3029,21 @@ main#top > section#collection-info {
     align-items: center;
   }
 
-  .topbar .brand {
+  .topbar-start {
     flex: 1 1 auto;
     min-width: 0;
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+
+  .topbar .brand {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  .catalogue-exit-link--topbar {
+    font-size: 0.76rem;
+    padding: 6px 10px;
   }
 
   .topbar .search {
