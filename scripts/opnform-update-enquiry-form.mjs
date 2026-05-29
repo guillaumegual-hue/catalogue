@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Repair enquiry form fields + design (OpnForm 1.x uses type "text", not short_text).
+ * Sync enquiry form from data.js (all catalogue tests + blue logo).
  * Usage: source .env && node scripts/opnform-update-enquiry-form.mjs [form-id]
  */
 import { readFileSync } from 'fs';
@@ -14,37 +14,42 @@ import {
   getForm,
   requireToken,
 } from './opnform-lib.mjs';
+import {
+  buildEnquiryProperties,
+  loadCatalogue,
+  LOGO_URL,
+  CATALOGUE_URL,
+} from './opnform-enquiry-properties.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const cfg = getConfig();
 requireToken(cfg.token);
 
 const formId = process.argv[2] || process.env.COLEEBRI_OPNFORM_ENQUIRY_ID || '10';
-const patch = JSON.parse(
-  readFileSync(join(root, 'integrate/opnform/test-enquiry-payload.json'), 'utf8')
-);
+const { tests, sections } = loadCatalogue();
+const catalogueUrl =
+  process.env.COLEEBRI_CATALOGUE_PUBLIC_URL || CATALOGUE_URL;
 
 const existing = await getForm(cfg, { id: String(formId) });
 const themeCss = readFileSync(join(root, 'assets/opnform-coleebri-theme.css'), 'utf8');
 
 const body = {
-  title: patch.title,
-  visibility: existing.visibility || patch.visibility,
-  language: existing.language || patch.language,
-  theme: patch.theme,
-  presentation_style: patch.presentation_style,
-  dark_mode: patch.dark_mode,
-  color: patch.color,
-  width: patch.width,
-  size: patch.size,
+  title: 'Test enquiry — Coleebri Health',
+  visibility: existing.visibility || 'public',
+  language: existing.language || 'en',
+  theme: 'default',
+  presentation_style: 'classic',
+  dark_mode: 'light',
+  color: '#00889a',
+  width: 'centered',
+  size: 'md',
   border_radius: 'full',
-  uppercase_labels: patch.uppercase_labels,
-  no_branding: patch.no_branding,
+  uppercase_labels: false,
+  no_branding: true,
   transparent_background: false,
-  submit_button_text: patch.submit_button_text,
-  logo_picture:
-    'https://health.coleebri.com/wp-content/uploads/sites/12/2025/02/Fichier-7@2x.png',
-  properties: patch.properties,
+  submit_button_text: 'Send enquiry',
+  logo_picture: process.env.COLEEBRI_LOGO_URL || LOGO_URL,
+  properties: buildEnquiryProperties({ tests, sections, catalogueUrl }),
   custom_css: themeCss,
 };
 
@@ -60,6 +65,7 @@ if (!res.ok) {
 }
 
 const updated = extractForm(data) || existing;
-console.log('Repaired form id:', updated.id);
+console.log('Updated form id:', updated.id);
+console.log('Logo:', body.logo_picture);
+console.log('Tests in dropdown:', tests.length);
 console.log('Public URL:', `${cfg.publicBase}/forms/${updated.slug}`);
-console.log('Fields:', updated.properties?.filter((p) => !p.hidden).map((p) => p.name).join(', '));

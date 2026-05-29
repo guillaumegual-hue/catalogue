@@ -147,6 +147,19 @@ textarea:focus {
   margin-bottom: 14px !important;
 }
 
+/* Test select */
+.open-complete-form .v-select,
+.open-complete-form [class*='v-select'] {
+  width: 100% !important;
+}
+
+.open-complete-form .v-select button,
+.open-complete-form select {
+  border-radius: 12px !important;
+  border-color: rgba(0, 136, 154, 0.14) !important;
+  font-family: "Work Sans", system-ui, sans-serif !important;
+}
+
 /* Phone country picker */
 .open-complete-form .v-select button {
   border-radius: 12px 0 0 12px !important;

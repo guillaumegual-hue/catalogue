@@ -4,7 +4,6 @@
  * Requires: COLEEBRI_OPNFORM_TOKEN, optional COLEEBRI_OPNFORM_API_BASE
  */
 import { readFileSync } from 'fs';
-import { randomUUID } from 'crypto';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import {
@@ -17,31 +16,43 @@ import {
   listWorkspaceForms,
   findFormByTitle,
 } from './opnform-lib.mjs';
+import {
+  buildEnquiryProperties,
+  loadCatalogue,
+  LOGO_URL,
+  CATALOGUE_URL,
+} from './opnform-enquiry-properties.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const cfg = getConfig();
 requireToken(cfg.token);
 
 const verbose = process.argv.includes('--verbose');
+const { tests, sections } = loadCatalogue();
 
-function normalizeProperty(block) {
-  return {
-    help_position: 'below_input',
-    width: 'full',
-    align: 'left',
-    ...block,
-    id: block.id || randomUUID(),
-  };
-}
-
-function normalizePayload(raw) {
-  const payload = { ...raw };
-  payload.properties = (payload.properties || []).map(normalizeProperty);
-  return payload;
-}
-
-const raw = JSON.parse(readFileSync(join(root, 'integrate/opnform/test-enquiry-payload.json'), 'utf8'));
-const payload = normalizePayload(raw);
+const payload = {
+  workspace_id: 1,
+  title: 'Test enquiry — Coleebri Health',
+  visibility: 'public',
+  language: 'en',
+  theme: 'default',
+  color: '#00889a',
+  dark_mode: 'light',
+  width: 'centered',
+  size: 'md',
+  border_radius: 'full',
+  uppercase_labels: false,
+  no_branding: true,
+  transparent_background: false,
+  presentation_style: 'classic',
+  submit_button_text: 'Send enquiry',
+  logo_picture: process.env.COLEEBRI_LOGO_URL || LOGO_URL,
+  properties: buildEnquiryProperties({
+    tests,
+    sections,
+    catalogueUrl: process.env.COLEEBRI_CATALOGUE_PUBLIC_URL || CATALOGUE_URL,
+  }),
+};
 const formTitle = payload.title;
 
 const { res, data, text } = await apiFetch('/open/forms', {
