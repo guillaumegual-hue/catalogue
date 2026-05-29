@@ -23,7 +23,14 @@ node scripts/opnform-list-forms.mjs    # if 404, confirm id/slug here
 node scripts/opnform-apply-theme.mjs   # or: node scripts/opnform-apply-theme.mjs 9
 ```
 
-**404 on apply?** The API often needs the numeric **form id**, not the slug. Run `opnform-list-forms.mjs`, then `node scripts/opnform-apply-theme.mjs 9`.
+**Form missing from list?** Create it first:
+
+```bash
+node scripts/opnform-create-enquiry-form.mjs
+node scripts/opnform-apply-theme.mjs <id-from-list>
+```
+
+**404 on apply?** Use an **id** from `opnform-list-forms.mjs` (id `9` only works if that form still exists in workspace 1).
 
 This sets form colour `#00889a`, **no branding**, Classic layout, and pastes [`assets/opnform-coleebri-theme.css`](../assets/opnform-coleebri-theme.css) into the form’s **Custom Code → CSS**.
 

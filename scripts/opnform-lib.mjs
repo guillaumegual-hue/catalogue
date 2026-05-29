@@ -98,6 +98,11 @@ export async function getForm(cfg, { slug, id } = {}) {
   if (id != null && id !== '') {
     const hit = await tryId(id);
     if (hit.form) return hit.form;
+    const forms = await listWorkspaceForms(cfg);
+    const err = new Error(`Form not found: id ${id}`);
+    err.status = hit.res?.status ?? 404;
+    err.forms = forms;
+    throw err;
   }
 
   if (slug) {

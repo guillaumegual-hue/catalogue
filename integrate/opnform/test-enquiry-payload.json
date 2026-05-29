@@ -1,0 +1,86 @@
+{
+  "workspace_id": 1,
+  "title": "Test enquiry — Coleebri Health",
+  "visibility": "public",
+  "language": "en",
+  "theme": "default",
+  "color": "#00889a",
+  "dark_mode": "auto",
+  "width": "centered",
+  "size": "md",
+  "border_radius": "small",
+  "uppercase_labels": false,
+  "no_branding": true,
+  "transparent_background": true,
+  "presentation_style": "classic",
+  "submit_button_text": "Send enquiry",
+  "properties": [
+    {
+      "id": "a1000001-0001-4000-8000-000000000001",
+      "type": "short_text",
+      "name": "test_name",
+      "hidden": true,
+      "width": "full"
+    },
+    {
+      "id": "a1000001-0001-4000-8000-000000000002",
+      "type": "short_text",
+      "name": "test_code",
+      "hidden": true,
+      "width": "full"
+    },
+    {
+      "id": "a1000001-0001-4000-8000-000000000003",
+      "type": "short_text",
+      "name": "test_id",
+      "hidden": true,
+      "width": "full"
+    },
+    {
+      "id": "a1000001-0001-4000-8000-000000000004",
+      "type": "short_text",
+      "name": "source_page",
+      "hidden": true,
+      "width": "full"
+    },
+    {
+      "id": "a1000001-0001-4000-8000-000000000005",
+      "type": "short_text",
+      "name": "category",
+      "hidden": true,
+      "width": "full"
+    },
+    {
+      "id": "a1000001-0001-4000-8000-000000000010",
+      "type": "short_text",
+      "name": "Your name",
+      "required": true,
+      "placeholder": "Full name",
+      "width": "full"
+    },
+    {
+      "id": "a1000001-0001-4000-8000-000000000011",
+      "type": "email",
+      "name": "Email",
+      "required": true,
+      "placeholder": "you@example.com",
+      "width": "full"
+    },
+    {
+      "id": "a1000001-0001-4000-8000-000000000012",
+      "type": "phone_number",
+      "name": "Phone",
+      "required": false,
+      "placeholder": "Optional",
+      "width": "full"
+    },
+    {
+      "id": "a1000001-0001-4000-8000-000000000013",
+      "type": "long_text",
+      "name": "Message",
+      "required": false,
+      "placeholder": "Anything else we should know?",
+      "width": "full"
+    }
+  ]
+}
