@@ -314,9 +314,6 @@ function Foot() {
   return (
     <footer className="foot">
       <div className="shell">
-        <p className="foot-exit no-print">
-          <CatalogueExitLink className="catalogue-exit-link--foot" />
-        </p>
         <div className="foot-grid">
           <div>
             <img src="https://health.coleebri.com/wp-content/uploads/sites/12/2025/02/Fichier-7@2x.png" alt="Coleebri Health" style={{height: 40, marginBottom: 14, filter: 'brightness(0) invert(1)'}} />
