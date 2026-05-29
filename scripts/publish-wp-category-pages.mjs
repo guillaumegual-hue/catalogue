@@ -16,7 +16,8 @@ const PAGES = [
   { file: 'coleebri-service-women.json', slug: 'womens-health', title: "Women's health tests" },
   { file: 'coleebri-service-men.json', slug: 'mens-health', title: "Men's health tests" },
   { file: 'coleebri-service-sexual.json', slug: 'sexual-health', title: 'Sexual health tests' },
-  { file: 'coleebri-service-fitness.json', slug: 'fitness-allergies', title: 'Fitness & allergies tests' },
+  { file: 'coleebri-service-fitness.json', slug: 'fitness-wellbeing', title: 'Fitness & wellbeing tests' },
+  { file: 'coleebri-service-allergies.json', slug: 'allergies', title: 'Allergies & sensitivities tests' },
   { file: 'coleebri-service-dna.json', slug: 'dna', title: 'DNA tests' },
 ];
 

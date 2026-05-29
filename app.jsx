@@ -8,7 +8,8 @@ const TABS = window.CATALOGUE_TABS || [
   { id: 'women', label: "Women's Health" },
   { id: 'men', label: "Men's Health" },
   { id: 'sexual', label: 'Sexual Health' },
-  { id: 'fitness', label: 'Fitness & Allergies' },
+  { id: 'fitness', label: 'Fitness & wellbeing' },
+  { id: 'allergies', label: 'Allergies & sensitivities' },
   { id: 'dna', label: 'DNA Tests' },
   { id: 'collection', label: 'Phlebotomy & Collection' },
 ];
@@ -524,8 +525,12 @@ function App() {
   /* Filter to active tab */
   const tabFiltered = useMemo(() => {
     let list = baseFiltered;
-    if (active !== 'all' && active !== 'collection') {
-      list = list.filter((t) => t.tracks.includes(active));
+    if (active === 'fitness') {
+      list = list.filter((t) => t.section === 'fitness');
+    } else if (active === 'allergies') {
+      list = list.filter((t) => t.section === 'allergies');
+    } else if (active !== 'all' && active !== 'collection') {
+      list = list.filter((t) => t.tracks && t.tracks.includes(active));
     }
     if (categoryFilter) {
       list = list.filter((t) => t.section === categoryFilter);

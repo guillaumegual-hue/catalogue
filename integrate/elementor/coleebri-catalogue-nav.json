@@ -1,7 +1,7 @@
 {
   "content": [
     {
-      "id": "5bfd3f9",
+      "id": "bf8b4fb",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -24,11 +24,11 @@
       },
       "elements": [
         {
-          "id": "f5322fe",
+          "id": "9175856",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
-            "title": "Catalogue category navigation",
+            "title": "Catalogue category navigation (legacy iframe tabs)",
             "header_size": "h1",
             "align": "left"
           },
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "id": "8f64a93",
+      "id": "5372980",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -60,16 +60,16 @@
       },
       "elements": [
         {
-          "id": "f12e54b",
+          "id": "462d3cd",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
-            "editor": "<p>Horizontal tab bar — links open the hosted catalogue.</p>"
+            "editor": "<p>Prefer an Elementor Nav Menu on the hub page — see category-nav-snippet.html.</p>"
           },
           "elements": []
         },
         {
-          "id": "e4ad629",
+          "id": "15567dd",
           "elType": "widget",
           "widgetType": "shortcode",
           "settings": {
@@ -84,6 +84,6 @@
     "hide_title": "yes"
   },
   "version": "0.4",
-  "title": "Catalogue category navigation",
+  "title": "Catalogue category navigation (legacy iframe tabs)",
   "type": "page"
 }

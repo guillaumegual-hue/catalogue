@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-29T11:52:27.362Z",
+  "generated": "2026-05-29T12:11:07.400Z",
   "pluginRequired": "integrate/coleebri-catalogue.php",
   "wpConfig": "define('COLEEBRI_CATALOGUE_BASE', 'https://health.coleebri.com/catalogue/');",
   "pages": [
@@ -14,6 +14,12 @@
       "title": "Patient catalogue (full)",
       "slug": "coleebri-full-catalogue",
       "suggestedPath": "full/catalogue"
+    },
+    {
+      "file": "coleebri-tests-hub.json",
+      "title": "Health tests hub",
+      "slug": "coleebri-tests-hub",
+      "suggestedPath": "tests/hub"
     },
     {
       "file": "coleebri-service-men.json",
@@ -41,9 +47,15 @@
     },
     {
       "file": "coleebri-service-fitness.json",
-      "title": "Fitness & allergies tests",
+      "title": "Fitness & wellbeing tests",
       "slug": "coleebri-service-fitness",
       "suggestedPath": "service/fitness"
+    },
+    {
+      "file": "coleebri-service-allergies.json",
+      "title": "Allergies & sensitivities tests",
+      "slug": "coleebri-service-allergies",
+      "suggestedPath": "service/allergies"
     },
     {
       "file": "coleebri-service-dna.json",
@@ -101,7 +113,7 @@
     },
     {
       "file": "coleebri-catalogue-nav.json",
-      "title": "Catalogue category navigation",
+      "title": "Catalogue category navigation (legacy iframe tabs)",
       "slug": "coleebri-catalogue-nav",
       "suggestedPath": "catalogue/nav"
     }

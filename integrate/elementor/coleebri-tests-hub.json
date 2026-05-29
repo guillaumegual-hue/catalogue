@@ -1,7 +1,7 @@
 {
   "content": [
     {
-      "id": "168264a",
+      "id": "24d736c",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -24,47 +24,22 @@
       },
       "elements": [
         {
-          "id": "03cf609",
+          "id": "228f281",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
-            "title": "Check a marker",
+            "title": "Health tests hub",
             "header_size": "h1",
             "align": "left"
           },
           "elements": []
-        }
-      ]
-    },
-    {
-      "id": "f736654",
-      "elType": "container",
-      "settings": {
-        "content_width": "full",
-        "flex_direction": "column",
-        "flex_gap": {
-          "unit": "px",
-          "size": 16,
-          "column": "16",
-          "row": "16",
-          "isLinked": true
         },
-        "padding": {
-          "unit": "px",
-          "top": "24",
-          "right": "20",
-          "bottom": "24",
-          "left": "20",
-          "isLinked": false
-        }
-      },
-      "elements": [
         {
-          "id": "d2ab445",
+          "id": "64ad9c5",
           "elType": "widget",
-          "widgetType": "shortcode",
+          "widgetType": "text-editor",
           "settings": {
-            "shortcode": "[coleebri_catalogue widget=\"marker-check\" branding=\"none\" height=\"520\"]"
+            "editor": "<p>Add your hero copy here, then an Elementor <strong>Nav Menu</strong> widget linking to each category page (see integrate/elementor/category-nav-snippet.html). Do not embed the catalogue tab strip on this page.</p>"
           },
           "elements": []
         }
@@ -75,6 +50,6 @@
     "hide_title": "yes"
   },
   "version": "0.4",
-  "title": "Check a marker",
+  "title": "Health tests hub",
   "type": "page"
 }

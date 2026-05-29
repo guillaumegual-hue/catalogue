@@ -18,7 +18,8 @@ Adds **General Health**, **Women's**, **Men's**, **Sexual**, **Fitness & Allergi
 | `women` | `tests/womens-health` | `coleebri-service-women.json` | `service="women"` |
 | `men` | `tests/mens-health` | `coleebri-service-men.json` | `service="men"` |
 | `sexual` | `tests/sexual-health` | `coleebri-service-sexual.json` | `service="sexual"` |
-| `fitness` | `tests/fitness-allergies` | `coleebri-service-fitness.json` | `service="fitness"` |
+| `fitness` | `tests/fitness-wellbeing` | `coleebri-service-fitness.json` | `category="fitness"` |
+| `allergies` | `tests/allergies` | `coleebri-service-allergies.json` | `category="allergies"` |
 | `dna` | `tests/dna` | `coleebri-service-dna.json` | `service="dna"` |
 
 ## Live pages (created 2026-05-29)

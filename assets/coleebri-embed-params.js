@@ -4,7 +4,7 @@
 (function () {
   'use strict';
 
-  var SERVICE_IDS = ['all', 'general', 'women', 'men', 'sexual', 'fitness', 'dna', 'collection', 'top'];
+  var SERVICE_IDS = ['all', 'general', 'women', 'men', 'sexual', 'fitness', 'allergies', 'dna', 'collection', 'top'];
 
   /** Widgets intended for health.coleebri.com — no embed header by default. */
   var SITE_WIDGETS = { 'most-ordered': true, categories: true, 'category-list': true };
@@ -16,7 +16,8 @@
     women: '/tests/womens-health/',
     men: '/tests/mens-health/',
     sexual: '/tests/sexual-health/',
-    fitness: '/tests/fitness-allergies/',
+    fitness: '/tests/fitness-wellbeing/',
+    allergies: '/tests/allergies/',
     dna: '/tests/dna/',
     collection: '/phlebotomy-vitals-check/',
   };
@@ -191,6 +192,9 @@
     }
 
     if (opts.category) {
+      if (opts.category === 'fitness' || opts.category === 'allergies') {
+        return resolveWpPageUrl(site, opts.category);
+      }
       return resolveWpPageUrl(site, 'all');
     }
 
@@ -273,6 +277,11 @@
     var catalogueBase = p.get('catalogue') || '';
     var siteBase = normalizeSiteBase(p.get('site') || '');
     var integrated = p.get('integrated') === '1' || p.get('integrated') === 'true' || !!siteBase;
+    var transparent =
+      p.get('transparent') === '1' ||
+      p.get('transparent') === 'true' ||
+      p.get('theme') === 'transparent' ||
+      (integrated && p.get('transparent') !== '0');
     if (integrated && headerChrome.show && p.get('branding') === null) {
       headerChrome = HEADER_PRESETS.none;
     }
@@ -297,6 +306,7 @@
       catalogueBase: catalogueBase,
       siteBase: siteBase,
       integrated: integrated,
+      transparent: transparent,
       wpServicePages: WP_SERVICE_PAGES,
     };
   }
@@ -378,9 +388,19 @@
     var list = window.TESTS.slice();
     var service = opts.service || opts.track || opts.section || '';
     if (service && service !== 'all' && service !== 'top' && service !== 'collection') {
-      list = list.filter(function (t) {
-        return t.tracks && t.tracks.indexOf(service) !== -1;
-      });
+      if (service === 'fitness') {
+        list = list.filter(function (t) {
+          return t.section === 'fitness';
+        });
+      } else if (service === 'allergies') {
+        list = list.filter(function (t) {
+          return t.section === 'allergies';
+        });
+      } else {
+        list = list.filter(function (t) {
+          return t.tracks && t.tracks.indexOf(service) !== -1;
+        });
+      }
     }
     if (opts.category) {
       list = list.filter(function (t) {
@@ -414,6 +434,7 @@
     else if (opts.test) url += '&test=' + encodeURIComponent(opts.test);
     if (opts.siteBase) url += '&site=' + encodeURIComponent(opts.siteBase);
     if (opts.integrated) url += '&integrated=1';
+    if (opts.transparent) url += '&transparent=1';
     return appendHeaderQuery(url, opts);
   }
 

@@ -1,46 +1,69 @@
 # WordPress integration (native feel)
 
-Category pages use **one iframe** (`widget=tests` only) — no duplicate “Coleebri Health / Open full catalogue” bar and no in-page tab strip. Use your **site menu** to move between `/en/tests/…` pages.
+Category pages are built in **Elementor**: you own the title, subtitle, body copy, and **Nav Menu** for “Browse by category”. The catalogue supplies **test cards only** in a transparent iframe.
 
-## How it works
+## Recommended page layout
 
-- **Catalogue assets** load from GitHub Pages (or `/catalogue/` on your server later).
-- **`data-site="https://health.coleebri.com/en"`** + **`data-integrated="1"`** on the embed tell the iframe to:
-  - Hide embed chrome (`branding=none`)
-  - Keep **Enquire** on the site (`mailto:` opens from the parent window, not GitHub)
-  - Block navigation to `github.io/catalogue` HTML pages
+1. **Hub** (`/en/tests/`) — hero + Elementor **Nav Menu** (or `integrate/elementor/category-nav-snippet.html`) linking to each category.
+2. **Each category page** — your H1, intro paragraphs (e.g. sports, wellbeing, sample collection), then one HTML widget with the embed below.
+3. **No** iframe tab strip and **no** “Coleebri Health / Open full catalogue” bar on category pages.
 
-## Page URLs
+## Embed snippet (tests only)
 
-| Category | Path |
-|----------|------|
-| Hub | `/en/tests/` |
-| General | `/en/tests/general-health/` |
-| Women's | `/en/tests/womens-health/` |
-| Men's | `/en/tests/mens-health/` |
-| Sexual | `/en/tests/sexual-health/` |
-| Fitness & allergies | `/en/tests/fitness-allergies/` |
-| DNA | `/en/tests/dna/` |
+```html
+<div
+  data-coleebri-embed="tests"
+  data-coleebri-base="https://guillaumegual-hue.github.io/catalogue/"
+  data-branding="none"
+  data-site="https://health.coleebri.com/en"
+  data-integrated="1"
+  data-transparent="1"
+  data-category="fitness"
+  data-height="900"
+></div>
+<script
+  src="https://guillaumegual-hue.github.io/catalogue/assets/coleebri-embed.js?v=20260530b"
+  data-base="https://guillaumegual-hue.github.io/catalogue/"
+></script>
+```
 
-## Optional: full catalogue on your domain
+Use `data-service="men"` (etc.) for track-based categories, or `data-category="fitness"` / `data-category="allergies"` for section-based pages.
 
-For the **exact** full patient catalogue (search, all tabs in one view), host static files at `https://health.coleebri.com/catalogue/` and either:
+| Category | WP slug (suggested) | Embed filter |
+|----------|---------------------|--------------|
+| Hub | `/en/tests/` | Nav menu only |
+| General | `general-health` | `data-service="general"` |
+| Women's | `womens-health` | `data-service="women"` |
+| Men's | `mens-health` | `data-service="men"` |
+| Sexual | `sexual-health` | `data-service="sexual"` |
+| Fitness & wellbeing | `fitness-wellbeing` | `data-category="fitness"` |
+| Allergies | `allergies` | `data-category="allergies"` |
+| DNA | `dna` | `data-service="dna"` |
 
-- Link menu items to that URL, or
-- Use one WP page with `[coleebri_catalogue widget="catalogue" height="920" branding="none"]` after `COLEEBRI_CATALOGUE_BASE` points at your domain.
+Replace `/fitness-allergies/` with the two pages above when you publish.
 
-Category pages are intentionally **lighter** — same test cards, your theme header/footer.
+## Elementor templates
+
+Run `node scripts/generate-elementor-import.mjs`, then import JSON from `integrate/elementor/`:
+
+- **`coleebri-service-*.json`** — embed-only (no heading); add your copy in Elementor.
+- **`coleebri-tests-hub.json`** — starter hub with intro note.
+- **`category-nav-snippet.html`** — pill nav if you are not using Nav Menu yet.
+
+## Behaviour
+
+- **`data-integrated="1"`** — Enquire uses `mailto:` on the parent site; no redirect to GitHub.
+- **`data-transparent="1"`** — iframe background is transparent so your theme background shows through.
+- Titles/blurbs inside the iframe are hidden in integrated mode; write them in Elementor instead.
 
 ## Plugin shortcode
 
 ```text
-[coleebri_catalogue widget="tests" service="men" height="900" branding="none"]
+[coleebri_catalogue widget="tests" category="fitness" height="900" branding="none"]
 ```
-
-Set in `wp-config.php`:
 
 ```php
 define( 'COLEEBRI_CATALOGUE_BASE', 'https://guillaumegual-hue.github.io/catalogue/' );
 ```
 
-When the catalogue moves to your server, change that URL only.
+When the catalogue moves to `https://health.coleebri.com/catalogue/`, change that constant only.

@@ -33,11 +33,18 @@
     <wp:post_type>page</wp:post_type>
   </item>
   <item>
+    <title>Health tests hub</title>
+    <link>https://health.coleebri.com/coleebri-tests-hub/</link>
+    <content:encoded><![CDATA[<p>Add your hero copy here, then an Elementor <strong>Nav Menu</strong> widget linking to each category page (see integrate/elementor/category-nav-snippet.html). Do not embed the catalogue tab strip on this page.</p>
+]]></content:encoded>
+    <wp:post_name>coleebri-tests-hub</wp:post_name>
+    <wp:status>draft</wp:status>
+    <wp:post_type>page</wp:post_type>
+  </item>
+  <item>
     <title>Men's health tests</title>
     <link>https://health.coleebri.com/coleebri-service-men/</link>
-    <content:encoded><![CDATA[[coleebri_catalogue widget="tabs" branding="none" height="140"]
-
-[coleebri_catalogue widget="tests" branding="none" service="men" height="900"]]]></content:encoded>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" service="men" height="900"]]]></content:encoded>
     <wp:post_name>coleebri-service-men</wp:post_name>
     <wp:status>draft</wp:status>
     <wp:post_type>page</wp:post_type>
@@ -45,9 +52,7 @@
   <item>
     <title>Women's health tests</title>
     <link>https://health.coleebri.com/coleebri-service-women/</link>
-    <content:encoded><![CDATA[[coleebri_catalogue widget="tabs" branding="none" height="140"]
-
-[coleebri_catalogue widget="tests" branding="none" service="women" height="900"]]]></content:encoded>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" service="women" height="900"]]]></content:encoded>
     <wp:post_name>coleebri-service-women</wp:post_name>
     <wp:status>draft</wp:status>
     <wp:post_type>page</wp:post_type>
@@ -55,9 +60,7 @@
   <item>
     <title>General health tests</title>
     <link>https://health.coleebri.com/coleebri-service-general/</link>
-    <content:encoded><![CDATA[[coleebri_catalogue widget="tabs" branding="none" height="140"]
-
-[coleebri_catalogue widget="tests" branding="none" service="general" height="900"]]]></content:encoded>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" service="general" height="900"]]]></content:encoded>
     <wp:post_name>coleebri-service-general</wp:post_name>
     <wp:status>draft</wp:status>
     <wp:post_type>page</wp:post_type>
@@ -65,29 +68,31 @@
   <item>
     <title>Sexual health tests</title>
     <link>https://health.coleebri.com/coleebri-service-sexual/</link>
-    <content:encoded><![CDATA[[coleebri_catalogue widget="tabs" branding="none" height="140"]
-
-[coleebri_catalogue widget="tests" branding="none" service="sexual" height="880"]]]></content:encoded>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" service="sexual" height="880"]]]></content:encoded>
     <wp:post_name>coleebri-service-sexual</wp:post_name>
     <wp:status>draft</wp:status>
     <wp:post_type>page</wp:post_type>
   </item>
   <item>
-    <title>Fitness &amp; allergies tests</title>
+    <title>Fitness &amp; wellbeing tests</title>
     <link>https://health.coleebri.com/coleebri-service-fitness/</link>
-    <content:encoded><![CDATA[[coleebri_catalogue widget="tabs" branding="none" height="140"]
-
-[coleebri_catalogue widget="tests" branding="none" service="fitness" height="900"]]]></content:encoded>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" category="fitness" height="900"]]]></content:encoded>
     <wp:post_name>coleebri-service-fitness</wp:post_name>
+    <wp:status>draft</wp:status>
+    <wp:post_type>page</wp:post_type>
+  </item>
+  <item>
+    <title>Allergies &amp; sensitivities tests</title>
+    <link>https://health.coleebri.com/coleebri-service-allergies/</link>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" category="allergies" height="880"]]]></content:encoded>
+    <wp:post_name>coleebri-service-allergies</wp:post_name>
     <wp:status>draft</wp:status>
     <wp:post_type>page</wp:post_type>
   </item>
   <item>
     <title>DNA tests</title>
     <link>https://health.coleebri.com/coleebri-service-dna/</link>
-    <content:encoded><![CDATA[[coleebri_catalogue widget="tabs" branding="none" height="140"]
-
-[coleebri_catalogue widget="tests" branding="none" service="dna" height="900"]]]></content:encoded>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" service="dna" height="900"]]]></content:encoded>
     <wp:post_name>coleebri-service-dna</wp:post_name>
     <wp:status>draft</wp:status>
     <wp:post_type>page</wp:post_type>
@@ -157,7 +162,7 @@
     <wp:post_type>page</wp:post_type>
   </item>
   <item>
-    <title>Catalogue category navigation</title>
+    <title>Catalogue category navigation (legacy iframe tabs)</title>
     <link>https://health.coleebri.com/coleebri-catalogue-nav/</link>
     <content:encoded><![CDATA[[coleebri_catalogue widget="tabs" branding="none" height="140"]]]></content:encoded>
     <wp:post_name>coleebri-catalogue-nav</wp:post_name>

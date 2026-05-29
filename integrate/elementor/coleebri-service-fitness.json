@@ -1,43 +1,7 @@
 {
   "content": [
     {
-      "id": "963139e",
-      "elType": "container",
-      "settings": {
-        "content_width": "full",
-        "flex_direction": "column",
-        "flex_gap": {
-          "unit": "px",
-          "size": 16,
-          "column": "16",
-          "row": "16",
-          "isLinked": true
-        },
-        "padding": {
-          "unit": "px",
-          "top": "40",
-          "right": "20",
-          "bottom": "8",
-          "left": "20",
-          "isLinked": false
-        }
-      },
-      "elements": [
-        {
-          "id": "f48ae8b",
-          "elType": "widget",
-          "widgetType": "heading",
-          "settings": {
-            "title": "Fitness & allergies tests",
-            "header_size": "h1",
-            "align": "left"
-          },
-          "elements": []
-        }
-      ]
-    },
-    {
-      "id": "a5d9e4f",
+      "id": "e002416",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -60,11 +24,11 @@
       },
       "elements": [
         {
-          "id": "4c46905",
+          "id": "2b8298d",
           "elType": "widget",
           "widgetType": "html",
           "settings": {
-            "html": "<div data-coleebri-embed=\"tests\" data-coleebri-base=\"https://guillaumegual-hue.github.io/catalogue/\" data-branding=\"none\" data-site=\"https://health.coleebri.com/en\" data-integrated=\"1\" data-service=\"fitness\" data-height=\"900\"></div><script src=\"https://guillaumegual-hue.github.io/catalogue/assets/coleebri-embed.js?v=20260530a\" data-base=\"https://guillaumegual-hue.github.io/catalogue/\"><\\/script>"
+            "html": "<div data-coleebri-embed=\"tests\" data-coleebri-base=\"https://guillaumegual-hue.github.io/catalogue/\" data-branding=\"none\" data-site=\"https://health.coleebri.com/en\" data-integrated=\"1\" data-transparent=\"1\" data-category=\"fitness\" data-height=\"900\"></div><script src=\"https://guillaumegual-hue.github.io/catalogue/assets/coleebri-embed.js?v=20260530b\" data-base=\"https://guillaumegual-hue.github.io/catalogue/\"><\\/script>"
           },
           "elements": []
         }
@@ -75,6 +39,6 @@
     "hide_title": "yes"
   },
   "version": "0.4",
-  "title": "Fitness & allergies tests",
+  "title": "Fitness & wellbeing tests",
   "type": "page"
 }

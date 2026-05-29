@@ -71,6 +71,10 @@
     var tests = el.getAttribute('data-tests') || '';
     var siteBase = el.getAttribute('data-site') || '';
     var integrated = el.getAttribute('data-integrated') === '1' || !!siteBase;
+    var transparent =
+      el.getAttribute('data-transparent') === '1' ||
+      el.getAttribute('data-transparent') === 'true' ||
+      (integrated && el.getAttribute('data-transparent') !== '0');
     var headerOpts = { headerPreset: 'partner', branding: true };
     if (window.ColeebriEmbedParams && window.ColeebriEmbedParams.parseHeaderFromElement) {
       var chrome = window.ColeebriEmbedParams.parseHeaderFromElement(el);
@@ -103,6 +107,7 @@
       brandLink: headerOpts.brandLink,
       siteBase: siteBase,
       integrated: integrated,
+      transparent: transparent,
     });
     iframe.title = title;
     iframe.setAttribute('loading', 'lazy');

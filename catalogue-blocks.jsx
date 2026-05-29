@@ -128,6 +128,7 @@ function CatalogueTestGrid({
     return [...map.entries()];
   }, [tests]);
 
+  const hideIntro = !!tweaks?.embedIntegrated;
   const trackMeta = window.TRACKS.find((t) => t.id === trackId);
   const categoryMeta = categoryFilter ? window.SECTIONS.find((s) => s.id === categoryFilter) : null;
   const groupMeta =
@@ -156,6 +157,7 @@ function CatalogueTestGrid({
   if (trackId === 'all') {
     return (
       <section className="shell catalogue-test-grid" id="catalogue">
+        {!hideIntro && (
         <div className="track-intro">
           <span className="eyebrow">
             {testFilterLabel ? 'Selected tests' : categoryMeta ? 'Catalogue category' : 'Full catalogue'}
@@ -172,15 +174,18 @@ function CatalogueTestGrid({
           </p>
           <CatalogueFootnote />
         </div>
+        )}
         {(categoryFilter ? window.SECTIONS.filter((s) => s.id === categoryFilter) : window.SECTIONS).map((sec) => {
           const t = tests.filter((x) => x.section === sec.id);
           if (!t.length) return null;
           return (
             <div className="subsec" key={sec.id} data-screen-label={sec.label}>
+              {!hideIntro && (
               <div className="subsec-head">
                 <h3>{sec.label}</h3>
                 <SectionHint sectionId={sec.id} />
               </div>
+              )}
               <div className="card-grid">
                 {t.map((test) => (
                   <TestCard
@@ -216,22 +221,26 @@ function CatalogueTestGrid({
 
   return (
     <section className="shell catalogue-test-grid" id="catalogue">
+      {!hideIntro && (
       <div className="track-intro">
         <span className="eyebrow">{categoryMeta ? categoryMeta.label : trackMeta?.label}</span>
         <h2>{categoryMeta ? categoryMeta.label : trackMeta?.label}</h2>
         <p className="lead">{categoryMeta ? categoryMeta.blurb : trackMeta?.blurb}</p>
         <CatalogueFootnote />
       </div>
+      )}
 
       {groupedView.length > 1
         ? groupedView.map(([secId, t]) => {
             const sec = window.SECTIONS.find((s) => s.id === secId);
             return (
               <div className="subsec" key={secId} data-screen-label={sec?.label || secId}>
+                {!hideIntro && (
                 <div className="subsec-head">
                   <h3>{sec?.label || secId}</h3>
                   <SectionHint sectionId={secId} />
                 </div>
+                )}
                 <div className="card-grid">
                   {t.map((test) => (
                     <TestCard

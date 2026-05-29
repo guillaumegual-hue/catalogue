@@ -129,3 +129,20 @@ html.coleebri-embed-no-brand .coleebri-embed__brand {
 .catalogue-cta-block .hero-panels {
   margin-top: 0;
 }
+
+/* Transparent iframe — cards only; page chrome lives in WordPress/Elementor */
+html.coleebri-embed-transparent,
+html.coleebri-embed-transparent body {
+  background: transparent !important;
+}
+
+html.coleebri-embed-transparent .coleebri-embed {
+  background: transparent !important;
+}
+
+html.coleebri-embed-transparent #embed-widget-inner .shell,
+html.coleebri-embed-transparent .catalogue-test-grid.shell {
+  background: transparent !important;
+  padding-top: 0;
+  padding-bottom: 0;
+}

@@ -2430,7 +2430,8 @@ window.TRACKS = [
   { id: 'women', label: "Women's Health", blurb: 'Cycle, fertility, menopause and women-focused wellness panels.' },
   { id: 'men', label: "Men's Health", blurb: 'Testosterone, prostate, performance and men-focused panels.' },
   { id: 'sexual', label: 'Sexual Health', blurb: 'Confidential STI screening.' },
-  { id: 'fitness', label: 'Fitness & Allergies', blurb: 'Sports, wellbeing, allergy and intolerance testing.' },
+  { id: 'fitness', label: 'Fitness & wellbeing', blurb: 'Sports performance and wellbeing panels.' },
+  { id: 'allergies', label: 'Allergies & sensitivities', blurb: 'IgE allergy and intolerance testing — clinical guidance recommended before diet changes.' },
   { id: 'dna', label: 'DNA Tests', blurb: 'Paternity, profiling, and gender reveal.' },
 ];
 
