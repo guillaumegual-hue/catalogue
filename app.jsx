@@ -44,17 +44,26 @@ function categoryPageMeta(boot) {
 
 function CategoryPageHeader({ boot }) {
   const meta = categoryPageMeta(boot);
-  const catalogueHref = '../../Coleebri%20Patient%20Catalogue.html';
   const hubHref = '../';
+  const catalogueHref = '../../Coleebri%20Patient%20Catalogue.html';
+  const Footnote = window.CatalogueFootnote;
   return (
     <section className="shell category-page-header">
-      <p className="category-page-header__crumb">
-        <a href={catalogueHref}>Full catalogue</a>
-        <span aria-hidden="true"> · </span>
-        <a href={hubHref}>All categories</a>
-      </p>
+      <nav className="category-page-header__crumb" aria-label="Breadcrumb">
+        <ol>
+          <li>
+            <a href={hubHref}>Browse all categories</a>
+          </li>
+          <li aria-current="page">{meta.title}</li>
+        </ol>
+      </nav>
       <h1 className="category-page-header__title">{meta.title}</h1>
       {meta.blurb ? <p className="category-page-header__lead">{meta.blurb}</p> : null}
+      {Footnote ? <Footnote /> : null}
+      <p className="category-page-header__tools">
+        <a href={catalogueHref}>Full catalogue</a>
+        <span className="category-page-header__tools-note"> — search, compare, quiz</span>
+      </p>
     </section>
   );
 }
@@ -669,6 +678,7 @@ function App() {
             categoryFilter={categoryFilter}
             testIdsFilter={testIdsFilter}
             tweaks={tweaks}
+            hideTrackIntro={standalonePage}
             compared={compareKeys}
             onCompare={handleCompare}
             onOpen={(t) => openEnquiry(t, 'direct')}

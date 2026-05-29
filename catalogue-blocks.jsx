@@ -133,6 +133,7 @@ function CatalogueTestGrid({
   inCart,
   categoryFilter,
   testIdsFilter,
+  hideTrackIntro,
 }) {
   const grouped = React.useMemo(() => {
     const map = new Map();
@@ -144,7 +145,7 @@ function CatalogueTestGrid({
   }, [tests]);
 
   const showEmbedIntro = !!tweaks?.embedShowIntro;
-  const hideIntro = !!tweaks?.embedIntegrated && !showEmbedIntro;
+  const hideIntro = !!hideTrackIntro || (!!tweaks?.embedIntegrated && !showEmbedIntro);
   const trackMeta = window.TRACKS.find((t) => t.id === trackId);
   const categoryMeta = categoryFilter ? window.SECTIONS.find((s) => s.id === categoryFilter) : null;
   const groupMeta =
