@@ -700,10 +700,10 @@ main {
 
   .tabnav-wrap {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
-    column-gap: 14px;
-    row-gap: 10px;
+    gap: 12px;
+    text-align: center;
   }
 
   .tabnav-select-field {
@@ -713,18 +713,20 @@ main {
   .tabnav-pills-label {
     display: block;
     margin: 0;
-    flex: 0 0 auto;
-    align-self: center;
+    width: 100%;
+    text-align: center;
   }
 
   .tabnav-pills {
     display: flex;
-    flex: 1 1 0;
+    flex: 0 1 auto;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     gap: 6px;
-    row-gap: 6px;
-    min-width: 0;
+    row-gap: 8px;
+    width: 100%;
+    max-width: 1180px;
     overflow: visible;
   }
 
@@ -763,7 +765,8 @@ main {
 
 @media (min-width: 1180px) {
   .tabnav-pills {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 7px;
   }
 
@@ -1438,7 +1441,10 @@ main {
 }
 
 .category-page-hero .catalogue-footnote {
-  margin: 18px 0 0;
+  margin: 20px 0 0;
+  max-width: none;
+  font-size: 0.92rem;
+  line-height: 1.55;
 }
 
 .category-page-header__crumb {
@@ -3233,10 +3239,15 @@ main#top > section#collection-info {
     padding: 16px 0 20px;
   }
 
+  .category-hero__card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
   .category-hero__visual {
+    order: -1;
     min-height: 168px;
     max-height: 220px;
-    margin-bottom: 16px;
     border-radius: 16px;
   }
 
