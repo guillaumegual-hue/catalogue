@@ -27,7 +27,7 @@ https://health.coleebri.com/catalogue/
 | Sexual health | https://health.coleebri.com/catalogue/tests/sexual-health/ |
 | Fitness & wellbeing | https://health.coleebri.com/catalogue/tests/fitness-wellbeing/ |
 | Allergies | https://health.coleebri.com/catalogue/tests/allergies/ |
-| DNA tests | https://health.coleebri.com/catalogue/tests/dna/ |
+| Paternity & DNA | https://health.coleebri.com/catalogue/tests/dna/ |
 | Phlebotomy & collection | https://health.coleebri.com/catalogue/tests/phlebotomy-collection/ |
 | Full catalogue (quiz & compare) | https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html |
 | Biomarker glossary | https://health.coleebri.com/catalogue/tests/glossary/ |

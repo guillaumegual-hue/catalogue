@@ -5,7 +5,7 @@
 import { writeFileSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { CATEGORY_PAGES, ASSET_VER } from './category-pages-config.mjs';
+import { CATEGORY_PAGES, CATEGORY_REDIRECTS, ASSET_VER } from './category-pages-config.mjs';
 import { CATALOGUE_BASE_STAGING } from './catalogue-config.mjs';
 import { execSync } from 'child_process';
 
@@ -75,6 +75,24 @@ window.COLEEBRI_CATALOGUE_PAGE = ${escapeJson(boot)};
 `;
 }
 
+function buildRedirectHtml(toSlug) {
+  const target = `../${toSlug}/`;
+  return `<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="refresh" content="0; url=${target}" />
+  <link rel="canonical" href="${target}" />
+  <title>Redirecting…</title>
+  <script>location.replace('${target}' + (location.search || '') + (location.hash || ''));</script>
+</head>
+<body>
+  <p><a href="${target}">Continue to catalogue</a></p>
+</body>
+</html>
+`;
+}
+
 function buildHubIndex() {
   const base = CATALOGUE_BASE_STAGING;
   const isTool = (p) => p.page === 'glossary' || p.page === 'marker-check';
@@ -132,6 +150,12 @@ for (const page of CATEGORY_PAGES) {
   const dir = join(testsDir, page.slug);
   mkdirSync(dir, { recursive: true });
   writeFileSync(join(dir, 'index.html'), buildCategoryHtml(page, '../../'));
+}
+
+for (const { from, to } of CATEGORY_REDIRECTS) {
+  const dir = join(testsDir, from);
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(join(dir, 'index.html'), buildRedirectHtml(to));
 }
 
 writeFileSync(join(testsDir, 'index.html'), buildHubIndex());

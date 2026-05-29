@@ -2,7 +2,7 @@
  * One static HTML page per category — unique URLs for WordPress menus.
  * Regenerate: node scripts/generate-category-pages.mjs
  */
-export const ASSET_VER = '20260607o';
+export const ASSET_VER = '20260607p';
 
 /** @type {Array<{ slug: string, title: string, service?: string, category?: string, scroll?: string }>} */
 export const CATEGORY_PAGES = [
@@ -13,9 +13,8 @@ export const CATEGORY_PAGES = [
   { slug: 'sexual-health', title: 'Sexual health tests', service: 'sexual' },
   { slug: 'fitness-wellbeing', title: 'Fitness & wellbeing tests', service: 'fitness' },
   { slug: 'allergies', title: 'Allergies & sensitivities tests', service: 'allergies' },
-  { slug: 'dna', title: 'DNA tests', service: 'dna' },
+  { slug: 'dna', title: 'Paternity & DNA', service: 'dna' },
   { slug: 'phlebotomy-collection', title: 'Phlebotomy & collection', service: 'collection' },
-  { slug: 'paternity-dna', title: 'Paternity & DNA', category: 'paternity' },
   { slug: 'health-profiles', title: 'Health profiles & screens', category: 'profiles' },
   { slug: 'routine-tests', title: 'Routine tests', category: 'routine' },
   { slug: 'autoimmune', title: 'Autoimmune profiles', category: 'autoimmune' },
@@ -26,3 +25,6 @@ export const CATEGORY_PAGES = [
   { slug: 'glossaire', title: 'Glossaire des biomarqueurs', page: 'glossary' },
   { slug: 'marker-check', title: 'Check a marker', page: 'marker-check' },
 ];
+
+/** Old slugs → canonical slug (301-style HTML redirect pages). */
+export const CATEGORY_REDIRECTS = [{ from: 'paternity-dna', to: 'dna' }];

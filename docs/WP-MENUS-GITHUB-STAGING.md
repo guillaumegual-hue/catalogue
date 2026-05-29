@@ -27,9 +27,8 @@ Machine-readable list: [`tests/urls.json`](../tests/urls.json)
 | Sexual health | https://guillaumegual-hue.github.io/catalogue/tests/sexual-health/ |
 | Fitness & wellbeing | https://guillaumegual-hue.github.io/catalogue/tests/fitness-wellbeing/ |
 | Allergies & sensitivities | https://guillaumegual-hue.github.io/catalogue/tests/allergies/ |
-| DNA tests | https://guillaumegual-hue.github.io/catalogue/tests/dna/ |
+| Paternity & DNA | https://guillaumegual-hue.github.io/catalogue/tests/dna/ |
 | Phlebotomy & collection | https://guillaumegual-hue.github.io/catalogue/tests/phlebotomy-collection/ |
-| Paternity & DNA | https://guillaumegual-hue.github.io/catalogue/tests/paternity-dna/ |
 | Health profiles & screens | https://guillaumegual-hue.github.io/catalogue/tests/health-profiles/ |
 | Routine tests | https://guillaumegual-hue.github.io/catalogue/tests/routine-tests/ |
 | Autoimmune profiles | https://guillaumegual-hue.github.io/catalogue/tests/autoimmune/ |

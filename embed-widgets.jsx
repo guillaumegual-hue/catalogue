@@ -145,6 +145,9 @@ function EmbedCategoryList() {
   }
 
   const mapCategory = (sectionId) => {
+    if (sectionId === 'paternity') {
+      return embedCatalogueHref({ service: 'dna' });
+    }
     if (sectionId === 'fitness' || sectionId === 'allergies') {
       return embedCatalogueHref({ service: sectionId });
     }

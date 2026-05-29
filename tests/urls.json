@@ -36,18 +36,13 @@
   },
   {
     "slug": "dna",
-    "title": "DNA tests",
+    "title": "Paternity & DNA",
     "url": "https://guillaumegual-hue.github.io/catalogue/tests/dna/"
   },
   {
     "slug": "phlebotomy-collection",
     "title": "Phlebotomy & collection",
     "url": "https://guillaumegual-hue.github.io/catalogue/tests/phlebotomy-collection/"
-  },
-  {
-    "slug": "paternity-dna",
-    "title": "Paternity & DNA",
-    "url": "https://guillaumegual-hue.github.io/catalogue/tests/paternity-dna/"
   },
   {
     "slug": "health-profiles",

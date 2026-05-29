@@ -66,12 +66,12 @@ export const CATEGORY_HEROES = {
     theme: 'allergies',
   },
   dna: {
-    eyebrow: 'DNA testing',
-    heading: 'Our DNA testing services',
+    eyebrow: 'Paternity & DNA',
+    heading: 'Our paternity & DNA testing',
     intro:
-      'We recognise that each testing journey is deeply personal and treat it with the attention and importance it deserves. We only work with partners **Ministry of Justice-approved** for our legal DNA testing services.',
-    image: 'dna.jpg',
-    imageAlt: 'DNA double helix illustration',
+      'Legal (court-admissible) and peace-of-mind DNA tests — paternity, identity profiling and gender reveal. Legal tests require professional collection with **chain-of-custody**. We only work with **Ministry of Justice-approved** partners for court-admissible testing.',
+    image: 'paternity-dna.png',
+    imageAlt: 'Paternity DNA test kit',
     theme: 'dna',
   },
   'phlebotomy-collection': {
@@ -81,14 +81,6 @@ export const CATEGORY_HEROES = {
       'Home visits, clinic days and postal kits — pricing for collection and add-ons, with qualified clinicians and accredited laboratory partners.',
     image: 'phlebotomy-collection.jpg',
     theme: 'collection',
-  },
-  'paternity-dna': {
-    eyebrow: 'Paternity & DNA',
-    heading: 'Our paternity & DNA testing',
-    intro:
-      'Legal (court-admissible) and peace-of-mind DNA tests. Legal tests require professional collection with **chain-of-custody**.',
-    image: 'paternity-dna.png',
-    theme: 'paternity',
   },
   'health-profiles': {
     eyebrow: 'Health profiles',
