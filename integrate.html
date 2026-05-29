@@ -268,27 +268,25 @@
     </section>
 
     <section class="integrate-section" id="wordpress">
-      <h2>6. WordPress shortcode</h2>
+      <h2>6. WordPress / Elementor</h2>
       <p>
-        Copy <code>integrate/coleebri-catalogue.php</code> into your theme or a small custom plugin, then use:
+        Paste an HTML widget on each category page — no plugin. See
+        <a href="docs/WEBSITE-EMBED.md">docs/WEBSITE-EMBED.md</a> and
+        <code>integrate/elementor/coleebri-service-*.json</code>.
       </p>
-      <pre class="integrate-code">[coleebri_catalogue widget="tests" category="profiles" height="880"]
-[coleebri_catalogue widget="tests" service="men" height="900"]
-[coleebri_catalogue widget="tests" service="women" category="profiles" height="900"]
-[coleebri_catalogue widget="tests" category="sexual" height="880"]
-[coleebri_catalogue widget="tabs" height="140"]
-[coleebri_catalogue widget="quiz" height="640"]
-[coleebri_catalogue widget="collection" height="720"]
-[coleebri_catalogue widget="compliance" height="480"]
-[coleebri_catalogue widget="patient-info" height="920"]
-[coleebri_catalogue widget="glossary" height="560"]
-[coleebri_catalogue widget="marker" marker="hba1c" height="320"]
-[coleebri_catalogue widget="catalogue" service="women" height="900"]
-[coleebri_catalogue widget="most-ordered" height="880" branding="none"]
-[coleebri_catalogue widget="categories" height="520" branding="none"]</pre>
+      <pre class="integrate-code">&lt;div data-coleebri-embed="tests"
+  data-coleebri-base="https://health.coleebri.com/catalogue/"
+  data-branding="none"
+  data-site="https://health.coleebri.com/en"
+  data-integrated="1"
+  data-transparent="1"
+  data-service="men"
+  data-height="900"&gt;&lt;/div&gt;
+&lt;script src="https://health.coleebri.com/catalogue/assets/coleebri-embed.js"
+  data-base="https://health.coleebri.com/catalogue/"&gt;&lt;/script&gt;</pre>
       <p class="integrate-hint">
-        Set <code>COLEEBRI_CATALOGUE_BASE</code> in <code>wp-config.php</code> if the catalogue lives on a
-        different URL than the shortcode default.
+        Use the same base URL in <code>data-coleebri-base</code> and the script <code>data-base</code>.
+        Enquire uses <code>mailto:health@coleebri.com</code> in integrated mode — use an Elementor form for a styled enquiry flow.
       </p>
     </section>
 

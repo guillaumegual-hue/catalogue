@@ -1,6 +1,6 @@
 {
-  "generated": "2026-05-29T12:19:08.588Z",
-  "pluginRequired": "integrate/coleebri-catalogue.php",
+  "generated": "2026-05-29T12:33:58.032Z",
+  "embedScript": "assets/coleebri-embed.js",
   "wpConfig": "define('COLEEBRI_CATALOGUE_BASE', 'https://health.coleebri.com/catalogue/');",
   "pages": [
     {

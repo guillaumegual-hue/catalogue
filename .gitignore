@@ -12,7 +12,6 @@ export/
 uploads/
 
 # WordPress fat plugin — do not deploy to production
-wordpress-plugin/coleebri-health-catalogue/
 
 # Build artifacts
 wordpress-plugin/*.zip

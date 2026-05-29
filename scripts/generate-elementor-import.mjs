@@ -124,8 +124,7 @@ const ASSET_VER = '20260531a';
 
 const EMBED_INTEGRATED =
   ' data-branding="none" data-site="' + WP_SITE_BASE + '" data-integrated="1"';
-const EMBED_CATEGORY =
-  EMBED_INTEGRATED + ' data-transparent="1" data-display-only="1"';
+const EMBED_CATEGORY = EMBED_INTEGRATED + ' data-transparent="1"';
 
 const sc = (widget, extra = '') =>
   `[coleebri_catalogue widget="${widget}" branding="none"${extra ? ' ' + extra : ''}]`;
@@ -168,11 +167,11 @@ const PAGES = [
     slug: 'coleebri-tests-hub',
     title: 'Health tests hub',
     intro:
-      'Add your hero copy, then an Elementor <strong>Nav Menu</strong> (see integrate/elementor/category-nav-snippet.html). Compare and enquiry run on this site via the Coleebri bridge; OpnForm opens in a modal from test cards.',
+      'Add your hero copy and an Elementor <strong>Nav Menu</strong> (see integrate/elementor/category-nav-snippet.html). Embed the quiz widget below; use Elementor forms or mailto for enquiries.',
     blocks: [
       {
         heading: 'Help me choose',
-        note: 'Anchor id coleebri-hub-quiz for bridge scroll.',
+        note: 'Optional anchor id coleebri-hub-quiz for in-page links.',
         htmlWidget: {
           widget: 'quiz',
           mode: 'transparent',
@@ -311,7 +310,7 @@ writeFileSync(
   JSON.stringify(
     {
       generated: new Date().toISOString(),
-      pluginRequired: 'integrate/coleebri-catalogue.php',
+      embedScript: 'assets/coleebri-embed.js',
       wpConfig: "define('COLEEBRI_CATALOGUE_BASE', 'https://health.coleebri.com/catalogue/');",
       pages: manifest,
     },

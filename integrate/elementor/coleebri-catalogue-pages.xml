@@ -35,7 +35,7 @@
   <item>
     <title>Health tests hub</title>
     <link>https://health.coleebri.com/coleebri-tests-hub/</link>
-    <content:encoded><![CDATA[<p>Add your hero copy, then an Elementor <strong>Nav Menu</strong> (see integrate/elementor/category-nav-snippet.html). Compare and enquiry run on this site via the Coleebri bridge; OpnForm opens in a modal from test cards.</p>
+    <content:encoded><![CDATA[<p>Add your hero copy and an Elementor <strong>Nav Menu</strong> (see integrate/elementor/category-nav-snippet.html). Embed the quiz widget below; use Elementor forms or mailto for enquiries.</p>
 ]]></content:encoded>
     <wp:post_name>coleebri-tests-hub</wp:post_name>
     <wp:status>draft</wp:status>

@@ -35,21 +35,9 @@ Test:
 - `.../embed/?widget=tests&service=men&branding=none`
 - `.../Coleebri%20Patient%20Catalogue.html`
 
-## 2. WordPress embed plugin (required on WP only)
+## 2. WordPress embed (Elementor HTML widget)
 
-1. Install **`wordpress-plugin/coleebri-catalogue.zip`** (Plugins → Upload).
-2. **Do not** activate `coleebri-health-catalogue` (full plugin) on production.
-3. In `wp-config.php` (staging first):
-
-```php
-define( 'COLEEBRI_CATALOGUE_BASE', 'https://YOUR_ORG.github.io/coleebri-patient-catalogue/' );
-```
-
-4. Create a test page with shortcode:
-
-```text
-[coleebri_catalogue widget="tests" service="general" height="900" branding="none"]
-```
+No plugin. Paste the snippet from [docs/WEBSITE-EMBED.md](docs/WEBSITE-EMBED.md) or `integrate/elementor/coleebri-service-general.json`, with `data-coleebri-base` set to your GitHub Pages or production catalogue URL.
 
 ## 3. Phase 0 — category pages (Elementor)
 
@@ -59,7 +47,7 @@ Import each `integrate/elementor/coleebri-service-*.json` template, publish unde
 
 ## 4. Production cutover (same server as WordPress)
 
-1. Upload this repo root (excluding `wordpress-plugin/coleebri-health-catalogue/`, `export/`, `.git`) to:
+1. Upload this repo root (excluding `export/`, `.git`) to:
 
 ```text
 public_html/catalogue/

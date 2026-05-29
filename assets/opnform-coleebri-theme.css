@@ -1,0 +1,168 @@
+/**
+ * Coleebri Health — OpnForm workspace theme
+ * Paste into OpnForm: Workspace Settings → Custom Code → Custom CSS
+ * Source of truth: assets/coleebri-health-site.css (catalogue tokens)
+ * Public form URL only — not visible in the form editor preview.
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap");
+
+/* Page shell */
+#app,
+nav.bg-white {
+  background-color: #fafafa !important;
+}
+
+body {
+  font-family: "Work Sans", system-ui, sans-serif !important;
+  color: #1a1f23 !important;
+  background-color: #fafafa !important;
+}
+
+/* Headings */
+body h1,
+body h2,
+body h3,
+body .text-2xl,
+body .text-3xl,
+body .text-4xl {
+  font-family: "Poppins", system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  color: #1a1f23 !important;
+  letter-spacing: -0.02em;
+}
+
+body p,
+body .text-sm,
+body .text-gray-500,
+body .text-gray-600 {
+  font-family: "Work Sans", system-ui, sans-serif !important;
+  color: #4a544f !important;
+}
+
+/* Labels */
+label,
+label.font-bold,
+label.font-semibold {
+  font-family: "Work Sans", system-ui, sans-serif !important;
+  font-weight: 500 !important;
+  color: #1a1f23 !important;
+}
+
+/* Text inputs */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="url"],
+input[type="date"],
+textarea,
+select,
+.rounded-lg.border {
+  font-family: "Work Sans", system-ui, sans-serif !important;
+  font-size: 16px !important;
+  color: #1a1f23 !important;
+  background-color: #ffffff !important;
+  border-color: rgba(0, 136, 154, 0.14) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+
+textarea {
+  min-height: 120px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: #00889a !important;
+  box-shadow: 0 0 0 3px rgba(0, 136, 154, 0.12) !important;
+}
+
+/* Primary submit / next buttons */
+button[type="submit"],
+button.bg-custom-500,
+button.bg-custom-600,
+a.bg-custom-500,
+.bg-custom-500,
+.bg-custom-600 {
+  background-color: #00889a !important;
+  border-color: #00889a !important;
+  color: #ffffff !important;
+  font-family: "Work Sans", system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+
+button[type="submit"]:hover,
+button.bg-custom-500:hover,
+button.bg-custom-600:hover,
+.bg-custom-500:hover,
+.bg-custom-600:hover {
+  background-color: #006d7b !important;
+  border-color: #006d7b !important;
+}
+
+/* Secondary / outline buttons */
+button.border,
+button.bg-white {
+  border-color: rgba(0, 136, 154, 0.14) !important;
+  color: #1a1f23 !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+
+button.border:hover,
+button.bg-white:hover {
+  background-color: #e6f3f5 !important;
+  border-color: #00889a !important;
+}
+
+/* Links */
+a {
+  color: #00889a !important;
+}
+
+a:hover {
+  color: #006d7b !important;
+}
+
+/* Cards / blocks */
+.rounded-lg.shadow-sm,
+.shadow-sm {
+  box-shadow: 0 1px 0 rgba(0, 136, 154, 0.04), 0 8px 22px -16px rgba(0, 82, 92, 0.12) !important;
+  border-radius: 12px !important;
+}
+
+.relative.mb-3 {
+  margin-bottom: 1rem;
+}
+
+/* Checkboxes / radios */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: #00889a;
+}
+
+/* Progress bar (multi-page) */
+.bg-custom-500.h-1,
+.bg-custom-500.h-2 {
+  background-color: #00889a !important;
+}
+
+/* Top nav on public form */
+nav.bg-white {
+  border-bottom: 1px solid rgba(0, 136, 154, 0.14) !important;
+}
+
+/* Hide residual branding if toggle missed a spot */
+a[href*="opnform.com"]:not([href*="coleebri"]),
+.powered-by,
+[class*="powered"] {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}

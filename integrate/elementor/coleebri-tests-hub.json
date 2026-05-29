@@ -1,7 +1,7 @@
 {
   "content": [
     {
-      "id": "ec345b8",
+      "id": "09acf1d",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -24,7 +24,7 @@
       },
       "elements": [
         {
-          "id": "710c71a",
+          "id": "cb47794",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -35,18 +35,18 @@
           "elements": []
         },
         {
-          "id": "5cc4e6b",
+          "id": "2fcb4b7",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
-            "editor": "<p>Add your hero copy, then an Elementor <strong>Nav Menu</strong> (see integrate/elementor/category-nav-snippet.html). Compare and enquiry run on this site via the Coleebri bridge; OpnForm opens in a modal from test cards.</p>"
+            "editor": "<p>Add your hero copy and an Elementor <strong>Nav Menu</strong> (see integrate/elementor/category-nav-snippet.html). Embed the quiz widget below; use Elementor forms or mailto for enquiries.</p>"
           },
           "elements": []
         }
       ]
     },
     {
-      "id": "be88977",
+      "id": "6667585",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -69,7 +69,7 @@
       },
       "elements": [
         {
-          "id": "3dcdb31",
+          "id": "71a7f6a",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -80,16 +80,16 @@
           "elements": []
         },
         {
-          "id": "9658208",
+          "id": "6b7f302",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
-            "editor": "<p>Anchor id coleebri-hub-quiz for bridge scroll.</p>"
+            "editor": "<p>Optional anchor id coleebri-hub-quiz for in-page links.</p>"
           },
           "elements": []
         },
         {
-          "id": "90d9aa7",
+          "id": "2566c67",
           "elType": "widget",
           "widgetType": "html",
           "settings": {

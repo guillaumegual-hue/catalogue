@@ -4,15 +4,9 @@ Pre-built **Elementor page templates** and a **WordPress XML** export so you can
 
 ## Before you import
 
-1. Upload the catalogue folder to your server (e.g. `https://health.coleebri.com/catalogue/`).
-2. Install the shortcode plugin: copy `integrate/coleebri-catalogue.php` into `wp-content/plugins/coleebri-catalogue/` and activate it.
-3. In `wp-config.php` (recommended):
-
-```php
-define('COLEEBRI_CATALOGUE_BASE', 'https://health.coleebri.com/catalogue/');
-```
-
-4. Regenerate this pack after changing widgets (optional):
+1. Host the catalogue at e.g. `https://health.coleebri.com/catalogue/` (or GitHub Pages for staging).
+2. Category pages use an **HTML** widget with `data-coleebri-embed` + `coleebri-embed.js` — see [docs/WEBSITE-EMBED.md](../../docs/WEBSITE-EMBED.md).
+3. Regenerate this pack after changing widgets (optional):
 
 ```bash
 node scripts/generate-elementor-import.mjs
@@ -54,7 +48,7 @@ See `manifest.json` for the full list.
 **Elementor tips**
 
 - Use **stretch section** / full-width container for test grids.
-- If shortcodes show as plain text, the plugin is not active or `COLEEBRI_CATALOGUE_BASE` is wrong.
+- If the embed is blank, check the catalogue **base URL** in the HTML widget matches your hosted catalogue.
 - Your theme (e.g. Vamtam) global colours apply to headings; embed UI uses catalogue CSS inside the iframe.
 
 ---
@@ -80,7 +74,7 @@ This XML does **not** include Elementor layout data — use Option A for proper 
 
 ## Limitations
 
-- Templates use the **Shortcode** widget — requires `coleebri-catalogue.php`.
+- Service templates use the **HTML** widget (script embed). Older templates may still show shortcodes — prefer copying HTML from `coleebri-service-*.json`.
 - They do **not** include your theme hero, header, or Vamtam sections; import into your existing page designs or merge manually.
 - **Elementor Kit** (full site zip) is not included — only individual page templates.
 - ICO / company registration placeholders in legal copy remain in the catalogue app, not in these templates.

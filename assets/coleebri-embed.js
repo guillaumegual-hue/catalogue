@@ -71,11 +71,6 @@
     var tests = el.getAttribute('data-tests') || '';
     var siteBase = el.getAttribute('data-site') || '';
     var integrated = el.getAttribute('data-integrated') === '1' || !!siteBase;
-    var displayOnly =
-      el.getAttribute('data-display-only') === '1' ||
-      el.getAttribute('data-display-only') === 'true' ||
-      el.getAttribute('data-interactions') === 'parent';
-    if (displayOnly) integrated = true;
     var transparent =
       el.getAttribute('data-transparent') === '1' ||
       el.getAttribute('data-transparent') === 'true' ||
@@ -112,7 +107,6 @@
       brandLink: headerOpts.brandLink,
       siteBase: siteBase,
       integrated: integrated,
-      displayOnly: displayOnly,
       transparent: transparent,
     });
     iframe.title = title;
