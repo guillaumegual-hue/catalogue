@@ -1,7 +1,7 @@
 {
   "content": [
     {
-      "id": "6a60b0a",
+      "id": "7732421",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -24,7 +24,7 @@
       },
       "elements": [
         {
-          "id": "67b7df7",
+          "id": "56f343f",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -35,7 +35,7 @@
           "elements": []
         },
         {
-          "id": "5f9ddc9",
+          "id": "2a201a9",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "e0fced9",
+      "id": "739a9ef",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -69,7 +69,7 @@
       },
       "elements": [
         {
-          "id": "54c518c",
+          "id": "b919f3c",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -80,27 +80,27 @@
           "elements": []
         },
         {
-          "id": "acaa1d2",
+          "id": "685c714",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
-            "editor": "<p>Open the patient catalogue to search, compare markers, add tests to your list, and send an enquiry.</p>"
+            "editor": "<p>Open the catalogue to search, compare markers, add tests to your list, and send an enquiry.</p>"
           },
           "elements": []
         },
         {
-          "id": "83eb00f",
+          "id": "63c8c96",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
-            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html#service=sexual\">View all tests in the catalogue</a></p>"
+            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/index.html#service=sexual\">View all tests in the catalogue</a></p>"
           },
           "elements": []
         }
       ]
     },
     {
-      "id": "3bdd7cd",
+      "id": "a67ee46",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -123,7 +123,7 @@
       },
       "elements": [
         {
-          "id": "c38d694",
+          "id": "1ff8241",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -134,7 +134,7 @@
           "elements": []
         },
         {
-          "id": "5ec83ba",
+          "id": "22b5a82",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
@@ -143,11 +143,11 @@
           "elements": []
         },
         {
-          "id": "0a1f714",
+          "id": "b4bc17d",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
-            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html#top\">Open full catalogue</a></p>"
+            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/index.html#top\">Open full catalogue</a></p>"
           },
           "elements": []
         }

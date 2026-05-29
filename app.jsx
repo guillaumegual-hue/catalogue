@@ -1,4 +1,4 @@
-/* Coleebri Health - Patient Catalogue (simplified, live-site aligned) */
+/* Coleebri Health — test catalogue (simplified, live-site aligned) */
 
 const { useState, useEffect, useMemo, useRef } = React;
 
@@ -118,7 +118,7 @@ function CategoryHeroVisual({ hero }) {
 
 function CategoryPageHeader({ boot }) {
   const hero = resolveCategoryHero(boot);
-  const catalogueHref = '../../Coleebri%20Patient%20Catalogue.html';
+  const catalogueHref = '../../index.html';
   const Footnote = window.CatalogueFootnote;
   return (
     <section className="shell category-page-hero" aria-labelledby="category-hero-heading">
@@ -158,7 +158,7 @@ function Hero() {
         <h1>Your partner in health and wellness.</h1>
         <div className="hero-panels">
           <div className="hero-panel hero-panel-highlight">
-            <span className="hero-panel-kicker">Patient catalogue 2026</span>
+            <span className="hero-panel-kicker">Catalogue 2026</span>
             <span className="hero-panel-title">+200 tests available</span>
             <span className="hero-panel-desc">Blood, urine and DNA wellness &amp; screening tests</span>
           </div>
@@ -454,7 +454,7 @@ function RequestModal({ test, onClose, onOpenTest, enquirySource, quizAnswers })
     const lines = [
       'Hello Coleebri Health,',
       '',
-      'I would like to enquire about the following test from your patient catalogue:',
+      'I would like to enquire about the following test from your catalogue:',
       '',
       `${test.name} (${test.code}) - ${window.formatPrice(test)}`,
       `${window.ColeebriPricing.kitDeliveryLabel()}: £${window.ColeebriPricing.KIT_DELIVERY_FEE} (${window.ColeebriPricing.kitDeliveryInClinicNote().toLowerCase()})`,

@@ -47,9 +47,9 @@ function CatalogueCategoryList({ onOpenCategory, getCategoryHref, compact }) {
     <section className="shell catalogue-categories-block" aria-label="Catalogue categories">
       {!compact && (
       <div className="track-intro">
-        <span className="eyebrow">Patient catalogue 2026</span>
+        <span className="eyebrow">Catalogue 2026</span>
         <h2>Browse by category</h2>
-        <p className="lead">Choose a section to view tests in the full patient catalogue.</p>
+        <p className="lead">Choose a section to view tests in the full catalogue.</p>
         <CatalogueFootnote />
       </div>
       )}
@@ -83,7 +83,7 @@ function CatalogueCtaPanel({ catalogueHref }) {
     <section className="shell catalogue-cta-block">
       <div className="hero-panels">
         <div className="hero-panel hero-panel-highlight">
-          <span className="hero-panel-kicker">Patient catalogue 2026</span>
+          <span className="hero-panel-kicker">Catalogue 2026</span>
           <span className="hero-panel-title">Blood, urine &amp; DNA tests</span>
           <span className="hero-panel-desc">
             Browse tests we collect for UKAS-accredited laboratories — plain-English guidance and transparent pricing.

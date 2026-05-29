@@ -33,7 +33,7 @@ https://YOUR_ORG.github.io/coleebri-patient-catalogue/
 Test:
 
 - `.../embed/?widget=tests&service=men&branding=none`
-- `.../Coleebri%20Patient%20Catalogue.html`
+- `.../` (index.html — full catalogue)
 
 ## 2. WordPress plugin + sync
 
@@ -89,7 +89,7 @@ Service pages (`/en/tests/…`) link to catalogue deep URLs — **no** `widget=t
 
 2. Verify:
 
-   - `https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html`
+   - `https://health.coleebri.com/catalogue/`
    - `https://health.coleebri.com/catalogue/embed/?widget=quiz&branding=none`
 
 3. `wp-config.php`:

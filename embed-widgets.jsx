@@ -18,7 +18,7 @@ function embedCatalogueHref(opts) {
     const wpUrl = window.ColeebriEmbedParams.resolveParentNavigateUrl(embed, opts || {});
     if (wpUrl) return wpUrl;
   }
-  const base = embed.catalogueBase || '../Coleebri%20Patient%20Catalogue.html';
+  const base = embed.catalogueBase || '../index.html';
   const hash =
     window.ColeebriEmbedParams && window.ColeebriEmbedParams.buildCatalogueHash
       ? window.ColeebriEmbedParams.buildCatalogueHash(opts || {})
@@ -51,7 +51,7 @@ function embedOpenEnquiry(test) {
   const lines = [
     'Hello Coleebri Health,',
     '',
-    'I would like to enquire about the following test from your patient catalogue:',
+    'I would like to enquire about the following test from your catalogue:',
     '',
     test.name + ' (' + test.code + ')',
     'Turnaround: ' + (test.turnaround || '—'),

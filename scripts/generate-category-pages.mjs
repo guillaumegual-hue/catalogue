@@ -137,7 +137,7 @@ ${toolLinks}
   <ul>
 ${infoLinks}
   </ul>
-  <p><a href="../Coleebri%20Patient%20Catalogue.html">Full catalogue</a> (search, compare, quiz)</p>
+  <p><a href="../index.html">Full catalogue</a> (search, compare, quiz)</p>
   <p><a href="urls.json">urls.json</a> — all links for menus</p>
 </body>
 </html>

@@ -29,7 +29,7 @@ https://health.coleebri.com/catalogue/
 | Allergies | https://health.coleebri.com/catalogue/tests/allergies/ |
 | Paternity & DNA | https://health.coleebri.com/catalogue/tests/dna/ |
 | Phlebotomy & collection | https://health.coleebri.com/catalogue/tests/phlebotomy-collection/ |
-| Full catalogue (quiz & compare) | https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html |
+| Full catalogue (quiz & compare) | https://health.coleebri.com/catalogue/ |
 | Biomarker glossary | https://health.coleebri.com/catalogue/tests/glossary/ |
 | Glossaire | https://health.coleebri.com/catalogue/tests/glossaire/ |
 | Check a marker | https://health.coleebri.com/catalogue/tests/marker-check/ |

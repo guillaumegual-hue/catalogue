@@ -1,4 +1,4 @@
-# Coleebri Patient Catalogue — import package
+# Coleebri Health test catalogue — import package
 
 Deploy this folder to your web server (e.g. `https://health.coleebri.com/catalogue/`), or use **GitHub Pages** for staging — see **[DEPLOY.md](DEPLOY.md)**.
 
@@ -6,7 +6,7 @@ Deploy this folder to your web server (e.g. `https://health.coleebri.com/catalog
 
 1. Upload the entire folder to your host (FTP, SFTP, or hosting file manager).
 2. Serve over **HTTPS** (not `file://`).
-3. Open: `Coleebri Patient Catalogue.html`
+3. Open: `index.html`
 4. Integration hub: `integrate.html` or `integrate/index.html`
 
 ## WordPress / Elementor

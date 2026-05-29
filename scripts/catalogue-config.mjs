@@ -2,7 +2,7 @@
 export const CATALOGUE_BASE_PROD = 'https://health.coleebri.com/catalogue/';
 export const CATALOGUE_BASE_STAGING = 'https://guillaumegual-hue.github.io/catalogue/';
 export const WP_SITE_BASE = 'https://health.coleebri.com/en';
-export const CATALOGUE_HTML = 'Coleebri%20Patient%20Catalogue.html';
+export const CATALOGUE_HTML = 'index.html';
 
 export function catalogueBase(env = process.env) {
   return (

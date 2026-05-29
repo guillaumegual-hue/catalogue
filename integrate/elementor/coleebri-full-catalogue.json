@@ -1,7 +1,7 @@
 {
   "content": [
     {
-      "id": "b58d2df",
+      "id": "ee135e1",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -24,18 +24,18 @@
       },
       "elements": [
         {
-          "id": "8803ca8",
+          "id": "9b7e264",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
-            "title": "Patient catalogue (full)",
+            "title": "Full catalogue",
             "header_size": "h1",
             "align": "left"
           },
           "elements": []
         },
         {
-          "id": "c09158a",
+          "id": "7efdc0b",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "64ed66f",
+      "id": "1cc6464",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -69,7 +69,7 @@
       },
       "elements": [
         {
-          "id": "a88357b",
+          "id": "d423aa8",
           "elType": "widget",
           "widgetType": "shortcode",
           "settings": {
@@ -84,6 +84,6 @@
     "hide_title": "yes"
   },
   "version": "0.4",
-  "title": "Patient catalogue (full)",
+  "title": "Full catalogue",
   "type": "page"
 }

@@ -1,7 +1,7 @@
 {
   "content": [
     {
-      "id": "6615718",
+      "id": "bb8ecfe",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -24,7 +24,7 @@
       },
       "elements": [
         {
-          "id": "9d51423",
+          "id": "86e29b5",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -35,7 +35,7 @@
           "elements": []
         },
         {
-          "id": "3e90cc5",
+          "id": "cbf8e4b",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "fbba00b",
+      "id": "ae7c66e",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -69,7 +69,7 @@
       },
       "elements": [
         {
-          "id": "f8495b4",
+          "id": "136000c",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -80,27 +80,27 @@
           "elements": []
         },
         {
-          "id": "e2f91cf",
+          "id": "8405485",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
-            "editor": "<p>Open the patient catalogue to search, compare markers, add tests to your list, and send an enquiry.</p>"
+            "editor": "<p>Open the catalogue to search, compare markers, add tests to your list, and send an enquiry.</p>"
           },
           "elements": []
         },
         {
-          "id": "44d96cb",
+          "id": "5c89a99",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
-            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html#service=general\">View all tests in the catalogue</a></p>"
+            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/index.html#service=general\">View all tests in the catalogue</a></p>"
           },
           "elements": []
         }
       ]
     },
     {
-      "id": "70466b5",
+      "id": "360f842",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -123,7 +123,7 @@
       },
       "elements": [
         {
-          "id": "af39942",
+          "id": "1290f1c",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -134,7 +134,7 @@
           "elements": []
         },
         {
-          "id": "7795f44",
+          "id": "bef22c0",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
@@ -143,11 +143,11 @@
           "elements": []
         },
         {
-          "id": "aae9d4e",
+          "id": "98d21a6",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
-            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html#top\">Open full catalogue</a></p>"
+            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/index.html#top\">Open full catalogue</a></p>"
           },
           "elements": []
         }

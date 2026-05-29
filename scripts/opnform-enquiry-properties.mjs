@@ -15,7 +15,7 @@ export const LOGO_URL =
 
 export const CATALOGUE_URL =
   process.env.COLEEBRI_CATALOGUE_PUBLIC_URL ||
-  'https://guillaumegual-hue.github.io/catalogue/Coleebri%20Patient%20Catalogue.html';
+  'https://guillaumegual-hue.github.io/catalogue/index.html';
 
 const CATEGORY_FIELD_ID = 'a1000001-0001-4000-8000-000000000018';
 

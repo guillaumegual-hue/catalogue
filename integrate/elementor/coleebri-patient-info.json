@@ -1,7 +1,7 @@
 {
   "content": [
     {
-      "id": "d6db57a",
+      "id": "886f7f2",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -24,7 +24,7 @@
       },
       "elements": [
         {
-          "id": "d18918a",
+          "id": "f37c479",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "id": "6427a2c",
+      "id": "ef53959",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -60,7 +60,7 @@
       },
       "elements": [
         {
-          "id": "d3302ba",
+          "id": "ac12f1a",
           "elType": "widget",
           "widgetType": "shortcode",
           "settings": {

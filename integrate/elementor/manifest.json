@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-29T14:07:38.179Z",
+  "generated": "2026-05-29T15:45:35.587Z",
   "embedScript": "assets/coleebri-embed.js",
   "wpConfig": "define('COLEEBRI_CATALOGUE_BASE', 'https://health.coleebri.com/catalogue/');",
   "pages": [
@@ -11,7 +11,7 @@
     },
     {
       "file": "coleebri-full-catalogue.json",
-      "title": "Patient catalogue (full)",
+      "title": "Full catalogue",
       "slug": "coleebri-full-catalogue",
       "suggestedPath": "full/catalogue"
     },

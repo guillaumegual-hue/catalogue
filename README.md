@@ -1,4 +1,4 @@
-# Coleebri Patient Catalogue
+# Coleebri Health test catalogue
 
 Single static patient test catalogue: React app for browse/compare/enquire, plus WordPress integration for search and SEO.
 
@@ -15,7 +15,7 @@ See **[docs/PATIENT-JOURNEY.md](docs/PATIENT-JOURNEY.md)**.
 
 ## What this repo contains
 
-- **Full catalogue** — `index.html` / `Coleebri Patient Catalogue.html`
+- **Full catalogue** — `index.html` (legacy `Coleebri Patient Catalogue.html` redirects here)
 - **Embeds** — `embed/` + `assets/coleebri-embed.js` (hub/quiz/glossary; not primary for service pages)
 - **WordPress plugin** — `wordpress-plugin/coleebri-health-catalogue/`
 - **Sync** — `scripts/sync-wp-tests.mjs`

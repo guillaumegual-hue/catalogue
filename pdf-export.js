@@ -180,7 +180,7 @@ ${bodyHtml}
   function exportFull() {
     if (typeof window.renderPrintCatalogue === 'function' && window.TESTS) {
       printHtml(
-        'Coleebri Health - Patient Catalogue 2026',
+        'Coleebri Health — Test catalogue 2026',
         window.renderPrintCatalogue(),
         window.cataloguePrintStyles ? window.cataloguePrintStyles() : printStyles()
       );
@@ -213,7 +213,7 @@ ${bodyHtml}
   <section class="cover">
     <img class="logo" src="https://health.coleebri.com/wp-content/uploads/sites/12/2025/02/Fichier-7@2x.png" alt="Coleebri Health"/>
     <h1>Your test enquiry list</h1>
-    <p class="sub">Patient catalogue 2026 - laboratory fees only. Collection arranged separately. Not medical advice.</p>
+    <p class="sub">Catalogue 2026 — laboratory fees only. Collection arranged separately. Not medical advice.</p>
     <div class="cover-panels">
       <div class="cover-panel"><span class="kicker">Catalogue</span><span class="big">+200 tests available</span></div>
       <div class="cover-panel"><span class="kicker">Need something else?</span><p>Can't find your test? Contact us at health@coleebri.com</p></div>

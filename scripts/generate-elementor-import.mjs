@@ -145,7 +145,7 @@ function servicePage(title, trackId, slug, opts = {}) {
       {
         heading: 'Browse tests',
         note:
-          'Open the patient catalogue to search, compare markers, add tests to your list, and send an enquiry.',
+          'Open the catalogue to search, compare markers, add tests to your list, and send an enquiry.',
         cta: {
           label: 'View all tests in the catalogue',
           href: catalogueDeepLink(filter, CATALOGUE_BASE),
@@ -189,7 +189,7 @@ function homepageEmbedBlock(widget, height) {
     note:
       widget === 'most-ordered'
         ? 'Featured panels — opens the full catalogue for compare and enquire.'
-        : 'Jump to a section in the patient catalogue.',
+        : 'Jump to a section in the catalogue.',
     htmlWidget: {
       widget,
       mode: 'homepage',
@@ -221,7 +221,7 @@ const PAGES = [
   },
   {
     slug: 'coleebri-full-catalogue',
-    title: 'Patient catalogue (full)',
+    title: 'Full catalogue',
     intro: 'Full catalogue with search and tabs — use only if you need everything on one page.',
     blocks: [{ shortcode: sc('catalogue', 'height="920"') }],
   },

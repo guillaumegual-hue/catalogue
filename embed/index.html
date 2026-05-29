@@ -50,13 +50,13 @@
   <div class="coleebri-embed" id="embed-root">
     <header class="coleebri-embed__brand" id="embed-brand">
       <div class="coleebri-embed__brand-start">
-        <a id="embed-brand-logo-link" class="coleebri-embed__brand-logo-link" href="../Coleebri%20Patient%20Catalogue.html" target="_top" rel="noopener">
+        <a id="embed-brand-logo-link" class="coleebri-embed__brand-logo-link" href="../index.html" target="_top" rel="noopener">
           <img id="embed-brand-logo" src="../assets/coleebri-health-logo.svg" alt="Coleebri Health" width="132" height="26" />
         </a>
-        <a id="embed-brand-name" class="coleebri-embed__brand-name" href="../Coleebri%20Patient%20Catalogue.html" target="_top" rel="noopener">Coleebri Health</a>
+        <a id="embed-brand-name" class="coleebri-embed__brand-name" href="../index.html" target="_top" rel="noopener">Coleebri Health</a>
       </div>
       <div class="coleebri-embed__brand-actions">
-        <a id="embed-catalogue-link" class="coleebri-embed__brand-link" href="../Coleebri%20Patient%20Catalogue.html" target="_top" rel="noopener">
+        <a id="embed-catalogue-link" class="coleebri-embed__brand-link" href="../index.html" target="_top" rel="noopener">
           Open full catalogue
         </a>
         <a id="embed-exit-link" class="coleebri-embed__brand-link coleebri-embed__exit-link" href="https://health.coleebri.com/en/" target="_top" rel="noopener">
@@ -83,7 +83,7 @@
       var params = window.ColeebriEmbedParams.parseEmbedParams(location.search);
       var root = document.getElementById('embed-root');
       window.ColeebriEmbedParams.applyHeaderChrome(root, params.header);
-      var catalogueHref = '../Coleebri%20Patient%20Catalogue.html' +
+      var catalogueHref = '../index.html' +
         window.ColeebriEmbedParams.buildCatalogueHash({
           service: params.service,
           category: params.category,
@@ -97,7 +97,7 @@
         if (el) el.href = catalogueHref;
       });
       if (!params.catalogueBase) {
-        params.catalogueBase = '../Coleebri%20Patient%20Catalogue.html';
+        params.catalogueBase = '../index.html';
       }
       window.__COLEEBRI_EMBED__ = params;
     })();
@@ -146,11 +146,11 @@
             tests: embed.tests,
           })
         : '#top';
-      const src = '../Coleebri%20Patient%20Catalogue.html' + hash;
+      const src = '../index.html' + hash;
       React.useEffect(postEmbedHeight, []);
       return (
         <iframe
-          title="Coleebri Health patient catalogue"
+          title="Coleebri Health test catalogue"
           src={src}
           style={{ width: '100%', border: 0, minHeight: '70vh', borderRadius: '12px' }}
         />

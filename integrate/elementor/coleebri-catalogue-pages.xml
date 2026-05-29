@@ -22,7 +22,7 @@
     <wp:post_type>page</wp:post_type>
   </item>
   <item>
-    <title>Patient catalogue (full)</title>
+    <title>Full catalogue</title>
     <link>https://health.coleebri.com/coleebri-full-catalogue/</link>
     <content:encoded><![CDATA[<p>Full catalogue with search and tabs — use only if you need everything on one page.</p>
 [coleebri_catalogue widget="catalogue" branding="none" height="920"]]]></content:encoded>

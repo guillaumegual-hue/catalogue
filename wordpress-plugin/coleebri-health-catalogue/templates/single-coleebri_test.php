@@ -40,7 +40,7 @@ while (have_posts()) {
             </a>
         </p>
         <p style="margin-top:1rem;font-size:.9rem;color:#5a6b7d">
-            <?php esc_html_e('Compare markers, add to your list, and send an enquiry from the full patient catalogue.', 'coleebri-health-catalogue'); ?>
+            <?php esc_html_e('Compare markers, add to your list, and send an enquiry from the full catalogue.', 'coleebri-health-catalogue'); ?>
         </p>
     </main>
     <?php

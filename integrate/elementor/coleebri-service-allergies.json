@@ -1,7 +1,7 @@
 {
   "content": [
     {
-      "id": "a219b00",
+      "id": "5911ccf",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -24,7 +24,7 @@
       },
       "elements": [
         {
-          "id": "f81ebf9",
+          "id": "2e59c77",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -35,7 +35,7 @@
           "elements": []
         },
         {
-          "id": "5d79125",
+          "id": "0ba5757",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "305d539",
+      "id": "46c8755",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -69,7 +69,7 @@
       },
       "elements": [
         {
-          "id": "a2230cb",
+          "id": "9144698",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -80,27 +80,27 @@
           "elements": []
         },
         {
-          "id": "b1bb236",
+          "id": "5fbfc52",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
-            "editor": "<p>Open the patient catalogue to search, compare markers, add tests to your list, and send an enquiry.</p>"
+            "editor": "<p>Open the catalogue to search, compare markers, add tests to your list, and send an enquiry.</p>"
           },
           "elements": []
         },
         {
-          "id": "4a1b82b",
+          "id": "b57f7ef",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
-            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html#category=allergies\">View all tests in the catalogue</a></p>"
+            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/index.html#category=allergies\">View all tests in the catalogue</a></p>"
           },
           "elements": []
         }
       ]
     },
     {
-      "id": "d54e57a",
+      "id": "6706bb2",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -123,7 +123,7 @@
       },
       "elements": [
         {
-          "id": "b2a3ef9",
+          "id": "4ab8ab7",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -134,7 +134,7 @@
           "elements": []
         },
         {
-          "id": "625899c",
+          "id": "cfd6af8",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
@@ -143,11 +143,11 @@
           "elements": []
         },
         {
-          "id": "62a0276",
+          "id": "3d27e17",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
-            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html#top\">Open full catalogue</a></p>"
+            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/index.html#top\">Open full catalogue</a></p>"
           },
           "elements": []
         }

@@ -143,7 +143,7 @@ function CartDrawer({ cart, open, onClose, onOpenTest }) {
     const lines = [
       'Hello Coleebri Health,',
       '',
-      'I would like to enquire about the following tests from your 2026 patient catalogue:',
+      'I would like to enquire about the following tests from your 2026 catalogue:',
       '',
       ...cart.items.map((t, i) => `${i + 1}. ${t.name} (${t.code}) - ${window.formatPrice(t)}`),
       '',

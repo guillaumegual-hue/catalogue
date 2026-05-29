@@ -189,7 +189,7 @@
       </div>
       <div class="compliance-foot">
         <span>© 2026 Coleebri Groupe. All rights reserved.</span>
-        <span>Patient Catalogue 2026</span>
+        <span>Catalogue 2026</span>
       </div>
     </section>`;
   }
@@ -201,7 +201,7 @@
     const cover = `<section class="print-page print-cover">
       <div class="cover-head">
         <img src="${LOGO_URL}" alt="Coleebri Health" class="cover-logo" width="180" height="40"/>
-        <span class="cover-yr">Patient Catalogue · 2026</span>
+        <span class="cover-yr">Test catalogue · 2026</span>
       </div>
       <h1>Your partner in health and wellness.</h1>
       <p class="cover-sub">A simple guide to every blood, urine and DNA test we collect on your behalf — sent securely to UKAS-accredited partner laboratories.</p>
@@ -212,7 +212,7 @@
         <span class="cover-badge">DBS-checked clinicians</span>
       </div>
       <div class="cover-panels">
-        <div class="cover-panel"><span class="kicker">Patient catalogue 2026</span><span class="big">+200 tests available</span><p>Blood, urine and DNA wellness &amp; screening tests</p></div>
+        <div class="cover-panel"><span class="kicker">Catalogue 2026</span><span class="big">+200 tests available</span><p>Blood, urine and DNA wellness &amp; screening tests</p></div>
         <div class="cover-panel"><span class="kicker">Need something else?</span><p>Can't find your test? Contact us — we can often arrange other markers through our partner laboratories.</p></div>
       </div>
       <div class="cover-foot">
@@ -245,7 +245,7 @@
 
     const toc = `<section class="print-page print-toc">
       <h2>Contents</h2>
-      <p class="sec-blurb">Every test grouped as in the patient catalogue online. Sample-type tags show whether a venous draw, finger-prick kit, urine or DNA sample is needed.</p>
+      <p class="sec-blurb">Every test grouped as in the online catalogue. Sample-type tags show whether a venous draw, finger-prick kit, urine or DNA sample is needed.</p>
       <ol class="toc-list">
         ${tocItems
           .map(

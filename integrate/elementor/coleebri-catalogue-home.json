@@ -1,7 +1,7 @@
 {
   "content": [
     {
-      "id": "e813f03",
+      "id": "711f1e0",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -24,7 +24,7 @@
       },
       "elements": [
         {
-          "id": "be0d131",
+          "id": "bd99b7b",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -35,7 +35,7 @@
           "elements": []
         },
         {
-          "id": "4bf3daf",
+          "id": "ca36602",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "9f93a17",
+      "id": "5550024",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -69,7 +69,7 @@
       },
       "elements": [
         {
-          "id": "6671bb8",
+          "id": "d8356ac",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -80,7 +80,7 @@
           "elements": []
         },
         {
-          "id": "ae471e4",
+          "id": "b31d2c3",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
@@ -89,7 +89,7 @@
           "elements": []
         },
         {
-          "id": "8db7ce8",
+          "id": "c07e815",
           "elType": "widget",
           "widgetType": "html",
           "settings": {
@@ -100,7 +100,7 @@
       ]
     },
     {
-      "id": "186f024",
+      "id": "bb9d12c",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -123,7 +123,7 @@
       },
       "elements": [
         {
-          "id": "28c78c7",
+          "id": "3b6f4b5",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -134,16 +134,16 @@
           "elements": []
         },
         {
-          "id": "ea5266b",
+          "id": "deac436",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
-            "editor": "<p>Jump to a section in the patient catalogue.</p>"
+            "editor": "<p>Jump to a section in the catalogue.</p>"
           },
           "elements": []
         },
         {
-          "id": "d7c7d22",
+          "id": "020437c",
           "elType": "widget",
           "widgetType": "html",
           "settings": {

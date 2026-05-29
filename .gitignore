@@ -11,6 +11,8 @@ Thumbs.db
 # Large / optional bundles (not needed for Pages or WP embed)
 export/
 uploads/
+coleebri-catalogue-deploy/
+coleebri-catalogue-deploy.zip
 
 # WordPress fat plugin — do not deploy to production
 

@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Coleebri Health Catalogue
- * Description: Searchable blood-test index (coleebri_test) synced from the patient catalogue data.js. Embeds optional; primary UX lives at /catalogue/.
+ * Description: Searchable blood-test index (coleebri_test) synced from the catalogue data.js. Embeds optional; primary UX lives at /catalogue/.
  * Version: 1.0.0
  * Author: Coleebri Health
  * Requires at least: 6.0

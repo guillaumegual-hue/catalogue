@@ -52,7 +52,7 @@ Machine-readable list: [`tests/urls.json`](../tests/urls.json)
 | Menu label | Staging URL |
 |------------|-------------|
 | Patient information | https://guillaumegual-hue.github.io/catalogue/tests/patient-information/ |
-| Full catalogue (search, compare, quiz) | https://guillaumegual-hue.github.io/catalogue/Coleebri%20Patient%20Catalogue.html |
+| Full catalogue (search, compare, quiz) | https://guillaumegual-hue.github.io/catalogue/ |
 | Category index (all links) | https://guillaumegual-hue.github.io/catalogue/tests/ |
 | Exit to main site | https://health.coleebri.com/en/ |
 

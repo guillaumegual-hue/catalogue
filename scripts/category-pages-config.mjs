@@ -2,7 +2,7 @@
  * One static HTML page per category — unique URLs for WordPress menus.
  * Regenerate: node scripts/generate-category-pages.mjs
  */
-export const ASSET_VER = '20260607q';
+export const ASSET_VER = '20260607r';
 
 /** @type {Array<{ slug: string, title: string, service?: string, category?: string, scroll?: string }>} */
 export const CATEGORY_PAGES = [

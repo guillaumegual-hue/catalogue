@@ -1,7 +1,7 @@
 {
   "content": [
     {
-      "id": "22b2960",
+      "id": "573b7cc",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -24,7 +24,7 @@
       },
       "elements": [
         {
-          "id": "a40f0b2",
+          "id": "0e94963",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -35,7 +35,7 @@
           "elements": []
         },
         {
-          "id": "827b563",
+          "id": "3f60032",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "bd44a44",
+      "id": "2763753",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -69,7 +69,7 @@
       },
       "elements": [
         {
-          "id": "3eefa33",
+          "id": "02cd06d",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -80,27 +80,27 @@
           "elements": []
         },
         {
-          "id": "8999212",
+          "id": "3c0374d",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
-            "editor": "<p>Open the patient catalogue to search, compare markers, add tests to your list, and send an enquiry.</p>"
+            "editor": "<p>Open the catalogue to search, compare markers, add tests to your list, and send an enquiry.</p>"
           },
           "elements": []
         },
         {
-          "id": "15beb74",
+          "id": "8518b17",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
-            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html#category=fitness\">View all tests in the catalogue</a></p>"
+            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/index.html#category=fitness\">View all tests in the catalogue</a></p>"
           },
           "elements": []
         }
       ]
     },
     {
-      "id": "8e1f0ed",
+      "id": "9cd3767",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -123,7 +123,7 @@
       },
       "elements": [
         {
-          "id": "9a51546",
+          "id": "b163142",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -134,7 +134,7 @@
           "elements": []
         },
         {
-          "id": "5f0444f",
+          "id": "a824e87",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
@@ -143,11 +143,11 @@
           "elements": []
         },
         {
-          "id": "ba2e04f",
+          "id": "0fa0da2",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
-            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html#top\">Open full catalogue</a></p>"
+            "editor": "<p class=\"coleebri-wp-cta\"><a class=\"coleebri-catalogue-cta\" href=\"https://health.coleebri.com/catalogue/index.html#top\">Open full catalogue</a></p>"
           },
           "elements": []
         }

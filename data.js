@@ -1,4 +1,4 @@
-/* Coleebri Health - patient catalogue data (merged Excel 2026, catalogue-priced items only). */
+/* Coleebri Health — test catalogue data (merged Excel 2026, catalogue-priced items only). */
 
 window.SAMPLE_TYPES = {
   venous: { label: 'Venous blood draw', short: 'Venous', tone: 'teal' },
