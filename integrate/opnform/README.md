@@ -8,8 +8,11 @@ Create in the OpnForm UI or run (never commit the token):
 
 ```bash
 export COLEEBRI_OPNFORM_TOKEN='your-token'
+export COLEEBRI_OPNFORM_API_BASE='https://app.coleebri.eu/api'
+node scripts/opnform-list-forms.mjs
 node scripts/opnform-create-enquiry-form.mjs
-node scripts/opnform-inspect-form.mjs <slug-from-output>
+# if slug still missing: node scripts/opnform-create-enquiry-form.mjs --verbose
+node scripts/opnform-inspect-form.mjs <slug-from-list-or-create>
 ```
 
 Each property block **must** have a UUID `id` and an OpnForm `type` (`short_text`, `email`, `phone_number`, `long_text`). The create script adds missing ids automatically.

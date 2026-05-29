@@ -7,16 +7,22 @@ import { readFileSync } from 'fs';
 import { randomUUID } from 'crypto';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import {
+  getConfig,
+  requireToken,
+  apiFetch,
+  extractForm,
+  resolveFormAfterCreate,
+  printFormSummary,
+  listWorkspaceForms,
+  findFormByTitle,
+} from './opnform-lib.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const token = process.env.COLEEBRI_OPNFORM_TOKEN;
-const apiBase = (process.env.COLEEBRI_OPNFORM_API_BASE || 'https://app.coleebri.eu/api').replace(/\/$/, '');
-const publicBase = (process.env.COLEEBRI_OPNFORM_PUBLIC_BASE || 'https://app.coleebri.eu').replace(/\/$/, '');
+const cfg = getConfig();
+requireToken(cfg.token);
 
-if (!token) {
-  console.error('Set COLEEBRI_OPNFORM_TOKEN (never commit tokens to git).');
-  process.exit(1);
-}
+const verbose = process.argv.includes('--verbose');
 
 const TYPE_MAP = {
   text: 'short_text',
@@ -42,40 +48,41 @@ function normalizePayload(raw) {
 
 const raw = JSON.parse(readFileSync(join(root, 'integrate/opnform/test-enquiry-payload.json'), 'utf8'));
 const payload = normalizePayload(raw);
+const formTitle = payload.title;
 
-const res = await fetch(`${apiBase}/open/forms`, {
+const { res, data, text } = await apiFetch('/open/forms', {
+  ...cfg,
   method: 'POST',
-  headers: {
-    Authorization: `Bearer ${token}`,
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(payload),
+  body: payload,
 });
-
-const text = await res.text();
-let data;
-try {
-  data = JSON.parse(text);
-} catch {
-  data = text;
-}
 
 if (!res.ok) {
   console.error('Create form failed', res.status, data);
   process.exit(1);
 }
 
-const form = data.data || data;
-const slug = form.slug || 'unknown';
-const id = form.id;
+if (verbose || !extractForm(data)?.slug) {
+  console.error('HTTP', res.status, '(response envelope)');
+  if (typeof data === 'object') console.error(JSON.stringify(data, null, 2));
+  else console.error(text);
+  console.error('');
+}
+
+let form = await resolveFormAfterCreate(cfg, { title: formTitle, createResponse: data });
+
+if (!form?.slug) {
+  console.error('Form may have been created but slug could not be resolved.');
+  console.error('Run: node scripts/opnform-list-forms.mjs');
+  const forms = await listWorkspaceForms(cfg);
+  const partial = findFormByTitle(forms, formTitle);
+  if (partial.length) {
+    console.error('\nMatching forms by title:');
+    for (const f of partial) {
+      console.error(`  ${f.id}\t${f.slug}\t${f.title}`);
+    }
+  }
+  process.exit(1);
+}
 
 console.log('Created form.');
-console.log('ID:', id);
-console.log('Slug:', slug);
-console.log('Public URL:', `${publicBase}/forms/${slug}`);
-console.log('');
-console.log('Add to wp-config.php:');
-console.log(`define( 'COLEEBRI_OPNFORM_ENQUIRY_SLUG', '${slug}' );`);
-console.log('');
-console.log('Inspect fields: node scripts/opnform-inspect-form.mjs', slug);
+printFormSummary(form, cfg.publicBase);
