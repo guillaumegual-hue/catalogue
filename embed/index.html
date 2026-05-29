@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/coleebri-health-site.css?v=20260531a" />
-  <link rel="stylesheet" href="../assets/embed-shell.css?v=20260531a" />
+  <link rel="stylesheet" href="../assets/embed-shell.css?v=20260606c" />
   <script>
     (function () {
       var p = new URLSearchParams(location.search);
@@ -35,7 +35,8 @@
         p.get('transparent') === '1' ||
         p.get('transparent') === 'true' ||
         p.get('theme') === 'transparent' ||
-        (p.get('integrated') === '1' && p.get('transparent') !== '0')
+        (p.get('integrated') === '1' && p.get('transparent') !== '0') ||
+        (siteWidgets[w] && p.get('transparent') !== '0' && p.get('transparent') !== 'false')
       ) {
         document.documentElement.classList.add('coleebri-embed-transparent');
       }
@@ -68,7 +69,7 @@
     };
   </script>
 
-  <script src="../assets/coleebri-embed-params.js?v=20260606b"></script>
+  <script src="../assets/coleebri-embed-params.js?v=20260606c"></script>
   <script>
     (function () {
       var params = window.ColeebriEmbedParams.parseEmbedParams(location.search);

@@ -296,7 +296,8 @@
       p.get('transparent') === '1' ||
       p.get('transparent') === 'true' ||
       p.get('theme') === 'transparent' ||
-      (integrated && p.get('transparent') !== '0');
+      (integrated && p.get('transparent') !== '0') ||
+      (SITE_WIDGETS[widget] && p.get('transparent') !== '0' && p.get('transparent') !== 'false');
     if (integrated && headerChrome.show && p.get('branding') === null) {
       headerChrome = HEADER_PRESETS.none;
     }
@@ -449,7 +450,12 @@
     else if (opts.test) url += '&test=' + encodeURIComponent(opts.test);
     if (opts.siteBase) url += '&site=' + encodeURIComponent(opts.siteBase);
     if (opts.integrated) url += '&integrated=1';
-    if (opts.transparent) url += '&transparent=1';
+    if (
+      opts.transparent !== false &&
+      (opts.transparent || SITE_WIDGETS[widget])
+    ) {
+      url += '&transparent=1';
+    }
     return appendHeaderQuery(url, opts);
   }
 

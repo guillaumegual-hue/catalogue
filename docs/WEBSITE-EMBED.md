@@ -42,7 +42,7 @@ Filters: `data-service="men"` or `data-category="fitness"` / `data-category="all
 Integrated mode:
 
 - No embed header bar
-- Transparent iframe background (site background shows through)
+- Transparent iframe background by default on site widgets (WordPress page background shows through; use `&transparent=0` to disable)
 - **Enquire** opens `mailto:health@coleebri.com` with test details (default until OpnForm pilot passes QA — see [OPNFORM-STYLING.md](OPNFORM-STYLING.md))
 
 ## Full catalogue

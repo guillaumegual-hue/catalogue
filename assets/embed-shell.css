@@ -146,3 +146,9 @@ html.coleebri-embed-transparent .catalogue-test-grid.shell {
   padding-top: 0;
   padding-bottom: 0;
 }
+
+html.coleebri-embed-transparent #embed-widget-inner,
+html.coleebri-embed-transparent #embed-widget-inner .subsec,
+html.coleebri-embed-transparent #embed-widget-inner .card-grid {
+  background: transparent !important;
+}
