@@ -128,17 +128,59 @@ main {
 
 .topbar .search {
   flex: 2 1 280px;
+  display: flex;
+  align-items: center;
   min-width: min(100%, 260px);
   background: var(--paper);
-  border-color: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0 14px;
   height: 44px;
   margin-inline: 10px;
   box-sizing: border-box;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .topbar .search:focus-within {
   border-color: var(--vital);
   box-shadow: 0 0 0 3px rgba(0, 136, 154, 0.15);
+}
+
+.topbar .search svg {
+  flex-shrink: 0;
+  color: var(--ink-3);
+}
+
+.topbar .search input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 0 10px;
+  color: var(--ink);
+}
+
+.topbar .search input::placeholder {
+  color: var(--ink-3);
+}
+
+.topbar .search .clear {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: var(--ink-3);
+  border-radius: 999px;
+}
+
+.topbar .search .clear:hover {
+  background: var(--paper-inset);
+  color: var(--ink);
 }
 
 .topbar-actions {
