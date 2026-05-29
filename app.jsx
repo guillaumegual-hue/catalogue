@@ -228,7 +228,7 @@ function PatientInformation({ onOpenMarkerCheck }) {
 /* ─── FOOTER ────────────────────────────────────────────── */
 function Foot() {
   return (
-    <footer className="foot" style={{background: 'var(--forest)'}}>
+    <footer className="foot">
       <div className="shell">
         <div className="foot-grid">
           <div>
