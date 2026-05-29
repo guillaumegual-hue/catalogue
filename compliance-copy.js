@@ -282,7 +282,7 @@
       {
         heading: 'Your data',
         paragraphs: [
-          'Health and test enquiry data is processed by Coleebri Groupe as special category data under UK GDPR. We process this data on the basis of your explicit consent, given at the point of booking. Your data is shared with the relevant laboratory partner solely for the purpose of sample analysis. Full details of how we collect, store, and protect your data are set out in our Privacy Policy at coleebri.com/privacy.',
+          'Health and test enquiry data is processed by Coleebri Groupe as special category data under UK GDPR. We process this data on the basis of your explicit consent, given at the point of booking. Your data is shared with the relevant laboratory partner solely for the purpose of sample analysis. Full details are set out in our Privacy Statement on health.coleebri.com.',
         ],
       },
       {

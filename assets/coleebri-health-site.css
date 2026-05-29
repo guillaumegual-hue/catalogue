@@ -1813,6 +1813,35 @@ main#top > section#collection-info {
   color: #fff;
 }
 
+.foot-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.foot-links li + li {
+  margin-top: 8px;
+}
+
+.foot-links a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.foot-links a:hover {
+  text-decoration: underline;
+}
+
+.foot-note {
+  margin-bottom: 12px;
+}
+
+.foot-urgent {
+  margin-top: 14px;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
 .foot .copyright {
   margin-top: 36px;
   padding-top: 20px;

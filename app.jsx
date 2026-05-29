@@ -312,37 +312,80 @@ function PatientInformation({ onOpenMarkerCheck }) {
 }
 
 /* ─── FOOTER ────────────────────────────────────────────── */
+function FootLinkList({ links }) {
+  if (!links || !links.length) return null;
+  return (
+    <ul className="foot-links">
+      {links.map(function (item) {
+        return (
+          <li key={item.href}>
+            <a href={item.href} {...(item.external ? { target: '_top', rel: 'noopener' } : {})}>
+              {item.label}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
 function Foot() {
+  const site = window.ColeebriCatalogueSite || {};
+  const legalLinks = (site.legalLinks || []).map(function (item) {
+    return { ...item, external: true };
+  });
+  const catalogueLinks = site.catalogueLinks || [
+    { label: 'About our service', href: '#about-our-service' },
+    { label: 'Cancellation', href: '#terms-cancellation' },
+    { label: 'Service & legal information', href: '#legal-information' },
+    { label: 'Patient information', href: '#patient-information' },
+  ];
+  const homeUrl = site.home || 'https://health.coleebri.com/en/';
+
   return (
     <footer className="foot">
       <div className="shell">
         <div className="foot-grid">
           <div>
-            <img src="https://health.coleebri.com/wp-content/uploads/sites/12/2025/02/Fichier-7@2x.png" alt="Coleebri Health" style={{height: 40, marginBottom: 14, filter: 'brightness(0) invert(1)'}} />
+            <a href={homeUrl} target="_top" rel="noopener">
+              <img
+                src="https://health.coleebri.com/wp-content/uploads/sites/12/2025/02/Fichier-7@2x.png"
+                alt="Coleebri Health"
+                style={{ height: 40, marginBottom: 14, filter: 'brightness(0) invert(1)' }}
+              />
+            </a>
             <p>Your partner in health and wellness. A professional sample collection service operating from Worthing, West Sussex.</p>
           </div>
           <div>
             <h4>Contact</h4>
             <p>
-              <a href="mailto:health@coleebri.com">health@coleebri.com</a><br/>
-              140 South Street<br/>
-              Worthing BN14 7NB<br/>
-              <a href="https://health.coleebri.com">health.coleebri.com</a>
+              <a href="mailto:health@coleebri.com">health@coleebri.com</a>
+              <br />
+              140 South Street
+              <br />
+              Worthing BN14 7NB
+              <br />
+              <a href={homeUrl} target="_top" rel="noopener">
+                health.coleebri.com
+              </a>
             </p>
           </div>
           <div>
             <h4>Healthcare professionals</h4>
-            <p>For ad-hoc tests including phlebotomy for your patients, please contact us via <a href="mailto:health@coleebri.com">health@coleebri.com</a>.</p>
+            <p>
+              For ad-hoc tests including phlebotomy for your patients, please contact us via{' '}
+              <a href="mailto:health@coleebri.com">health@coleebri.com</a>.
+            </p>
           </div>
           <div>
-            <h4>Important</h4>
-            <p>
-              {window.ColeebriCompliance.SHORT_SERVICE_NOTE}{' '}
-              <a href="#about-our-service">About our service</a> ·{' '}
-              <a href="#terms-cancellation">Cancellation</a> ·{' '}
-              <a href="#legal-information">Legal</a> ·{' '}
-              <a href="#patient-information">Patient information</a>. Need urgent help? Call NHS 111; emergencies 999.
-            </p>
+            <h4>In this catalogue</h4>
+            <p className="foot-note">{window.ColeebriCompliance.SHORT_SERVICE_NOTE}</p>
+            <FootLinkList links={catalogueLinks} />
+            <p className="foot-urgent">Need urgent help? Call NHS 111; emergencies 999.</p>
+          </div>
+          <div>
+            <h4>Legal</h4>
+            <FootLinkList links={legalLinks} />
           </div>
         </div>
         <div className="copyright">
