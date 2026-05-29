@@ -64,6 +64,18 @@ function embedOpenEnquiry(test) {
   embedNavigate('mailto:health@coleebri.com?subject=' + subject + '&body=' + body);
 }
 
+function embedWidgetName() {
+  const embed = embedConfig();
+  const norm = window.ColeebriEmbedParams?.normalizeWidget;
+  return norm ? norm(embed.widget || 'glossary') : embed.widget || 'glossary';
+}
+
+/** Homepage showcase widgets — always deep-link into full catalogue (not mailto / WP service pages). */
+function embedIsHomeWidget() {
+  const w = embedWidgetName();
+  return w === 'most-ordered' || w === 'categories' || w === 'category-list';
+}
+
 function embedTweaks() {
   const base = window.TWEAK_DEFAULTS || {
     showAnalytesByDefault: false,
@@ -73,6 +85,9 @@ function embedTweaks() {
     primaryAccent: 'teal',
   };
   const embed = embedConfig();
+  if (embedIsHomeWidget()) {
+    return { ...base, embedIntegrated: true, embedHomeWidget: true };
+  }
   if (embedIsIntegrated() || embed.cardsOnly) {
     const service = embed.service || embed.category || '';
     const showIntro =
@@ -104,12 +119,18 @@ function EmbedMostOrdered() {
     return <p className="glossary-plain">Most ordered tests are not available.</p>;
   }
 
+  const homeWidget = embedIsHomeWidget();
   return (
     <MostOrderedSection
       tweaks={embedTweaks()}
+      compact={homeWidget}
       compared={pinned.map(compareKey)}
       onCompare={handleCompare}
-      onOpen={(t) => (embedIsIntegrated() ? embedOpenEnquiry(t) : embedNavigate(embedCatalogueHref({ test: t.id })))}
+      onOpen={(t) =>
+        homeWidget || !embedIsIntegrated()
+          ? embedNavigate(embedCatalogueHref({ test: t.id }))
+          : embedOpenEnquiry(t)
+      }
       onCart={cart.toggle}
       inCart={cart.has}
       onBrowseTab={(tabId) => embedNavigate(embedCatalogueHref({ service: tabId }))}
@@ -123,10 +144,18 @@ function EmbedCategoryList() {
     return <p className="glossary-plain">Category list is not available.</p>;
   }
 
+  const mapCategory = (sectionId) => {
+    if (sectionId === 'fitness' || sectionId === 'allergies') {
+      return embedCatalogueHref({ service: sectionId });
+    }
+    return embedCatalogueHref({ category: sectionId, service: 'all' });
+  };
+
   return (
     <CatalogueCategoryList
-      getCategoryHref={(sectionId) => embedCatalogueHref({ category: sectionId, service: 'all' })}
-      onOpenCategory={(sectionId) => embedNavigate(embedCatalogueHref({ category: sectionId, service: 'all' }))}
+      compact={embedIsHomeWidget()}
+      getCategoryHref={mapCategory}
+      onOpenCategory={(sectionId) => embedNavigate(mapCategory(sectionId))}
     />
   );
 }

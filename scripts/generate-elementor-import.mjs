@@ -172,8 +172,30 @@ const sc = (widget, extra = '') =>
 
 function htmlEmbed(widget, attrs = '', mode = 'category') {
   const base = CATALOGUE_BASE;
-  const chrome = mode === 'category' ? EMBED_CATEGORY : EMBED_INTEGRATED + (mode === 'transparent' ? ' data-transparent="1"' : '');
+  let chrome = '';
+  if (mode === 'homepage') {
+    chrome = ' data-transparent="1"';
+  } else if (mode === 'category') {
+    chrome = EMBED_CATEGORY;
+  } else {
+    chrome = EMBED_INTEGRATED + (mode === 'transparent' ? ' data-transparent="1"' : '');
+  }
   return `<div data-coleebri-embed="${widget}" data-coleebri-base="${base}"${chrome}${attrs}></div><script src="${base}assets/coleebri-embed.js?v=${ASSET_VER}" data-base="${base}"><\\/script>`;
+}
+
+function homepageEmbedBlock(widget, height) {
+  return {
+    heading: widget === 'most-ordered' ? 'Most ordered tests' : 'Browse by category',
+    note:
+      widget === 'most-ordered'
+        ? 'Featured panels — opens the full catalogue for compare and enquire.'
+        : 'Jump to a section in the patient catalogue.',
+    htmlWidget: {
+      widget,
+      mode: 'homepage',
+      attrs: ` data-height="${height}"`,
+    },
+  };
 }
 
 function htmlWidget(widget, attrs = '', mode = 'category') {
@@ -191,11 +213,10 @@ const PAGES = [
     slug: 'coleebri-catalogue-home',
     title: 'Catalogue — Home widgets',
     intro:
-      'Featured tests and category links. Requires the Coleebri Catalogue Embed plugin and hosted catalogue at <code>/catalogue/</code>.',
+      'For the Elementor <strong>homepage</strong> only: host catalogue at <code>/catalogue/</code> on Infomaniak, then paste blocks from <code>homepage-embed-snippet.html</code> or import this template.',
     blocks: [
-      { heading: 'Most ordered tests', shortcode: sc('most-ordered', 'height="880"') },
-      { heading: 'Browse by category', shortcode: sc('categories', 'height="520"') },
-      { heading: 'Help me choose', shortcode: sc('quiz', 'height="640"') },
+      homepageEmbedBlock('most-ordered', 880),
+      homepageEmbedBlock('categories', 520),
     ],
   },
   {

@@ -49,13 +49,23 @@ Only if you cannot link out to `/catalogue/` yet:
 
 Embed **Enquire** uses `mailto:` — not the full catalogue Request modal. Prefer catalogue deep links for enquiries.
 
-## Hub widgets (still valid)
+## Homepage widgets (Infomaniak `/catalogue/`)
+
+Use **only on the Elementor homepage** — see [homepage-embed-snippet.html](../integrate/elementor/homepage-embed-snippet.html).
 
 | Widget | Use |
 |--------|-----|
-| `widget=quiz` | Help me choose |
+| `widget=most-ordered` | Featured test cards → opens full catalogue |
+| `widget=categories` | Section list → opens catalogue `#service=` / `#category=` |
+
+Do **not** set `data-integrated` on homepage embeds (avoids mailto-only enquire).
+
+## Other hub widgets
+
+| Widget | Use |
+|--------|-----|
+| `widget=quiz` | Help me choose (tests hub) |
 | `widget=glossary` / `marker-check` | Biomarkers |
-| `widget=most-ordered` / `categories` | Home page panels |
 | `widget=tabs` | Optional category nav (prefer Elementor menu) |
 
 ## Deploy

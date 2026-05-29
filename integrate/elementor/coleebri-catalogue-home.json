@@ -1,7 +1,7 @@
 {
   "content": [
     {
-      "id": "1e2039b",
+      "id": "e813f03",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -24,7 +24,7 @@
       },
       "elements": [
         {
-          "id": "7e502fe",
+          "id": "be0d131",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -35,18 +35,18 @@
           "elements": []
         },
         {
-          "id": "bc0e4f6",
+          "id": "4bf3daf",
           "elType": "widget",
           "widgetType": "text-editor",
           "settings": {
-            "editor": "<p>Featured tests and category links. Requires the Coleebri Catalogue Embed plugin and hosted catalogue at <code>/catalogue/</code>.</p>"
+            "editor": "<p>For the Elementor <strong>homepage</strong> only: host catalogue at <code>/catalogue/</code> on Infomaniak, then paste blocks from <code>homepage-embed-snippet.html</code> or import this template.</p>"
           },
           "elements": []
         }
       ]
     },
     {
-      "id": "7a22a8a",
+      "id": "9f93a17",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -69,7 +69,7 @@
       },
       "elements": [
         {
-          "id": "b8a7aa3",
+          "id": "6671bb8",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -80,18 +80,27 @@
           "elements": []
         },
         {
-          "id": "9339b86",
+          "id": "ae471e4",
           "elType": "widget",
-          "widgetType": "shortcode",
+          "widgetType": "text-editor",
           "settings": {
-            "shortcode": "[coleebri_catalogue widget=\"most-ordered\" branding=\"none\" height=\"880\"]"
+            "editor": "<p>Featured panels — opens the full catalogue for compare and enquire.</p>"
+          },
+          "elements": []
+        },
+        {
+          "id": "8db7ce8",
+          "elType": "widget",
+          "widgetType": "html",
+          "settings": {
+            "html": "<div data-coleebri-embed=\"most-ordered\" data-coleebri-base=\"https://health.coleebri.com/catalogue/\" data-transparent=\"1\" data-height=\"880\"></div><script src=\"https://health.coleebri.com/catalogue/assets/coleebri-embed.js?v=20260606d\" data-base=\"https://health.coleebri.com/catalogue/\"><\\/script>"
           },
           "elements": []
         }
       ]
     },
     {
-      "id": "0ec8448",
+      "id": "186f024",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -114,7 +123,7 @@
       },
       "elements": [
         {
-          "id": "e796f01",
+          "id": "28c78c7",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -125,56 +134,20 @@
           "elements": []
         },
         {
-          "id": "ab40e46",
+          "id": "ea5266b",
           "elType": "widget",
-          "widgetType": "shortcode",
+          "widgetType": "text-editor",
           "settings": {
-            "shortcode": "[coleebri_catalogue widget=\"categories\" branding=\"none\" height=\"520\"]"
-          },
-          "elements": []
-        }
-      ]
-    },
-    {
-      "id": "0bbc063",
-      "elType": "container",
-      "settings": {
-        "content_width": "full",
-        "flex_direction": "column",
-        "flex_gap": {
-          "unit": "px",
-          "size": 16,
-          "column": "16",
-          "row": "16",
-          "isLinked": true
-        },
-        "padding": {
-          "unit": "px",
-          "top": "24",
-          "right": "20",
-          "bottom": "24",
-          "left": "20",
-          "isLinked": false
-        }
-      },
-      "elements": [
-        {
-          "id": "7bb4f5b",
-          "elType": "widget",
-          "widgetType": "heading",
-          "settings": {
-            "title": "Help me choose",
-            "header_size": "h2",
-            "align": "left"
+            "editor": "<p>Jump to a section in the patient catalogue.</p>"
           },
           "elements": []
         },
         {
-          "id": "6cffc23",
+          "id": "d7c7d22",
           "elType": "widget",
-          "widgetType": "shortcode",
+          "widgetType": "html",
           "settings": {
-            "shortcode": "[coleebri_catalogue widget=\"quiz\" branding=\"none\" height=\"640\"]"
+            "html": "<div data-coleebri-embed=\"categories\" data-coleebri-base=\"https://health.coleebri.com/catalogue/\" data-transparent=\"1\" data-height=\"520\"></div><script src=\"https://health.coleebri.com/catalogue/assets/coleebri-embed.js?v=20260606d\" data-base=\"https://health.coleebri.com/catalogue/\"><\\/script>"
           },
           "elements": []
         }

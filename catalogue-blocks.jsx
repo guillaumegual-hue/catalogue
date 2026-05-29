@@ -1,10 +1,11 @@
 /* Shared catalogue sections — used by main app and embed iframes. */
 
-function MostOrderedSection({ tweaks, compared, onCompare, onOpen, onCart, inCart, onBrowseTab }) {
+function MostOrderedSection({ tweaks, compared, onCompare, onOpen, onCart, inCart, onBrowseTab, compact }) {
   const slots = window.resolveMostOrdered();
 
   return (
     <section className="most-ordered-section shell no-print" id="most-ordered" aria-labelledby="most-ordered-title">
+      {!compact && (
       <div className="track-intro most-ordered-intro">
         <span className="eyebrow">Patient favourites</span>
         <h2 id="most-ordered-title">Our most ordered tests</h2>
@@ -12,6 +13,7 @@ function MostOrderedSection({ tweaks, compared, onCompare, onOpen, onCart, inCar
           Extensive panels patients book most often — for men&rsquo;s health, women&rsquo;s health, allergies and sport.
         </p>
       </div>
+      )}
       <div className="most-ordered-grid">
         {slots.map(({ id, label, blurb, test, tabId }) => (
           <div key={id} className="most-ordered-slot">
@@ -40,15 +42,17 @@ function MostOrderedSection({ tweaks, compared, onCompare, onOpen, onCart, inCar
   );
 }
 
-function CatalogueCategoryList({ onOpenCategory, getCategoryHref }) {
+function CatalogueCategoryList({ onOpenCategory, getCategoryHref, compact }) {
   return (
     <section className="shell catalogue-categories-block" aria-label="Catalogue categories">
+      {!compact && (
       <div className="track-intro">
         <span className="eyebrow">Patient catalogue 2026</span>
         <h2>Browse by category</h2>
         <p className="lead">Choose a section to view tests in the full patient catalogue.</p>
         <CatalogueFootnote />
       </div>
+      )}
       {window.SECTIONS.map((sec) => (
         <div key={sec.id} className="subsec" data-screen-label={sec.label}>
           <div className="subsec-head">

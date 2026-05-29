@@ -6,8 +6,9 @@ This is the **approved** integration model. The React catalogue owns browse/comp
 
 | Step | Where | What happens |
 |------|--------|----------------|
+| Homepage teasers | Elementor home | Iframes: **most-ordered** + **categories** → links open full catalogue |
 | Discover a service | `/en/tests/mens-health/` etc. | Elementor: hero, compliance copy, **CTA → full catalogue** filtered by service |
-| Browse all tests | `/catalogue/` (same domain) | Full app: search, tabs, quiz, compare, list, **Request modal** |
+| Browse all tests | `/catalogue/` (same Infomaniak host) | Full app: search, tabs, quiz, compare, list, **Request modal** |
 | Find one test | Header search popup | WordPress search → `coleebri_test` posts + pages; each result links to catalogue with `#test={id}` |
 | Enquire | Catalogue only | **Request modal** in [`app.jsx`](../app.jsx) (mailto fallback in embeds is legacy) |
 | Deep link | Any | `…/Coleebri%20Patient%20Catalogue.html#service=men&test=NP059` |
@@ -61,7 +62,11 @@ Do **not** maintain a parallel OpnForm/embed enquire flow for the main site.
 
 ## Related docs
 
-- [WEBSITE-EMBED.md](WEBSITE-EMBED.md) — legacy iframe widgets (hub/quiz/glossary only)
+- [DEPLOY.md](../DEPLOY.md) — Infomaniak `/catalogue/` upload
+- [homepage-embed-snippet.html](../integrate/elementor/homepage-embed-snippet.html) — homepage iframes only
+- [WP-MENUS.md](WP-MENUS.md) — menu URLs to catalogue hashes
+- [WOOCOMMERCE-SUNSET.md](WOOCOMMERCE-SUNSET.md) — decommission WC product grids
+- [WEBSITE-EMBED.md](WEBSITE-EMBED.md) — embed reference (homepage + hub widgets)
 - [WP-SEARCH-POPUP.md](WP-SEARCH-POPUP.md) — header search popup #2949
 - [PHASE0-ELEMENTOR.md](PHASE0-ELEMENTOR.md) — category page import
 - [WP-AUDIT.md](WP-AUDIT.md) — plugin + config audit

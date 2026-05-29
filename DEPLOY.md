@@ -52,9 +52,34 @@ See **[docs/PHASE0-ELEMENTOR.md](docs/PHASE0-ELEMENTOR.md)**.
 
 Import each `integrate/elementor/coleebri-service-*.json` template, publish under e.g. `/en/tests/mens-health/`, add menu links.
 
-## 4. Production cutover (same server as WordPress)
+## 4. Infomaniak production (`/catalogue/` on same server as WordPress)
 
-Checklist:
+Host the catalogue as **static files** beside WordPress (not inside WP). WordPress links and homepage iframes use the same origin.
+
+### Upload
+
+**Option A — rsync** (from your machine):
+
+```bash
+export COLEEBRI_DEPLOY_HOST='you@ssh.infomaniak.com'
+export COLEEBRI_DEPLOY_PATH='/path/to/public_html/catalogue'
+chmod +x scripts/deploy-infomaniak.sh
+./scripts/deploy-infomaniak.sh
+```
+
+**Option B — FTP / Infomaniak File Manager:** copy repo root into `catalogue/` (exclude `.git`, `.env`, `wordpress-plugin/`, `export/`).
+
+### Homepage iframe policy
+
+Use iframes **only on the Elementor homepage** for:
+
+- `widget=most-ordered` — featured tests
+- `widget=categories` — browse by section
+
+Snippets: [`integrate/elementor/homepage-embed-snippet.html`](integrate/elementor/homepage-embed-snippet.html).  
+Service pages (`/en/tests/…`) link to catalogue deep URLs — **no** `widget=tests` iframes.
+
+### Production cutover checklist
 
 1. Upload this repo root (excluding `export/`, `.git`, `wordpress-plugin/`) to:
 

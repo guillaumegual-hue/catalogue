@@ -25,6 +25,8 @@ See **[docs/PATIENT-JOURNEY.md](docs/PATIENT-JOURNEY.md)**.
 | Doc | Purpose |
 |-----|---------|
 | [docs/PATIENT-JOURNEY.md](docs/PATIENT-JOURNEY.md) | Approved browse/search/enquire flows |
+| [docs/INFOMANIAK-OPS-CHECKLIST.md](docs/INFOMANIAK-OPS-CHECKLIST.md) | Deploy `/catalogue/`, homepage embeds, WC exit |
+| [docs/WOOCOMMERCE-SUNSET.md](docs/WOOCOMMERCE-SUNSET.md) | Replace WC product grids for patient tests |
 | [docs/WP-PLUGIN.md](docs/WP-PLUGIN.md) | Install plugin + sync tests |
 | [docs/WP-SEARCH-POPUP.md](docs/WP-SEARCH-POPUP.md) | Header search popup #2949 |
 | [DEPLOY.md](DEPLOY.md) | GitHub Pages + production `/catalogue/` |

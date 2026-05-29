@@ -13,12 +13,10 @@
   <item>
     <title>Catalogue — Home widgets</title>
     <link>https://health.coleebri.com/coleebri-catalogue-home/</link>
-    <content:encoded><![CDATA[<p>Featured tests and category links. Requires the Coleebri Catalogue Embed plugin and hosted catalogue at <code>/catalogue/</code>.</p>
-[coleebri_catalogue widget="most-ordered" branding="none" height="880"]
+    <content:encoded><![CDATA[<p>For the Elementor <strong>homepage</strong> only: host catalogue at <code>/catalogue/</code> on Infomaniak, then paste blocks from <code>homepage-embed-snippet.html</code> or import this template.</p>
 
-[coleebri_catalogue widget="categories" branding="none" height="520"]
 
-[coleebri_catalogue widget="quiz" branding="none" height="640"]]]></content:encoded>
+]]></content:encoded>
     <wp:post_name>coleebri-catalogue-home</wp:post_name>
     <wp:status>draft</wp:status>
     <wp:post_type>page</wp:post_type>
