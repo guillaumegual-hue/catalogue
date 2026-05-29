@@ -1,0 +1,82 @@
+[
+  {
+    "slug": "all-tests",
+    "title": "All tests",
+    "url": "https://guillaumegual-hue.github.io/catalogue/tests/all-tests/"
+  },
+  {
+    "slug": "general-health",
+    "title": "General health tests",
+    "url": "https://guillaumegual-hue.github.io/catalogue/tests/general-health/"
+  },
+  {
+    "slug": "womens-health",
+    "title": "Women's health tests",
+    "url": "https://guillaumegual-hue.github.io/catalogue/tests/womens-health/"
+  },
+  {
+    "slug": "mens-health",
+    "title": "Men's health tests",
+    "url": "https://guillaumegual-hue.github.io/catalogue/tests/mens-health/"
+  },
+  {
+    "slug": "sexual-health",
+    "title": "Sexual health tests",
+    "url": "https://guillaumegual-hue.github.io/catalogue/tests/sexual-health/"
+  },
+  {
+    "slug": "fitness-wellbeing",
+    "title": "Fitness & wellbeing tests",
+    "url": "https://guillaumegual-hue.github.io/catalogue/tests/fitness-wellbeing/"
+  },
+  {
+    "slug": "allergies",
+    "title": "Allergies & sensitivities tests",
+    "url": "https://guillaumegual-hue.github.io/catalogue/tests/allergies/"
+  },
+  {
+    "slug": "dna",
+    "title": "DNA tests",
+    "url": "https://guillaumegual-hue.github.io/catalogue/tests/dna/"
+  },
+  {
+    "slug": "phlebotomy-collection",
+    "title": "Phlebotomy & collection",
+    "url": "https://guillaumegual-hue.github.io/catalogue/tests/phlebotomy-collection/"
+  },
+  {
+    "slug": "paternity-dna",
+    "title": "Paternity & DNA",
+    "url": "https://guillaumegual-hue.github.io/catalogue/tests/paternity-dna/"
+  },
+  {
+    "slug": "health-profiles",
+    "title": "Health profiles & screens",
+    "url": "https://guillaumegual-hue.github.io/catalogue/tests/health-profiles/"
+  },
+  {
+    "slug": "routine-tests",
+    "title": "Routine tests",
+    "url": "https://guillaumegual-hue.github.io/catalogue/tests/routine-tests/"
+  },
+  {
+    "slug": "autoimmune",
+    "title": "Autoimmune profiles",
+    "url": "https://guillaumegual-hue.github.io/catalogue/tests/autoimmune/"
+  },
+  {
+    "slug": "vitamins-minerals",
+    "title": "Vitamins & minerals",
+    "url": "https://guillaumegual-hue.github.io/catalogue/tests/vitamins-minerals/"
+  },
+  {
+    "slug": "specific-requests",
+    "title": "Specific requests",
+    "url": "https://guillaumegual-hue.github.io/catalogue/tests/specific-requests/"
+  },
+  {
+    "slug": "patient-information",
+    "title": "Patient information",
+    "url": "https://guillaumegual-hue.github.io/catalogue/tests/patient-information/"
+  }
+]

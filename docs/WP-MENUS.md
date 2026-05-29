@@ -1,30 +1,39 @@
-# WordPress menus → catalogue deep links
+# WordPress menus → catalogue category pages
 
-After `/catalogue/` is on Infomaniak, point navigation at the **catalogue app** (not WooCommerce shop, not test iframes).
+After `/catalogue/` is on Infomaniak, point navigation at **one URL per category** under `/catalogue/tests/{slug}/` (not hash links on the main HTML file — hashes are unreliable in menus and iframes).
 
-Base:
+Regenerate static pages when `data.js` changes:
+
+```bash
+node scripts/generate-category-pages.mjs
+```
+
+**GitHub Pages testing:** see [WP-MENUS-GITHUB-STAGING.md](./WP-MENUS-GITHUB-STAGING.md).
+
+Production base:
 
 ```text
-https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html
+https://health.coleebri.com/catalogue/
 ```
 
 ## Recommended menu structure
 
-| Menu label | Link type | URL |
-|------------|-----------|-----|
-| All tests | Custom URL | `…Catalogue.html` |
-| General health | Custom URL | `…Catalogue.html#service=general` |
-| Women's health | Custom URL | `…Catalogue.html#service=women` |
-| Men's health | Custom URL | `…Catalogue.html#service=men` |
-| Sexual health | Custom URL | `…Catalogue.html#service=sexual` |
-| Fitness & wellbeing | Custom URL | `…Catalogue.html#service=fitness` |
-| Allergies | Custom URL | `…Catalogue.html#category=allergies` |
-| DNA tests | Custom URL | `…Catalogue.html#service=dna` |
-| Help me choose | Custom URL | `…Catalogue.html` (scroll to quiz) or hub page with quiz embed |
+| Menu label | URL |
+|------------|-----|
+| All tests | https://health.coleebri.com/catalogue/tests/all-tests/ |
+| General health | https://health.coleebri.com/catalogue/tests/general-health/ |
+| Women's health | https://health.coleebri.com/catalogue/tests/womens-health/ |
+| Men's health | https://health.coleebri.com/catalogue/tests/mens-health/ |
+| Sexual health | https://health.coleebri.com/catalogue/tests/sexual-health/ |
+| Fitness & wellbeing | https://health.coleebri.com/catalogue/tests/fitness-wellbeing/ |
+| Allergies | https://health.coleebri.com/catalogue/tests/allergies/ |
+| DNA tests | https://health.coleebri.com/catalogue/tests/dna/ |
+| Phlebotomy & collection | https://health.coleebri.com/catalogue/tests/phlebotomy-collection/ |
+| Full catalogue (quiz & compare) | https://health.coleebri.com/catalogue/Coleebri%20Patient%20Catalogue.html |
 
 ## Optional thin WP pages (`/en/tests/…`)
 
-Keep Elementor pages for SEO copy only — buttons from regenerated templates link to the same hashes (see `integrate/elementor/coleebri-service-*.json`).
+Keep Elementor pages for SEO copy only — buttons from regenerated templates should link to the matching `/catalogue/tests/…/` URL (see `integrate/elementor/coleebri-service-*.json`; re-run `generate-elementor-import.mjs` when CTAs are updated).
 
 Re-generate after `data.js` changes:
 

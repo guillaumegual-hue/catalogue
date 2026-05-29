@@ -1089,6 +1089,44 @@ main {
   background: var(--forest-deep);
 }
 
+/* Standalone category pages (/tests/{slug}/) */
+.category-page-header {
+  padding: 28px 0 20px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+
+.category-page-header__crumb {
+  font-size: 0.88rem;
+  margin: 0 0 12px;
+}
+
+.category-page-header__crumb a {
+  color: var(--forest);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.category-page-header__crumb a:hover {
+  text-decoration: underline;
+}
+
+.category-page-header__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  font-weight: 600;
+  color: var(--forest-deep);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.category-page-header__lead {
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  margin: 12px 0 0;
+  max-width: 52ch;
+}
+
 /* ─── Modals & drawers ─── */
 .overlay {
   padding: var(--content-gutter);

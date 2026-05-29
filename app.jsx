@@ -20,6 +20,45 @@ function applyCatalogueHash() {
   return parse(location.hash);
 }
 
+function readPageBoot() {
+  return window.COLEEBRI_CATALOGUE_PAGE || null;
+}
+
+function bootInitialActive(boot) {
+  if (!boot) return 'all';
+  if (boot.scroll) return 'all';
+  if (boot.service === 'collection') return 'collection';
+  if (boot.service && boot.service !== 'all') return boot.service;
+  return 'all';
+}
+
+function categoryPageMeta(boot) {
+  if (!boot) return { title: '', blurb: '' };
+  if (boot.category) {
+    const sec = (window.SECTIONS || []).find((s) => s.id === boot.category);
+    return { title: boot.title || sec?.label || '', blurb: sec?.blurb || '' };
+  }
+  const track = (window.TRACKS || []).find((t) => t.id === boot.service);
+  return { title: boot.title || track?.label || '', blurb: track?.blurb || '' };
+}
+
+function CategoryPageHeader({ boot }) {
+  const meta = categoryPageMeta(boot);
+  const catalogueHref = '../../Coleebri%20Patient%20Catalogue.html';
+  const hubHref = '../';
+  return (
+    <section className="shell category-page-header">
+      <p className="category-page-header__crumb">
+        <a href={catalogueHref}>Full catalogue</a>
+        <span aria-hidden="true"> · </span>
+        <a href={hubHref}>All categories</a>
+      </p>
+      <h1 className="category-page-header__title">{meta.title}</h1>
+      {meta.blurb ? <p className="category-page-header__lead">{meta.blurb}</p> : null}
+    </section>
+  );
+}
+
 /* ─── HERO ───────────────────────────────────────────────── */
 function Hero() {
   return (
@@ -438,7 +477,9 @@ function App() {
   const [tweaks, setTweak] = useTweaks(window.TWEAK_DEFAULTS);
   const cart = useCart();
   const [query, setQuery] = useState('');
-  const [active, setActive] = useState('all');
+  const pageBoot = readPageBoot();
+  const standalonePage = !!(pageBoot && pageBoot.standalone && !pageBoot.scroll);
+  const [active, setActive] = useState(() => bootInitialActive(pageBoot));
   const [pinned, setPinned] = useState([]);
   const [showCompare, setShowCompare] = useState(false);
   const [showQuiz, setShowQuiz] = useState(false);
@@ -460,11 +501,32 @@ function App() {
     setEnquirySource('direct');
     setQuizAnswersForEnquiry(null);
   };
-  const [categoryFilter, setCategoryFilter] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState(() => (pageBoot?.category ? pageBoot.category : ''));
   const [testIdsFilter, setTestIdsFilter] = useState(null);
   const [markerCheckQuery, setMarkerCheckQuery] = useState('');
 
   useEffect(function () {
+    if (pageBoot?.scroll) {
+      const scrollIds = {
+        'patient-information': 'patient-information',
+        'about-our-service': 'about-our-service',
+        'how-results-work': 'how-results-work',
+        'our-laboratories': 'our-laboratories',
+        'cost-transparency': 'cost-transparency',
+        'terms-cancellation': 'terms-cancellation',
+        'legal-information': 'legal-information',
+      };
+      const id = scrollIds[pageBoot.scroll];
+      if (id) {
+        window.setTimeout(function () {
+          document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+      }
+    }
+  }, [pageBoot]);
+
+  useEffect(function () {
+    if (standalonePage) return undefined;
     function syncFromHash() {
       const parsed = applyCatalogueHash() || {};
       const scrollIds = {
@@ -508,7 +570,7 @@ function App() {
     return function () {
       window.removeEventListener('hashchange', syncFromHash);
     };
-  }, []);
+  }, [standalonePage]);
 
   /* Search/filter pipeline */
   const baseFiltered = useMemo(() => {
@@ -580,11 +642,13 @@ function App() {
       />
 
       <main id="top">
-        <Hero />
+        {!standalonePage && <Hero />}
 
-        <TabNav active={active} setActive={setActive} />
+        {standalonePage && pageBoot ? <CategoryPageHeader boot={pageBoot} /> : null}
 
-        {MostOrderedSection && active === 'all' && !query.trim() && !testIdsFilter && (
+        {!standalonePage && <TabNav active={active} setActive={setActive} />}
+
+        {MostOrderedSection && !standalonePage && active === 'all' && !query.trim() && !testIdsFilter && (
           <MostOrderedSection
             tweaks={tweaks}
             compared={compareKeys}
