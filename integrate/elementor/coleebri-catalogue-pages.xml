@@ -35,7 +35,9 @@
   <item>
     <title>Men's health tests</title>
     <link>https://health.coleebri.com/coleebri-service-men/</link>
-    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" service="men" height="900"]]]></content:encoded>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tabs" branding="none" height="140"]
+
+[coleebri_catalogue widget="tests" branding="none" service="men" height="900"]]]></content:encoded>
     <wp:post_name>coleebri-service-men</wp:post_name>
     <wp:status>draft</wp:status>
     <wp:post_type>page</wp:post_type>
@@ -43,7 +45,9 @@
   <item>
     <title>Women's health tests</title>
     <link>https://health.coleebri.com/coleebri-service-women/</link>
-    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" service="women" height="900"]]]></content:encoded>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tabs" branding="none" height="140"]
+
+[coleebri_catalogue widget="tests" branding="none" service="women" height="900"]]]></content:encoded>
     <wp:post_name>coleebri-service-women</wp:post_name>
     <wp:status>draft</wp:status>
     <wp:post_type>page</wp:post_type>
@@ -51,7 +55,9 @@
   <item>
     <title>General health tests</title>
     <link>https://health.coleebri.com/coleebri-service-general/</link>
-    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" service="general" height="900"]]]></content:encoded>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tabs" branding="none" height="140"]
+
+[coleebri_catalogue widget="tests" branding="none" service="general" height="900"]]]></content:encoded>
     <wp:post_name>coleebri-service-general</wp:post_name>
     <wp:status>draft</wp:status>
     <wp:post_type>page</wp:post_type>
@@ -59,7 +65,9 @@
   <item>
     <title>Sexual health tests</title>
     <link>https://health.coleebri.com/coleebri-service-sexual/</link>
-    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" service="sexual" height="880"]]]></content:encoded>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tabs" branding="none" height="140"]
+
+[coleebri_catalogue widget="tests" branding="none" service="sexual" height="880"]]]></content:encoded>
     <wp:post_name>coleebri-service-sexual</wp:post_name>
     <wp:status>draft</wp:status>
     <wp:post_type>page</wp:post_type>
@@ -67,7 +75,9 @@
   <item>
     <title>Fitness &amp; allergies tests</title>
     <link>https://health.coleebri.com/coleebri-service-fitness/</link>
-    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" service="fitness" height="900"]]]></content:encoded>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tabs" branding="none" height="140"]
+
+[coleebri_catalogue widget="tests" branding="none" service="fitness" height="900"]]]></content:encoded>
     <wp:post_name>coleebri-service-fitness</wp:post_name>
     <wp:status>draft</wp:status>
     <wp:post_type>page</wp:post_type>
@@ -75,7 +85,9 @@
   <item>
     <title>DNA tests</title>
     <link>https://health.coleebri.com/coleebri-service-dna/</link>
-    <content:encoded><![CDATA[[coleebri_catalogue widget="tests" branding="none" service="dna" height="900"]]]></content:encoded>
+    <content:encoded><![CDATA[[coleebri_catalogue widget="tabs" branding="none" height="140"]
+
+[coleebri_catalogue widget="tests" branding="none" service="dna" height="900"]]]></content:encoded>
     <wp:post_name>coleebri-service-dna</wp:post_name>
     <wp:status>draft</wp:status>
     <wp:post_type>page</wp:post_type>

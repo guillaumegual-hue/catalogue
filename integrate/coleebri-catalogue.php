@@ -37,7 +37,7 @@ function coleebri_catalogue_base_url() {
     if (defined('COLEEBRI_CATALOGUE_BASE') && COLEEBRI_CATALOGUE_BASE) {
         $base = COLEEBRI_CATALOGUE_BASE;
     } else {
-        $base = 'https://health.coleebri.com/catalogue/';
+        $base = 'https://guillaumegual-hue.github.io/catalogue/';
     }
     return trailingslashit($base);
 }

@@ -1,7 +1,7 @@
 {
   "content": [
     {
-      "id": "a7f0093",
+      "id": "0936bb2",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -24,7 +24,7 @@
       },
       "elements": [
         {
-          "id": "005e4e4",
+          "id": "45287fa",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "id": "be08e79",
+      "id": "2437dac",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -60,11 +60,45 @@
       },
       "elements": [
         {
-          "id": "d21908e",
+          "id": "4fb1420",
           "elType": "widget",
-          "widgetType": "shortcode",
+          "widgetType": "html",
           "settings": {
-            "shortcode": "[coleebri_catalogue widget=\"tests\" branding=\"none\" service=\"general\" height=\"900\"]"
+            "html": "<div data-coleebri-embed=\"tabs\" data-coleebri-base=\"https://guillaumegual-hue.github.io/catalogue/\" data-branding=\"0\" data-height=\"140\"></div><script src=\"https://guillaumegual-hue.github.io/catalogue/assets/coleebri-embed.js?v=20260529a\" data-base=\"https://guillaumegual-hue.github.io/catalogue/\"><\\/script>"
+          },
+          "elements": []
+        }
+      ]
+    },
+    {
+      "id": "cdb60d7",
+      "elType": "container",
+      "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+          "unit": "px",
+          "size": 16,
+          "column": "16",
+          "row": "16",
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "24",
+          "right": "20",
+          "bottom": "24",
+          "left": "20",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "578cf47",
+          "elType": "widget",
+          "widgetType": "html",
+          "settings": {
+            "html": "<div data-coleebri-embed=\"tests\" data-coleebri-base=\"https://guillaumegual-hue.github.io/catalogue/\" data-branding=\"0\" data-service=\"general\" data-height=\"900\"></div><script src=\"https://guillaumegual-hue.github.io/catalogue/assets/coleebri-embed.js?v=20260529a\" data-base=\"https://guillaumegual-hue.github.io/catalogue/\"><\\/script>"
           },
           "elements": []
         }

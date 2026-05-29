@@ -90,7 +90,12 @@ function buildPage({ title, intro, blocks }) {
     const kids = [];
     if (block.heading) kids.push(headingWidget(block.heading, 'h2'));
     if (block.note) kids.push(textWidget(`<p>${block.note}</p>`));
-    kids.push(shortcodeWidget(block.shortcode));
+    if (block.htmlWidget) kids.push(htmlWidget(block.htmlWidget.widget, block.htmlWidget.attrs));
+    else if (block.htmlAttrs) {
+      const m = block.shortcode.match(/widget="([^"]+)"/);
+      const widget = m ? m[1] : 'tests';
+      kids.push(htmlWidget(widget, block.htmlAttrs));
+    } else kids.push(shortcodeWidget(block.shortcode));
     elements.push(sectionContainer(kids, { padding: block.padding }));
   }
   return {
@@ -102,8 +107,26 @@ function buildPage({ title, intro, blocks }) {
   };
 }
 
+const CATALOGUE_BASE = 'https://guillaumegual-hue.github.io/catalogue/';
+const ASSET_VER = '20260529a';
+
 const sc = (widget, extra = '') =>
   `[coleebri_catalogue widget="${widget}" branding="none"${extra ? ' ' + extra : ''}]`;
+
+function htmlEmbed(widget, attrs = '') {
+  const base = CATALOGUE_BASE;
+  return `<div data-coleebri-embed="${widget}" data-coleebri-base="${base}" data-branding="0"${attrs}></div><script src="${base}assets/coleebri-embed.js?v=${ASSET_VER}" data-base="${base}"><\\/script>`;
+}
+
+function htmlWidget(widget, attrs = '') {
+  return {
+    id: eid(),
+    elType: 'widget',
+    widgetType: 'html',
+    settings: { html: htmlEmbed(widget, attrs) },
+    elements: [],
+  };
+}
 
 const PAGES = [
   {
@@ -126,32 +149,50 @@ const PAGES = [
   {
     slug: 'coleebri-service-men',
     title: "Men's health tests",
-    blocks: [{ shortcode: sc('tests', 'service="men" height="900"') }],
+    blocks: [
+      { shortcode: sc('tabs', 'height="140"'), htmlAttrs: ' data-height="140"' },
+      { shortcode: sc('tests', 'service="men" height="900"'), htmlAttrs: ' data-service="men" data-height="900"' },
+    ],
   },
   {
     slug: 'coleebri-service-women',
     title: "Women's health tests",
-    blocks: [{ shortcode: sc('tests', 'service="women" height="900"') }],
+    blocks: [
+      { shortcode: sc('tabs', 'height="140"'), htmlAttrs: ' data-height="140"' },
+      { shortcode: sc('tests', 'service="women" height="900"'), htmlAttrs: ' data-service="women" data-height="900"' },
+    ],
   },
   {
     slug: 'coleebri-service-general',
     title: 'General health tests',
-    blocks: [{ shortcode: sc('tests', 'service="general" height="900"') }],
+    blocks: [
+      { shortcode: sc('tabs', 'height="140"'), htmlAttrs: ' data-height="140"' },
+      { shortcode: sc('tests', 'service="general" height="900"'), htmlAttrs: ' data-service="general" data-height="900"' },
+    ],
   },
   {
     slug: 'coleebri-service-sexual',
     title: 'Sexual health tests',
-    blocks: [{ shortcode: sc('tests', 'service="sexual" height="880"') }],
+    blocks: [
+      { shortcode: sc('tabs', 'height="140"'), htmlAttrs: ' data-height="140"' },
+      { shortcode: sc('tests', 'service="sexual" height="880"'), htmlAttrs: ' data-service="sexual" data-height="880"' },
+    ],
   },
   {
     slug: 'coleebri-service-fitness',
     title: 'Fitness & allergies tests',
-    blocks: [{ shortcode: sc('tests', 'service="fitness" height="900"') }],
+    blocks: [
+      { shortcode: sc('tabs', 'height="140"'), htmlAttrs: ' data-height="140"' },
+      { shortcode: sc('tests', 'service="fitness" height="900"'), htmlAttrs: ' data-service="fitness" data-height="900"' },
+    ],
   },
   {
     slug: 'coleebri-service-dna',
     title: 'DNA tests',
-    blocks: [{ shortcode: sc('tests', 'service="dna" height="900"') }],
+    blocks: [
+      { shortcode: sc('tabs', 'height="140"'), htmlAttrs: ' data-height="140"' },
+      { shortcode: sc('tests', 'service="dna" height="900"'), htmlAttrs: ' data-service="dna" data-height="900"' },
+    ],
   },
   {
     slug: 'coleebri-section-paternity',

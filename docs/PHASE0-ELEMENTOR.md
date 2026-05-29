@@ -21,6 +21,21 @@ Adds **General Health**, **Women's**, **Men's**, **Sexual**, **Fitness & Allergi
 | `fitness` | `tests/fitness-allergies` | `coleebri-service-fitness.json` | `service="fitness"` |
 | `dna` | `tests/dna` | `coleebri-service-dna.json` | `service="dna"` |
 
+## Live pages (created 2026-05-29)
+
+Parent hub: https://health.coleebri.com/en/tests/
+
+| Category | URL |
+|----------|-----|
+| General | https://health.coleebri.com/en/tests/general-health/ |
+| Women's | https://health.coleebri.com/en/tests/womens-health/ |
+| Men's | https://health.coleebri.com/en/tests/mens-health/ |
+| Sexual | https://health.coleebri.com/en/tests/sexual-health/ |
+| Fitness & allergies | https://health.coleebri.com/en/tests/fitness-allergies/ |
+| DNA | https://health.coleebri.com/en/tests/dna/ |
+
+Pages use **Elementor HTML widgets** with `data-coleebri-embed` (works without the shortcode plugin). Install **Coleebri Health Catalogue Embed** for `[coleebri_catalogue]` shortcodes.
+
 ## Steps (repeat per category)
 
 1. **Templates → Saved Templates → Import** — upload the JSON from `integrate/elementor/`.
@@ -28,6 +43,8 @@ Adds **General Health**, **Women's**, **Men's**, **Sexual**, **Fitness & Allergi
 3. **Folder icon → My Templates** — insert the imported template.
 4. Set **title**, **slug**, and Yoast meta from `data.js` track blurbs (`window.TRACKS`).
 5. **Publish**.
+
+Or regenerate templates: `node scripts/generate-elementor-import.mjs`
 
 ## Optional hub page
 

@@ -16,6 +16,7 @@ wordpress-plugin/coleebri-health-catalogue/
 
 # Build artifacts
 wordpress-plugin/*.zip
+scripts/.wp-payload-*.json
 node_modules/
 
 # OS / editor

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Coleebri Health Catalogue Embed
  * Description: Shortcode embeds for the hosted patient catalogue (quiz, test grids, glossary). No product import.
- * Version: 1.2.0
+ * Version: 1.2.1
  * Author: Coleebri Health
  * Requires at least: 6.0
  * Requires PHP: 7.2
@@ -18,7 +18,7 @@ function coleebri_catalogue_base_url() {
     if (defined('COLEEBRI_CATALOGUE_BASE') && COLEEBRI_CATALOGUE_BASE) {
         $base = COLEEBRI_CATALOGUE_BASE;
     } else {
-        $base = 'https://health.coleebri.com/catalogue/';
+        $base = 'https://guillaumegual-hue.github.io/catalogue/';
     }
     return trailingslashit($base);
 }
