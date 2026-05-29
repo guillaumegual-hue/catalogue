@@ -12,11 +12,14 @@
   <script>
     (function () {
       var p = new URLSearchParams(location.search);
+      var siteWidgets = { tabs: 1, nav: 1, 'most-ordered': 1, categories: 1, 'category-list': 1 };
+      var w = p.get('widget') || '';
       if (
         p.get('branding') === 'none' ||
         p.get('branding') === '0' ||
         p.get('header') === 'none' ||
-        p.get('integrated') === '1'
+        p.get('integrated') === '1' ||
+        (siteWidgets[w] && p.get('branding') === null && p.get('header') === null && p.get('logo') === null)
       ) {
         document.documentElement.classList.add('coleebri-embed-no-brand');
       }
@@ -57,7 +60,7 @@
     };
   </script>
 
-  <script src="../assets/coleebri-embed-params.js?v=20260531a"></script>
+  <script src="../assets/coleebri-embed-params.js?v=20260606a"></script>
   <script>
     (function () {
       var params = window.ColeebriEmbedParams.parseEmbedParams(location.search);

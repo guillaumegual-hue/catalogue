@@ -7,7 +7,13 @@
   var SERVICE_IDS = ['all', 'general', 'women', 'men', 'sexual', 'fitness', 'allergies', 'dna', 'collection', 'top'];
 
   /** Widgets intended for health.coleebri.com — no embed header by default. */
-  var SITE_WIDGETS = { 'most-ordered': true, categories: true, 'category-list': true };
+  var SITE_WIDGETS = {
+    tabs: true,
+    nav: true,
+    'most-ordered': true,
+    categories: true,
+    'category-list': true,
+  };
 
   /** WordPress category pages (path under site base, trailing slash). */
   var WP_SERVICE_PAGES = {
