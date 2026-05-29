@@ -12,7 +12,15 @@
   <script>
     (function () {
       var p = new URLSearchParams(location.search);
-      var siteWidgets = { tabs: 1, nav: 1, 'most-ordered': 1, categories: 1, 'category-list': 1 };
+      var siteWidgets = {
+        tabs: 1,
+        nav: 1,
+        tests: 1,
+        section: 1,
+        'most-ordered': 1,
+        categories: 1,
+        'category-list': 1,
+      };
       var w = p.get('widget') || '';
       if (
         p.get('branding') === 'none' ||
@@ -60,7 +68,7 @@
     };
   </script>
 
-  <script src="../assets/coleebri-embed-params.js?v=20260606a"></script>
+  <script src="../assets/coleebri-embed-params.js?v=20260606b"></script>
   <script>
     (function () {
       var params = window.ColeebriEmbedParams.parseEmbedParams(location.search);
@@ -103,7 +111,7 @@
   <script type="text/babel" src="../cart.jsx?v=20260602a"></script>
   <script type="text/babel" src="../phlebotomy-enquiry.jsx?v=20260602a"></script>
   <script type="text/babel" src="../quiz.jsx?v=20260602a"></script>
-  <script type="text/babel" src="../embed-widgets.jsx?v=20260531a"></script>
+  <script type="text/babel" src="../embed-widgets.jsx?v=20260606b"></script>
   <script type="text/babel" src="../api-guidance-ui.jsx?v=20260531a"></script>
   <script type="text/babel" src="../glossary-ui.jsx?v=20260530e"></script>
   <script type="text/babel" src="../marker-check.jsx?v=20260530e"></script>

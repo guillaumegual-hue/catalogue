@@ -72,7 +72,8 @@ function embedTweaks() {
     showBadges: true,
     primaryAccent: 'teal',
   };
-  if (embedIsIntegrated()) {
+  const embed = embedConfig();
+  if (embedIsIntegrated() || embed.cardsOnly) {
     return { ...base, embedIntegrated: true };
   }
   return base;

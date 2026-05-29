@@ -10,6 +10,8 @@
   var SITE_WIDGETS = {
     tabs: true,
     nav: true,
+    tests: true,
+    section: true,
     'most-ordered': true,
     categories: true,
     'category-list': true,
@@ -279,7 +281,14 @@
       headerChrome = HEADER_PRESETS.none;
     }
     var testFields = parseTestFields(p);
-    var cardsOnly = p.get('cards') === '1' || p.get('cardsOnly') === '1' || widget === 'most-ordered';
+    var cardsParam = p.get('cards') || p.get('cardsOnly');
+    var cardsOnly =
+      cardsParam === '1' ||
+      cardsParam === 'true' ||
+      widget === 'most-ordered' ||
+      ((widget === 'tests' || widget === 'section') &&
+        cardsParam !== '0' &&
+        cardsParam !== 'false');
     var catalogueBase = p.get('catalogue') || '';
     var siteBase = normalizeSiteBase(p.get('site') || '');
     var integrated = p.get('integrated') === '1' || p.get('integrated') === 'true' || !!siteBase;
