@@ -476,29 +476,6 @@ function CatalogueComplianceSection() {
             </article>
           ))}
         </div>
-        <div className="lab-routing">
-          <h3 className="lab-routing__title">Which partner processes which tests?</h3>
-          <div className="lab-routing-table-wrap">
-            <table className="lab-routing-table">
-              <thead>
-                <tr>
-                  <th scope="col">Test category</th>
-                  <th scope="col">Laboratory</th>
-                  <th scope="col">Typical turnaround</th>
-                </tr>
-              </thead>
-              <tbody>
-                {C.LAB_ROUTING_TABLE.map((row) => (
-                  <tr key={row.category}>
-                    <td>{row.category}</td>
-                    <td>{row.lab}</td>
-                    <td>{row.turnaround}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
         <div className="accred-row">
           <div className="accred-card">
             <h4>Professional collection</h4>

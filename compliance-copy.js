@@ -163,25 +163,6 @@
     },
   ];
 
-  const LAB_ROUTING_TABLE = [
-    { category: 'General health & wellbeing panels', lab: 'Inuvi', turnaround: '2–3 working days' },
-    { category: 'Hormonal health, fertility, menopause', lab: 'Inuvi', turnaround: '2–3 working days' },
-    { category: 'Nutritional & vitamin panels', lab: 'Inuvi', turnaround: '2–3 working days' },
-    { category: 'Thyroid (standard & extended)', lab: 'Inuvi', turnaround: '2–3 working days' },
-    { category: 'Full blood count & clinical pathology', lab: 'Nationwide Pathology', turnaround: '2–3 working days' },
-    { category: 'Immunology & autoimmune markers', lab: 'Nationwide Pathology', turnaround: '3–5 working days' },
-    { category: 'Sexual health (STI) panels', lab: 'Nationwide Pathology', turnaround: '2–4 working days' },
-    { category: 'Allergy (IgE & IgG4)', lab: 'Nationwide Pathology', turnaround: '3–5 working days' },
-    { category: 'Paternity & DNA (peace of mind)', lab: 'Nationwide Pathology', turnaround: '5–7 working days' },
-    { category: 'Paternity & DNA (court-admissible)', lab: 'Nationwide Pathology', turnaround: '5–10 working days' },
-    { category: 'Lyme & tick-borne disease panels', lab: 'GLXG / Labor Susa', turnaround: '2–4 weeks' },
-    { category: 'Stress biomarkers & adrenal function', lab: 'GLXG / Labor Susa', turnaround: '2–4 weeks' },
-    { category: 'Heavy metals (urine & blood)', lab: 'GLXG / Labor Susa', turnaround: '2–4 weeks' },
-    { category: 'Methylation / MTHFR genetic test', lab: 'GLXG / Labor Susa', turnaround: '2–4 weeks' },
-    { category: 'Advanced immune status (CD57, NK cells)', lab: 'GLXG / Labor Susa', turnaround: '2–4 weeks' },
-    { category: 'Viral & bacterial infections (complex)', lab: 'GLXG / Labor Susa', turnaround: '2–4 weeks' },
-  ];
-
   const HOW_RESULTS = {
     title: 'How your results work',
     sections: [
@@ -407,7 +388,6 @@
     SHORT_SERVICE_NOTE,
     SECTION_HINTS,
     LABORATORY_PARTNERS,
-    LAB_ROUTING_TABLE,
     HOW_RESULTS,
     COST_TRANSPARENCY,
     CONSUMER_RIGHTS,
