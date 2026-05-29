@@ -205,16 +205,16 @@ main {
 }
 
 .topbar .search {
-  flex: 2 1 280px;
+  flex: 1 1 12rem;
   display: flex;
   align-items: center;
-  min-width: min(100%, 260px);
+  min-width: 0;
   background: var(--paper);
   border: 1px solid var(--border);
   border-radius: 999px;
   padding: 0 14px;
   height: 44px;
-  margin-inline: 10px;
+  margin-inline: 0;
   box-sizing: border-box;
   transition: border-color 0.15s, box-shadow 0.15s;
 }
@@ -348,29 +348,13 @@ main {
   .topbar-inner {
     display: flex;
     flex-wrap: nowrap;
-    padding: 14px 0;
     align-items: center;
+    gap: 10px;
+    padding: 12px 0;
   }
 
   .topbar .brand {
-    flex-shrink: 0;
-    order: 0;
-  }
-
-  .catalogue-exit-link--topbar {
-    display: inline-flex;
-    order: 1;
-    margin-left: 12px;
-    margin-right: 0;
-  }
-
-  .topbar .search {
-    order: 2;
-  }
-
-  .topbar-actions {
-    order: 3;
-    margin-left: auto;
+    flex: 0 0 auto;
   }
 
   .topbar .brand img {
@@ -378,10 +362,36 @@ main {
     max-width: none;
   }
 
-  .topbar .search {
-    flex: 2 1 360px;
+  .catalogue-exit-link--topbar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    flex: 0 0 auto;
     height: 48px;
-    min-width: 300px;
+    padding: 0 18px;
+    border: 2px solid var(--vital);
+    border-radius: 999px;
+    background: var(--paper-2);
+    color: var(--vital);
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .catalogue-exit-link--topbar:hover {
+    background: var(--calm);
+    border-color: var(--vital);
+    color: var(--vital);
+    box-shadow: 0 2px 8px rgba(0, 136, 154, 0.12);
+    text-decoration: none;
+  }
+
+  .topbar .search {
+    flex: 1 1 auto;
+    min-width: 10rem;
+    height: 48px;
     max-width: none;
   }
 
@@ -394,9 +404,10 @@ main {
   }
 
   .topbar-actions {
-    flex-shrink: 0;
-    gap: 12px;
-    padding-right: 4px;
+    flex: 0 0 auto;
+    gap: 10px;
+    margin-left: 0;
+    padding-right: 0;
   }
 
   .topbar-action-btn {
