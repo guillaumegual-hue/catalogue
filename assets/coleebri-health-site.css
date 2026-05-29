@@ -1177,10 +1177,121 @@ main {
 }
 
 /* Standalone category pages (/tests/{slug}/) */
-.category-page-header {
-  padding: 28px 0 20px;
-  border-bottom: 1px solid var(--border);
+.category-page-hero {
+  padding: 20px 0 24px;
   margin-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.category-hero__card {
+  margin-top: 8px;
+}
+
+.category-hero__eyebrow {
+  display: inline-block;
+  margin: 0 0 14px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--calm);
+  color: var(--harbour);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.category-hero__visual {
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+  max-height: 320px;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  margin: 0 0 20px;
+  background: var(--deep-cove);
+}
+
+.category-hero__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  max-height: 320px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.category-hero__visual--fallback {
+  background:
+    linear-gradient(135deg, rgba(0, 82, 92, 0.92) 0%, rgba(0, 136, 154, 0.75) 100%),
+    var(--deep-cove);
+}
+
+.category-hero__visual--dna.category-hero__visual--fallback {
+  background:
+    linear-gradient(120deg, #003d47 0%, #00525c 40%, #00889a 100%),
+    radial-gradient(circle at 70% 40%, rgba(153, 207, 215, 0.35), transparent 55%);
+}
+
+.category-hero__visual--women.category-hero__visual--fallback {
+  background: linear-gradient(135deg, #4a1942 0%, #00889a 100%);
+}
+
+.category-hero__visual--men.category-hero__visual--fallback {
+  background: linear-gradient(135deg, #003d47 0%, #006d7b 100%);
+}
+
+.category-hero__visual--general.category-hero__visual--fallback,
+.category-hero__visual--all.category-hero__visual--fallback {
+  background: linear-gradient(135deg, #00525c 0%, #33a0ae 100%);
+}
+
+.category-hero__visual--fitness.category-hero__visual--fallback {
+  background: linear-gradient(135deg, #2d5016 0%, #7fbf60 55%, #00889a 100%);
+}
+
+.category-hero__visual--allergies.category-hero__visual--fallback {
+  background: linear-gradient(135deg, #5c4d00 0%, #f5c518 40%, #00889a 100%);
+}
+
+.category-hero__visual--sexual.category-hero__visual--fallback {
+  background: linear-gradient(135deg, #3d2a4a 0%, #00889a 100%);
+}
+
+.category-hero__visual--collection.category-hero__visual--fallback {
+  background: linear-gradient(135deg, #00525c 0%, #66b8c2 100%);
+}
+
+.category-hero__visual--paternity.category-hero__visual--fallback {
+  background: linear-gradient(135deg, #1a3a5c 0%, #00889a 100%);
+}
+
+.category-hero__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 4.5vw, 2.35rem);
+  font-weight: 600;
+  color: var(--forest-deep);
+  margin: 0 0 14px;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.category-hero__intro {
+  margin: 0;
+  max-width: 62ch;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+
+.category-hero__intro strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.category-page-hero .catalogue-footnote {
+  margin: 18px 0 0;
 }
 
 .category-page-header__crumb {
@@ -1245,21 +1356,6 @@ main {
   font-weight: 400;
 }
 
-.category-page-header__title {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 4vw, 2.1rem);
-  font-weight: 600;
-  color: var(--forest-deep);
-  margin: 0;
-  letter-spacing: -0.02em;
-}
-
-.category-page-header__lead {
-  font-size: 1.05rem;
-  color: var(--ink-2);
-  margin: 12px 0 0;
-  max-width: 52ch;
-}
 
 /* ─── Modals & drawers ─── */
 .overlay {

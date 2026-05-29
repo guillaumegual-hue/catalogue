@@ -42,23 +42,91 @@ function categoryPageMeta(boot) {
   return { title: boot.title || track?.label || '', blurb: track?.blurb || '' };
 }
 
-function CategoryPageHeader({ boot }) {
+function resolveCategoryHero(boot) {
   const meta = categoryPageMeta(boot);
+  const custom = boot?.slug && window.CATEGORY_HEROES && window.CATEGORY_HEROES[boot.slug];
+  if (!custom) {
+    return {
+      eyebrow: meta.title,
+      heading: meta.title,
+      intro: meta.blurb,
+      theme: boot?.slug || 'default',
+      image: null,
+      imageAlt: '',
+      breadcrumb: meta.title,
+    };
+  }
+  return {
+    eyebrow: custom.eyebrow || meta.title,
+    heading: custom.heading || meta.title,
+    intro: custom.intro || meta.blurb,
+    image: custom.image || null,
+    imageAlt: custom.imageAlt || custom.heading || meta.title,
+    theme: custom.theme || boot.slug,
+    breadcrumb: meta.title,
+  };
+}
+
+function formatHeroIntro(text) {
+  if (!text) return null;
+  const parts = String(text).split(/(\*\*[^*]+\*\*)/g);
+  return parts.map(function (part, i) {
+    if (part.indexOf('**') === 0 && part.lastIndexOf('**') === part.length - 2) {
+      return <strong key={i}>{part.slice(2, -2)}</strong>;
+    }
+    return part;
+  });
+}
+
+function CategoryHeroVisual({ hero }) {
+  const themeClass = 'category-hero__visual--' + (hero.theme || 'default');
+  const [imgFailed, setImgFailed] = React.useState(false);
+  const showImage = hero.image && !imgFailed;
+  return (
+    <div
+      className={
+        'category-hero__visual ' +
+        themeClass +
+        (showImage ? '' : ' category-hero__visual--fallback')
+      }
+    >
+      {hero.image ? (
+        <img
+          src={'../../assets/category-heroes/' + hero.image}
+          alt={hero.imageAlt || ''}
+          className="category-hero__img"
+          onError={function () {
+            setImgFailed(true);
+          }}
+        />
+      ) : null}
+    </div>
+  );
+}
+
+function CategoryPageHeader({ boot }) {
+  const hero = resolveCategoryHero(boot);
   const hubHref = '../';
   const catalogueHref = '../../Coleebri%20Patient%20Catalogue.html';
   const Footnote = window.CatalogueFootnote;
   return (
-    <section className="shell category-page-header">
+    <section className="shell category-page-hero" aria-labelledby="category-hero-heading">
       <nav className="category-page-header__crumb" aria-label="Breadcrumb">
         <ol>
           <li>
             <a href={hubHref}>Browse all categories</a>
           </li>
-          <li aria-current="page">{meta.title}</li>
+          <li aria-current="page">{hero.breadcrumb}</li>
         </ol>
       </nav>
-      <h1 className="category-page-header__title">{meta.title}</h1>
-      {meta.blurb ? <p className="category-page-header__lead">{meta.blurb}</p> : null}
+      <div className="category-hero__card">
+        <p className="category-hero__eyebrow">{hero.eyebrow}</p>
+        <CategoryHeroVisual hero={hero} />
+        <h1 id="category-hero-heading" className="category-hero__heading">
+          {hero.heading}
+        </h1>
+        {hero.intro ? <p className="category-hero__intro">{formatHeroIntro(hero.intro)}</p> : null}
+      </div>
       {Footnote ? <Footnote /> : null}
       <p className="category-page-header__tools">
         <a href={catalogueHref}>Full catalogue</a>

@@ -7,8 +7,10 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { CATEGORY_PAGES, ASSET_VER } from './category-pages-config.mjs';
 import { CATALOGUE_BASE_STAGING } from './catalogue-config.mjs';
+import { execSync } from 'child_process';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+execSync('node scripts/generate-category-heroes.mjs', { cwd: root, stdio: 'inherit' });
 const testsDir = join(root, 'tests');
 
 function escapeJson(obj) {
@@ -49,6 +51,7 @@ window.COLEEBRI_CATALOGUE_PAGE = ${escapeJson(boot)};
 <script src="${assetRoot}assets/coleebri-embed-params.js?v=${ASSET_VER}"></script>
 <script src="${assetRoot}data.js?v=${ASSET_VER}"></script>
 <script src="${assetRoot}pricing.js"></script>
+<script src="${assetRoot}assets/category-heroes.js?v=${ASSET_VER}"></script>
 <script src="${assetRoot}compliance-copy.js?v=${ASSET_VER}"></script>
 <script src="${assetRoot}glossary-guidance.js?v=${ASSET_VER}"></script>
 <script src="${assetRoot}glossary-api.js?v=${ASSET_VER}"></script>
