@@ -578,7 +578,9 @@ function App() {
   const cart = useCart();
   const [query, setQuery] = useState('');
   const pageBoot = readPageBoot();
-  const standalonePage = !!(pageBoot && pageBoot.standalone && !pageBoot.scroll);
+  const toolPage = pageBoot && pageBoot.page;
+  const standalonePage = !!(pageBoot && (pageBoot.service || pageBoot.category) && !pageBoot.scroll && !toolPage);
+  const showPageHeader = !!(pageBoot && (standalonePage || toolPage));
   const [active, setActive] = useState(() => bootInitialActive(pageBoot));
   const [pinned, setPinned] = useState([]);
   const [showCompare, setShowCompare] = useState(false);
@@ -742,13 +744,13 @@ function App() {
       />
 
       <main id="top">
-        {!standalonePage && <Hero />}
+        {!standalonePage && !toolPage && <Hero />}
 
-        {standalonePage && pageBoot ? <CategoryPageHeader boot={pageBoot} /> : null}
+        {showPageHeader && pageBoot ? <CategoryPageHeader boot={pageBoot} /> : null}
 
-        {!standalonePage && <TabNav active={active} setActive={setActive} />}
+        {!standalonePage && !toolPage && <TabNav active={active} setActive={setActive} />}
 
-        {MostOrderedSection && !standalonePage && active === 'all' && !query.trim() && !testIdsFilter && (
+        {MostOrderedSection && !standalonePage && !toolPage && active === 'all' && !query.trim() && !testIdsFilter && (
           <MostOrderedSection
             tweaks={tweaks}
             compared={compareKeys}
@@ -760,7 +762,15 @@ function App() {
           />
         )}
 
-        {active === 'collection' ? (
+        {toolPage === 'glossary' ? (
+          <section className="shell section biomarker-glossary-page" id="biomarker-glossary">
+            {typeof BiomarkerGlossary !== 'undefined' ? <BiomarkerGlossary /> : null}
+          </section>
+        ) : toolPage === 'marker-check' ? (
+          <section className="shell section marker-check-page">
+            {typeof MarkerCheckPanel !== 'undefined' ? <MarkerCheckPanel embedded /> : null}
+          </section>
+        ) : active === 'collection' ? (
           <CollectionView />
         ) : (
           <TrackSection
@@ -778,12 +788,16 @@ function App() {
           />
         )}
 
-        <Compliance />
-        <HowResultsWork />
-        <CostTransparency />
-        <PatientInformation onOpenMarkerCheck={() => setShowMarkerCheck(true)} />
-        <ConsumerRights />
-        <LegalDisclaimer />
+        {!toolPage ? (
+          <>
+            <Compliance />
+            <HowResultsWork />
+            <CostTransparency />
+            <PatientInformation onOpenMarkerCheck={() => setShowMarkerCheck(true)} />
+            <ConsumerRights />
+            <LegalDisclaimer />
+          </>
+        ) : null}
       </main>
 
       <Foot />

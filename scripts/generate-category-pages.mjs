@@ -21,11 +21,11 @@ function buildCategoryHtml(page, assetRoot) {
   const boot = {
     slug: page.slug,
     title: page.title,
-    standalone: !page.scroll,
   };
   if (page.service) boot.service = page.service;
   if (page.category) boot.category = page.category;
   if (page.scroll) boot.scroll = page.scroll;
+  if (page.page) boot.page = page.page;
 
   return `<!DOCTYPE html>
 <html lang="en-GB">
@@ -77,10 +77,16 @@ window.COLEEBRI_CATALOGUE_PAGE = ${escapeJson(boot)};
 
 function buildHubIndex() {
   const base = CATALOGUE_BASE_STAGING;
-  const links = CATEGORY_PAGES.map((p) => {
-    const href = `${base}tests/${p.slug}/`;
-    return `    <li><a href="${href}">${p.title}</a></li>`;
-  }).join('\n');
+  const isTool = (p) => p.page === 'glossary' || p.page === 'marker-check';
+  const categoryLinks = CATEGORY_PAGES.filter((p) => !isTool(p) && !p.scroll)
+    .map((p) => `    <li><a href="${base}tests/${p.slug}/">${p.title}</a></li>`)
+    .join('\n');
+  const toolLinks = CATEGORY_PAGES.filter((p) => isTool(p))
+    .map((p) => `    <li><a href="${base}tests/${p.slug}/">${p.title}</a></li>`)
+    .join('\n');
+  const infoLinks = CATEGORY_PAGES.filter((p) => p.scroll)
+    .map((p) => `    <li><a href="${base}tests/${p.slug}/">${p.title}</a></li>`)
+    .join('\n');
 
   return `<!DOCTYPE html>
 <html lang="en-GB">
@@ -101,10 +107,20 @@ function buildHubIndex() {
 <body>
   <h1>Browse tests by category</h1>
   <p class="lead">Each link opens a dedicated catalogue page (for WordPress menus and SEO).</p>
+  <h2>Test categories</h2>
   <ul>
-${links}
+${categoryLinks}
+  </ul>
+  <h2>Tools</h2>
+  <ul>
+${toolLinks}
+  </ul>
+  <h2>Information</h2>
+  <ul>
+${infoLinks}
   </ul>
   <p><a href="../Coleebri%20Patient%20Catalogue.html">Full catalogue</a> (search, compare, quiz)</p>
+  <p><a href="urls.json">urls.json</a> — all links for menus</p>
 </body>
 </html>
 `;

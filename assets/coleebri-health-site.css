@@ -1345,6 +1345,16 @@ main {
   font-weight: 600;
 }
 
+.biomarker-glossary-page .biomarker-glossary__title,
+.biomarker-glossary-page .biomarker-glossary__intro {
+  display: none;
+}
+
+.marker-check-page .marker-check-panel--embedded .marker-check-title,
+.marker-check-page .marker-check-panel--embedded .marker-check-lead {
+  display: none;
+}
+
 .category-page-hero .catalogue-footnote {
   margin: 18px 0 0;
 }

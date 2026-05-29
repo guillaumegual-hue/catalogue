@@ -78,5 +78,20 @@
     "slug": "patient-information",
     "title": "Patient information",
     "url": "https://guillaumegual-hue.github.io/catalogue/tests/patient-information/"
+  },
+  {
+    "slug": "glossary",
+    "title": "Biomarker glossary",
+    "url": "https://guillaumegual-hue.github.io/catalogue/tests/glossary/"
+  },
+  {
+    "slug": "glossaire",
+    "title": "Glossaire des biomarqueurs",
+    "url": "https://guillaumegual-hue.github.io/catalogue/tests/glossaire/"
+  },
+  {
+    "slug": "marker-check",
+    "title": "Check a marker",
+    "url": "https://guillaumegual-hue.github.io/catalogue/tests/marker-check/"
   }
 ]

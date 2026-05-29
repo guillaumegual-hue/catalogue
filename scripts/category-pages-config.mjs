@@ -2,7 +2,7 @@
  * One static HTML page per category — unique URLs for WordPress menus.
  * Regenerate: node scripts/generate-category-pages.mjs
  */
-export const ASSET_VER = '20260607l';
+export const ASSET_VER = '20260607m';
 
 /** @type {Array<{ slug: string, title: string, service?: string, category?: string, scroll?: string }>} */
 export const CATEGORY_PAGES = [
@@ -22,4 +22,7 @@ export const CATEGORY_PAGES = [
   { slug: 'vitamins-minerals', title: 'Vitamins & minerals', category: 'vitamins' },
   { slug: 'specific-requests', title: 'Specific requests', category: 'specific' },
   { slug: 'patient-information', title: 'Patient information', scroll: 'patient-information' },
+  { slug: 'glossary', title: 'Biomarker glossary', page: 'glossary' },
+  { slug: 'glossaire', title: 'Glossaire des biomarqueurs', page: 'glossary' },
+  { slug: 'marker-check', title: 'Check a marker', page: 'marker-check' },
 ];
