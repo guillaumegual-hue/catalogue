@@ -67,5 +67,5 @@ if (!res.ok) {
 const updated = extractForm(data) || existing;
 console.log('Updated form id:', updated.id);
 console.log('Logo:', body.logo_picture);
-console.log('Tests in dropdown:', tests.length);
+console.log('Catalogue tests:', tests.length, '| categories:', buildEnquiryProperties({ tests }).filter((p) => p.type === 'select' && p.name === 'Test').length);
 console.log('Public URL:', `${cfg.publicBase}/forms/${updated.slug}`);

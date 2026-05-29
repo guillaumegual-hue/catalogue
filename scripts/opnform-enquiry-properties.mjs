@@ -17,6 +17,22 @@ export const CATALOGUE_URL =
   process.env.COLEEBRI_CATALOGUE_PUBLIC_URL ||
   'https://guillaumegual-hue.github.io/catalogue/Coleebri%20Patient%20Catalogue.html';
 
+const CATEGORY_FIELD_ID = 'a1000001-0001-4000-8000-000000000018';
+
+/** Browse categories (same order as health.coleebri.com test pages). */
+const CATEGORY_DEFS = [
+  { id: 'general', label: 'General Health' },
+  { id: 'women', label: "Women's Health" },
+  { id: 'men', label: "Men's Health" },
+  { id: 'sexual', label: 'Sexual Health' },
+  { id: 'fitness', label: 'Fitness & wellbeing' },
+  { id: 'allergies', label: 'Allergies & sensitivities' },
+  { id: 'dna', label: 'DNA Tests' },
+  { id: 'paternity', label: 'Paternity & DNA' },
+  { id: 'profiles', label: 'Health profiles & screens' },
+  { id: 'other', label: 'Other tests' },
+];
+
 export function loadCatalogue() {
   const ctx = { window: {} };
   runInContext(readFileSync(join(root, 'data.js'), 'utf8'), createContext(ctx));
@@ -26,25 +42,59 @@ export function loadCatalogue() {
   };
 }
 
-export function sectionLabel(sections, sectionId) {
-  const s = sections.find((x) => x.id === sectionId);
-  return s ? s.label : sectionId;
+export function formatPrice(t) {
+  if (t.poa || t.price === null || t.price === undefined) return 'On request';
+  if (t.priceUpper) return `from £${t.price}–£${t.priceUpper}`;
+  return `£${t.price}`;
 }
 
-export function buildTestSelectOptions(tests, sections) {
-  const sorted = [...tests].sort((a, b) => {
-    const sa = sectionLabel(sections, a.section);
-    const sb = sectionLabel(sections, b.section);
-    if (sa !== sb) return sa.localeCompare(sb);
-    return a.name.localeCompare(b.name);
-  });
+export function primaryCategoryId(test) {
+  if (test.section === 'paternity') return 'paternity';
+  if (test.section === 'allergies' || (test.tracks || []).includes('allergies')) return 'allergies';
+  if (test.section === 'profiles') return 'profiles';
+  for (const id of ['men', 'women', 'sexual', 'fitness', 'general', 'dna']) {
+    if ((test.tracks || []).includes(id)) return id;
+  }
+  if (test.section === 'fitness') return 'fitness';
+  if (test.section && CATEGORY_DEFS.some((c) => c.id === test.section)) return test.section;
+  return 'other';
+}
 
-  return sorted.map((t) => {
-    const code = t.code && t.code !== '-' ? t.code : t.id;
-    const sec = sectionLabel(sections, t.section);
-    const label = `${sec} — ${t.name} (${code})`;
-    return { id: t.id, name: label };
-  });
+export function testsByCategory(tests) {
+  const map = new Map(CATEGORY_DEFS.map((c) => [c.id, []]));
+  for (const t of tests) {
+    const cat = primaryCategoryId(t);
+    if (!map.has(cat)) map.set(cat, []);
+    map.get(cat).push(t);
+  }
+  for (const [, list] of map) {
+    list.sort((a, b) => a.name.localeCompare(b.name));
+  }
+  return map;
+}
+
+export function formatTestOption(t) {
+  const code = t.code && t.code !== '-' ? t.code : t.id;
+  return `${t.name} — ${formatPrice(t)} (${code})`;
+}
+
+function logicShowForCategory(categoryLabel) {
+  return {
+    conditions: {
+      operatorIdentifier: 'and',
+      children: [
+        {
+          identifier: CATEGORY_FIELD_ID,
+          value: {
+            operator: 'does_not_equal',
+            property_meta: { id: CATEGORY_FIELD_ID, type: 'select' },
+            value: categoryLabel,
+          },
+        },
+      ],
+    },
+    actions: ['hide-block'],
+  };
 }
 
 function textField(block) {
@@ -66,10 +116,28 @@ function textField(block) {
   };
 }
 
-export function buildEnquiryProperties({ tests, sections, catalogueUrl = CATALOGUE_URL }) {
-  const testOptions = buildTestSelectOptions(tests, sections);
+function selectField(block) {
+  return {
+    help_position: 'below_input',
+    width: 'full',
+    align: 'left',
+    allow_creation: false,
+    without_dropdown: false,
+    shuffle_options: false,
+    hide_field_name: false,
+    disabled: false,
+    prefill: null,
+    ...block,
+    id: block.id || randomUUID(),
+    type: 'select',
+  };
+}
 
-  return [
+export function buildEnquiryProperties({ tests, catalogueUrl = CATALOGUE_URL }) {
+  const byCat = testsByCategory(tests);
+  const activeCategories = CATEGORY_DEFS.filter((c) => (byCat.get(c.id) || []).length > 0);
+
+  const properties = [
     {
       type: 'nf-text',
       name: 'Intro',
@@ -78,7 +146,7 @@ export function buildEnquiryProperties({ tests, sections, catalogueUrl = CATALOG
       help_position: 'below_input',
       width: 'full',
       align: 'left',
-      content: `<span class="coleebri-eyebrow">Request a test</span><h2>Test enquiry</h2><p>Choose your test from the catalogue list below (${tests.length} tests), or <a href="${catalogueUrl}" target="_blank" rel="noopener">browse the full catalogue</a> to compare markers and prices.</p>`,
+      content: `<span class="coleebri-eyebrow">Request a test</span><h2>Test enquiry</h2><p><strong>Step 1:</strong> choose a category. <strong>Step 2:</strong> choose your test (price shown). Or <a href="${catalogueUrl}" target="_blank" rel="noopener">browse the full catalogue</a> first.</p>`,
     },
     textField({
       id: 'a1000001-0001-4000-8000-000000000001',
@@ -120,25 +188,44 @@ export function buildEnquiryProperties({ tests, sections, catalogueUrl = CATALOG
       hide_field_name: true,
       required: false,
     }),
-    {
-      type: 'select',
-      name: 'Test from catalogue',
-      id: 'a1000001-0001-4000-8000-000000000020',
+    selectField({
+      name: 'Category',
+      id: CATEGORY_FIELD_ID,
       hidden: false,
-      help_position: 'below_input',
-      placeholder: 'Select a test…',
-      select: { options: testOptions },
-      width: 'full',
-      align: 'left',
-      allow_creation: false,
-      without_dropdown: false,
-      shuffle_options: false,
-      hide_field_name: false,
+      placeholder: 'Choose a category…',
       required: true,
-      disabled: false,
-      prefill: null,
-      help: `All ${tests.length} tests from the patient catalogue, grouped by category.`,
-    },
+      select: {
+        options: activeCategories.map((c) => ({
+          id: c.id,
+          name: c.label,
+        })),
+      },
+      help: `Choose a category, then your test. ${tests.length} tests across ${activeCategories.length} categories.`,
+    }),
+  ];
+
+  for (const cat of activeCategories) {
+    const list = byCat.get(cat.id) || [];
+    properties.push(
+      selectField({
+        name: 'Test',
+        id: randomUUID(),
+        hidden: false,
+        placeholder: 'Select a test…',
+        required: true,
+        help: `${list.length} tests in ${cat.label}. Prices are laboratory fees; collection may be extra.`,
+        select: {
+          options: list.map((t) => ({
+            id: t.id,
+            name: formatTestOption(t),
+          })),
+        },
+        logic: logicShowForCategory(cat.label),
+      })
+    );
+  }
+
+  properties.push(
     textField({
       id: 'a1000001-0001-4000-8000-000000000010',
       type: 'text',
@@ -178,6 +265,10 @@ export function buildEnquiryProperties({ tests, sections, catalogueUrl = CATALOG
       max_char_limit: 2000,
       placeholder: 'Anything else we should know?',
       required: false,
-    }),
-  ];
+    })
+  );
+
+  return properties;
 }
+
+export { CATEGORY_FIELD_ID };

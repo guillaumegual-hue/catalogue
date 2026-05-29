@@ -1,6 +1,6 @@
 # OpnForm — test enquiry
 
-Synced from data.js (all catalogue tests in the dropdown).
+Synced from data.js: **Category** → **Test** (with price). Re-run after data.js changes.
 
 ```bash
 set -a && source .env && set +a

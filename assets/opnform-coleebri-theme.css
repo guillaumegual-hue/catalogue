@@ -147,10 +147,14 @@ textarea:focus {
   margin-bottom: 14px !important;
 }
 
-/* Test select */
+/* Category + test selects */
 .open-complete-form .v-select,
 .open-complete-form [class*='v-select'] {
   width: 100% !important;
+}
+
+.open-complete-form .form-group .col-span-full:has(#block-a1000001-0001-4000-8000-000000000018) {
+  margin-bottom: 8px !important;
 }
 
 .open-complete-form .v-select button,
