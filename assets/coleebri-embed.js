@@ -69,6 +69,8 @@
     var group = el.getAttribute('data-group') || '';
     var test = el.getAttribute('data-test') || '';
     var tests = el.getAttribute('data-tests') || '';
+    var siteBase = el.getAttribute('data-site') || '';
+    var integrated = el.getAttribute('data-integrated') === '1' || !!siteBase;
     var headerOpts = { headerPreset: 'partner', branding: true };
     if (window.ColeebriEmbedParams && window.ColeebriEmbedParams.parseHeaderFromElement) {
       var chrome = window.ColeebriEmbedParams.parseHeaderFromElement(el);
@@ -79,6 +81,10 @@
         brandName: chrome.name,
         brandLink: chrome.link,
       };
+    }
+    if (integrated) {
+      headerOpts.branding = false;
+      headerOpts.headerPreset = 'none';
     }
     var title = el.getAttribute('data-title') || WIDGET_LABELS[widget] || 'Coleebri Health catalogue';
 
@@ -95,6 +101,8 @@
       brandLogo: headerOpts.brandLogo,
       brandName: headerOpts.brandName,
       brandLink: headerOpts.brandLink,
+      siteBase: siteBase,
+      integrated: integrated,
     });
     iframe.title = title;
     iframe.setAttribute('loading', 'lazy');

@@ -81,7 +81,8 @@ a.coleebri-embed__brand-name:hover {
   text-decoration: none;
 }
 
-.coleebri-embed--no-branding .coleebri-embed__brand {
+.coleebri-embed--no-branding .coleebri-embed__brand,
+html.coleebri-embed-no-brand .coleebri-embed__brand {
   display: none !important;
 }
 

@@ -298,7 +298,6 @@ function CatalogueTabNav({ activeId, onSelectTab, getTabHref }) {
               className={activeId === t.id ? 'active' : ''}
               href={getTabHref ? getTabHref(t.id) : '#'}
               onClick={(e) => {
-                if (getTabHref) return;
                 e.preventDefault();
                 onSelectTab(t.id);
               }}

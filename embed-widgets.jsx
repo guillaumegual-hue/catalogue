@@ -1,7 +1,23 @@
 /* Coleebri — embed hosts using the same UI blocks as the main catalogue. */
 
+function embedConfig() {
+  return window.__COLEEBRI_EMBED__ || {};
+}
+
+function embedIsIntegrated() {
+  const embed = embedConfig();
+  return (
+    !!embed.integrated ||
+    !!(window.ColeebriEmbedParams && window.ColeebriEmbedParams.isIntegratedEmbed(embed))
+  );
+}
+
 function embedCatalogueHref(opts) {
-  const embed = window.__COLEEBRI_EMBED__ || {};
+  const embed = embedConfig();
+  if (embedIsIntegrated() && window.ColeebriEmbedParams?.resolveParentNavigateUrl) {
+    const wpUrl = window.ColeebriEmbedParams.resolveParentNavigateUrl(embed, opts || {});
+    if (wpUrl) return wpUrl;
+  }
   const base = embed.catalogueBase || '../Coleebri%20Patient%20Catalogue.html';
   const hash =
     window.ColeebriEmbedParams && window.ColeebriEmbedParams.buildCatalogueHash
@@ -11,6 +27,18 @@ function embedCatalogueHref(opts) {
 }
 
 function embedNavigate(href) {
+  if (!href) return;
+  if (/^mailto:/i.test(href)) {
+    if (window.parent && window.parent !== window) {
+      window.parent.location.href = href;
+    } else {
+      window.location.href = href;
+    }
+    return;
+  }
+  if (embedIsIntegrated() && /github\.io\/catalogue/i.test(href)) {
+    return;
+  }
   if (window.parent && window.parent !== window) {
     window.parent.location.href = href;
   } else {
@@ -18,14 +46,36 @@ function embedNavigate(href) {
   }
 }
 
+function embedOpenEnquiry(test) {
+  const subject = encodeURIComponent('Test request: ' + test.name);
+  const lines = [
+    'Hello Coleebri Health,',
+    '',
+    'I would like to enquire about the following test from your patient catalogue:',
+    '',
+    test.name + ' (' + test.code + ')',
+    'Turnaround: ' + (test.turnaround || '—'),
+    '',
+    'Please advise on next steps.',
+    '',
+    'Kind regards,',
+  ];
+  const body = encodeURIComponent(lines.join('\n'));
+  embedNavigate('mailto:health@coleebri.com?subject=' + subject + '&body=' + body);
+}
+
 function embedTweaks() {
-  return window.TWEAK_DEFAULTS || {
+  const base = window.TWEAK_DEFAULTS || {
     showAnalytesByDefault: false,
     denseCards: false,
     showPriceTier: true,
     showBadges: true,
     primaryAccent: 'teal',
   };
+  if (embedIsIntegrated()) {
+    return { ...base, embedIntegrated: true };
+  }
+  return base;
 }
 
 function EmbedMostOrdered() {
@@ -52,7 +102,7 @@ function EmbedMostOrdered() {
       tweaks={embedTweaks()}
       compared={pinned.map(compareKey)}
       onCompare={handleCompare}
-      onOpen={(t) => embedNavigate(embedCatalogueHref({ test: t.id }))}
+      onOpen={(t) => (embedIsIntegrated() ? embedOpenEnquiry(t) : embedNavigate(embedCatalogueHref({ test: t.id })))}
       onCart={cart.toggle}
       inCart={cart.has}
       onBrowseTab={(tabId) => embedNavigate(embedCatalogueHref({ service: tabId }))}
@@ -141,7 +191,7 @@ function EmbedTestGrid() {
       tweaks={embedTweaks()}
       compared={pinned.map(compareKey)}
       onCompare={handleCompare}
-      onOpen={(t) => embedNavigate(embedCatalogueHref({ test: t.id }))}
+      onOpen={(t) => (embedIsIntegrated() ? embedOpenEnquiry(t) : embedNavigate(embedCatalogueHref({ test: t.id })))}
       onCart={cart.toggle}
       inCart={cart.has}
       categoryFilter={embed.category || ''}
@@ -151,28 +201,25 @@ function EmbedTestGrid() {
 }
 
 function EmbedTabNav() {
-  const embed = window.__COLEEBRI_EMBED__ || {};
+  const embed = embedConfig();
   const CatalogueTabNav = window.CatalogueBlocks?.CatalogueTabNav;
   const activeId = embed.service === 'collection' ? 'collection' : embed.service || 'all';
   if (!CatalogueTabNav) return null;
 
+  const navigateTab = (tabId) => {
+    const url = embedCatalogueHref({
+      tabId,
+      service: tabId === 'all' ? '' : tabId,
+      category: embed.category,
+    });
+    embedNavigate(url);
+  };
+
   return (
     <CatalogueTabNav
       activeId={activeId}
-      getTabHref={(tabId) => {
-        if (tabId === 'collection') {
-          return embedCatalogueHref({ service: 'collection' });
-        }
-        return embedCatalogueHref({ service: tabId === 'all' ? '' : tabId, category: embed.category });
-      }}
-      onSelectTab={(tabId) => {
-        embedNavigate(
-          embedCatalogueHref({
-            service: tabId === 'all' ? '' : tabId,
-            category: embed.category,
-          })
-        );
-      }}
+      getTabHref={embedIsIntegrated() ? null : (tabId) => embedCatalogueHref({ tabId, service: tabId === 'all' ? '' : tabId })}
+      onSelectTab={navigateTab}
     />
   );
 }

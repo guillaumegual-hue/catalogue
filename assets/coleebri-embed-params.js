@@ -9,6 +9,18 @@
   /** Widgets intended for health.coleebri.com — no embed header by default. */
   var SITE_WIDGETS = { 'most-ordered': true, categories: true, 'category-list': true };
 
+  /** WordPress category pages (path under site base, trailing slash). */
+  var WP_SERVICE_PAGES = {
+    all: '/tests/',
+    general: '/tests/general-health/',
+    women: '/tests/womens-health/',
+    men: '/tests/mens-health/',
+    sexual: '/tests/sexual-health/',
+    fitness: '/tests/fitness-allergies/',
+    dna: '/tests/dna/',
+    collection: '/phlebotomy-vitals-check/',
+  };
+
   var HEADER_PRESETS = {
     none: { show: false, logo: false, name: false, link: false, preset: 'none' },
     partner: { show: true, logo: true, name: false, link: true, preset: 'partner' },
@@ -134,9 +146,63 @@
     return '';
   }
 
+  function normalizeSiteBase(raw) {
+    if (!raw) return '';
+    var base = String(raw).trim();
+    if (!base) return '';
+    if (base.slice(-1) !== '/') base += '/';
+    return base;
+  }
+
+  function isIntegratedEmbed(opts) {
+    opts = opts || {};
+    if (opts.integrated === true || opts.integrated === '1') return true;
+    return !!normalizeSiteBase(opts.siteBase);
+  }
+
+  function resolveWpPageUrl(siteBase, serviceOrTabId) {
+    var base = normalizeSiteBase(siteBase);
+    if (!base) return '';
+    var key = serviceOrTabId || 'all';
+    if (key === 'top') key = 'all';
+    var path = WP_SERVICE_PAGES[key];
+    if (!path) return '';
+    return base.replace(/\/$/, '') + path;
+  }
+
+  function resolveParentNavigateUrl(embed, opts) {
+    embed = embed || {};
+    opts = opts || {};
+    var site = normalizeSiteBase(embed.siteBase);
+    if (!site) return '';
+
+    if (opts.test || opts.testId) {
+      var service = opts.service || embed.service || 'all';
+      var page = resolveWpPageUrl(site, service === 'all' || service === 'top' ? 'general' : service);
+      if (!page) return '';
+      var testId = String(opts.test || opts.testId).trim();
+      return page + (page.indexOf('?') === -1 ? '?' : '&') + 'test=' + encodeURIComponent(testId);
+    }
+
+    if (opts.service !== undefined || opts.tabId !== undefined) {
+      var tab = opts.tabId != null ? opts.tabId : opts.service;
+      if (tab === '' || tab === 'all') return resolveWpPageUrl(site, 'all');
+      return resolveWpPageUrl(site, tab);
+    }
+
+    if (opts.category) {
+      return resolveWpPageUrl(site, 'all');
+    }
+
+    return '';
+  }
+
   function parseHeaderFromElement(el) {
     if (!el) return HEADER_PRESETS.partner;
-    if (el.getAttribute('data-branding') === '0') return HEADER_PRESETS.none;
+    var branding = el.getAttribute('data-branding');
+    if (branding === '0' || branding === 'false' || branding === 'none' || branding === 'off') {
+      return HEADER_PRESETS.none;
+    }
     var preset = el.getAttribute('data-header');
     if (preset && HEADER_PRESETS[preset]) return HEADER_PRESETS[preset];
     var logo = el.getAttribute('data-logo');
@@ -205,6 +271,11 @@
     var testFields = parseTestFields(p);
     var cardsOnly = p.get('cards') === '1' || p.get('cardsOnly') === '1' || widget === 'most-ordered';
     var catalogueBase = p.get('catalogue') || '';
+    var siteBase = normalizeSiteBase(p.get('site') || '');
+    var integrated = p.get('integrated') === '1' || p.get('integrated') === 'true' || !!siteBase;
+    if (integrated && headerChrome.show && p.get('branding') === null) {
+      headerChrome = HEADER_PRESETS.none;
+    }
     return {
       widget: widget,
       service: service,
@@ -224,6 +295,9 @@
       cardsOnly: cardsOnly,
       compact: p.get('compact') === '1' || p.get('compact') === 'true',
       catalogueBase: catalogueBase,
+      siteBase: siteBase,
+      integrated: integrated,
+      wpServicePages: WP_SERVICE_PAGES,
     };
   }
 
@@ -338,6 +412,8 @@
     if (opts.group) url += '&group=' + encodeURIComponent(opts.group);
     else if (opts.tests) url += '&tests=' + encodeURIComponent(opts.tests);
     else if (opts.test) url += '&test=' + encodeURIComponent(opts.test);
+    if (opts.siteBase) url += '&site=' + encodeURIComponent(opts.siteBase);
+    if (opts.integrated) url += '&integrated=1';
     return appendHeaderQuery(url, opts);
   }
 
@@ -357,5 +433,10 @@
     parseCatalogueHash: parseCatalogueHash,
     buildCatalogueHash: buildCatalogueHash,
     buildEmbedUrl: buildEmbedUrl,
+    normalizeSiteBase: normalizeSiteBase,
+    isIntegratedEmbed: isIntegratedEmbed,
+    resolveWpPageUrl: resolveWpPageUrl,
+    resolveParentNavigateUrl: resolveParentNavigateUrl,
+    WP_SERVICE_PAGES: WP_SERVICE_PAGES,
   };
 })();

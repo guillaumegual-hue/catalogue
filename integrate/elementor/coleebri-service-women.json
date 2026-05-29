@@ -1,7 +1,7 @@
 {
   "content": [
     {
-      "id": "458e8ab",
+      "id": "d41a698",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -24,7 +24,7 @@
       },
       "elements": [
         {
-          "id": "59f5a21",
+          "id": "fed5f63",
           "elType": "widget",
           "widgetType": "heading",
           "settings": {
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "id": "42d8ffb",
+      "id": "5f3b356",
       "elType": "container",
       "settings": {
         "content_width": "full",
@@ -60,45 +60,11 @@
       },
       "elements": [
         {
-          "id": "de76058",
+          "id": "3c8e942",
           "elType": "widget",
           "widgetType": "html",
           "settings": {
-            "html": "<div data-coleebri-embed=\"tabs\" data-coleebri-base=\"https://guillaumegual-hue.github.io/catalogue/\" data-branding=\"0\" data-height=\"140\"></div><script src=\"https://guillaumegual-hue.github.io/catalogue/assets/coleebri-embed.js?v=20260529a\" data-base=\"https://guillaumegual-hue.github.io/catalogue/\"><\\/script>"
-          },
-          "elements": []
-        }
-      ]
-    },
-    {
-      "id": "ddbd1da",
-      "elType": "container",
-      "settings": {
-        "content_width": "full",
-        "flex_direction": "column",
-        "flex_gap": {
-          "unit": "px",
-          "size": 16,
-          "column": "16",
-          "row": "16",
-          "isLinked": true
-        },
-        "padding": {
-          "unit": "px",
-          "top": "24",
-          "right": "20",
-          "bottom": "24",
-          "left": "20",
-          "isLinked": false
-        }
-      },
-      "elements": [
-        {
-          "id": "4c53e9a",
-          "elType": "widget",
-          "widgetType": "html",
-          "settings": {
-            "html": "<div data-coleebri-embed=\"tests\" data-coleebri-base=\"https://guillaumegual-hue.github.io/catalogue/\" data-branding=\"0\" data-service=\"women\" data-height=\"900\"></div><script src=\"https://guillaumegual-hue.github.io/catalogue/assets/coleebri-embed.js?v=20260529a\" data-base=\"https://guillaumegual-hue.github.io/catalogue/\"><\\/script>"
+            "html": "<div data-coleebri-embed=\"tests\" data-coleebri-base=\"https://guillaumegual-hue.github.io/catalogue/\" data-branding=\"none\" data-site=\"https://health.coleebri.com/en\" data-integrated=\"1\" data-service=\"women\" data-height=\"900\"></div><script src=\"https://guillaumegual-hue.github.io/catalogue/assets/coleebri-embed.js?v=20260530a\" data-base=\"https://guillaumegual-hue.github.io/catalogue/\"><\\/script>"
           },
           "elements": []
         }

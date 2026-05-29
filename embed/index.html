@@ -7,8 +7,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../assets/coleebri-health-site.css?v=20260529a" />
-  <link rel="stylesheet" href="../assets/embed-shell.css?v=20260529a" />
+  <link rel="stylesheet" href="../assets/coleebri-health-site.css?v=20260530a" />
+  <link rel="stylesheet" href="../assets/embed-shell.css?v=20260530a" />
+  <script>
+    (function () {
+      var p = new URLSearchParams(location.search);
+      if (
+        p.get('branding') === 'none' ||
+        p.get('branding') === '0' ||
+        p.get('header') === 'none' ||
+        p.get('integrated') === '1'
+      ) {
+        document.documentElement.classList.add('coleebri-embed-no-brand');
+      }
+    })();
+  </script>
 </head>
 <body>
   <div class="coleebri-embed" id="embed-root">
@@ -36,7 +49,7 @@
     };
   </script>
 
-  <script src="../assets/coleebri-embed-params.js?v=20260601d"></script>
+  <script src="../assets/coleebri-embed-params.js?v=20260530a"></script>
   <script>
     (function () {
       var params = window.ColeebriEmbedParams.parseEmbedParams(location.search);

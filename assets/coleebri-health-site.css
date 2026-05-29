@@ -512,7 +512,8 @@ main {
     overflow: visible;
   }
 
-  .tabnav-pills button {
+  .tabnav-pills button,
+  .tabnav-pills a {
     font-family: var(--font-display);
     font-weight: 600;
     font-size: 0.82rem;
@@ -525,15 +526,19 @@ main {
     white-space: nowrap;
     transition: background 0.15s, color 0.15s, border-color 0.15s;
     line-height: 1.2;
+    text-decoration: none;
+    display: inline-block;
   }
 
-  .tabnav-pills button:hover {
+  .tabnav-pills button:hover,
+  .tabnav-pills a:hover {
     background: var(--calm);
     border-color: var(--trustline);
     color: var(--vital);
   }
 
-  .tabnav-pills button.active {
+  .tabnav-pills button.active,
+  .tabnav-pills a.active {
     background: var(--vital);
     color: #fff;
     border-color: var(--vital);
@@ -546,10 +551,21 @@ main {
     gap: 7px;
   }
 
-  .tabnav-pills button {
+  .tabnav-pills button,
+  .tabnav-pills a {
     font-size: 0.84rem;
     padding: 9px 13px;
   }
+}
+
+/* Embed iframe: no main catalogue topbar — reset sticky offset */
+.coleebri-embed-tabnav.tabnav {
+  position: static;
+  top: auto;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+  z-index: 1;
 }
 
 .filterrow {

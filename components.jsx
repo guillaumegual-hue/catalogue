@@ -377,7 +377,7 @@ function TestCard({ test, compared, onCompare, onOpen, onCart, inCart, tweaks })
             </button>
           </div>
         </div>
-        <TestCardServiceNote />
+        <TestCardServiceNote linkToPatientInfo={!tweaks?.embedIntegrated} />
       </footer>
     </article>
   );
