@@ -13,14 +13,12 @@ Style enquiry forms on **https://app.coleebri.eu** to match the patient catalogu
 
 ### Option A — API (recommended if you have the token)
 
-From `wp-config.php` use `COLEEBRI_OPNFORM_TOKEN` (never commit it):
+Edit `.env` in the repo root (gitignored), paste your token after `COLEEBRI_OPNFORM_TOKEN=`, then:
 
 ```bash
-export COLEEBRI_OPNFORM_TOKEN='your-token'
-export COLEEBRI_OPNFORM_API_BASE='https://app.coleebri.eu/api'
-export COLEEBRI_OPNFORM_ENQUIRY_SLUG='test-enquiry-coleebri-health-nlsubd'  # or use id: 9
-node scripts/opnform-list-forms.mjs    # if 404, confirm id/slug here
-node scripts/opnform-apply-theme.mjs   # or: node scripts/opnform-apply-theme.mjs 9
+set -a && source .env && set +a
+node scripts/opnform-list-forms.mjs
+node scripts/opnform-apply-theme.mjs
 ```
 
 **Form missing from list?** Create it first:
