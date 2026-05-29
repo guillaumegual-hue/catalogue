@@ -17,9 +17,13 @@ From `wp-config.php` use `COLEEBRI_OPNFORM_TOKEN` (never commit it):
 
 ```bash
 export COLEEBRI_OPNFORM_TOKEN='your-token'
-export COLEEBRI_OPNFORM_ENQUIRY_SLUG='test-enquiry-coleebri-health-nlsubd'  # optional
-node scripts/opnform-apply-theme.mjs
+export COLEEBRI_OPNFORM_API_BASE='https://app.coleebri.eu/api'
+export COLEEBRI_OPNFORM_ENQUIRY_SLUG='test-enquiry-coleebri-health-nlsubd'  # or use id: 9
+node scripts/opnform-list-forms.mjs    # if 404, confirm id/slug here
+node scripts/opnform-apply-theme.mjs   # or: node scripts/opnform-apply-theme.mjs 9
 ```
+
+**404 on apply?** The API often needs the numeric **form id**, not the slug. Run `opnform-list-forms.mjs`, then `node scripts/opnform-apply-theme.mjs 9`.
 
 This sets form colour `#00889a`, **no branding**, Classic layout, and pastes [`assets/opnform-coleebri-theme.css`](../assets/opnform-coleebri-theme.css) into the form’s **Custom Code → CSS**.
 

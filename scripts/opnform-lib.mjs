@@ -85,6 +85,59 @@ export async function listWorkspaceForms(cfg) {
   return normalizeFormsList(data);
 }
 
+/**
+ * Load a full form for update. Self-hosted API often resolves GET/PUT by numeric id only.
+ */
+export async function getForm(cfg, { slug, id } = {}) {
+  const tryId = async (formId) => {
+    const { res, data } = await apiFetch(`/open/forms/${formId}`, cfg);
+    if (!res.ok) return { res, data, form: null };
+    return { res, data, form: extractForm(data) };
+  };
+
+  if (id != null && id !== '') {
+    const hit = await tryId(id);
+    if (hit.form) return hit.form;
+  }
+
+  if (slug) {
+    let hit = await tryId(slug);
+    if (hit.form) return hit.form;
+
+    const { res, data } = await apiFetch(`/open/forms/${encodeURIComponent(slug)}`, cfg);
+    if (res.ok) {
+      const form = extractForm(data);
+      if (form) return form;
+    }
+
+    const forms = await listWorkspaceForms(cfg);
+    const match =
+      forms.find((f) => f.slug === slug) ||
+      forms.find((f) => String(f.id) === String(slug));
+    if (match?.id) {
+      hit = await tryId(match.id);
+      if (hit.form) return hit.form;
+    }
+
+    if (res.status === 404) {
+      const err = new Error(`Form not found: ${slug}`);
+      err.status = 404;
+      err.forms = forms;
+      throw err;
+    }
+    const err = new Error(`GET form failed (${res.status})`);
+    err.status = res.status;
+    err.data = data;
+    throw err;
+  }
+
+  throw new Error('getForm requires slug or id');
+}
+
+export function formUpdatePath(form) {
+  return `/open/forms/${form.id ?? form.slug}`;
+}
+
 export function findFormByTitle(forms, title) {
   const t = String(title).trim().toLowerCase();
   return forms.filter((f) => String(f.title || '').trim().toLowerCase() === t);
